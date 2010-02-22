@@ -1,0 +1,13 @@
+= Scaling Rails
+
+This is the public repository for my master thesis. It's full name is "Scaling Rails: a system-wide approach to performance optimization"
+
+== Content
+
+Benchmark results, configuration tweaks, code tunning and documentation like reports and presentations can be found in the repository. Dig in those files if you'd like.
+
+
+== Blog
+
+If you're interested in this subject, visit this thesis' oficial blog at http://snaprails.tumblr.com
+
