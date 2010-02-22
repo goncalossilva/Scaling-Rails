@@ -1,0 +1,12 @@
+% Patches for MIEIC in feupteses
+% AAS, requests
+
+%% Headers and footers
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\fancyhead{} % clear all header fields
+\fancyhead[C]{\leftmark}
+\fancyfoot{} % clear all footer fields
+\fancyfoot[C]{\thepage}
+\fancyfoot[RO,LE]{\if@noversion{}\else\@version\fi}
+

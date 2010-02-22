@@ -1,0 +1,2233 @@
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_cal.rb
+parameters:
+- 500
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_cal.rb
+parameter: 500
+iterations: 2
+max: 2.612001
+min: 2.607518
+median: 2.612001
+mean: 2.6097595
+standard_deviation: 0.00224150000000023
+times:
+- 2.607518
+- 2.612001
+memory_usages:
+- 5021696
+- 5079040
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_cal.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_dirp.rb
+parameters:
+- 10000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_dirp.rb
+parameter: 10000
+iterations: 2
+max: 0.466531
+min: 0.46466
+median: 0.466531
+mean: 0.4655955
+standard_deviation: 0.00093549999999995
+times:
+- 0.46466
+- 0.466531
+memory_usages:
+- 4599808
+- 4636672
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_dirp.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_gzip.rb
+parameters:
+- 100
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_gzip.rb
+parameter: 100
+iterations: 2
+max: 6.547759
+min: 6.527676
+median: 6.547759
+mean: 6.5377175
+standard_deviation: 0.0100415000000003
+times:
+- 6.547759
+- 6.527676
+memory_usages:
+- 11038720
+- 11120640
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_gzip.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameters:
+- 10
+- 20
+- 30
+- 40
+- 50
+- 60
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameter: 10
+iterations: 2
+max: 0.050163
+min: 0.0482870000000001
+median: 0.050163
+mean: 0.049225
+standard_deviation: 0.00093799999999996
+times:
+- 0.0482870000000001
+- 0.050163
+memory_usages:
+- 5582848
+- 5832704
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameter: 20
+iterations: 2
+max: 0.43149
+min: 0.431322
+median: 0.43149
+mean: 0.431406
+standard_deviation: 8.40000000000007e-05
+times:
+- 0.43149
+- 0.431322
+memory_usages:
+- 6131712
+- 6131712
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameter: 30
+iterations: 2
+max: 1.671731
+min: 1.66747
+median: 1.671731
+mean: 1.6696005
+standard_deviation: 0.00213050000000004
+times:
+- 1.66747
+- 1.671731
+memory_usages:
+- 6172672
+- 6172672
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameter: 40
+iterations: 2
+max: 4.60055
+min: 4.531966
+median: 4.60055
+mean: 4.566258
+standard_deviation: 0.0342920000000002
+times:
+- 4.531966
+- 4.60055
+memory_usages:
+- 6307840
+- 6307840
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameter: 50
+iterations: 2
+max: 10.435397
+min: 9.308592
+median: 10.435397
+mean: 9.8719945
+standard_deviation: 0.5634025
+times:
+- 10.435397
+- 9.308592
+memory_usages:
+- 6578176
+- 11812864
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameter: 60
+iterations: 2
+max: 18.679168
+min: 18.488883
+median: 18.679168
+mean: 18.5840255
+standard_deviation: 0.0951424999999997
+times:
+- 18.488883
+- 18.679168
+memory_usages:
+- 12582912
+- 12828672
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_list.rb
+parameters:
+- 1000
+- 10000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_list.rb
+parameter: 1000
+iterations: 2
+max: 0.068948
+min: 0.066346
+median: 0.068948
+mean: 0.067647
+standard_deviation: 0.001301
+times:
+- 0.068948
+- 0.066346
+memory_usages:
+- 14135296
+- 15319040
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_list.rb
+parameter: 10000
+iterations: 2
+max: 6.804907
+min: 6.290669
+median: 6.804907
+mean: 6.547788
+standard_deviation: 0.257119
+times:
+- 6.290669
+- 6.804907
+memory_usages:
+- 25370624
+- 36470784
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_list.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_mpart.rb
+parameters:
+- 300
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_mpart.rb
+parameter: 300
+iterations: 2
+max: 0.195175
+min: 0.189753
+median: 0.195175
+mean: 0.192464
+standard_deviation: 0.00271099999999999
+times:
+- 0.195175
+- 0.189753
+memory_usages:
+- 5234688
+- 6287360
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_mpart.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_norvig_spelling.rb
+parameters:
+- 50
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_norvig_spelling.rb
+parameter: 50
+iterations: 2
+max: 11.979451
+min: 11.937485
+median: 11.979451
+mean: 11.958468
+standard_deviation: 0.0209829999999993
+times:
+- 11.937485
+- 11.979451
+memory_usages:
+- 24973312
+- 25010176
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_norvig_spelling.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_observ.rb
+parameters:
+- 100000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_observ.rb
+parameter: 100000
+iterations: 2
+max: 0.814427
+min: 0.812609
+median: 0.814427
+mean: 0.813518
+standard_deviation: 0.000908999999999993
+times:
+- 0.814427
+- 0.812609
+memory_usages:
+- 5799936
+- 5836800
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_observ.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_parse_log.rb
+parameters:
+- 100
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_parse_log.rb
+parameter: 100
+iterations: 2
+max: 1.226603
+min: 1.200112
+median: 1.226603
+mean: 1.2133575
+standard_deviation: 0.0132454999999999
+times:
+- 1.200112
+- 1.226603
+memory_usages:
+- 8835072
+- 10997760
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_parse_log.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_pi.rb
+parameters:
+- 1000
+- 10000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_pi.rb
+parameter: 1000
+iterations: 2
+max: 0.030802
+min: 0.029824
+median: 0.030802
+mean: 0.030313
+standard_deviation: 0.000489
+times:
+- 0.030802
+- 0.029824
+memory_usages:
+- 9977856
+- 12103680
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_pi.rb
+parameter: 10000
+iterations: 2
+max: 2.234326
+min: 2.107987
+median: 2.234326
+mean: 2.1711565
+standard_deviation: 0.0631694999999999
+times:
+- 2.107987
+- 2.234326
+memory_usages:
+- 12214272
+- 10113024
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_pi.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_rcs.rb
+parameters:
+- 100
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_rcs.rb
+parameter: 100
+iterations: 2
+max: 0.788137
+min: 0.78802
+median: 0.788137
+mean: 0.7880785
+standard_deviation: 5.85000000000169e-05
+times:
+- 0.788137
+- 0.78802
+memory_usages:
+- 4337664
+- 4374528
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_rcs.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_sudoku.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_sudoku.rb
+parameter: 1
+iterations: 2
+max: 15.888635
+min: 15.880762
+median: 15.888635
+mean: 15.8846985
+standard_deviation: 0.00393650000000001
+times:
+- 15.880762
+- 15.888635
+memory_usages:
+- 4562944
+- 4636672
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_sudoku.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_factorial.rb
+parameters:
+- 5000
+- 10000
+- 20000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_factorial.rb
+parameter: 5000
+status: "SystemStackError stack level too deep"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_factorial.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_fib.rb
+parameters:
+- 30
+- 35
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_fib.rb
+parameter: 30
+iterations: 2
+max: 2.4756
+min: 2.473338
+median: 2.4756
+mean: 2.474469
+standard_deviation: 0.00113099999999999
+times:
+- 2.4756
+- 2.473338
+memory_usages:
+- 3661824
+- 3735552
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_fib.rb
+parameter: 35
+iterations: 2
+max: 27.316676
+min: 27.182797
+median: 27.316676
+mean: 27.2497365
+standard_deviation: 0.0669395000000002
+times:
+- 27.182797
+- 27.316676
+memory_usages:
+- 3772416
+- 3772416
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_fib.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_mandelbrot.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_mandelbrot.rb
+parameter: 1
+iterations: 2
+max: 2.443713
+min: 2.443333
+median: 2.443713
+mean: 2.443523
+standard_deviation: 0.000189999999999912
+times:
+- 2.443333
+- 2.443713
+memory_usages:
+- 4947968
+- 4997120
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_mandelbrot.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_pentomino.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_pentomino.rb
+parameter: 1
+status: "SignalException SIGTERM"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_pentomino.rb
+status: Timeout
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tak.rb
+parameters:
+- 7
+- 8
+- 9
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tak.rb
+parameter: 7
+iterations: 2
+max: 1.767079
+min: 1.758754
+median: 1.767079
+mean: 1.7629165
+standard_deviation: 0.00416249999999996
+times:
+- 1.758754
+- 1.767079
+memory_usages:
+- 3633152
+- 3706880
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tak.rb
+parameter: 8
+iterations: 2
+max: 5.083488
+min: 5.002961
+median: 5.083488
+mean: 5.0432245
+standard_deviation: 0.0402635
+times:
+- 5.083488
+- 5.002961
+memory_usages:
+- 3715072
+- 3715072
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tak.rb
+parameter: 9
+iterations: 2
+max: 13.33769
+min: 13.28466
+median: 13.33769
+mean: 13.311175
+standard_deviation: 0.0265149999999998
+times:
+- 13.33769
+- 13.28466
+memory_usages:
+- 3723264
+- 3723264
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tak.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tarai.rb
+parameters:
+- 3
+- 4
+- 5
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tarai.rb
+parameter: 3
+iterations: 2
+max: 6.049048
+min: 6.021444
+median: 6.049048
+mean: 6.035246
+standard_deviation: 0.0138020000000001
+times:
+- 6.021444
+- 6.049048
+memory_usages:
+- 3883008
+- 3956736
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tarai.rb
+parameter: 4
+iterations: 2
+max: 7.299036
+min: 7.259933
+median: 7.299036
+mean: 7.2794845
+standard_deviation: 0.0195514999999999
+times:
+- 7.299036
+- 7.259933
+memory_usages:
+- 3969024
+- 3969024
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tarai.rb
+parameter: 5
+iterations: 2
+max: 8.838103
+min: 8.825722
+median: 8.838103
+mean: 8.8319125
+standard_deviation: 0.00619049999999977
+times:
+- 8.838103
+- 8.825722
+memory_usages:
+- 3973120
+- 3973120
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tarai.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_binary_trees.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_binary_trees.rb
+parameter: 1
+iterations: 2
+max: 75.42747
+min: 74.455984
+median: 75.42747
+mean: 74.941727
+standard_deviation: 0.485742999999999
+times:
+- 74.455984
+- 75.42747
+memory_usages:
+- 83763200
+- 86757376
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_binary_trees.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+parameters:
+- 1
+- 2
+- 4
+- 8
+- 16
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+parameter: 1
+iterations: 2
+max: 0.004502
+min: 0.004454
+median: 0.004502
+mean: 0.004478
+standard_deviation: 2.40000000000001e-05
+times:
+- 0.004454
+- 0.004502
+memory_usages:
+- 3776512
+- 3948544
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+parameter: 2
+iterations: 2
+max: 0.008566
+min: 0.008565
+median: 0.008566
+mean: 0.0085655
+standard_deviation: 4.99999999999633e-07
+times:
+- 0.008565
+- 0.008566
+memory_usages:
+- 3964928
+- 4055040
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+parameter: 4
+iterations: 2
+max: 0.017267
+min: 0.01709
+median: 0.017267
+mean: 0.0171785
+standard_deviation: 8.85e-05
+times:
+- 0.01709
+- 0.017267
+memory_usages:
+- 4059136
+- 4067328
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+parameter: 8
+iterations: 2
+max: 0.034244
+min: 0.033818
+median: 0.034244
+mean: 0.034031
+standard_deviation: 0.000212999999999998
+times:
+- 0.033818
+- 0.034244
+memory_usages:
+- 4083712
+- 4100096
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+parameter: 16
+iterations: 2
+max: 0.06891
+min: 0.068478
+median: 0.06891
+mean: 0.068694
+standard_deviation: 0.00021599999999998
+times:
+- 0.06891
+- 0.068478
+memory_usages:
+- 4128768
+- 4153344
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+parameters:
+- 1
+- 2
+- 4
+- 8
+- 16
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+parameter: 1
+iterations: 2
+max: 0.049726
+min: 0.049646
+median: 0.049726
+mean: 0.049686
+standard_deviation: 4.00000000000018e-05
+times:
+- 0.049646
+- 0.049726
+memory_usages:
+- 3784704
+- 3969024
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+parameter: 2
+iterations: 2
+max: 0.049716
+min: 0.049664
+median: 0.049716
+mean: 0.04969
+standard_deviation: 2.59999999999982e-05
+times:
+- 0.049664
+- 0.049716
+memory_usages:
+- 4067328
+- 4071424
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+parameter: 4
+iterations: 2
+max: 0.049989
+min: 0.049868
+median: 0.049989
+mean: 0.0499285
+standard_deviation: 6.05000000000015e-05
+times:
+- 0.049868
+- 0.049989
+memory_usages:
+- 4161536
+- 4169728
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+parameter: 8
+iterations: 2
+max: 0.049862
+min: 0.049859
+median: 0.049862
+mean: 0.0498605
+standard_deviation: 1.49999999999803e-06
+times:
+- 0.049859
+- 0.049862
+memory_usages:
+- 4182016
+- 4198400
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+parameter: 16
+iterations: 2
+max: 0.050543
+min: 0.050307
+median: 0.050543
+mean: 0.050425
+standard_deviation: 0.000118
+times:
+- 0.050307
+- 0.050543
+memory_usages:
+- 4227072
+- 4251648
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_eval.rb
+parameters:
+- 1000000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_eval.rb
+parameter: 1000000
+iterations: 2
+max: 2.622279
+min: 2.610514
+median: 2.622279
+mean: 2.6163965
+standard_deviation: 0.00588249999999979
+times:
+- 2.622279
+- 2.610514
+memory_usages:
+- 3588096
+- 3624960
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_eval.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fannkuch.rb
+parameters:
+- 6
+- 8
+- 10
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fannkuch.rb
+parameter: 6
+iterations: 2
+max: 0.007514
+min: 0.006998
+median: 0.007514
+mean: 0.007256
+standard_deviation: 0.000258
+times:
+- 0.007514
+- 0.006998
+memory_usages:
+- 4452352
+- 4780032
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fannkuch.rb
+parameter: 8
+iterations: 2
+max: 0.466968
+min: 0.46626
+median: 0.466968
+mean: 0.466614
+standard_deviation: 0.000354000000000049
+times:
+- 0.466968
+- 0.46626
+memory_usages:
+- 5341184
+- 5349376
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fannkuch.rb
+parameter: 10
+iterations: 2
+max: 49.920442
+min: 49.868994
+median: 49.920442
+mean: 49.894718
+standard_deviation: 0.0257240000000003
+times:
+- 49.868994
+- 49.920442
+memory_usages:
+- 5713920
+- 5713920
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fannkuch.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fasta.rb
+parameters:
+- 1000000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fasta.rb
+parameter: 1000000
+iterations: 2
+max: 84.322998
+min: 69.053165
+median: 84.322998
+mean: 76.6880815
+standard_deviation: 7.6349165
+times:
+- 84.322998
+- 69.053165
+memory_usages:
+- 10067968
+- 9076736
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fasta.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_ffi_printf.rb
+parameter: 
+status: "LoadError no such file to load -- ffi"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_ffi_printf.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fiber_ring.rb
+parameter: 
+status: "LoadError no such file to load -- fiber"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fiber_ring.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fractal.rb
+parameters:
+- 5
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fractal.rb
+parameter: 5
+iterations: 2
+max: 4.901804
+min: 4.899709
+median: 4.901804
+mean: 4.9007565
+standard_deviation: 0.00104750000000031
+times:
+- 4.899709
+- 4.901804
+memory_usages:
+- 4321280
+- 4358144
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fractal.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_array.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_array.rb
+parameter: 1
+iterations: 2
+max: 50.949229
+min: 50.502162
+median: 50.949229
+mean: 50.7256955
+standard_deviation: 0.223533500000002
+times:
+- 50.502162
+- 50.949229
+memory_usages:
+- 128745472
+- 128684032
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_array.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_mb.rb
+parameters:
+- 500000
+- 1000000
+- 3000000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_mb.rb
+parameter: 500000
+iterations: 2
+max: 0.960736
+min: 0.883489
+median: 0.960736
+mean: 0.9221125
+standard_deviation: 0.0386235
+times:
+- 0.883489
+- 0.960736
+memory_usages:
+- 72794112
+- 90787840
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_mb.rb
+parameter: 1000000
+iterations: 2
+max: 2.071315
+min: 1.986607
+median: 2.071315
+mean: 2.028961
+standard_deviation: 0.0423539999999999
+times:
+- 2.071315
+- 1.986607
+memory_usages:
+- 171225088
+- 173658112
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_mb.rb
+parameter: 3000000
+iterations: 2
+max: 6.064181
+min: 5.761321
+median: 6.064181
+mean: 5.912751
+standard_deviation: 0.15143
+times:
+- 6.064181
+- 5.761321
+memory_usages:
+- 415031296
+- 411709440
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_mb.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_string.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_string.rb
+parameter: 1
+iterations: 2
+max: 14.740924
+min: 14.72673
+median: 14.740924
+mean: 14.733827
+standard_deviation: 0.00709699999999991
+times:
+- 14.72673
+- 14.740924
+memory_usages:
+- 66674688
+- 66965504
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_string.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_knucleotide.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_knucleotide.rb
+parameter: 1
+iterations: 2
+max: 1.923968
+min: 1.857324
+median: 1.923968
+mean: 1.890646
+standard_deviation: 0.033322
+times:
+- 1.857324
+- 1.923968
+memory_usages:
+- 36675584
+- 36560896
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_knucleotide.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_lucas_lehmer.rb
+parameters:
+- 9689
+- 9941
+- 11213
+- 19937
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_lucas_lehmer.rb
+parameter: 9689
+iterations: 2
+max: 3.997788
+min: 3.975353
+median: 3.997788
+mean: 3.9865705
+standard_deviation: 0.0112174999999999
+times:
+- 3.997788
+- 3.975353
+memory_usages:
+- 9760768
+- 9924608
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_lucas_lehmer.rb
+parameter: 9941
+iterations: 2
+max: 4.289581
+min: 4.281652
+median: 4.289581
+mean: 4.2856165
+standard_deviation: 0.00396449999999993
+times:
+- 4.289581
+- 4.281652
+memory_usages:
+- 11898880
+- 10084352
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_lucas_lehmer.rb
+parameter: 11213
+iterations: 2
+max: 6.089117
+min: 6.067539
+median: 6.089117
+mean: 6.078328
+standard_deviation: 0.0107889999999999
+times:
+- 6.089117
+- 6.067539
+memory_usages:
+- 10027008
+- 9166848
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_lucas_lehmer.rb
+parameter: 19937
+iterations: 2
+max: 32.68714
+min: 32.628109
+median: 32.68714
+mean: 32.6576245
+standard_deviation: 0.0295154999999987
+times:
+- 32.68714
+- 32.628109
+memory_usages:
+- 10620928
+- 10608640
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_lucas_lehmer.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mandelbrot.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mandelbrot.rb
+parameter: 1
+iterations: 2
+max: 62.090606
+min: 62.06524
+median: 62.090606
+mean: 62.077923
+standard_deviation: 0.0126829999999991
+times:
+- 62.06524
+- 62.090606
+memory_usages:
+- 4321280
+- 4358144
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mandelbrot.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mbari_bogus1.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mbari_bogus1.rb
+parameter: 1
+status: "SystemStackError stack level too deep"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mbari_bogus1.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mbari_bogus2.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mbari_bogus2.rb
+parameter: 1
+status: "SystemStackError stack level too deep"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mbari_bogus2.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mergesort.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mergesort.rb
+parameter: 1
+iterations: 2
+max: 2.400027
+min: 2.396142
+median: 2.400027
+mean: 2.3980845
+standard_deviation: 0.00194249999999996
+times:
+- 2.396142
+- 2.400027
+memory_usages:
+- 17473536
+- 19931136
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mergesort.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mergesort_hongli.rb
+parameters:
+- 3000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mergesort_hongli.rb
+parameter: 3000
+iterations: 2
+max: 5.642298
+min: 5.638052
+median: 5.642298
+mean: 5.640175
+standard_deviation: 0.0021230000000001
+times:
+- 5.642298
+- 5.638052
+memory_usages:
+- 7815168
+- 7852032
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mergesort_hongli.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_meteor_contest.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_meteor_contest.rb
+parameter: 1
+iterations: 2
+max: 35.435669
+min: 35.424226
+median: 35.435669
+mean: 35.4299475
+standard_deviation: 0.00572149999999993
+times:
+- 35.435669
+- 35.424226
+memory_usages:
+- 5201920
+- 5492736
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_meteor_contest.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_monte_carlo_pi.rb
+parameters:
+- 10000000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_monte_carlo_pi.rb
+parameter: 10000000
+iterations: 2
+max: 15.818493
+min: 15.732353
+median: 15.818493
+mean: 15.775423
+standard_deviation: 0.0430700000000002
+times:
+- 15.732353
+- 15.818493
+memory_usages:
+- 4329472
+- 4366336
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_monte_carlo_pi.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nbody.rb
+parameters:
+- 100000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nbody.rb
+parameter: 100000
+iterations: 2
+max: 7.925183
+min: 7.921306
+median: 7.925183
+mean: 7.9232445
+standard_deviation: 0.00193849999999962
+times:
+- 7.921306
+- 7.925183
+memory_usages:
+- 4337664
+- 4374528
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nbody.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nsieve.rb
+parameters:
+- 9
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nsieve.rb
+parameter: 9
+iterations: 2
+max: 19.347458
+min: 19.0846
+median: 19.347458
+mean: 19.216029
+standard_deviation: 0.131429000000001
+times:
+- 19.0846
+- 19.347458
+memory_usages:
+- 33841152
+- 39014400
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nsieve.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nsieve_bits.rb
+parameters:
+- 8
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nsieve_bits.rb
+parameter: 8
+iterations: 2
+max: 30.977489
+min: 30.532623
+median: 30.977489
+mean: 30.755056
+standard_deviation: 0.222432999999999
+times:
+- 30.532623
+- 30.977489
+memory_usages:
+- 4132864
+- 4788224
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nsieve_bits.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_open_many_files.rb
+parameters:
+- 50000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_open_many_files.rb
+parameter: 50000
+iterations: 2
+max: 0.356463
+min: 0.355693
+median: 0.356463
+mean: 0.356078
+standard_deviation: 0.000384999999999996
+times:
+- 0.355693
+- 0.356463
+memory_usages:
+- 6807552
+- 9248768
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_open_many_files.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_partial_sums.rb
+parameters:
+- 2500000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_partial_sums.rb
+parameter: 2500000
+iterations: 2
+max: 19.549483
+min: 19.447182
+median: 19.549483
+mean: 19.4983325
+standard_deviation: 0.0511504999999985
+times:
+- 19.549483
+- 19.447182
+memory_usages:
+- 4317184
+- 4354048
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_partial_sums.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_pathname.rb
+parameters:
+- 100
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_pathname.rb
+parameter: 100
+status: "SignalException SIGTERM"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_pathname.rb
+status: Timeout
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_primes.rb
+parameters:
+- 3000
+- 30000
+- 300000
+- 3000000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_primes.rb
+parameter: 3000
+iterations: 2
+max: 7.294383
+min: 7.247317
+median: 7.294383
+mean: 7.27085
+standard_deviation: 0.023533
+times:
+- 7.247317
+- 7.294383
+memory_usages:
+- 4775936
+- 4927488
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_primes.rb
+parameter: 30000
+status: "SignalException SIGTERM"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_primes.rb
+status: Timeout
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_quicksort.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_quicksort.rb
+parameter: 1
+iterations: 2
+max: 13.74116
+min: 13.708659
+median: 13.74116
+mean: 13.7249095
+standard_deviation: 0.0162504999999999
+times:
+- 13.708659
+- 13.74116
+memory_usages:
+- 20078592
+- 29380608
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_quicksort.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_read_large.rb
+parameters:
+- 100
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_read_large.rb
+parameter: 100
+iterations: 2
+max: 11.75263
+min: 11.704675
+median: 11.75263
+mean: 11.7286525
+standard_deviation: 0.0239775
+times:
+- 11.75263
+- 11.704675
+memory_usages:
+- 8835072
+- 7503872
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_read_large.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_regex_dna.rb
+parameters:
+- 20
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_regex_dna.rb
+parameter: 20
+iterations: 2
+max: 4.075058
+min: 3.843158
+median: 4.075058
+mean: 3.959108
+standard_deviation: 0.11595
+times:
+- 3.843158
+- 4.075058
+memory_usages:
+- 8429568
+- 11784192
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_regex_dna.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_reverse_compliment.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_reverse_compliment.rb
+parameter: 1
+iterations: 2
+max: 5.345917
+min: 5.342843
+median: 5.345917
+mean: 5.34438
+standard_deviation: 0.0015369999999999
+times:
+- 5.345917
+- 5.342843
+memory_usages:
+- 7802880
+- 7839744
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_reverse_compliment.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_connect.rb
+parameters:
+- 1
+- 100
+- 500
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_connect.rb
+parameter: 1
+status: "SocketError getaddrinfo: servname not supported for ai_socktype"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_connect.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_server.rb
+parameters:
+- 1
+- 100
+- 100000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_server.rb
+parameter: 1
+status: "SocketError getaddrinfo: servname not supported for ai_socktype"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_server.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_ackermann.rb
+parameters:
+- 7
+- 9
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_ackermann.rb
+parameter: 7
+status: "SystemStackError stack level too deep"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_ackermann.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_array.rb
+parameters:
+- 9000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_array.rb
+parameter: 9000
+iterations: 2
+max: 11.42538
+min: 11.424988
+median: 11.42538
+mean: 11.425184
+standard_deviation: 0.000195999999999863
+times:
+- 11.424988
+- 11.42538
+memory_usages:
+- 3702784
+- 4653056
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_array.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_count_words.rb
+parameters:
+- 100
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_count_words.rb
+parameter: 100
+iterations: 2
+max: 2.466517
+min: 2.454913
+median: 2.466517
+mean: 2.460715
+standard_deviation: 0.00580200000000008
+times:
+- 2.454913
+- 2.466517
+memory_usages:
+- 22679552
+- 25219072
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_count_words.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_exception.rb
+parameters:
+- 500000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_exception.rb
+parameter: 500000
+iterations: 2
+max: 10.821039
+min: 10.814997
+median: 10.821039
+mean: 10.818018
+standard_deviation: 0.00302100000000038
+times:
+- 10.814997
+- 10.821039
+memory_usages:
+- 6766592
+- 6803456
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_exception.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_lists.rb
+parameters:
+- 1000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_lists.rb
+parameter: 1000
+iterations: 2
+max: 11.235985
+min: 11.233432
+median: 11.235985
+mean: 11.2347085
+standard_deviation: 0.00127649999999946
+times:
+- 11.235985
+- 11.233432
+memory_usages:
+- 7712768
+- 7753728
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_lists.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_lists_small.rb
+parameters:
+- 1000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_lists_small.rb
+parameter: 1000
+iterations: 2
+max: 2.265385
+min: 2.263669
+median: 2.265385
+mean: 2.264527
+standard_deviation: 0.000858000000000025
+times:
+- 2.265385
+- 2.263669
+memory_usages:
+- 6742016
+- 6778880
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_lists_small.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_matrix.rb
+parameters:
+- 60
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_matrix.rb
+parameter: 60
+iterations: 2
+max: 2.831142
+min: 2.821009
+median: 2.831142
+mean: 2.8260755
+standard_deviation: 0.00506649999999986
+times:
+- 2.821009
+- 2.831142
+memory_usages:
+- 8552448
+- 9908224
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_matrix.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_object.rb
+parameters:
+- 500000
+- 1000000
+- 1500000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_object.rb
+parameter: 500000
+iterations: 2
+max: 2.080788
+min: 2.054304
+median: 2.080788
+mean: 2.067546
+standard_deviation: 0.013242
+times:
+- 2.080788
+- 2.054304
+memory_usages:
+- 9117696
+- 9940992
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_object.rb
+parameter: 1000000
+iterations: 2
+max: 4.117996
+min: 4.104485
+median: 4.117996
+mean: 4.1112405
+standard_deviation: 0.00675549999999969
+times:
+- 4.117996
+- 4.104485
+memory_usages:
+- 8912896
+- 9961472
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_object.rb
+parameter: 1500000
+iterations: 2
+max: 6.182502
+min: 6.164755
+median: 6.182502
+mean: 6.1736285
+standard_deviation: 0.00887350000000042
+times:
+- 6.182502
+- 6.164755
+memory_usages:
+- 8912896
+- 9961472
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_object.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_sieve.rb
+parameters:
+- 4000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_sieve.rb
+parameter: 4000
+iterations: 2
+max: 60.098161
+min: 58.610652
+median: 60.098161
+mean: 59.3544065
+standard_deviation: 0.743754499999998
+times:
+- 60.098161
+- 58.610652
+memory_usages:
+- 6860800
+- 6709248
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_sieve.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_socket_transfer_1mb.rb
+parameters:
+- 10000
+- 1000000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_socket_transfer_1mb.rb
+parameter: 10000
+status: "SocketError getaddrinfo: servname not supported for ai_socktype"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_socket_transfer_1mb.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_socket_transfer_1mb_noblock.rb
+parameters:
+- 10000
+- 1000000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_socket_transfer_1mb_noblock.rb
+parameter: 10000
+status: "SocketError getaddrinfo: servname not supported for ai_socktype"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_socket_transfer_1mb_noblock.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_spectral_norm.rb
+parameters:
+- 100
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_spectral_norm.rb
+parameter: 100
+iterations: 2
+max: 1.434474
+min: 1.43275
+median: 1.434474
+mean: 1.433612
+standard_deviation: 0.000862000000000029
+times:
+- 1.43275
+- 1.434474
+memory_usages:
+- 4325376
+- 4366336
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_spectral_norm.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_string_concat.rb
+parameters:
+- 10000000
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_string_concat.rb
+parameter: 10000000
+iterations: 2
+max: 12.243483
+min: 12.219402
+median: 12.243483
+mean: 12.2314425
+standard_deviation: 0.0120404999999995
+times:
+- 12.243483
+- 12.219402
+memory_usages:
+- 365027328
+- 725774336
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_string_concat.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_sum_file.rb
+parameters:
+- 100
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_sum_file.rb
+parameter: 100
+iterations: 2
+max: 15.729364
+min: 15.563128
+median: 15.729364
+mean: 15.646246
+standard_deviation: 0.0831179999999998
+times:
+- 15.729364
+- 15.563128
+memory_usages:
+- 7790592
+- 7827456
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_sum_file.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_word_anagrams.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_word_anagrams.rb
+parameter: 1
+iterations: 2
+max: 10.358115
+min: 9.853375
+median: 10.358115
+mean: 10.105745
+standard_deviation: 0.25237
+times:
+- 9.853375
+- 10.358115
+memory_usages:
+- 51666944
+- 89546752
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_word_anagrams.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_write_large.rb
+parameters:
+- 100
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_write_large.rb
+parameter: 100
+iterations: 2
+max: 0.49372
+min: 0.489325
+median: 0.49372
+mean: 0.4915225
+standard_deviation: 0.00219750000000005
+times:
+- 0.49372
+- 0.489325
+memory_usages:
+- 3555328
+- 3645440
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_write_large.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_create_variations.rb
+parameter: 
+status: "LoadError no such file to load -- RedCloth"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_create_variations.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_load_products.rb
+parameter: 
+status: "LoadError no such file to load -- RedCloth"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_load_products.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_one_tenth_startup.rb
+parameter: 
+status: "LoadError no such file to load -- RedCloth"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_one_tenth_startup.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_request_root_30x.rb
+parameter: 
+status: "LoadError no such file to load -- RedCloth"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_request_root_30x.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_request_root_same_session_30x.rb
+parameter: 
+status: "LoadError no such file to load -- RedCloth"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_request_root_same_session_30x.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_against_itself_darkfish.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_against_itself_darkfish.rb
+parameter: 1
+iterations: 2
+max: 22.788951
+min: 15.235633
+median: 22.788951
+mean: 19.012292
+standard_deviation: 3.776659
+times:
+- 22.788951
+- 15.235633
+memory_usages:
+- 55590912
+- 56459264
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_against_itself_darkfish.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_against_itself_ri.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_against_itself_ri.rb
+parameter: 1
+iterations: 2
+max: 16.694612
+min: 16.532748
+median: 16.694612
+mean: 16.61368
+standard_deviation: 0.0809319999999989
+times:
+- 16.694612
+- 16.532748
+memory_usages:
+- 54386688
+- 54509568
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_against_itself_ri.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_core_darkfish.rb
+parameters:
+- 1
+ruby_ver: 1.8.7 2009-04-08 160 amd64-freebsd8;-O2 -pipe -fno-strict-aliasing  -fPIC  ; '--program-prefix=' '--program-suffix=18' '--enable-shared' '--with-openssl-include=/usr/include' '--enable-pthread' '--enable-install-doc' '--enable-ipv6' '--prefix=/usr/local' '--mandir=/usr/local/man' '--infodir=/usr/local/info/' '--build=amd64-portbld-freebsd8' 'build_alias=amd64-portbld-freebsd8' 'CC=cc' 'CFLAGS=-O2 -pipe -fno-strict-aliasing' 'LIBS= -rpath=/usr/lib:/usr/local/lib -pthread'
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_core_darkfish.rb
+parameter: 1
+status: "SystemExit exit"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_core_darkfish.rb
+status: Timeout
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_answer.rb
+parameter: 
+status: "SystemStackError stack level too deep"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_answer.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_erb.rb
+parameter: 
+status: "NameError uninitialized constant DATA"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_erb.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_factorial.rb
+parameter: 
+status: "SystemStackError stack level too deep"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_factorial.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_fib.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_mandelbrot.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_pentomino.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_raise.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_strconcat.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_tak.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_tarai.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_uri.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_io_file_create.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_io_file_read.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_io_file_write.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_loop_for.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_loop_generator.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_loop_times.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_loop_whileloop.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_loop_whileloop2.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_ackermann.rb
+parameter: 
+status: "SystemStackError stack level too deep"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_ackermann.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_array.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_binary_trees.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_concatenate.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_count_words.rb
+parameter: 
+status: "Errno::ENOENT No such file or directory - /root/ruby-benchmark-suite/utils/wc.input"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_count_words.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_exception.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_fannkuch.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_fasta.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_k_nucleotide.rb
+parameter: 
+status: "Errno::ENOENT No such file or directory - /root/ruby-benchmark-suite/utils/fasta.output.100000"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_k_nucleotide.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_lists.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_mandelbrot.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_matrix.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_meteor_contest.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_nbody.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_nested_loop.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_nsieve.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_nsieve_bits.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_object.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_partial_sums.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_pidigits.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_random.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_reverse_complement.rb
+parameter: 
+status: "Errno::ENOENT No such file or directory - /root/ruby-benchmark-suite/utils/fasta.output.2500000"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_reverse_complement.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_sieve.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_spectralnorm.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_block.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_const.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_ensure.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_ivar.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_ivar_set.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_length.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_neq.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_not.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_rescue.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_simplereturn.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_swap.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_array.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_case.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_eval.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_method.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_mutex.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_poly_method.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_poly_method_ov.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_proc.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_regexp.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_send.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_super.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_unif1.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_zsuper.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm3_gc.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm3_thread_create_join.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm3_thread_mutex.rb
+status: success

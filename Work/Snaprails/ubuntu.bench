@@ -1,0 +1,122 @@
+### Ubuntu Benchmark ###
+
+# hdparm -T /dev/sda #
+
+ Timing cached reads:   4534 MB in  2.00 seconds = 2268.74 MB/sec
+ Timing cached reads:   4580 MB in  2.00 seconds = 2291.77 MB/sec
+ Timing cached reads:   4632 MB in  2.00 seconds = 2317.79 MB/sec
+
+# gzip test.iso #
+
+real	2:58.77
+user	140.42
+sys	4.93
+CPU	81%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	9062
+
+real	3:00.52
+user	142.86
+sys	4.71
+CPU	81%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	7550
+
+real	3:02.89
+user	144.45
+sys	5.22
+CPU	81%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	7722
+
+# gunzip test.iso.gz #
+
+real	0:59.83
+user	22.94
+sys	4.95
+CPU	46%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	7803
+
+real	0:58.83
+user	22.36
+sys	5.14
+CPU	46%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	7814
+
+real	0:56.44
+user	22.81
+sys	4.88
+CPU	49%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	7938
+
+# lame -h test.wav test.mp3 #
+
+real	1:41.89
+user	101.61
+sys	0.17
+CPU	99%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	18
+
+real	1:41.61
+user	101.41
+sys	0.21
+CPU	100%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	2
+
+real	1:41.61
+user	101.51
+sys	0.10
+CPU	99%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	2
+
+# oggenc test.wav -b 256 -o test.ogg #
+
+real	0:37.80
+user	37.61
+sys	0.10
+CPU	99%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	19
+
+real	0:37.74
+user	37.52
+sys	0.22
+CPU	100%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	2
+
+real	0:37.79
+user	37.63
+sys	0.16
+CPU	99%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	2
+
+# Workload (hdparm+gzip+gunzip+lame+oggenc+compile PHP) #
+
+real	4:05.01
+user	304.41
+sys	13.73
+CPU	129%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	27035
+

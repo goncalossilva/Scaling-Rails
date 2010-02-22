@@ -1,0 +1,22 @@
+\chapter{Conclusions} % (fold)
+\label{cha:conclusions}
+\headermark{Conclusions}
+\section*{} % (fold)
+The existing research provides a solid base for future work on this subject. The endured technology overview allowed the creation of an expectancy base for each component. The state of the art provided an overview of the current engaged work on related, if not similar, subjects.
+
+All the gathered and structured information permitted option narrowing when it comes to future work. Taking into account the research and conclusions of some related work, some components will be left out of future benchmarking, tuning, testing and improvement.
+
+On the Operating System's concern, Microsoft's operating system will be left out of future efforts since its Ruby and Rails support is significantly poor and inefficient. The lack of benchmark and testing information about BSD and the fact that its performance should be similar to Linux's include it in the test group. Concluding, the Operating Systems contempt by this project will be Linux and BSD.
+
+Ruby is currently in version 1.9 which has many improvements over the previous version, both performance and not performance-oriented. Since YARV is the only one to support its specification to full extent, this will be the only interpreter targeted for improvements. Luckily, Rubinius' 1.9 support is growing day by day and it is close to 100\%. Only time will tell if this interpreter will be considered as well.
+
+Rails web servers' situation is more flat. Only WEBrick is left out for obvious reasons --- it was Rails' pioneer web server but lacks the efficiency to compete with nowadays alternatives.
+
+When it comes to relational databases, MySQL's scaling and performance capabilities shine. On the other hand, MongoDB presents itself as a worthy alternative but it has an important characteristic --- it is a schema-less database. PostgreSQL, although providing many interesting features, is not efficient enough to compete with MySQL, being left out of the test group for further work. MySQL and MongoDB are targeted for all the aforementioned improvement cycle.
+
+Rails is growing fast and version 3 will soon to be publicly released. It solves many existing performance bottlenecks in Rails 2.3 and improves its predecessor code by a great deal. Working on Rails 2.3 would not be very productive since it will soon become deprecated and inefficient when compared with the most recent version. Version 3 will be the main target focus for further development.
+
+The application itself, \textit{Escolinhas}, would benefit from huge performance gains just by being ported to Ruby 1.9 and Rails 3. The remaining improvements are dependant on the improvement cycles of all the components mentioned before, as performance bottlenecks must be found and solved on each setup.
+
+Ultimately this research provided a careful overview over the involved technologies and their current state, sustaining the creation of a solid research and development plan for future efforts.
+

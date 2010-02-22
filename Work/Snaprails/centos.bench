@@ -1,0 +1,121 @@
+### CentOS Benchmark ###
+
+# hdparm -T /dev/sda #
+
+ Timing cached reads:   4424 MB in  2.00 seconds = 2212.66 MB/sec
+ Timing cached reads:   4448 MB in  2.00 seconds = 2224.44 MB/sec
+ Timing cached reads:   4444 MB in  2.00 seconds = 2223.22 MB/sec
+
+# gzip test.iso #
+
+real	23:30.48
+user	480.34
+sys	74.50
+CPU	39%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	2568
+
+real	23:37.12
+user	527.11
+sys	80.48
+CPU	42%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	3352
+
+real	22:20.08
+user	815.93
+sys	96.38
+CPU	68%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	1670
+
+# gunzip test.iso.gz #
+
+real	20:50.72
+user	245.65
+sys	183.08
+CPU	34%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	4895
+
+real	20:31.79
+user	242.76
+sys	177.09
+CPU	34%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	4988
+
+real	20:47.09
+user	243.43
+sys	176.16
+CPU	33%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	4833
+
+# lame -h test.wav test.mp3 #
+
+real	2:00.40
+user	115.39
+sys	1.47
+CPU	97%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	107
+
+real	1:07.62
+user	67.07
+sys	0.52
+CPU	99%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	1
+
+real	1:07.53
+user	67.07
+sys	0.43
+CPU	99%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	1
+
+# oggenc test.wav -b 256 -o test.ogg #
+
+real	0:43.21
+user	42.04
+sys	0.63
+CPU	98%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	222
+
+real	0:41.85
+user	41.19
+sys	0.56
+CPU	99%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	16
+
+real	0:43.35
+user	42.79
+sys	0.55
+CPU	99%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	297
+
+# Workload (hdparm+gzip+gunzip+lame+oggenc+compile PHP) #
+
+real	46:22.61
+user	1299.60
+sys	322.58
+CPU	58%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	20537

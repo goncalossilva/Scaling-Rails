@@ -1,0 +1,86 @@
+\chapter{Introduction} % (fold)
+\label{cha:introduction}
+\headermark{Introduction}
+
+\section*{} % (fold)
+This section briefly presents the project's context, purpose and scope. It covers the motivation behind it and its objectives.% while also detailing the report structure, providing an overview of each of the remaining chapters.
+
+% section  (end)
+
+\section{Context} % (fold)
+\label{sec:context}
+The internet started in the early 1990s as a work tool for CERN. It evolved into a vast information repository for the public~\cite{teaching_webdev_web20}---the Web---and had 16 million users back in 1995. Next year Netscape went public and achieved an impressive 90\% market share. It quickly lost it's prominence during the first browser war, conceding its leadership to Microsoft's Internet Explorer~\cite{browser_wars}. The Web was starting to become a presence in everyday life. In 2009, 14 years later, the Web had more than 1700 million users and its popularity keeps growing nowadays~\cite{internet_stats}.
+
+The Web is becoming an essential pillar of many businesses, social networks, gaming industries \textit{et al.} since distance is no longer an issue when it comes to information exchange.  It begins to present itself as a critical presence on computers nowadays. Many people believe future applications will mostly be web-based, pushing the internet importance even further~\cite{browser_application_platform}.
+
+The growth of internet usage and its impact in corporate applications implies all kinds of particularities. First of all, users must trust the web. This is an essential pillar of any web service. To build costumer trust, providing services must pay attention to their users needs and desires and they must meet their user's expectations~\cite{trust_semantic_web}. 
+
+In the fall of 2001, many people concluded that the web was overhyped and bloated. There was the need for richer content and better user experiences~\cite{oreilly_web20}. In this context, the term \textit{Web 2.0} was born. Its meaning is not well defined but a common definition consists in the improvement of the first version of the Web~\cite{rubyonrails_tutorial} and involves many core concepts like usability and dynamic content~\cite{what_is_web20}.
+
+Side by side with the Web growth was the increasing user's expectations when it comes to user experience. As time goes by, users demand better interaction with the services they use as part of their user experience is based on response times~\cite{prioritizing_web_usability}, responsiveness and performance of Web applications. These concepts become part of the key factors to their success~\cite{responsiveness}. Users expect waiting times to kept at an acceptable minimum and whenever they feel that this expectation isn't being met their trust on the service diminishes. When users enter a given website they have a limited patience, related to their expectations and previous experiences. Whenever the system fails to meet those expectations, their patience gets smaller and it can cause them to leave. Steve Krug calls this the \textit{Reservoir of Goodwill}~\cite{dont_make_me_think}.
+
+This increasing popularity, dependence and demand on the Web strives the developers for better tools to build quality web applications. Most developers seek the ability to increase their productivity while being able to build more complex, full-featured systems that suit their user's need, either it's a social or business-oriented service~\cite{comparison_agile_frameworks}.
+
+With the growing importance of Web applications, many tools emerged trying to make the developer's life easier. \textit{Web 2.0} improved the internet and created a new set of needs and expectations. This need motivated the development of powerful frameworks and, among many others, the Ruby on Rails framework was born~\cite{what_is_web20}. As ~\cite{rubyonrails} puts it:
+\begin{quote}
+  ``Ruby on Rails$^{\scriptsize \textregistered}$~is an open-source web framework that's optimized for programmer happiness and sustainable productivity. It lets you write beautiful code by favoring convention over configuration.''
+\end{quote}
+Ruby on Rails is one of the best-known Ruby frameworks~\cite{agile_webdevelopment_with_rails}. Most people and companies want a \textit{Web 2.0} killer application and Rails seems an excellent way of doing it~\cite{oo_business_models}. This framework is commonly associated with the \textit{Web 2.0} concept, along with AJAX~\cite{spaghetti_code}. It is also deeply related with \textit{Agile Web Development}~\cite{agile_webdevelopment_with_rails}. Rails allows developers to build high quality applications with smaller effort – less time, less lines of code and less files, always with low coupling~\cite{maintainability_web_applications_j2ee_dotnet_ror}.
+
+As~\cite{oreilly_ror} states:
+\begin{quote}
+  ``Ruby on Rails is a breakthrough in lowering the barriers of entry to programming. Powerful web applications that formerly might have taken weeks or months to develop can be produced in a matter of days.''
+\end{quote}
+The huge framework's success had it jumped into a spotlight with many companies starting to use it as the development framework for their applications. Some widely known services like \textit{Basecamp}, \textit{Twitter}, \textit{Hulu}, \textit{YellowPages} or \textit{Github} push this platform even further by giving it even more popularity~\cite{rubyonrails_applications}.
+
+\begin{description}
+  \item[Basecamp,] the original Rails application~\cite{rubyonrails_applications}, is an online project management tool which features live collaboration and task aiding software~\cite{basecamp}. It has over 1 million users since 2006~\cite{basecamp_turns_1000000}. It is ranked 680$^{th}$ on the Alexa Traffic Rank~\cite{alexa}.
+  \item[Twitter,] a real-time short messaging service that works on multiple networks and devices. It's used for quick sharing of information, either updates from friends or breaking world news updates~\cite{twitter}. It had more than 18 million adult users in the USA by the end of 2009 and is expected to achieve an impressive quantity of 26 million adult users in the same country by 2010~\cite{emarketer_twitter_usage}. It is ranked 12$^{th}$ on the Alexa Traffic Rank~\cite{alexa}.
+  \item[Hulu,] a TV and Movie streaming website which allows users to watch their favorite videos on the browser for free~\cite{hulu}. It had a significant amount of traffic in 2009, only staying behind Google services and Fox Interactive Media~\cite{hulu_growth}. It ranks 160$^{th}$ on the Alexa Traffic Rank~\cite{alexa}.
+  \item[YellowPages,] a service that indexes and provides business listings of the United States of America, allowing users to search for services they're looking for, among other features.~\cite{yellowpages}.  It ranks 757$^{th}$ on the Alexa Traffic Rank. To note that it is a USA-oriented application, raking 161$^{th}$ if the scope is limited to the USA~\cite{alexa}.
+  \item[GitHub,] one of the best know repository hosting system which works with the Git VCS. It currently has more than 185 thousands of registered developers and it is associated with public, open source projects but also proprietary codes ~\cite{github}. It ranks 1390$^{th}$ on the Alexa Traffic Rank~\cite{alexa}.
+\end{description}
+These systems have high scalability demands. In order to keep increasing their popularity and to keep building users trusts, they also need to provide a great user experience along with reasonable response times while serving thousands of requests concurrently.
+
+Some press reports question Rails' ability to scale, mainly based on the issues \textit{Twitter} faced when its growth reached a given magnitude~\cite{interview_alex_payne}. However, most of the issues were demystified as a software architecture design issue, taking the blame off of Ruby on Rails~\cite{ror_ecosystem_whitepaper}. Nonetheless, despite all the advantages this framework possesses, scalability isn't one of them. Ruby isn't as scalable as PHP or Java but on the other hand offers the higher development speed~\cite{issues_web_frameworks}. Luckily, only high traffic websites like \textit{Twitter} have to get deeply involved with scalability but it's still an issue to be addressed.
+
+Developers should be able to build Rails-based high-quality applications whose scaling isn't directly related to hardware upgrades~\cite{interview_alex_payne}. Issues should be identified and solved so that this acclaimed Ruby framework becomes more scalable \textit{out of the box}, diminishing its dependence on hardware upgrades or major architectural refactoring. This way, Ruby on Rails development happiness can last through the whole process of creation and maintenance of a web platform.
+% section context (end)
+
+
+\section{Motivation and Objectives} % (fold)
+\label{sec:motivation_and_objectives}
+The Web starts to play a really important role in many people's lives, either from a professional or personal point of view. User experience has become of great importance in recent times, with the \textit{Web 2.0} raising the expectations on a better interaction.
+
+Internet accesses keep growing and the recent developments in the smart phone, tablet and notebook's areas help increasing this number even further, with people starting to be permanently connected to the internet~\cite{npd:3g,mobileweb,netbooks}.
+
+Users expect the Web to work as they pre-conceived and this important detail has a great focus on recent developments in Interaction Design~\cite{interaction_design}. As innovation keeps pushing user experiences to a new level, with richer information presented and organized in ways never seen before, technologies tend to emerge to support such evolutionary content and organization. Developers need to meet the users' needs and they don't have unlimited time to do it, thus many recent frameworks have gained notorious popularity for being agile and robust, bringing productivity indices to a higher level~\cite{trends_webdev}. Ruby on Rails, as most recent frameworks, offers convenient methods and features which greatly improve the product's quality without the need for extended development times. However, it also makes it harder for the development team to fully optimize the application when there are limited hardware resources~\cite{look_common_performance_problems_rails}.
+
+Scaling and performance optimization shouldn't be so hard to achieve in Rails, though. As many \textit{Web 2.0} platforms are born, a few built using Ruby on Rails, some might succeed and Rails shouldn't be an obstacle to their success. Rails' purpose is to help developing high-quality applications, not limiting their accomplishments to a given number of concurrent users or high response times. The Web should be able to shine in all of its glory and tools like Ruby on Rails are here to allow it to improve and innovate further and further, meeting the users' increasing standards and demands.
+
+Performance optimization has been a work focus since computers were born~\cite{mass_memory_system_optimization}. Many have optimized all the gears involved in making Rails work, like the Ruby interpreter~\cite{yarv}, Rails itself~\cite{rails_merb_merge_performance} or the superjacent application~\cite{scaling_rails_bottomup,vaporware_to_awesome,rebuilding_scaling_yellowpages,5tips_scale_ror}. Many have focused on improving speed and scalability of databases~\cite{performance_analysis_db_arch} and webservers~\cite{webserver_scheduling}. Others look for potential issues in the Operating System~\cite{unix_os_comparison, architecture_impact_os} and end up patching and tweaking the system's configuration. One can infer that most of the performance optimization activities focus on single elements or try to find out a single culprit to blame. It is also necessary to envision performance optimization as a globalist activity. If an intervenient changes it will affect all those who interact with it by smaller or larger margins. In Chaos Theory this is called \textit{Sensitive Dependence} or, as more commonly known, the \textit{Butterfly Effect}. As ~\cite{butterfly_effect_quote} mentions:
+\begin{quote}
+  ``The exponential divergence (\ldots) from slightly different initial conditions---the famous butterfly effect---is a fingerprint of chaos in classical mechanics.''
+\end{quote}
+These possible side effects must be taken into account when optimizing the performance of a highly dependent system like Rails. The system should be optimized as a whole, not as a procedure with many, independent steps and components. The whole system performance is what truly matters, not the performance of its individual parts. This is the core mindset of this project.
+
+There is need for a solid set of Rails development conventions and guidelines with scaling and performance in mind. Developers also seek optimal configurations for all the components involved so they can wring every processing cycle out of their applications, in order to increase application scalability and decrease response processing times. There is also urgency in looking at all the tools Rails depends on and optimizing them to suit Rails needs---the system, envisioned as a whole.
+
+This philosophy will be applied in \textit{Escolinhas}~\cite{escolinhas}, a growing Portuguese Rails based project. \textit{Escolinhas} aims at sustaining social and collaborative work for children in elementary schools involving students, teachers and parents as its users. With the user demand increasing day by day, it becomes an excellent case-study application to research, test and apply all the work and discoveries made during the course of this thesis.
+
+Concluding, the aim of ``Scaling Rails: a system-wide approach to performance optimization'' is to produce the aforementioned generic conventions and guidelines, to find generalist optimal configurations for the most important components that Rails depends on and to optimize them for the framework at use, all in the Escolinhas~\cite{escolinhas} context mentioned before.
+% section motivation_and_objectives (end)
+
+
+\section{Report Overview} % (fold)
+\label{sec:report_overview}
+The rest of this report is structured as follows.
+\begin{description}
+  \item[Chapter~\ref{cha:technologies}: ``Technologies''] gives an overview over this research's possibly involved technologies, providing important background information on each one of them.
+  \item[Chapter~\ref{cha:state_of_the_art}: ``State of the Art''] reviews each component's performance and scalability when compared to its alternatives along with a few other details.
+  \item[Chapter~\ref{cha:approach}: ``Approach''] suggests a possible approach into tackling the presented issue.
+  \item[Chapter~\ref{cha:conclusions}: ``Conclusions''] narrows alternatives down by using related work's conclusions, exposed in the state of the art, to discard certain options.
+\end{description}
+% section report_overview (end)
+
+% chapter introduction (end)

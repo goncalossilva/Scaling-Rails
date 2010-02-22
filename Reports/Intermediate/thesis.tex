@@ -1,0 +1,154 @@
+% FEUP THESIS STYLE for LaTeX2e
+% how to use feupteses (changed from the original for MIEEC)
+%
+% FEUP, JCL & JCF, Tue May 20 18:53:15 2008
+%
+% PLEASE send improvements to jlopes at fe.up.pt, jcf at fe.up.pt
+
+%%========================================
+%% Commands: pdflatex thesis
+%%           bibtex thesis
+%%           makeindex thesis (only if creating an index) 
+%%           pdflatex thesis
+%%========================================
+\documentclass[11pt,a4paper,twoside,openright]{report}
+\usepackage[utf8]{inputenx}
+\usepackage[official]{eurosym}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{tkz-graph}
+\usepackage{multirow}
+\usetikzlibrary{calc,arrows,shapes}
+
+\usepackage{enumerate}
+
+%% For the final version, comment next line and uncomment the second line
+%\usepackage[provisional,numericrefs]{feupteses}
+\usepackage[alpharefs]{feupteses} 
+
+%% Options: 
+%% - portuges: titles, etc in portuguese
+%% - provisional: the thesis has not been approved yet
+%% - alpharefs: bibliography references are alphabetic
+%% - numericrefs: bibliography references are numbered (in order of citation)
+%% ( by default: author-date format of the ``natbib'' package is used 
+%%   the portuguese version requires the file ``plainnat-pt.bst'' to be 
+%%   present in the same directory )
+
+%% Include MIEIC definitions different from standard style
+\usepackage{mieicpatch}
+
+\version{1.0}
+
+%% Uncomment in the final version in order to make version footer disappear
+%% \noversiontrue
+%% Uncomment to create an index (at the end of the document)
+\usepackage{makeidx}
+\makeindex
+%% Path to the figures directory
+%% TIP: use folder ``figures'' to keep all your figures
+\graphicspath{{figures/}}
+
+%%========================================
+%% Macros
+\include{macros}
+%%========================================
+
+%%========================================
+%% Start of document
+%%========================================
+\begin{document}
+  %%----------------------------------------
+  %% Information about the work
+  %%----------------------------------------
+  \title{\ProjectName}
+  \author{\ProjectAuthor}
+  \degree{State of the Art Review\\[2mm]
+  Master in Informatics and Computing Engineering}
+  %% Date of submission
+  \thesisdate{29$^{th}$ January, 2010}
+
+  %% Insert copyright text if used
+  %\copyrightnotice{Name of the Author, 2008}
+
+  \supervisor{Supervisor}{\ProjectSupervisor}{(PhD.)}
+  %% Uncomment next line if necessary
+  %% \supervisor{Second Supervisor}{Filipe Abrantes}{(PhD.)}
+
+  %% Uncomment committee stuff in the final version
+  %\committeetext{Approved in oral examination by the committee:}
+  %\committeemember{\textbf{Chair}}{Ana Paula Cunha da Rocha}{(Auxiliar Professor)}
+  \signature
+  %\committeemember{\textbf{External Examiner}}{Carlos Miguel Ferraz Baquero Moreno}{(Auxiliar Professor)}
+  %\committeemember{\textbf{Internal Examiner}}{Ademar Manuel Teixeira de Aguiar}{(Auxiliar Professor)}
+  %\committeedate{17$^{th}$ July, 2009}
+
+  %% Specify cover logo (in folder ``figures'')
+  \logo{feup-logo.pdf}
+
+  %%----------------------------------------
+  %% Cover page(s)
+  %%----------------------------------------
+  \maketitle
+  %% Uncomment next line in the final version
+  \committeepage
+
+  %% Preliminary materials
+  \StartPrelim
+  \begin{singlespace}
+    \include{setup_abstract}
+    %\include{setup_acknowledgements}
+    \include{setup_quote}    % initial quotation if desired
+    \cleardoublepage
+    \pdfbookmark[0]{Table of Contents}{contents}
+    \tableofcontents
+    \cleardoublepage
+    \pdfbookmark[0]{List of Figures}{figures}
+    \listoffigures
+    \cleardoublepage
+    \pdfbookmark[0]{List of Tables}{tables}
+    \listoftables
+    \cleardoublepage
+    \pdfbookmark[0]{Definitions}{def_defs}
+    \include{setup_definitions}
+    \cleardoublepage
+    \pdfbookmark[0]{Abbreviations}{def_abbr}
+    \include{setup_abbreviations}
+  \end{singlespace}
+
+  %%----------------------------------------
+  %% Body
+  %%----------------------------------------
+  \StartBody
+
+  %% Introduction
+  \include{body_introduction}
+  %% Technologies
+  \include{body_technologies}
+  %% State Of The Art
+  \include{body_state_of_the_art}
+  %% Proposed Approach
+  \include{body_approach}
+  %% Conclusions
+  \include{body_conclusions}
+  
+  
+  %%----------------------------------------
+  %% Final materials
+  %%----------------------------------------
+
+  \begin{singlespace}
+    \PrintBib{references}
+
+    %% Index
+    %% Uncomment next command if index is required,
+    %% don't forget to run ``makeindex mieic'' command
+    %\PrintIndex
+
+    %% Comment next 2 commands if numbered appendixes not used
+    %\appendix
+    %\include{appendix_a}
+    %\include{appendix_b}
+  \end{singlespace}
+\end{document}

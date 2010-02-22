@@ -1,0 +1,27 @@
+\section{Operating Systems} % (fold)
+\label{state:sec:operating_systems}
+The operating system is the most important software in a machine. It allows other applications interactivity with the hardware, while managing and coordinating all activities and resources. For this reason, operating systems have a noticeable focus on performance.
+
+This research is focused on server environments since production Rails applications are commonly found in these setups. When it comes to servers, thought, the emphasis on performance becomes much more critical since it is a very important requirement that applications demand from this kind of environment. Some facts suggest that the most commonly found performance bottlenecks in servers are related to the operating system. Operating systems performance bottlenecks usually reside in three key issues~\cite{os_performance_server}:
+\begin{itemize}
+\item Process management;
+\item Virtual memory management;
+\item High performance I/O.
+\end{itemize}
+Each operating system addresses bottlenecks differently and their decisions impact application-specific and system-wide performance.
+
+In this research's context, performance is addressed from a web server's perspective, preferably one connected to the Ruby on Rails environment.
+
+Windows' Rails support is poor and this environment makes the framework slower. Passenger, one of the major Rails web servers used in production, opted not to support the Windows platform. As~\cite{marcus_koze_passenger} explains:
+\begin{quote}
+  ``We have no plans to port Passenger on Windows. Windows lacks the proper facilities to implement Passenger efficiently. Passenger on Windows will be very, very inefficient, which can give both Ruby on Rails as well as Passenger a bad name.''
+\end{quote}
+Many other web-oriented benchmarks show that Linux has better scalability and performance compared to Windows when it comes to Web-oriented servers~\cite{apache_tomcat_performance_linux_windows, php_apache_linux_windows}. The difference is quite noticeable: Ruby on Rails is still more efficient in a Virtual Machine running Linux than in a normal installation of Windows~\cite{linux_virtualbox_windows_rails}.
+
+Documentation on how to use and deploy Rails applications in the Windows platform is also scarce, often needing unconventional methods for being able to run it properly~\cite{rails_windows}.
+
+Since Rails is built on top of the Ruby programming language, this framework's lack of performance in Windows is possibly related to the poor Ruby performance in this operating system. The Ruby 1.8 official interpreter is twice as fast in Linux than its Windows counterpart. As of YARV, the Ruby 1.9 official interpreter seems to be 70\% faster on Linux when compared to its Windows counterpart~\cite{ruby_faster_linux}. Windows-specific Ruby interpreters do not seem to have noticeable performance improvements~\cite{ruby.net} and lack the necessary stability and compliance with the Ruby specification. \textit{IronRuby}, for instance, is an interpreter developed by \textit{Microsoft}~\cite{ror_ecosystem_whitepaper} that is faster than Windows' MRI but still slower than the YARV implementation for this operating system. It also presents stability issues, as timeouts are common in a considerable number of benchmarks~\cite{ ironruby_performance}.
+
+On a side note, MySQL itself has a few quirks under a Windows environment. First of all, it is only conceded 4000 ports which after being used need two to four minutes before becoming available again. It also has a limited allowed opened files number --- 2048 --- restraining its concurrent capabilities. Finally, MySQL uses a blocking read for each connection and Windows' connection error handling is quite poor when compared to Linux's counterpart~\cite{mysql_windows_linux}. These details limit the number of concurrent requests handled and difficult high-load handling. They can lead to performance issues and limit the system’s scalability.
+
+To date, there are no specific benchmarks analyzing Ruby on Rails' performance on BSD. However, many Web discussions suggest that it is quite similar to the one achieved on Linux which is understandable since they are both \textit{Unix} derivates.

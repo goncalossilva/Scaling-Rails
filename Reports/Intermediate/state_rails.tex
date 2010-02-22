@@ -1,0 +1,10 @@
+\section{Ruby on Rails} % (fold)
+\label{state:sec:ruby_on_rails}
+Rails' development is mainly done by its creators --- \textit{37signals} --- and so are its performance optimizations. However, many companies like Twitter had the need to squeeze this frameworks scalability and focused on some identified critical bottlenecks like Ruby's garbage collector mentioned in section~\ref{state:sec:ruby}.
+
+There have been some outside performance improvements over Rails 2.3 code, though. From simple Rails' source minor patching~\cite{accunote_rails} to complete architecture makeovers ~\cite{distributed_rails}, Ruby on Rails' improvement attempts were widely made.
+
+However, the main performance improvements over Rails 2.3 can be found in Rails 3. The decoupling mentioned in section~\ref{tech:sec:ruby_on_rails:rails3} improved Rails performance and scalability, allowing faster execution times and lighter memory usage.
+
+There were also specific performance optimizations, namely on \textit{partial} and \textit{collection} handling. Controller code was also refactored to become lighter. Initial performance benchmarks show that partial and collection rendering and overall performance is more than two times faster~\cite{rails_merb_merge_performance, vaporware_to_awesome}.
+

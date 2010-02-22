@@ -1,0 +1,122 @@
+### Gentoo Benchmark ###
+
+# hdparm -T /dev/sda #
+
+ Timing cached reads:   4768 MB in  2.00 seconds = 2386.18 MB/sec
+ Timing cached reads:   4626 MB in  2.00 seconds = 2314.42 MB/sec
+ Timing cached reads:   4694 MB in  2.00 seconds = 2348.33 MB/sec
+
+# gzip test.iso #
+
+real	2:56.02
+user	132.95
+sys	3.83
+CPU	77%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	6831
+
+real	2:50.67
+user	135.14
+sys	3.81
+CPU	81%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	5468
+
+real	2:49.73
+user	134.08
+sys	3.45
+CPU	81%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	5335
+
+# gunzip test.iso.gz #
+
+real	0:56.33
+user	18.34
+sys	3.72
+CPU	39%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	7468
+
+real	0:52.77
+user	18.60
+sys	3.89
+CPU	42%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	7514
+
+real	0:53.23
+user	18.71
+sys	3.38
+CPU	41%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	7512
+
+# lame -h test.wav test.mp3 #
+
+real	1:41.92
+user	101.65
+sys	0.14
+CPU	99%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	20
+
+real	1:41.60
+user	101.53
+sys	0.08
+CPU	100%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	3
+
+real	1:41.66
+user	101.58
+sys	0.09
+CPU	100%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	2
+
+# oggenc test.wav -b 256 -o test.ogg #
+
+real	0:39.10
+user	38.85
+sys	0.17
+CPU	99%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	15
+
+real	0:39.00
+user	38.90
+sys	0.11
+CPU	100%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	2
+
+real	0:39.24
+user	39.13
+sys	0.11
+CPU	99%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	3
+
+# Workload (hdparm+gzip+gunzip+lame+oggenc+compile PHP) #
+
+real	3:55.73
+user	337.04
+sys	41.89
+CPU	151%
+Mem. Max	0
+Mem. Avg	0
+Cont. Switch	102525
+

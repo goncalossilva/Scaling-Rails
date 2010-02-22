@@ -1,0 +1,19 @@
+\section{Ruby} % (fold)
+\label{state:sec:ruby}
+The Ruby on Rails framework, as its name implies, is built on top of the Ruby programming language. Rails' performance is highly affected by Ruby and the interpreter choice can lead to great impact on the framework's scalability.
+
+Ruby has many interpreters according to its version. Ruby 1.8 has MRI as its default interpreter and Ruby 1.9 has YARV. There are, however, a few other implementations that start to deserve some attention. These present different philosophies and implementation details that provide them with a few advantages and other shortcomings. The most popular Ruby interpreters for Ruby 1.8 are as follows:
+\begin{description}
+\item[MRI,] the standard Ruby 1.8 interpreter.
+\item[Ruby Enterprise Edition,] based on the MRI's code but modified for better performance in Rails environments.
+\item[JRuby,] a Ruby interpreter built on top of JVM.
+\item[Rubinius,] a promising Ruby interpreter built by Rails' creators --- \textit{EngineYard}.
+\end{description}
+Version 1.9 came out recently so alternative interpreters do not fully support it just yet. YARV, the standard Ruby 1.9 interpreter, is the only one to support the specification.
+
+The default implementation for Ruby 1.8, MRI, is generally known by its poor performance~\cite{6tips_for_mri}. This motivated the development of efficient interpreters for the language. Ruby Enterprise Edition has better scaling abilities than MRI, generally performs better and uses less memory~\cite{ree_benchmarks}. JRuby outperforms MRI by a considerable margin~\cite{ruby19_performance}. Rubinius, on the other hand, also effortlessly outperforms MRI. It also performs better than JRuby in most cases but by a much smaller margin~\cite{rvm_rubinius_benchmarks}.
+
+Some people found significant performance improvements in MRI by applying a series of patches and configurations to its garbage collector. Twitter benefited from this patches, roughly improving its overall performance by 30\%~\cite{ruby_gc_tuning}.
+
+Ruby 1.9 has only one compliant interpreter as aforementioned. However, as reference benchmarking, its performance is better than JRuby's~\cite{ruby19_performance}  and is paired with Rubinius'. It performs slightly better in some benchmarks but also performs faintly worse on others~\cite{rvm_rubinius_benchmarks,ruby_interpreter_benchmarks}. Some people even got as far as saying it was more efficient than Python's counterpart~\cite{ruby19_python}.
+

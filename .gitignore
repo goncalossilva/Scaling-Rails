@@ -1,2 +1,14 @@
+# References can be found elsewhere
 References/*
-Reports/*/(*.aux|*.bbl)
+
+# LaTeX intermmediate files and resulting PDF
+Reports/*/*.aux
+Reports/*/*.bbl
+Reports/*/*.blg
+Reports/*/*.idx
+Reports/*/*.lof
+Reports/*/*.log
+Reports/*/*.lot
+Reports/*/*.out
+Reports/*/*.toc
+Reports/*/*.pdf

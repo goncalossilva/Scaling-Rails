@@ -1,0 +1,441 @@
+### Hello World ##
+
+
+## Gentoo -> Apache ##
+
+# n 10000 c 1000 #
+
+Concurrency Level:      1000
+Time taken for tests:   1.339 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      2815339 bytes
+HTML transferred:       450855 bytes
+Requests per second:    7468.32 [#/sec] (mean)
+Time per request:       133.899 [ms] (mean)
+Time per request:       0.134 [ms] (mean, across all concurrent requests)
+Transfer rate:          2053.30 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    6   3.0      5      22
+Processing:     7   24  42.1     20     648
+Waiting:        4   22  42.2     18     646
+Total:         15   29  43.1     25     668
+
+Percentage of the requests served within a certain time (ms)
+  50%     25
+  66%     27
+  75%     27
+  80%     27
+  90%     28
+  95%     29
+  98%     35
+  99%    247
+ 100%    668 (longest request)
+
+# n 100000 c 1000 #
+
+Concurrency Level:      1000
+Time taken for tests:   14.835 seconds
+Complete requests:      100000
+Failed requests:        0
+Write errors:           0
+Total transferred:      28100000 bytes
+HTML transferred:       4500000 bytes
+Requests per second:    6740.75 [#/sec] (mean)
+Time per request:       148.351 [ms] (mean)
+Time per request:       0.148 [ms] (mean, across all concurrent requests)
+Transfer rate:          1849.76 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   32 341.5     13    9014
+Processing:    10   38 149.3     27    7315
+Waiting:        4   33 149.4     21    7308
+Total:         15   70 402.3     39   12050
+
+Percentage of the requests served within a certain time (ms)
+  50%     39
+  66%     43
+  75%     44
+  80%     46
+  90%     50
+  95%     53
+  98%     55
+  99%    438
+ 100%  12050 (longest request)
+ 
+# n 100000 c 10000 #
+
+Concurrency Level:      10000
+Time taken for tests:   24.083 seconds
+Complete requests:      100000
+Failed requests:        0
+Write errors:           0
+Total transferred:      28106463 bytes
+HTML transferred:       4501035 bytes
+Requests per second:    4152.25 [#/sec] (mean)
+Time per request:       2408.331 [ms] (mean)
+Time per request:       0.241 [ms] (mean, across all concurrent requests)
+Transfer rate:          1139.70 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        4   71 706.3     20   21016
+Processing:     0   78 339.7     45   11400
+Waiting:        0   71 339.8     38   11400
+Total:         32  148 791.4     64   23422
+
+Percentage of the requests served within a certain time (ms)
+  50%     64
+  66%     72
+  75%     76
+  80%     77
+  90%     82
+  95%     84
+  98%   1370
+  99%   3078
+ 100%  23422 (longest request)
+ 
+
+## Gentoo -> nginx ##
+
+# n 10000 c 1000 #
+
+Concurrency Level:      1000
+Time taken for tests:   0.833 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      2616045 bytes
+HTML transferred:       461655 bytes
+Requests per second:    12001.11 [#/sec] (mean)
+Time per request:       83.326 [ms] (mean)
+Time per request:       0.083 [ms] (mean, across all concurrent requests)
+Transfer rate:          3065.96 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       12   25   4.1     24      42
+Processing:    15   30   6.6     28      58
+Waiting:       12   22   5.9     20      37
+Total:         40   55   5.1     52      75
+
+Percentage of the requests served within a certain time (ms)
+  50%     52
+  66%     56
+  75%     57
+  80%     57
+  90%     61
+  95%     62
+  98%     73
+  99%     74
+ 100%     75 (longest request)
+
+# n 100000 c 1000 #
+
+Concurrency Level:      1000
+Time taken for tests:   7.883 seconds
+Complete requests:      100000
+Failed requests:        0
+Write errors:           0
+Total transferred:      25584915 bytes
+HTML transferred:       4514985 bytes
+Requests per second:    12685.55 [#/sec] (mean)
+Time per request:       78.830 [ms] (mean)
+Time per request:       0.079 [ms] (mean, across all concurrent requests)
+Transfer rate:          3169.52 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       13   39 141.2     32    3038
+Processing:    19   40   7.7     39      59
+Waiting:        6   30   7.8     28      53
+Total:         48   78 141.8     75    3090
+
+Percentage of the requests served within a certain time (ms)
+  50%     75
+  66%     76
+  75%     76
+  80%     82
+  90%     83
+  95%     83
+  98%     84
+  99%    102
+ 100%   3090 (longest request)
+
+
+# n 100000 c 10000 #
+
+Concurrency Level:      10000
+Time taken for tests:   11.555 seconds
+Complete requests:      100000
+Failed requests:        0
+Write errors:           0
+Total transferred:      26175495 bytes
+HTML transferred:       4619205 bytes
+Requests per second:    8654.34 [#/sec] (mean)
+Time per request:       1155.489 [ms] (mean)
+Time per request:       0.116 [ms] (mean, across all concurrent requests)
+Transfer rate:          2212.22 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:      172  563 502.0    504    3619
+Processing:    55  520 112.2    534     948
+Waiting:        0  377 115.0    384     757
+Total:        272 1083 533.5   1059    4473
+ 
+## Ubuntu -> Apache ##
+ 
+# n 10000 c 1000 #
+
+Concurrency Level:      1000
+Time taken for tests:   9.755 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      4530000 bytes
+HTML transferred:       1770000 bytes
+Requests per second:    1025.13 [#/sec] (mean)
+Time per request:       975.490 [ms] (mean)
+Time per request:       0.975 [ms] (mean, across all concurrent requests)
+Transfer rate:          453.50 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   73 461.5      1    3011
+Processing:     2   25 268.7      7    9730
+Waiting:        1   25 268.7      7    9730
+Total:          4   98 532.6      7    9755
+
+Percentage of the requests served within a certain time (ms)
+  50%      7
+  66%      7
+  75%      7
+  80%      8
+  90%      8
+  95%      8
+  98%   3003
+  99%   3019
+ 100%   9755 (longest request)
+ 
+# n 100000 c 1000 #
+
+apr_socket_recv: Connection reset by peer (104) (somewehere around 90000 request, 5 tries)
+
+# n 100000 c 10000 #
+
+apr_socket_recv: Connection reset by peer (104) (somewehere around 90000 request, 5 tries, limits.conf ignored?)
+
+## Ubuntu -> nginx ##
+
+# n 10000 c 1000 #
+
+Concurrency Level:      1000
+Time taken for tests:   0.791 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      3638462 bytes
+HTML transferred:       1517701 bytes
+Requests per second:    12647.47 [#/sec] (mean)
+Time per request:       79.067 [ms] (mean)
+Time per request:       0.079 [ms] (mean, across all concurrent requests)
+Transfer rate:          4493.88 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    6   6.7      4      36
+Processing:     3    9   9.3      6     248
+Waiting:        3    7   9.3      5     247
+Total:          8   15  14.8     10     256
+
+Percentage of the requests served within a certain time (ms)
+  50%     10
+  66%     11
+  75%     11
+  80%     11
+  90%     53
+  95%     57
+  98%     57
+  99%     60
+ 100%    256 (longest request)
+
+# n 100000 c 1000 #
+
+Concurrency Level:      1000
+Time taken for tests:   14.835 seconds
+Complete requests:      100000
+Failed requests:        0
+Write errors:           0
+Total transferred:      28100000 bytes
+HTML transferred:       4500000 bytes
+Requests per second:    6740.75 [#/sec] (mean)
+Time per request:       148.351 [ms] (mean)
+Time per request:       0.148 [ms] (mean, across all concurrent requests)
+Transfer rate:          1849.76 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   32 341.5     13    9014
+Processing:    10   38 149.3     27    7315
+Waiting:        4   33 149.4     21    7308
+Total:         15   70 402.3     39   12050
+
+Percentage of the requests served within a certain time (ms)
+  50%     39
+  66%     43
+  75%     44
+  80%     46
+  90%     50
+  95%     53
+  98%     55
+  99%    438
+ 100%  12050 (longest request)
+
+# n 100000 c 10000 #
+
+apr_socket_connect(): Cannot assign requested address (99) (somewehere around 20000 request, 5 tries, limits.conf ignored?)
+
+## Debian -> Apache ##
+ 
+# n 10000 c 1000 #
+
+Concurrency Level:      1000
+Time taken for tests:   1.449 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      4400880 bytes
+HTML transferred:       450090 bytes
+Requests per second:    6901.61 [#/sec] (mean)
+Time per request:       144.894 [ms] (mean)
+Time per request:       0.145 [ms] (mean, across all concurrent requests)
+Transfer rate:          2966.13 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    1   2.4      0      16
+Processing:     7   25 148.0      8    1430
+Waiting:        7   24 148.0      8    1430
+Total:          7   25 149.6      8    1444
+
+Percentage of the requests served within a certain time (ms)
+  50%      8
+  66%      8
+  75%      8
+  80%      9
+  90%      9
+  95%     10
+  98%     50
+  99%   1441
+ 100%   1444 (longest request)
+ 
+# n 100000 c 1000 #
+
+Concurrency Level:      1000
+Time taken for tests:   15.638 seconds
+Complete requests:      100000
+Failed requests:        0
+Write errors:           0
+Total transferred:      44000000 bytes
+HTML transferred:       4500000 bytes
+Requests per second:    6394.55 [#/sec] (mean)
+Time per request:       156.383 [ms] (mean)
+Time per request:       0.156 [ms] (mean, across all concurrent requests)
+Transfer rate:          2747.66 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   19 336.8      1    9014
+Processing:     0   31 260.6     10    7575
+Waiting:        0   30 260.5     10    7575
+Total:          8   50 472.2     11   11624
+
+Percentage of the requests served within a certain time (ms)
+  50%     11
+  66%     24
+  75%     27
+  80%     29
+  90%     32
+  95%     34
+  98%     37
+  99%    259
+ 100%  11624 (longest request)
+
+# n 100000 c 10000 #
+
+apr_socket_recv: Connection reset by peer (104) (somewehere around 3000 request, 5 tries, limits.conf ignored?)
+
+## Debian -> nginx ##
+
+# n 10000 c 1000 #
+
+Concurrency Level:      1000
+Time taken for tests:   0.540 seconds
+Complete requests:      10000
+Failed requests:        0
+Write errors:           0
+Total transferred:      3637376 bytes
+HTML transferred:       1517248 bytes
+Requests per second:    18513.99 [#/sec] (mean)
+Time per request:       54.013 [ms] (mean)
+Time per request:       0.054 [ms] (mean, across all concurrent requests)
+Transfer rate:          6576.40 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    4   4.8      3      24
+Processing:     2    6   6.9      4     219
+Waiting:        2    5   6.8      4     218
+Total:          5   11  11.0      7     225
+
+Percentage of the requests served within a certain time (ms)
+  50%      7
+  66%      7
+  75%      7
+  80%      7
+  90%     37
+  95%     42
+  98%     42
+  99%     43
+ 100%    225 (longest request)
+
+# n 100000 c 1000 #
+
+Concurrency Level:      1000
+Time taken for tests:   6.312 seconds
+Complete requests:      100000
+Failed requests:        0
+Write errors:           0
+Total transferred:      36249594 bytes
+HTML transferred:       15120687 bytes
+Requests per second:    15842.34 [#/sec] (mean)
+Time per request:       63.122 [ms] (mean)
+Time per request:       0.063 [ms] (mean, across all concurrent requests)
+Transfer rate:          5608.19 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   35 286.2      9    3013
+Processing:     4   10  19.3     11     667
+Waiting:        2    8  19.1      8     663
+Total:          7   45 294.0     20    3674
+
+Percentage of the requests served within a certain time (ms)
+  50%     20
+  66%     22
+  75%     24
+  80%     24
+  90%     25
+  95%     30
+  98%     39
+  99%     51
+ 100%   3674 (longest request)
+
+# n 100000 c 10000 #
+
+apr_socket_connect(): Cannot assign requested address (99) (somewehere around 20000 request, 5 tries, limits.conf ignored?)
