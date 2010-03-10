@@ -1,0 +1,43 @@
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient).....done
+
+
+Server Software:        Cherokee/0.99.42
+Server Hostname:        127.0.0.1
+Server Port:            80
+
+Document Path:          /public/schools/eb1ji-de-aldeia-nova/pages/95
+Document Length:        5492 bytes
+
+Concurrency Level:      10
+Time taken for tests:   8.167 seconds
+Complete requests:      100
+Failed requests:        0
+Write errors:           0
+Total transferred:      582118 bytes
+HTML transferred:       549200 bytes
+Requests per second:    12.24 [#/sec] (mean)
+Time per request:       816.703 [ms] (mean)
+Time per request:       81.670 [ms] (mean, across all concurrent requests)
+Transfer rate:          69.61 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       0
+Processing:   112  782 142.2    815     946
+Waiting:      112  782 142.2    815     946
+Total:        113  782 142.2    815     946
+
+Percentage of the requests served within a certain time (ms)
+  50%    815
+  66%    839
+  75%    864
+  80%    883
+  90%    918
+  95%    939
+  98%    943
+  99%    946
+ 100%    946 (longest request)

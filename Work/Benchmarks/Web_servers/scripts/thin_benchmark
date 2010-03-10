@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Use correct config
+cp /etc/apache2/vhosts.d/05_escolinhas.conf.thin /etc/apache2/vhosts.d/05_escolinhas.conf
+cp /etc/nginx/nginx.thin.conf /etc/nginx/nginx.conf
+
+/etc/init.d/mysql start
+sleep 5
+
+#### Passenger
+
+# Cherokee
+ruby webserver_benchmark.rb "/etc/init.d/cherokee start" "/etc/init.d/cherokee stop" http://127.0.0.1/ cherokee_thin ruby18 cherokee cherokee-worker
+
+sleep 30
+
+# Nginx
+ruby webserver_benchmark.rb "thin start -C /etc/thin/escolinhas_nginx.yml && /etc/init.d/nginx start" "killall -9 thin && /etc/init.d/nginx stop" http://127.0.0.1/ nginx_thin thin nginx
+
+sleep 30
+
+# Apache2
+ruby webserver_benchmark.rb "thin start -C /etc/thin/escolinhas_apache.yml && /etc/init.d/apache2 start" "killall -9 thin && /etc/init.d/apache2 stop" http://127.0.0.1/ apache2_thin thin apache2
+
+#### Threaded thin
+
+sleep 30
+
+# Cheroke
+sed -e 's/thin\.0\.log/thin\.0\.log --threaded/g' -e 's/thin\.1\.log/thin\.1\.log --threaded/g' -e 's/thin\.2\.log/thin\.2\.log --threaded/g' -e 's/thin\.3\.log/thin\.3\.log --threaded/g' /etc/cherokee/cherokee.conf > /etc/cherokee/temp.conf
+rm /etc/cherokee/cherokee.conf
+mv /etc/cherokee/temp.conf /etc/cherokee/cherokee.conf
+ruby webserver_benchmark.rb "/etc/init.d/cherokee start" "/etc/init.d/cherokee stop" http://127.0.0.1/ cherokee_thin_threaded ruby18 cherokee cherokee-worker
+sed -e 's/thin\.0\.log --threaded/thin\.0\.log/g' -e 's/thin\.1\.log --threaded/thin\.1\.log/g' -e 's/thin\.2\.log --threaded/thin\.2\.log/g' -e 's/thin\.3\.log --threaded/thin\.3\.log/g' /etc/cherokee/cherokee.conf > /etc/cherokee/temp.conf
+rm /etc/cherokee/cherokee.conf
+mv /etc/cherokee/temp.conf /etc/cherokee/cherokee.conf
+
+sleep 30
+
+# Nginx
+ruby webserver_benchmark.rb "thin start -C /etc/thin/escolinhas_nginx_threaded.yml && /etc/init.d/nginx start" "killall -9 thin && /etc/init.d/nginx stop" http://127.0.0.1/ nginx_thin_threaded thin nginx
+
+sleep 30
+
+# Apache2
+ruby webserver_benchmark.rb "thin start -C /etc/thin/escolinhas_apache_threaded.yml && /etc/init.d/apache2 start" "killall -9 thin && /etc/init.d/apache2 stop" http://127.0.0.1/ apache2_thin_threaded thin apache2
+
+/etc/init.d/mysql stop

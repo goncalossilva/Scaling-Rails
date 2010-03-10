@@ -1,0 +1,45 @@
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+
+
+Server Software:        thin
+Server Hostname:        127.0.0.1
+Server Port:            80
+
+Document Path:          /public/schools/eb1ji-de-aldeia-nova/pages/95
+Document Length:        5492 bytes
+
+Concurrency Level:      100
+Time taken for tests:   43.676 seconds
+Complete requests:      500
+Failed requests:        1
+   (Connect: 0, Receive: 0, Length: 1, Exceptions: 0)
+Write errors:           0
+Non-2xx responses:      1
+Total transferred:      2930394 bytes
+HTML transferred:       2741034 bytes
+Requests per second:    11.45 [#/sec] (mean)
+Time per request:       8735.248 [ms] (mean)
+Time per request:       87.352 [ms] (mean, across all concurrent requests)
+Transfer rate:          65.52 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0   22  43.7      0     111
+Processing:   424 8306 2992.8   8271   16191
+Waiting:      371 8306 2993.3   8271   16191
+Total:        426 8328 2985.8   8271   16191
+
+Percentage of the requests served within a certain time (ms)
+  50%   8271
+  66%   9310
+  75%  10179
+  80%  10841
+  90%  12426
+  95%  13609
+  98%  14692
+  99%  15601
+ 100%  16191 (longest request)
