@@ -1,0 +1,108 @@
+#!/bin/bash
+
+Uri[0]="/"
+Uri[1]="/public/schools/eb1ji-de-aldeia-nova/pages/95"
+Uri[2]="/public/publications/492"
+Name[0]="homepage"
+Name[1]="portal"
+Name[2]="publication"
+
+for index in 0 1 2
+do
+  mkdir -p "autobench_results/${Name[index]}"
+  cd "autobench_results/${Name[index]}"
+  mkdir thin30 thin60 unicorn30 unicorn60 passenger30 passenger60
+  cd ../..
+done
+
+/etc/init.d/mysql start
+
+for index in 0 1 2
+do
+  # Unicorn
+  sed -r 's/worker_processes\s\S+/worker_processes 30/g' /etc/unicorn/unicorn_nginx.conf.rb > /tmp/unicorn_temp
+  mv /tmp/unicorn_temp /etc/unicorn/unicorn_nginx.conf.rb
+  unicorn_rails -E production -c /etc/unicorn/unicorn_nginx.conf.rb -D
+  cp /etc/nginx/nginx.unicorn.conf /etc/nginx/nginx.conf
+  /etc/init.d/nginx start
+  ab -n 60 -c 30 http://127.0.0.1/
+  /opt/ruby19 monitor.rb "autobench_results/${Name[index]}/unicorn30" nginx unicorn_rails &
+  sleep 10
+  autobench --single_host --file autobench_results/${Name[index]}/unicorn30.csv --quiet --uri1=${Uri[index]}
+  killall /opt/ruby19
+  killall -9 unicorn_rails
+  /etc/init.d/nginx stop && killall -9 nginx
+
+  sleep 20
+
+  sed -r 's/worker_processes\s\S+/worker_processes 60/g' /etc/unicorn/unicorn_nginx.conf.rb > /tmp/unicorn_temp
+  mv /tmp/unicorn_temp /etc/unicorn/unicorn_nginx.conf.rb
+  unicorn_rails -E production -c /etc/unicorn/unicorn_nginx.conf.rb -D
+  cp /etc/nginx/nginx.unicorn.conf /etc/nginx/nginx.conf
+  /etc/init.d/nginx start
+  ab -n 120 -c 60 http://127.0.0.1/
+  /opt/ruby19 monitor.rb "autobench_results/${Name[index]}/unicorn60" nginx unicorn_rails &
+  sleep 20
+  autobench --single_host --file autobench_results/${Name[index]}/unicorn60.csv --quiet --uri1=${Uri[index]}
+  killall /opt/ruby19
+  killall -9 unicorn_rails
+  /etc/init.d/nginx stop && killall -9 nginx
+
+  sleep 120
+
+  # Thin
+  sed -r 's/servers:\s\S+/servers: 30/g' /etc/thin/escolinhas_nginx.yml > /tmp/thin_temp
+  mv /tmp/thin_temp /etc/thin/escolinhas_nginx.yml
+  thin start -C /etc/thin/escolinhas_nginx.yml
+  cp /etc/nginx/nginx.thin30.conf /etc/nginx/nginx.conf
+  /etc/init.d/nginx start
+  ab -n 60 -c 30 http://127.0.0.1/
+  /opt/ruby19 monitor.rb "autobench_results/${Name[index]}/thin30" nginx thin &
+  sleep 10
+  autobench --single_host --file autobench_results/${Name[index]}/thin30.csv --quiet --uri1=${Uri[index]}
+  killall /opt/ruby19
+  killall -9 thin
+  /etc/init.d/nginx stop
+
+  sleep 10
+
+  sed -r 's/servers:\s\S+/servers: 60/g' /etc/thin/escolinhas_nginx.yml > /tmp/thin_temp
+  mv /tmp/thin_temp /etc/thin/escolinhas_nginx.yml
+  thin start -C /etc/thin/escolinhas_nginx.yml
+  cp /etc/nginx/nginx.thin60.conf /etc/nginx/nginx.conf
+  /etc/init.d/nginx start
+  ab -n 120 -c 60 http://127.0.0.1/
+  /opt/ruby19 monitor.rb "autobench_results/${Name[index]}/thin60" nginx thin &
+  sleep 20
+  autobench --single_host --file autobench_results/${Name[index]}/thin60.csv --quiet --uri1=${Uri[index]}
+  killall /opt/ruby19
+  killall -9 thin
+  /etc/init.d/nginx stop
+
+  # Passenger
+  sed -r 's/passenger_max_pool_size\s\S+/passenger_max_pool_size 30/g' /etc/nginx/nginx.passenger19.conf > /tmp/passenger_temp
+  mv /tmp/passenger_temp /etc/nginx/nginx.passenger.com
+  cp /etc/nginx/nginx.passenger19.conf /etc/nginx/nginx.conf
+  /etc/init.d/nginx start
+  ab -n 60 -c 30 http://127.0.0.1/
+  /opt/ruby19 monitor.rb "autobench_results/${Name[index]}/passenger30" nginx PassengerNginxHelperServer "Passenger\ spawn\ server" "Passenger\ FrameworkSpawner:\ 2.3.5" "Passenger\ ApplicationSpawner:\ /webapps/escolinhas" "Rails:\ /webapps/escolinhas" &
+  sleep 10
+  autobench --single_host --file autobench_results/${Name[index]}/passenger30.csv --quiet --uri1=${Uri[index]}
+  killall /opt/ruby19
+  /etc/init.d/nginx stop
+  
+  sleep 120
+
+  sed -r 's/passenger_max_pool_size\s\S+/passenger_max_pool_size 60/g' /etc/nginx/nginx.passenger19.conf > /tmp/passenger_temp
+  mv /tmp/passenger_temp /etc/nginx/nginx.passenger.com
+  cp /etc/nginx/nginx.passenger19.conf /etc/nginx/nginx.conf
+  /etc/init.d/nginx start
+  ab -n 120 -c 60 http://127.0.0.1/
+  /opt/ruby19 monitor.rb "autobench_results/${Name[index]}/passenger60" nginx PassengerNginxHelperServer "Passenger\ spawn\ server" "Passenger\ FrameworkSpawner:\ 2.3.5" "Passenger\ ApplicationSpawner:\ /webapps/escolinhas" "Rails:\ /webapps/escolinhas" &
+  sleep 20
+  autobench --single_host --file autobench_results/${Name[index]}/passenger60.csv --quiet --uri1=${Uri[index]}
+  killall /opt/ruby19
+  /etc/init.d/nginx stop
+done
+
+/etc/init.d/mysql stop

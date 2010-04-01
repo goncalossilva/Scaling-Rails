@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Use correct config
+cp /etc/nginx/nginx.unicorn.conf /etc/nginx/nginx.conf
+
+/etc/init.d/mysql start
+sleep 5
+
+ruby webserver_benchmark.rb "unicorn_rails -E production -c /etc/unicorn/unicorn_nginx.conf.rb -D && /etc/init.d/nginx start" "killall -9 unicorn_rails && /etc/init.d/nginx stop && killall -9 nginx" http://127.0.0.1/ nginx_unicorn nginx unicorn_rails
+
+/etc/init.d/mysql stop

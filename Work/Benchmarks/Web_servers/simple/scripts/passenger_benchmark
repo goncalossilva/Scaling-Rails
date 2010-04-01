@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Use correct config
+cp /etc/apache2/vhosts.d/05_escolinhas.conf.passenger /etc/apache2/vhosts.d/05_escolinhas.conf
+cp /etc/nginx/nginx.passenger.conf /etc/nginx/nginx.conf
+
+/etc/init.d/mysql start
+
+#### Passenger
+# Nginx
+
+#sleep 5
+#ruby webserver_benchmark.rb "/etc/init.d/nginx start" "/etc/init.d/nginx stop" http://127.0.0.1/ nginx_passenger nginx PassengerNginxHelperServer "Passenger\ spawn\ server" "Passenger\ FrameworkSpawner:\ 2.3.5" "Passenger\ ApplicationSpawner:\ /webapps/escolinhas" "Rails:\ /webapps/escolinhas"
+
+#sleep 60
+
+# Apache2
+sleep 5
+ruby webserver_benchmark.rb "/etc/init.d/apache2 start" "/etc/init.d/apache2 stop" http://127.0.0.1/ apache2_passenger apache2 ApplicationPoolServerExecutable "Passenger\ spawn\ server" "Passenger\ FrameworkSpawner:\ 2.3.5" "Passenger\ ApplicationSpawner:\ /webapps/escolinhas" "Rails:\ /webapps/escolinhas"
+
+/etc/init.d/mysql stop
