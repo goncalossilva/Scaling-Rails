@@ -1,0 +1,79 @@
+#!/bin/bash
+
+export RUBYOPT=""
+
+mkdir -p "autobench_results/ruby" "autobench_results/rubyx" "autobench_results/ruby/thin2" "autobench_results/ruby/unicorn2" "autobench_results/rubyx/thin2" "autobench_results/rubyx/unicorn2"
+
+/etc/init.d/mysql start
+
+# Unicorn
+sed -r 's/worker_processes\s\S+/worker_processes 2/g' /etc/unicorn/unicorn_nginx.conf.rb > /tmp/unicorn_temp
+mv /tmp/unicorn_temp /etc/unicorn/unicorn_nginx.conf.rb
+unicorn_rails -E production -c /etc/unicorn/unicorn_nginx.conf.rb -D
+cp /etc/nginx/nginx.unicorn.conf /etc/nginx/nginx.conf
+/etc/init.d/nginx start
+ab -n 16 -c 8 http://127.0.0.1/
+/opt/ruby19 monitor.rb "autobench_results/ruby/unicorn2" nginx unicorn_rails &
+sleep 10
+autobench --single_host --file autobench_results/ruby/unicorn2.csv --quiet --uri1=/
+killall /opt/ruby19
+killall -9 unicorn_rails
+/etc/init.d/nginx stop && killall -9 nginx
+
+sleep 20
+
+# Thin
+sed -r 's/servers:\s\S+/servers: 2/g' /etc/thin/escolinhas_nginx.yml > /tmp/thin_temp
+mv /tmp/thin_temp /etc/thin/escolinhas_nginx.yml
+thin start -C /etc/thin/escolinhas_nginx.yml
+cp /etc/nginx/nginx.thin2.conf /etc/nginx/nginx.conf
+/etc/init.d/nginx start
+ab -n 16 -c 8 http://127.0.0.1/
+/opt/ruby19 monitor.rb "autobench_results/ruby/thin2" nginx thin &
+sleep 10
+autobench --single_host --file autobench_results/ruby/thin2.csv --quiet --uri1=/
+killall /opt/ruby19
+killall -9 thin
+/etc/init.d/nginx stop
+
+
+# Awesome ruby starts here
+export RUBY_HEAP_SLOTS_INCREMENT=500000
+export RUBY_HEAP_MIN_SLOTS=500000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1.1
+export RUBY_GC_MALLOC_LIMIT=40000000
+export RUBY_HEAP_FREE_MIN=100000
+
+sleep 60
+
+# Unicorn
+sed -r 's/worker_processes\s\S+/worker_processes 2/g' /etc/unicorn/unicorn_nginx.conf.rb > /tmp/unicorn_temp
+mv /tmp/unicorn_temp /etc/unicorn/unicorn_nginx.conf.rb
+unicorn_rails -E production -c /etc/unicorn/unicorn_nginx.conf.rb -D
+cp /etc/nginx/nginx.unicorn.conf /etc/nginx/nginx.conf
+/etc/init.d/nginx start
+ab -n 16 -c 8 http://127.0.0.1/
+/opt/ruby19 monitor.rb "autobench_results/rubyx/unicorn2" nginx unicorn_rails &
+sleep 10
+autobench --single_host --file autobench_results/rubyx/unicorn2.csv --quiet --uri1=/
+killall /opt/ruby19
+killall -9 unicorn_rails
+/etc/init.d/nginx stop && killall -9 nginx
+
+sleep 20
+
+# Thin
+sed -r 's/servers:\s\S+/servers: 2/g' /etc/thin/escolinhas_nginx.yml > /tmp/thin_temp
+mv /tmp/thin_temp /etc/thin/escolinhas_nginx.yml
+thin start -C /etc/thin/escolinhas_nginx.yml
+cp /etc/nginx/nginx.thin2.conf /etc/nginx/nginx.conf
+/etc/init.d/nginx start
+ab -n 16 -c 8 http://127.0.0.1/
+/opt/ruby19 monitor.rb "autobench_results/rubyx/thin2" nginx thin &
+sleep 10
+autobench --single_host --file autobench_results/rubyx/thin2.csv --quiet --uri1=/
+killall /opt/ruby19
+killall -9 thin
+/etc/init.d/nginx stop
+
+/etc/init.d/mysql stop

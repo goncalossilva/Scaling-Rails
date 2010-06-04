@@ -1,0 +1,2693 @@
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_cal.rb
+parameters:
+- 500
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_cal.rb
+parameter: 500
+iterations: 3
+max: 0.256089641
+min: 0.253172919
+median: 0.253382646
+mean: 0.254215068666667
+standard_deviation: 0.00132828521744051
+times:
+- 0.253172919
+- 0.253382646
+- 0.256089641
+memory_usages:
+- 10723328
+- 12963840
+- 12984320
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_cal.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_dirp.rb
+parameters:
+- 10000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_dirp.rb
+parameter: 10000
+iterations: 3
+max: 0.455161471
+min: 0.453859614
+median: 0.454947627
+mean: 0.454656237333333
+standard_deviation: 0.000570022727904967
+times:
+- 0.453859614
+- 0.454947627
+- 0.455161471
+memory_usages:
+- 6488064
+- 8585216
+- 10444800
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_dirp.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_gzip.rb
+parameters:
+- 100
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_gzip.rb
+parameter: 100
+iterations: 3
+max: 6.022019888
+min: 5.991349723
+median: 5.992558224
+mean: 6.001975945
+standard_deviation: 0.01418179247973
+times:
+- 6.022019888
+- 5.991349723
+- 5.992558224
+memory_usages:
+- 24211456
+- 24797184
+- 24797184
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_gzip.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameters:
+- 10
+- 20
+- 30
+- 40
+- 50
+- 60
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameter: 10
+iterations: 3
+max: 0.003080413
+min: 0.001996623
+median: 0.002098107
+mean: 0.00239171433333333
+standard_deviation: 0.000488742700314002
+times:
+- 0.001996623
+- 0.003080413
+- 0.002098107
+memory_usages:
+- 5214208
+- 5218304
+- 5218304
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameter: 20
+iterations: 3
+max: 0.028373554
+min: 0.027318503
+median: 0.028083818
+mean: 0.0279252916666667
+standard_deviation: 0.00044507010827534
+times:
+- 0.028373554
+- 0.027318503
+- 0.028083818
+memory_usages:
+- 6037504
+- 6840320
+- 7581696
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameter: 30
+iterations: 3
+max: 0.133197639
+min: 0.132865228
+median: 0.133047316
+mean: 0.133036727666667
+standard_deviation: 0.000135912601408243
+times:
+- 0.133197639
+- 0.133047316
+- 0.132865228
+memory_usages:
+- 10940416
+- 10940416
+- 10940416
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameter: 40
+iterations: 3
+max: 0.399806509
+min: 0.399167282
+median: 0.399186365
+mean: 0.399386718666667
+standard_deviation: 0.000296938807604471
+times:
+- 0.399167282
+- 0.399806509
+- 0.399186365
+memory_usages:
+- 11362304
+- 11362304
+- 11362304
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameter: 50
+iterations: 3
+max: 1.029715885
+min: 1.021935144
+median: 1.027437871
+mean: 1.02636296666667
+standard_deviation: 0.00326614422233464
+times:
+- 1.021935144
+- 1.027437871
+- 1.029715885
+memory_usages:
+- 12238848
+- 12234752
+- 12259328
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+parameter: 60
+iterations: 3
+max: 2.317410707
+min: 2.295891862
+median: 2.307749542
+mean: 2.30701737033333
+standard_deviation: 0.00880027382322503
+times:
+- 2.295891862
+- 2.307749542
+- 2.317410707
+memory_usages:
+- 12816384
+- 12816384
+- 12951552
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_hilbert_matrix.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_list.rb
+parameters:
+- 1000
+- 10000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_list.rb
+parameter: 1000
+iterations: 3
+max: 0.026556981
+min: 0.0246713329999999
+median: 0.025061588
+mean: 0.0254299673333333
+standard_deviation: 0.000812688786230171
+times:
+- 0.026556981
+- 0.0246713329999999
+- 0.025061588
+memory_usages:
+- 20500480
+- 23707648
+- 23838720
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_list.rb
+parameter: 10000
+iterations: 3
+max: 1.534332566
+min: 1.418369188
+median: 1.45424539
+mean: 1.46898238133333
+standard_deviation: 0.0484751513283646
+times:
+- 1.418369188
+- 1.45424539
+- 1.534332566
+memory_usages:
+- 40214528
+- 65818624
+- 66113536
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_list.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_mpart.rb
+parameters:
+- 300
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_mpart.rb
+parameter: 300
+iterations: 3
+max: 0.035512158
+min: 0.032192711
+median: 0.032611266
+mean: 0.0334387116666667
+standard_deviation: 0.00147607177894942
+times:
+- 0.035512158
+- 0.032611266
+- 0.032192711
+memory_usages:
+- 8003584
+- 10731520
+- 12386304
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_mpart.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_norvig_spelling.rb
+parameters:
+- 50
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_norvig_spelling.rb
+parameter: 50
+iterations: 3
+max: 4.832988815
+min: 4.781112559
+median: 4.799764256
+mean: 4.80462187666667
+standard_deviation: 0.0214551290379139
+times:
+- 4.832988815
+- 4.799764256
+- 4.781112559
+memory_usages:
+- 16109568
+- 16703488
+- 16703488
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_norvig_spelling.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_observ.rb
+parameters:
+- 100000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_observ.rb
+parameter: 100000
+iterations: 3
+max: 0.348586227
+min: 0.336244663
+median: 0.342610659
+mean: 0.342480516333333
+standard_deviation: 0.00503926273223833
+times:
+- 0.336244663
+- 0.342610659
+- 0.348586227
+memory_usages:
+- 8388608
+- 12394496
+- 13295616
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_observ.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_parse_log.rb
+parameters:
+- 100
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_parse_log.rb
+parameter: 100
+iterations: 3
+max: 0.461183277
+min: 0.460208313
+median: 0.461136363
+mean: 0.460842651
+standard_deviation: 0.000448953415944219
+times:
+- 0.460208313
+- 0.461183277
+- 0.461136363
+memory_usages:
+- 5808128
+- 7000064
+- 7942144
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_parse_log.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_pi.rb
+parameters:
+- 1000
+- 10000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_pi.rb
+parameter: 1000
+iterations: 3
+max: 0.026127821
+min: 0.02306844
+median: 0.024277074
+mean: 0.0244911116666667
+standard_deviation: 0.0012581235015833
+times:
+- 0.02306844
+- 0.026127821
+- 0.024277074
+memory_usages:
+- 10293248
+- 12488704
+- 14381056
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_pi.rb
+parameter: 10000
+iterations: 3
+max: 2.024187483
+min: 1.978725307
+median: 2.004199969
+mean: 2.00237091966667
+standard_deviation: 0.0186048636609099
+times:
+- 1.978725307
+- 2.004199969
+- 2.024187483
+memory_usages:
+- 38719488
+- 40247296
+- 41603072
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_pi.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_rcs.rb
+parameters:
+- 100
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_rcs.rb
+parameter: 100
+iterations: 3
+max: 0.49657857
+min: 0.491365708
+median: 0.49152488
+mean: 0.493156386
+standard_deviation: 0.00242072185222889
+times:
+- 0.49657857
+- 0.49152488
+- 0.491365708
+memory_usages:
+- 9777152
+- 9801728
+- 9801728
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_rcs.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_sudoku.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_sudoku.rb
+parameter: 1
+iterations: 3
+max: 1.571911944
+min: 1.57040321
+median: 1.5709163
+mean: 1.57107715133333
+standard_deviation: 0.000626351570214532
+times:
+- 1.5709163
+- 1.571911944
+- 1.57040321
+memory_usages:
+- 8564736
+- 9584640
+- 9592832
+---
+name: /root/ruby-benchmark-suite/benchmarks/macro-benchmarks/bm_sudoku.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_factorial.rb
+parameters:
+- 5000
+- 10000
+- 20000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_factorial.rb
+parameter: 5000
+iterations: 3
+max: 0.037285296
+min: 0.036094527
+median: 0.036879539
+mean: 0.0367531206666667
+standard_deviation: 0.000494279879617702
+times:
+- 0.036094527
+- 0.036879539
+- 0.037285296
+memory_usages:
+- 12759040
+- 17272832
+- 19034112
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_factorial.rb
+parameter: 10000
+status: "SystemStackError stack level too deep"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_factorial.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_fib.rb
+parameters:
+- 30
+- 35
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_fib.rb
+parameter: 30
+iterations: 3
+max: 0.178076592
+min: 0.177199427
+median: 0.178041905
+mean: 0.177772641333333
+standard_deviation: 0.000405571038534002
+times:
+- 0.178041905
+- 0.177199427
+- 0.178076592
+memory_usages:
+- 3883008
+- 3919872
+- 3956736
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_fib.rb
+parameter: 35
+iterations: 3
+max: 1.957485017
+min: 1.953629742
+median: 1.956842404
+mean: 1.955985721
+standard_deviation: 0.0016864589437187
+times:
+- 1.953629742
+- 1.956842404
+- 1.957485017
+memory_usages:
+- 4067328
+- 4104192
+- 4141056
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_fib.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_mandelbrot.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_mandelbrot.rb
+parameter: 1
+iterations: 3
+max: 0.242642585
+min: 0.241754735
+median: 0.24245185
+mean: 0.242283056666667
+standard_deviation: 0.000381608698065014
+times:
+- 0.241754735
+- 0.24245185
+- 0.242642585
+memory_usages:
+- 10289152
+- 10293248
+- 10293248
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_mandelbrot.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_pentomino.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_pentomino.rb
+parameter: 1
+iterations: 3
+max: 24.016649517
+min: 23.879976735
+median: 23.890349309
+mean: 23.9289918536667
+standard_deviation: 0.0621278092786231
+times:
+- 23.879976735
+- 23.890349309
+- 24.016649517
+memory_usages:
+- 16351232
+- 16330752
+- 16691200
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_pentomino.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tak.rb
+parameters:
+- 7
+- 8
+- 9
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tak.rb
+parameter: 7
+iterations: 3
+max: 0.137726685
+min: 0.137695512
+median: 0.137724793
+mean: 0.137715663333333
+standard_deviation: 1.42700640580952e-05
+times:
+- 0.137695512
+- 0.137726685
+- 0.137724793
+memory_usages:
+- 3878912
+- 3915776
+- 3952640
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tak.rb
+parameter: 8
+iterations: 3
+max: 0.3957843
+min: 0.395253614
+median: 0.395667706
+mean: 0.39556854
+standard_deviation: 0.000227716679693625
+times:
+- 0.395253614
+- 0.3957843
+- 0.395667706
+memory_usages:
+- 4071424
+- 4112384
+- 4149248
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tak.rb
+parameter: 9
+iterations: 3
+max: 1.053684106
+min: 1.053608211
+median: 1.053620617
+mean: 1.05363764466667
+standard_deviation: 3.32412277183119e-05
+times:
+- 1.053608211
+- 1.053620617
+- 1.053684106
+memory_usages:
+- 4190208
+- 4227072
+- 4263936
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tak.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tarai.rb
+parameters:
+- 3
+- 4
+- 5
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tarai.rb
+parameter: 3
+iterations: 3
+max: 0.485334637
+min: 0.484775058
+median: 0.484833885
+mean: 0.484981193333333
+standard_deviation: 0.000251073658663917
+times:
+- 0.484833885
+- 0.485334637
+- 0.484775058
+memory_usages:
+- 3891200
+- 3928064
+- 3964928
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tarai.rb
+parameter: 4
+iterations: 3
+max: 0.584795737
+min: 0.584564223
+median: 0.58462531
+mean: 0.584661756666667
+standard_deviation: 9.79658194893614e-05
+times:
+- 0.58462531
+- 0.584564223
+- 0.584795737
+memory_usages:
+- 4079616
+- 4120576
+- 4157440
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tarai.rb
+parameter: 5
+iterations: 3
+max: 0.708462163
+min: 0.708294276
+median: 0.708415927
+mean: 0.708390788666667
+standard_deviation: 7.08070761263545e-05
+times:
+- 0.708294276
+- 0.708462163
+- 0.708415927
+memory_usages:
+- 4198400
+- 4235264
+- 4272128
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_app_tarai.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_binary_trees.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_binary_trees.rb
+parameter: 1
+iterations: 3
+max: 12.909971852
+min: 11.870117788
+median: 11.8826758
+mean: 12.2209218133333
+standard_deviation: 0.487258926893597
+times:
+- 12.909971852
+- 11.870117788
+- 11.8826758
+memory_usages:
+- 27127808
+- 29515776
+- 32149504
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_binary_trees.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+parameters:
+- 1
+- 2
+- 4
+- 8
+- 16
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+parameter: 1
+iterations: 3
+max: 0.005956499
+min: 0.005923238
+median: 0.005924848
+mean: 0.00593486166666667
+standard_deviation: 1.53140168981087e-05
+times:
+- 0.005924848
+- 0.005923238
+- 0.005956499
+memory_usages:
+- 3903488
+- 3944448
+- 3981312
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+parameter: 2
+iterations: 3
+max: 0.011873498
+min: 0.011729911
+median: 0.011817382
+mean: 0.0118069303333333
+standard_deviation: 5.90831879321203e-05
+times:
+- 0.011873498
+- 0.011817382
+- 0.011729911
+memory_usages:
+- 4104192
+- 4145152
+- 4182016
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+parameter: 4
+iterations: 3
+max: 0.024185401
+min: 0.023561981
+median: 0.024028895
+mean: 0.0239254256666667
+standard_deviation: 0.000264817611832916
+times:
+- 0.024185401
+- 0.023561981
+- 0.024028895
+memory_usages:
+- 4255744
+- 4292608
+- 4329472
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+parameter: 8
+iterations: 3
+max: 0.048621215
+min: 0.047365073
+median: 0.047416479
+mean: 0.0478009223333333
+standard_deviation: 0.00058041404097956
+times:
+- 0.048621215
+- 0.047416479
+- 0.047365073
+memory_usages:
+- 4444160
+- 4489216
+- 4534272
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+parameter: 16
+iterations: 3
+max: 0.095864588
+min: 0.094888808
+median: 0.09512469
+mean: 0.0952926953333333
+standard_deviation: 0.000415697001930757
+times:
+- 0.09512469
+- 0.094888808
+- 0.095864588
+memory_usages:
+- 4734976
+- 4792320
+- 4849664
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_multithreaded.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+parameters:
+- 1
+- 2
+- 4
+- 8
+- 16
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+parameter: 1
+iterations: 3
+max: 0.059023963
+min: 0.0589400389999999
+median: 0.058970772
+mean: 0.058978258
+standard_deviation: 3.46683293608108e-05
+times:
+- 0.058970772
+- 0.059023963
+- 0.0589400389999999
+memory_usages:
+- 3895296
+- 3932160
+- 3969024
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+parameter: 2
+iterations: 3
+max: 0.061223563
+min: 0.059211241
+median: 0.059226537
+mean: 0.0598871136666667
+standard_deviation: 0.000945033017881503
+times:
+- 0.061223563
+- 0.059226537
+- 0.059211241
+memory_usages:
+- 4096000
+- 4132864
+- 4177920
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+parameter: 4
+iterations: 3
+max: 0.059266051
+min: 0.058944639
+median: 0.059259998
+mean: 0.059156896
+standard_deviation: 0.000150108705585873
+times:
+- 0.059266051
+- 0.058944639
+- 0.059259998
+memory_usages:
+- 4247552
+- 4288512
+- 4325376
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+parameter: 8
+iterations: 3
+max: 0.059982733
+min: 0.059151748
+median: 0.059420353
+mean: 0.059518278
+standard_deviation: 0.000346242686348752
+times:
+- 0.059151748
+- 0.059982733
+- 0.059420353
+memory_usages:
+- 4440064
+- 4485120
+- 4534272
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+parameter: 16
+iterations: 3
+max: 0.059747154
+min: 0.059047734
+median: 0.05921848
+mean: 0.0593377893333333
+standard_deviation: 0.00029773939596604
+times:
+- 0.05921848
+- 0.059747154
+- 0.059047734
+memory_usages:
+- 4726784
+- 4784128
+- 4837376
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_count_shared_thread.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_eval.rb
+parameters:
+- 1000000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_eval.rb
+parameter: 1000000
+iterations: 3
+max: 7.079109468
+min: 6.629889445
+median: 7.00718639
+mean: 6.905395101
+standard_deviation: 0.19701227906443
+times:
+- 6.629889445
+- 7.00718639
+- 7.079109468
+memory_usages:
+- 21295104
+- 21430272
+- 21430272
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_eval.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fannkuch.rb
+parameters:
+- 6
+- 8
+- 10
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fannkuch.rb
+parameter: 6
+iterations: 3
+max: 0.003574233
+min: 0.003169663
+median: 0.003572759
+mean: 0.003438885
+standard_deviation: 0.000190369652924689
+times:
+- 0.003169663
+- 0.003572759
+- 0.003574233
+memory_usages:
+- 4071424
+- 4247552
+- 4284416
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fannkuch.rb
+parameter: 8
+iterations: 3
+max: 0.246549204
+min: 0.240913064
+median: 0.245367901
+mean: 0.244276723
+standard_deviation: 0.00242686637397048
+times:
+- 0.240913064
+- 0.245367901
+- 0.246549204
+memory_usages:
+- 10780672
+- 14647296
+- 14782464
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fannkuch.rb
+parameter: 10
+iterations: 3
+max: 30.322418564
+min: 29.922442607
+median: 30.320740324
+mean: 30.1885338316667
+standard_deviation: 0.18815615678797
+times:
+- 29.922442607
+- 30.320740324
+- 30.322418564
+memory_usages:
+- 16560128
+- 16674816
+- 16674816
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fannkuch.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fasta.rb
+parameters:
+- 1000000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fasta.rb
+parameter: 1000000
+iterations: 3
+max: 14.292804855
+min: 12.559646857
+median: 12.859761316
+mean: 13.2374043426667
+standard_deviation: 0.756271491463355
+times:
+- 14.292804855
+- 12.859761316
+- 12.559646857
+memory_usages:
+- 12263424
+- 18419712
+- 21245952
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fasta.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_ffi_printf.rb
+parameter: 
+status: "LoadError no such file to load -- ffi"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_ffi_printf.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fiber_ring.rb
+parameters:
+- 10
+- 100
+- 1000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fiber_ring.rb
+parameter: 10
+iterations: 3
+max: 0.000274561
+min: 0.000263509
+median: 0.000270749
+mean: 0.000269606333333333
+standard_deviation: 4.58373510966281e-06
+times:
+- 0.000270749
+- 0.000263509
+- 0.000274561
+memory_usages:
+- 4235264
+- 4386816
+- 4562944
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fiber_ring.rb
+parameter: 100
+iterations: 3
+max: 0.018215537
+min: 0.017523657
+median: 0.0175753
+mean: 0.017771498
+standard_deviation: 0.000314690032680837
+times:
+- 0.018215537
+- 0.017523657
+- 0.0175753
+memory_usages:
+- 5484544
+- 6328320
+- 6836224
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fiber_ring.rb
+parameter: 1000
+iterations: 3
+max: 1.731193541
+min: 1.682170346
+median: 1.692542208
+mean: 1.70196869833333
+standard_deviation: 0.0210944297861676
+times:
+- 1.682170346
+- 1.692542208
+- 1.731193541
+memory_usages:
+- 15339520
+- 24203264
+- 32047104
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fiber_ring.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fractal.rb
+parameters:
+- 5
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fractal.rb
+parameter: 5
+iterations: 3
+max: 2.332600965
+min: 2.326470293
+median: 2.32732323
+mean: 2.32879816266667
+standard_deviation: 0.00271143929445807
+times:
+- 2.332600965
+- 2.326470293
+- 2.32732323
+memory_usages:
+- 9543680
+- 9547776
+- 9547776
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_fractal.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_array.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_array.rb
+parameter: 1
+iterations: 3
+max: 15.824055763
+min: 15.784951063
+median: 15.807864994
+mean: 15.80562394
+standard_deviation: 0.0160428827998733
+times:
+- 15.807864994
+- 15.784951063
+- 15.824055763
+memory_usages:
+- 144248832
+- 146182144
+- 147660800
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_array.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_mb.rb
+parameters:
+- 500000
+- 1000000
+- 3000000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_mb.rb
+parameter: 500000
+iterations: 3
+max: 0.425989242
+min: 0.233218058
+median: 0.250051627
+mean: 0.303086309
+standard_deviation: 0.0871767953311786
+times:
+- 0.425989242
+- 0.250051627
+- 0.233218058
+memory_usages:
+- 45789184
+- 47161344
+- 48082944
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_mb.rb
+parameter: 1000000
+iterations: 3
+max: 0.697304228
+min: 0.470013092
+median: 0.505601658
+mean: 0.557639659333333
+standard_deviation: 0.0998207737668488
+times:
+- 0.697304228
+- 0.470013092
+- 0.505601658
+memory_usages:
+- 86401024
+- 83369984
+- 87449600
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_mb.rb
+parameter: 3000000
+iterations: 3
+max: 2.299539805
+min: 1.400104401
+median: 1.655655003
+mean: 1.78509973633333
+standard_deviation: 0.378429179400818
+times:
+- 2.299539805
+- 1.655655003
+- 1.400104401
+memory_usages:
+- 244441088
+- 252248064
+- 262688768
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_mb.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_string.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_string.rb
+parameter: 1
+iterations: 3
+max: 2.870943421
+min: 2.857076532
+median: 2.86177754
+mean: 2.863265831
+standard_deviation: 0.0057581194968549
+times:
+- 2.870943421
+- 2.86177754
+- 2.857076532
+memory_usages:
+- 79646720
+- 74215424
+- 74342400
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_gc_string.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_knucleotide.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_knucleotide.rb
+parameter: 1
+iterations: 3
+max: 0.80637046
+min: 0.737331452
+median: 0.757397124
+mean: 0.767033012
+standard_deviation: 0.0289969413279794
+times:
+- 0.80637046
+- 0.757397124
+- 0.737331452
+memory_usages:
+- 39297024
+- 39636992
+- 41811968
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_knucleotide.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_lucas_lehmer.rb
+parameters:
+- 9689
+- 9941
+- 11213
+- 19937
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_lucas_lehmer.rb
+parameter: 9689
+iterations: 3
+max: 4.441511719
+min: 4.435848312
+median: 4.441381353
+mean: 4.43958046133333
+standard_deviation: 0.00263956471262642
+times:
+- 4.435848312
+- 4.441511719
+- 4.441381353
+memory_usages:
+- 25853952
+- 25935872
+- 26066944
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_lucas_lehmer.rb
+parameter: 9941
+iterations: 3
+max: 4.796037186
+min: 4.791790752
+median: 4.794803353
+mean: 4.79421043033333
+standard_deviation: 0.00178357663055173
+times:
+- 4.794803353
+- 4.791790752
+- 4.796037186
+memory_usages:
+- 26238976
+- 26374144
+- 26525696
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_lucas_lehmer.rb
+parameter: 11213
+iterations: 3
+max: 6.833913734
+min: 6.830237386
+median: 6.832788618
+mean: 6.832313246
+standard_deviation: 0.00153804368339869
+times:
+- 6.830237386
+- 6.833913734
+- 6.832788618
+memory_usages:
+- 26673152
+- 26857472
+- 27033600
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_lucas_lehmer.rb
+parameter: 19937
+iterations: 3
+max: 36.671384929
+min: 36.631682608
+median: 36.661229414
+mean: 36.6547656503333
+standard_deviation: 0.0168405018482357
+times:
+- 36.631682608
+- 36.661229414
+- 36.671384929
+memory_usages:
+- 27316224
+- 28016640
+- 28708864
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_lucas_lehmer.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mandelbrot.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mandelbrot.rb
+parameter: 1
+iterations: 3
+max: 22.905355854
+min: 22.877193265
+median: 22.883016366
+mean: 22.8885218283333
+standard_deviation: 0.0121385183451566
+times:
+- 22.883016366
+- 22.877193265
+- 22.905355854
+memory_usages:
+- 9478144
+- 9482240
+- 9482240
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mandelbrot.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mbari_bogus1.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mbari_bogus1.rb
+parameter: 1
+iterations: 3
+max: 0.010424986
+min: 0.008178574
+median: 0.009181553
+mean: 0.00926170433333333
+standard_deviation: 0.000918843438101157
+times:
+- 0.010424986
+- 0.008178574
+- 0.009181553
+memory_usages:
+- 4874240
+- 5234688
+- 5521408
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mbari_bogus1.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mbari_bogus2.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mbari_bogus2.rb
+parameter: 1
+status: "NoMethodError undefined method `critical=' for Thread:Class"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mbari_bogus2.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mergesort.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mergesort.rb
+parameter: 1
+iterations: 3
+max: 0.657056444
+min: 0.620697125
+median: 0.624088557
+mean: 0.633947375333333
+standard_deviation: 0.0163991309471608
+times:
+- 0.657056444
+- 0.624088557
+- 0.620697125
+memory_usages:
+- 20520960
+- 19025920
+- 23887872
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mergesort.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mergesort_hongli.rb
+parameters:
+- 3000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mergesort_hongli.rb
+parameter: 3000
+iterations: 3
+max: 1.021214036
+min: 1.013689098
+median: 1.017082912
+mean: 1.017328682
+standard_deviation: 0.00307695467907647
+times:
+- 1.013689098
+- 1.017082912
+- 1.021214036
+memory_usages:
+- 14209024
+- 14245888
+- 14245888
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_mergesort_hongli.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_meteor_contest.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_meteor_contest.rb
+parameter: 1
+iterations: 3
+max: 6.320927257
+min: 6.275074842
+median: 6.317834447
+mean: 6.304612182
+standard_deviation: 0.020924183920856
+times:
+- 6.275074842
+- 6.317834447
+- 6.320927257
+memory_usages:
+- 10821632
+- 11100160
+- 11100160
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_meteor_contest.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_monte_carlo_pi.rb
+parameters:
+- 10000000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_monte_carlo_pi.rb
+parameter: 10000000
+iterations: 3
+max: 6.138967069
+min: 6.125912104
+median: 6.135847398
+mean: 6.13357552366667
+standard_deviation: 0.00556651222506198
+times:
+- 6.135847398
+- 6.125912104
+- 6.138967069
+memory_usages:
+- 9564160
+- 9568256
+- 9568256
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_monte_carlo_pi.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nbody.rb
+parameters:
+- 100000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nbody.rb
+parameter: 100000
+iterations: 3
+max: 4.637413547
+min: 4.63385672
+median: 4.635171107
+mean: 4.635480458
+standard_deviation: 0.00146845227090389
+times:
+- 4.637413547
+- 4.635171107
+- 4.63385672
+memory_usages:
+- 9572352
+- 9576448
+- 9576448
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nbody.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nsieve.rb
+parameters:
+- 9
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nsieve.rb
+parameter: 9
+status: "NoMethodError undefined method `zero?' for \"\\x01\":String"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nsieve.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nsieve_bits.rb
+parameters:
+- 8
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nsieve_bits.rb
+parameter: 8
+iterations: 3
+max: 2.117505518
+min: 2.086788968
+median: 2.091819758
+mean: 2.098704748
+standard_deviation: 0.0134518629800411
+times:
+- 2.117505518
+- 2.086788968
+- 2.091819758
+memory_usages:
+- 9621504
+- 10100736
+- 10100736
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_nsieve_bits.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_open_many_files.rb
+parameters:
+- 50000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_open_many_files.rb
+parameter: 50000
+iterations: 3
+max: 0.219521713
+min: 0.213514666
+median: 0.218661965
+mean: 0.217232781333333
+standard_deviation: 0.00265243006566331
+times:
+- 0.213514666
+- 0.218661965
+- 0.219521713
+memory_usages:
+- 6717440
+- 8785920
+- 10166272
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_open_many_files.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_partial_sums.rb
+parameters:
+- 2500000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_partial_sums.rb
+parameter: 2500000
+iterations: 3
+max: 12.09599698
+min: 12.077035065
+median: 12.078553814
+mean: 12.083861953
+standard_deviation: 0.00860313159453409
+times:
+- 12.09599698
+- 12.077035065
+- 12.078553814
+memory_usages:
+- 9699328
+- 9703424
+- 9703424
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_partial_sums.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_pathname.rb
+parameters:
+- 100
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_pathname.rb
+status: Timeout
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_primes.rb
+parameters:
+- 3000
+- 30000
+- 300000
+- 3000000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_primes.rb
+parameter: 3000
+iterations: 3
+max: 0.026082332
+min: 0.009983496
+median: 0.011262635
+mean: 0.0157761543333333
+standard_deviation: 0.00730625406611826
+times:
+- 0.026082332
+- 0.011262635
+- 0.009983496
+memory_usages:
+- 5394432
+- 5529600
+- 5529600
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_primes.rb
+parameter: 30000
+iterations: 3
+max: 0.276560922
+min: 0.113366968
+median: 0.114616159
+mean: 0.168181349666667
+standard_deviation: 0.0766376273723981
+times:
+- 0.276560922
+- 0.114616159
+- 0.113366968
+memory_usages:
+- 8146944
+- 8458240
+- 9363456
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_primes.rb
+parameter: 300000
+iterations: 3
+max: 3.576541412
+min: 1.207703567
+median: 1.212330026
+mean: 1.998858335
+standard_deviation: 1.11559200117243
+times:
+- 3.576541412
+- 1.207703567
+- 1.212330026
+memory_usages:
+- 11681792
+- 11681792
+- 11681792
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_primes.rb
+parameter: 3000000
+iterations: 3
+max: 52.271474852
+min: 13.420813838
+median: 13.429789484
+mean: 26.374026058
+standard_deviation: 18.3122620242821
+times:
+- 52.271474852
+- 13.429789484
+- 13.420813838
+memory_usages:
+- 23109632
+- 23109632
+- 23109632
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_primes.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_quicksort.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_quicksort.rb
+parameter: 1
+iterations: 3
+max: 1.466398012
+min: 1.428768138
+median: 1.431428548
+mean: 1.44219823266667
+standard_deviation: 0.0171462616951635
+times:
+- 1.466398012
+- 1.428768138
+- 1.431428548
+memory_usages:
+- 44433408
+- 48607232
+- 49225728
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_quicksort.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_read_large.rb
+parameters:
+- 100
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_read_large.rb
+parameter: 100
+iterations: 3
+max: 2.084090039
+min: 2.077734103
+median: 2.083976429
+mean: 2.08193352366667
+standard_deviation: 0.00296980103258837
+times:
+- 2.084090039
+- 2.077734103
+- 2.083976429
+memory_usages:
+- 9543680
+- 9560064
+- 9560064
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_read_large.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_regex_dna.rb
+parameters:
+- 20
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_regex_dna.rb
+parameter: 20
+iterations: 3
+max: 3.084489083
+min: 3.082241176
+median: 3.083027446
+mean: 3.08325256833333
+standard_deviation: 0.000931408080591224
+times:
+- 3.083027446
+- 3.084489083
+- 3.082241176
+memory_usages:
+- 8302592
+- 9904128
+- 12152832
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_regex_dna.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_reverse_compliment.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_reverse_compliment.rb
+parameter: 1
+iterations: 3
+max: 2.753335579
+min: 2.741494789
+median: 2.748131984
+mean: 2.74765411733333
+standard_deviation: 0.00484577784394883
+times:
+- 2.753335579
+- 2.748131984
+- 2.741494789
+memory_usages:
+- 24068096
+- 24051712
+- 24051712
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_reverse_compliment.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_connect.rb
+parameters:
+- 1
+- 100
+- 500
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_connect.rb
+parameter: 1
+iterations: 3
+max: 0.134214072
+min: 0.13159932
+median: 0.131928391
+mean: 0.132580594333333
+standard_deviation: 0.00116282956515113
+times:
+- 0.134214072
+- 0.131928391
+- 0.13159932
+memory_usages:
+- 4259840
+- 4300800
+- 4337664
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_connect.rb
+parameter: 100
+iterations: 3
+max: 0.138247613
+min: 0.137584148
+median: 0.137720516
+mean: 0.137850759
+standard_deviation: 0.000286087260397943
+times:
+- 0.137584148
+- 0.138247613
+- 0.137720516
+memory_usages:
+- 4501504
+- 4599808
+- 4714496
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_connect.rb
+parameter: 500
+iterations: 3
+max: 0.169172363
+min: 0.16629898
+median: 0.169002744
+mean: 0.168158029
+standard_deviation: 0.00131636875269079
+times:
+- 0.169002744
+- 0.169172363
+- 0.16629898
+memory_usages:
+- 4759552
+- 4771840
+- 5046272
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_connect.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_server.rb
+parameters:
+- 1
+- 100
+- 100000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_server.rb
+parameter: 1
+iterations: 3
+max: 0.135833281
+min: 0.131469096
+median: 0.135374506
+mean: 0.134225627666667
+standard_deviation: 0.00195814006090104
+times:
+- 0.131469096
+- 0.135833281
+- 0.135374506
+memory_usages:
+- 4263936
+- 4304896
+- 4341760
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_server.rb
+parameter: 100
+iterations: 3
+max: 0.13418592
+min: 0.131950557
+median: 0.132613253
+mean: 0.132916576666667
+standard_deviation: 0.000937448974793626
+times:
+- 0.13418592
+- 0.132613253
+- 0.131950557
+memory_usages:
+- 4554752
+- 4714496
+- 4874240
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_server.rb
+parameter: 100000
+iterations: 3
+max: 1.337752677
+min: 1.321985858
+median: 1.324481564
+mean: 1.32807336633333
+standard_deviation: 0.00691972679354681
+times:
+- 1.337752677
+- 1.321985858
+- 1.324481564
+memory_usages:
+- 21680128
+- 32120832
+- 43192320
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_simple_server.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_ackermann.rb
+parameters:
+- 7
+- 9
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_ackermann.rb
+parameter: 7
+iterations: 3
+max: 0.053713112
+min: 0.052435342
+median: 0.052901077
+mean: 0.0530165103333333
+standard_deviation: 0.000527994750010725
+times:
+- 0.053713112
+- 0.052901077
+- 0.052435342
+memory_usages:
+- 4034560
+- 4071424
+- 4108288
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_ackermann.rb
+parameter: 9
+iterations: 3
+max: 0.847062985
+min: 0.844574469
+median: 0.845269619
+mean: 0.845635691
+standard_deviation: 0.00104839067223758
+times:
+- 0.844574469
+- 0.847062985
+- 0.845269619
+memory_usages:
+- 4685824
+- 4722688
+- 4759552
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_ackermann.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_array.rb
+parameters:
+- 9000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_array.rb
+parameter: 9000
+iterations: 3
+max: 1.835739115
+min: 1.832485055
+median: 1.832782042
+mean: 1.83366873733333
+standard_deviation: 0.00146899014780363
+times:
+- 1.832485055
+- 1.835739115
+- 1.832782042
+memory_usages:
+- 4030464
+- 4214784
+- 4395008
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_array.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_count_words.rb
+parameters:
+- 100
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_count_words.rb
+parameter: 100
+iterations: 3
+max: 2.880847829
+min: 2.877012563
+median: 2.879577375
+mean: 2.87914592233333
+standard_deviation: 0.00159518648342842
+times:
+- 2.880847829
+- 2.877012563
+- 2.879577375
+memory_usages:
+- 45305856
+- 45494272
+- 45780992
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_count_words.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_exception.rb
+parameters:
+- 500000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_exception.rb
+parameter: 500000
+iterations: 3
+max: 9.293956285
+min: 9.25053338
+median: 9.256427865
+mean: 9.26697251
+standard_deviation: 0.0192315595362031
+times:
+- 9.256427865
+- 9.25053338
+- 9.293956285
+memory_usages:
+- 23670784
+- 23957504
+- 23957504
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_exception.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_lists.rb
+parameters:
+- 1000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_lists.rb
+parameter: 1000
+iterations: 3
+max: 4.416229805
+min: 4.383292382
+median: 4.405436719
+mean: 4.40165296866667
+standard_deviation: 0.013710240294733
+times:
+- 4.383292382
+- 4.405436719
+- 4.416229805
+memory_usages:
+- 15687680
+- 15802368
+- 16195584
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_lists.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_lists_small.rb
+parameters:
+- 1000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_lists_small.rb
+parameter: 1000
+iterations: 3
+max: 0.887842142
+min: 0.883639643
+median: 0.886226224
+mean: 0.885902669666667
+standard_deviation: 0.0017308504684527
+times:
+- 0.886226224
+- 0.883639643
+- 0.887842142
+memory_usages:
+- 14098432
+- 12722176
+- 14274560
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_lists_small.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_matrix.rb
+parameters:
+- 60
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_matrix.rb
+parameter: 60
+iterations: 3
+max: 0.566621148
+min: 0.552999095
+median: 0.56294237
+mean: 0.560854204333333
+standard_deviation: 0.00575386298482952
+times:
+- 0.566621148
+- 0.56294237
+- 0.552999095
+memory_usages:
+- 4530176
+- 4984832
+- 5378048
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_matrix.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_object.rb
+parameters:
+- 500000
+- 1000000
+- 1500000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_object.rb
+parameter: 500000
+iterations: 3
+max: 0.369355088
+min: 0.358149958
+median: 0.369152822
+mean: 0.365552622666667
+standard_deviation: 0.00523512565968413
+times:
+- 0.369152822
+- 0.358149958
+- 0.369355088
+memory_usages:
+- 9531392
+- 9539584
+- 9539584
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_object.rb
+parameter: 1000000
+iterations: 3
+max: 0.732158318
+min: 0.721764708
+median: 0.727046713
+mean: 0.726989913
+standard_deviation: 0.00424336359413337
+times:
+- 0.727046713
+- 0.732158318
+- 0.721764708
+memory_usages:
+- 9609216
+- 9609216
+- 9609216
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_object.rb
+parameter: 1500000
+iterations: 3
+max: 1.091545121
+min: 1.074391509
+median: 1.080000665
+mean: 1.08197909833333
+standard_deviation: 0.00714130006849683
+times:
+- 1.080000665
+- 1.091545121
+- 1.074391509
+memory_usages:
+- 9609216
+- 9609216
+- 9609216
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_object.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_sieve.rb
+parameters:
+- 4000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_sieve.rb
+parameter: 4000
+iterations: 3
+max: 8.734797266
+min: 8.710128824
+median: 8.716884597
+mean: 8.72060356233333
+standard_deviation: 0.0104085232714903
+times:
+- 8.734797266
+- 8.710128824
+- 8.716884597
+memory_usages:
+- 6660096
+- 9461760
+- 11239424
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_so_sieve.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_socket_transfer_1mb.rb
+parameters:
+- 10000
+- 1000000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_socket_transfer_1mb.rb
+parameter: 10000
+iterations: 3
+max: 0.456490091
+min: 0.391430675
+median: 0.392844719
+mean: 0.413588495
+standard_deviation: 0.0303415016615734
+times:
+- 0.456490091
+- 0.391430675
+- 0.392844719
+memory_usages:
+- 4771840
+- 4984832
+- 5275648
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_socket_transfer_1mb.rb
+parameter: 1000000
+iterations: 3
+max: 0.414370866
+min: 0.395690025
+median: 0.395717973
+mean: 0.401926288
+standard_deviation: 0.00879965288979205
+times:
+- 0.395717973
+- 0.395690025
+- 0.414370866
+memory_usages:
+- 6606848
+- 7888896
+- 8159232
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_socket_transfer_1mb.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_socket_transfer_1mb_noblock.rb
+parameters:
+- 10000
+- 1000000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_socket_transfer_1mb_noblock.rb
+parameter: 10000
+status: "NameError uninitialized constant IO::WaitWritable"
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_socket_transfer_1mb_noblock.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_spectral_norm.rb
+parameters:
+- 100
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_spectral_norm.rb
+parameter: 100
+iterations: 3
+max: 0.199212571
+min: 0.192933634
+median: 0.195707362
+mean: 0.195951189
+standard_deviation: 0.00256915695211991
+times:
+- 0.199212571
+- 0.192933634
+- 0.195707362
+memory_usages:
+- 9584640
+- 9592832
+- 9592832
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_spectral_norm.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_string_concat.rb
+parameters:
+- 10000000
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_string_concat.rb
+parameter: 10000000
+iterations: 3
+max: 1.611441604
+min: 1.592067625
+median: 1.595581965
+mean: 1.59969706466667
+standard_deviation: 0.00842766474270147
+times:
+- 1.592067625
+- 1.595581965
+- 1.611441604
+memory_usages:
+- 363999232
+- 724004864
+- 1084002304
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_string_concat.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_sum_file.rb
+parameters:
+- 100
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_sum_file.rb
+parameter: 100
+iterations: 3
+max: 3.62407352
+min: 3.482693745
+median: 3.50368963
+mean: 3.536818965
+standard_deviation: 0.0622908491027874
+times:
+- 3.50368963
+- 3.482693745
+- 3.62407352
+memory_usages:
+- 9535488
+- 9551872
+- 9551872
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_sum_file.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_word_anagrams.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_word_anagrams.rb
+parameter: 1
+iterations: 3
+max: 4.114993879
+min: 3.940014537
+median: 4.009441192
+mean: 4.02148320266667
+standard_deviation: 0.0719407165535638
+times:
+- 4.114993879
+- 3.940014537
+- 4.009441192
+memory_usages:
+- 39464960
+- 38203392
+- 40882176
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_word_anagrams.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_write_large.rb
+parameters:
+- 100
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_write_large.rb
+parameter: 100
+iterations: 3
+max: 0.155961349
+min: 0.140094275
+median: 0.14044744
+mean: 0.145501021333333
+standard_deviation: 0.00739797371130907
+times:
+- 0.155961349
+- 0.14044744
+- 0.140094275
+memory_usages:
+- 4706304
+- 5599232
+- 6492160
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_write_large.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_create_variations.rb
+parameter: 
+status: "LoadError no such file to load -- RedCloth"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_create_variations.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_load_products.rb
+parameter: 
+status: "LoadError no such file to load -- RedCloth"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_load_products.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_one_tenth_startup.rb
+parameter: 
+status: "LoadError no such file to load -- RedCloth"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_one_tenth_startup.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_request_root_30x.rb
+parameter: 
+status: "LoadError no such file to load -- RedCloth"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_request_root_30x.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_request_root_same_session_30x.rb
+parameter: 
+status: "LoadError no such file to load -- RedCloth"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rails/bm_substruct_request_root_same_session_30x.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_against_itself_darkfish.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_against_itself_darkfish.rb
+parameter: 1
+iterations: 3
+max: 7.620891178
+min: 7.198753703
+median: 7.252337269
+mean: 7.35732738333333
+standard_deviation: 0.187647195610341
+times:
+- 7.620891178
+- 7.198753703
+- 7.252337269
+memory_usages:
+- 36868096
+- 38162432
+- 39890944
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_against_itself_darkfish.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_against_itself_ri.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_against_itself_ri.rb
+parameter: 1
+iterations: 3
+max: 6.006817018
+min: 5.65280198
+median: 5.662727824
+mean: 5.77411560733333
+standard_deviation: 0.164594634358618
+times:
+- 6.006817018
+- 5.662727824
+- 5.65280198
+memory_usages:
+- 38551552
+- 38764544
+- 39153664
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_against_itself_ri.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_core_darkfish.rb
+parameters:
+- 1
+ruby_ver: 1.9.1 2010-01-10 378 x86_64-linux; -O2 -march=nocona -pipe -g -Wall -Wno-parentheses; 'optflags=-O2 -march=nocona -pipe'
+---
+name: /root/ruby-benchmark-suite/benchmarks/micro-benchmarks/bm_pathname.rb
+parameter: 100
+status: "Errno::ENOENT No such file or directory - /root/ruby-benchmark-suite/benchmarks/rdoc/doc/OpenSSL/X509/Certificate"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_core_darkfish.rb
+parameter: 1
+iterations: 3
+max: 78.080223476
+min: 66.190899578
+median: 67.749832412
+mean: 70.673651822
+standard_deviation: 5.27576507213933
+times:
+- 78.080223476
+- 67.749832412
+- 66.190899578
+memory_usages:
+- 153075712
+- 184987648
+- 187092992
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/bm_rdoc_core_darkfish.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_answer.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_erb.rb
+parameter: 
+status: "NameError uninitialized constant DATA"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_erb.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_factorial.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_fib.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_mandelbrot.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_pentomino.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_raise.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_strconcat.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_tak.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_tarai.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_app_uri.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_io_file_create.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_io_file_read.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_io_file_write.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_loop_for.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_loop_generator.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_loop_times.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_loop_whileloop.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_loop_whileloop2.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_ackermann.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_array.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_binary_trees.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_concatenate.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_count_words.rb
+parameter: 
+status: "Errno::ENOENT No such file or directory - /root/ruby-benchmark-suite/utils/wc.input"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_count_words.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_exception.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_fannkuch.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_fasta.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_k_nucleotide.rb
+parameter: 
+status: "Errno::ENOENT No such file or directory - /root/ruby-benchmark-suite/utils/fasta.output.100000"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_k_nucleotide.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_lists.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_mandelbrot.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_matrix.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_meteor_contest.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_nbody.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_nested_loop.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_nsieve.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_nsieve_bits.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_object.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_partial_sums.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_pidigits.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_random.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_reverse_complement.rb
+parameter: 
+status: "Errno::ENOENT No such file or directory - /root/ruby-benchmark-suite/utils/fasta.output.2500000"
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_reverse_complement.rb
+status: Terminated for unknown reason
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_sieve.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_so_spectralnorm.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_block.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_const.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_ensure.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_ivar.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_ivar_set.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_length.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_neq.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_not.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_rescue.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_simplereturn.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm1_swap.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_array.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_case.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_eval.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_method.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_mutex.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_poly_method.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_poly_method_ov.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_proc.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_regexp.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_send.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_super.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_unif1.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm2_zsuper.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm3_gc.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm3_thread_create_join.rb
+status: success
+---
+name: /root/ruby-benchmark-suite/benchmarks/rdoc/ruby_trunk/benchmark/bm_vm3_thread_mutex.rb
+status: success
