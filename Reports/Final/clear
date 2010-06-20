@@ -1,0 +1,11 @@
+#!/bin/bash
+rm *.aux
+rm *.bbl
+rm *.blg
+rm *.idx
+rm *.lof
+rm *.log
+rm *.lot
+rm *.out
+#rm *.pdf
+rm *.toc

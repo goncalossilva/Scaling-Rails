@@ -1,0 +1,118 @@
+\section{Operating Systems} % (fold)
+\label{solution:sec:operating_systems}
+
+Using Linux and BSD, the focus on this system component was to create generic benchmarking tools, determine the operating system in which common web servers perform better and to determine the OS in which the official Ruby interpreters have the best performance.
+
+As exposed in chapter~\ref{state:sec:operating_systems}, Windows is not a suitable OS for production environments of Ruby on Rails applications because of its poor and inefficient support for this applications that use this framework, being excluded from further research. On the other hand, Mac OS X Server requires specific hardware so any comparison's would not be rigorous. Its performance is expected to be similar to BSD systems since, as mentioned in section~\ref{tech:sec:operating_systems}, its kernel is based on this OS, reducing the downside of its exclusion.
+
+\begin{comment}
+Create generic and specific tools of OS performance measurement
+
+Find the best OS for Rails by benchmarking the most likely candidates (same hardware)
+
+Tweak OSes configurations
+
+OSes are already highly optimized, OS development doesn't make much sense
+\end{comment}
+
+
+\subsection{Development}
+Concerning development, a generic benchmarking script was created. This script was based on a few commonly found tools on Unix setups and consists on 5 micro-tests and 1 macro-test, respectively:
+\begin{enumerate}
+  \item Use hdparm to time cached reads on the disk;
+  \item Compress a 2.5GB file to ZIP format using gzip;
+  \item Uncompress the previously created archive;
+  \item Convert a 214MB WAV file to MP3 using lame;
+  \item Convert the same 214MB WAV file to OGG using vorbis-tools;
+  \item Parallelly run all the aforementioned benchmarks while extracting, compiling, installing and removing PHP 5.2.12.
+\end{enumerate}
+The script measures the real amount of time needed to accomplish each task, the number of voluntary context switches and the average CPU usage. GNU time is used to make all measurements except in the first test, since hdparm itself measures the amount of cached data read in 2 seconds yielding results in MB/second. All tests are ran a configurable amount of times to cancel circumstantial issues, the default being 3. Exception is made on the last test which is very heavy and lengthy, so it only runs once.
+
+The first test aims at testing hard drive access speed, which are dependent on the filesystem in use and the OS's IO management. The second and third tests are more complex since but similar. Both read a file with considerable size from the disk, convert it and write the result. However, the main bottleneck happens when writing the result file since writing is slower process than reading and the ZIP algorithm is lightweight and fast. The fourth and fifth tests are more CPU-intensive. Audio format conversions tend to demand a significant amount of processing power. The tools in use---lame and vorbis-tools---stress the OS even further by using multiple processes and threads, inducing various context switches. Finally, the last test aims at testing the OS's ability to manage a high workload since multiple heavy tasks are being carried simultaneously, involving concurrent IO, context switches, scheduling and a few other core tasks.
+
+\subsection{Benchmarking}
+The benchmarking phase had the clear goal of defining which is the likely best OS to invest in the remaining work. It was also very important to gather data about each OS/distribution behavior so that it would be inserted in the aforementioned guidelines in conventions.
+
+\subsubsection{Generic Benchmarking of Linux distributions}
+First of all, it was important to choose one of the Linux distributions mentioned in section~\ref{tech:sec:operating_systems} to be stacked against FreeBSD, the most popular BSD distribution. A benchmark using the aforementioned generic script was performed on Ubuntu Server, Debian, CentOS and Gentoo. All distributions were running their default configurations for all packages. The results are shown in table~\ref{TABELA TABELA}.
+\\
+TABELA TABELA
+\\
+Gentoo's performance is better by a slight margin in the first test, yielding results which range from 3\% to 7\% better than the other distributions. The second test yielded similar results, with Debian's performance being very close to Gentoo's. CentOS shows serious issues in this test, being 502\% slower than Gentoo. Regarding the third test, Gentoo showed the best result, followed by Debian's. CentOS yields very poor results again, being 1903\% slower than Gentoo. Quite unexpectedly, CentOS had the best performance in the fourth test by a comfortable margin, with Debian's results being the second best once again. Ubuntu yielded the best performance in the fifth test, with Debian and Gentoo having very close results. CentOS shows the worst results by a considerable 13\% margin. Finally, Debian yielded the best results in the final test by a substantial margin. CentOS's results, once more, show a considerable performance deficiency when compared to the other distributions' results.
+
+According to these results, Gentoo is the best distribution in CPU usage and IO operations on a single instance, present in tests 1, 2 and 3. When it comes to almost pure CPU usage, CentOS and Ubuntu yield the best results. Last but not least, Debian showed an impressive behavior handling concurrent tasks present in the last test.
+
+CentOS's behavior was unstable and inconsistent. Given these results, it was discarded from future work.
+
+\subsubsection{Web Server Benchmarking on Linux distributions}
+Since there are still 3 possible Linux distributions to be compared with FreeBSD, a different benchmark was endured. This time, its focus was oriented towards web server performance.
+
+This test used a simple static HTML page served by either Apache or Nginx. Using Ubuntu Server, Debian and Gentoo many requests/concurrency combinations were used, namely:
+\begin{enumerate}
+  \item 10000 requests, 1000 concurrent
+  \item 100000 requests, 1000 concurrent
+  \item 100000 requests, 10000 concurrent
+\end{enumerate}
+Apache's ab utility was used to perform the tests. All of them were local, providing zero network overhead since the goal is to measure raw web server performance on each OS. If any request took more than 30 seconds to be replied to the test was considered a failure, as a higher response time is not acceptable in real world applications. The web server configurations were not the default ones on this test. Since some distributions loaded more modules than others and this could have a significant impact the web server performance, all unnecessary modules and options for this benchmark were removed from the configurations.
+
+Regarding the Apache benchmark, table~\ref{WWWWWWWWWWWW} shows that Gentoo had the best performance in the first Apache test, with Debian achieving similar results. Ubuntu, however, did not cope with the other's behavior, needing a considerable amount of extra time to accomplish the same test. As seen on table~\ref{WWWWWWWWWWWWW}, Gentoo showed the best performance in the second Apache test. Debian had a considerably worse performance and Ubuntu failed this test as many requests took more than the aforementioned 30 seconds to be replied to. Finally, table~\ref{WWWWWWWWWWWWWWWW} shows the results of the last Apache benchmark, where all distributions failed to successfully complete the benchmark except Gentoo, which needed a high average amount of time to complete but was still able to reply to all requests within the established time limit.
+
+Concerning the Nginx benchmark, table~\ref{WWWWWWWWWWWW} shows that this time it was Debian to achieve the best result on the first benchmark, yielding impressive performance. The results of the second test are shown on table~\ref{WWWWWWWWWWWW} and Debian seems to be the best performing distribution once again. The third test's results showed some unexpected results since, similarly to the Apache benchmark, neither Debian nor Ubuntu were able to cope with the high demand, leaving the best result to Gentoo which was the only distribution to successfully complete the final test. These results can be found in table~\ref{WWWWWWWWWWWW}.
+
+Gentoo showed an excellent behavior when scaling. The difference in average time taken for each request on tests 1 and 2 of both web servers is remarkably small. It was also the only distribution to be able to cope with 100000 requests with 10000 of them concurrent, either on Apache and Nginx. These results allowed to confidently decide that Gentoo is the best distribution to compare to FreeBSD.
+
+\subsubsection{Ruby Benchmark on Gentoo and FreeBSD}
+Given this research's scope, it is important to determine which of the aforementioned OSes---Gentoo Linux or FreeBSD---provide the best environment for a Ruby on Rails application. A Ruby on Rails application, as the name implies, is written in Ruby just like the framework it is using. Therefore, Ruby is a core component from Rails' perspective. The official Ruby interpreters are likely to yield different performance results on different OSes since they are mainly developed in Linux and then ported to other Operating Systems. If we take into account the already known differences stated on section~\ref{state:sec:operating_systems}, benchmarking this core component is likely to yield different results and to enable a confident assertion about the OS in which it is developed---Linux---is the best for a Ruby on Rails application or not.
+
+For this benchmark, Antonio Cangiano's Ruby benchmarking suite~\cite[ruby-benchmarking-suite] was used. It currently contains 62 micro benchmarks which test specific Ruby features, 8 macro benchmarks which test multiple Ruby features in a single test and 3 RDoc-related benchmarks. Each benchmark ran 5 times and had a 300 second timeout. This high test variety provides a wide coverage of many Ruby features, solidly asserting about the interpreter's overall performance. All tests were ran using both Ruby interpreters, MRI (Ruby 1.8) and YARV (Ruby 1.9), in both operating systems.
+\\
+TABELA TABELA
+\\
+As seen on table~\ref{TABELA MRI}, MRI has a better overall performance in Linux. The average improvement is of 29.34\%.
+
+Table~\ref{TABELA YARV} shows the results of the YARV benchmark. Similarly to MRI's benchmark, YARV has a better overall performance in Linux. The average improvement is 22.21\% on this test.
+
+After eliminating FreeBSD from the benchmarking subjects, Gentoo Linux is the OS that will be used in future work. It is very stable, configurable and enables improved performance of Ruby-related software when compared to FreeBSD.
+
+\begin{comment}
+Use the generic benchmarks mentioned above
+
+Web server benchmark (Nginx/Apache on each disto)
+
+Ruby benchmarks on each OS
+
+Show results and analysis
+\end{comment}
+
+
+\subsection{Tweaking}
+There are many configurations and options that can be fine-tuned on an Operating System. Sysctl enables kernel parameter configuration at runtime. The aforeshown web server benchmarks required some optimization changes to improve the system's stability under high-load. These are shown on table~\ref{tab:sysctl}.
+\begin{table}[ht]
+  \centering
+  
+  \begin{tabular}{p{0.05\textwidth}|p{0.32\textwidth}|p{0.25\textwidth}}
+    \textsc{\#} 
+  & \textsc{Name}
+  & \textsc{Value} \\
+  \hline
+  1 & net.core.rmem\_max & 16777216 \\
+  2 & net.core.wmem\_max & 16777216 \\
+  3 & net.ipv4.tcp\_rmem & 4096~\, 87380~\, 16777216 \\  
+  4 & net.ipv4.tcp\_wmem & 4096~\, 87380~\, 16777216 \\
+  5 & net.core.netdev\_max\_backlog & 4096 \\
+  6 & net.core.somaxconn & 4096 \\
+  7 & net.ipv4.tcp\_tw\_reuse & 1 \\
+  8 & net.ipv4.tcp\_tw\_recycle & 1 \\
+  9 & net.ipv4.tcp\_fin\_timeout & 15 \\
+  10 & net.ipv4.tcp\_timestamps & 0 \\
+  11 & net.ipv4.tcp\_orphan\_retries & 1 \\
+  
+  \end{tabular}
+  \caption{Sysctl options and values}
+  \label{tab:sysctl}
+\end{table}
+Options 1, 2, 3 and 4 increase the TCP buffers on read/write, improving the system performance when dealing with big transfers. Options 5 and 6 increase the number of connections which are allowed to be queued behind a busy kernel. Options 7 and 8 enable socket reusing and fast socket recycling. Option 9 decreases the time allowed for a socket to exists without a connection. Option 10 disables timestamps in packet headers, reducing the packet's size. Finally, option 11 decreases the number of retries before killing the TCP connection.
+
+The number of opened files limit also had to be increased in the system's limits configuration. It defaults to 1024 which is very low on a server, taking into account that each socket connection uses a file on a UNIX system. This would generally cap the system's concurrency ability to ~1000, so it was increased to 65536.
+
+A few other options are worth investigating. Many server-oriented distributions use the Deadline IO scheduler which gives a higher priority to read requests, while others use the CFQ scheduler which is commonly found on desktop systems. Preemption should also be disabled on a server kernel. In non-preemptive configurations, kernel code runs until completion---the scheduler can't touch it until it's finished. Server kernels should also have their timer interrupt rate set to 100Hz, which causes higher latency but lower overhead, yielding superior raw processing power.

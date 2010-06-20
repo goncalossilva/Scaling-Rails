@@ -1,0 +1,74 @@
+\chapter{Problem Statement} % (fold)
+\label{cha:problem_statement}
+\headermark{Problem Statement}
+
+\section*{} % (fold)
+The Ruby on Rails community has noticeable difficulty in building highly scalable systems. The lack of generic centralized information, intuitive profiling tools and global awareness of this subjects's importance all contribute to this problem.
+
+As observable on chapter~\ref{cha:state_of_the_art}, there exists some information regarding benchmarks and configurations of the various components involved in a Rails application but it is, however, very scattered. Most tests and configuration evaluations are not generic, focusing on specific components, setups or purposes. It is crucial to create a solid set of conventions and guidelines that are generic and cover all components, approaching benchmarking and tweaking from a unified perspective---optimizing Ruby on Rails.
+
+Currently, the native profiling tools in Ruby on Rails are non-functional when the most recent version of Ruby is in use. While complicating the act of profiling an application, this also prevents some users from switching to version 1.9 and leveraging from its increased performance. At the same time, the output formats supported for result files are all text based. Profiling is an essential aspect of increasing an application's performance, so it is very important to fix Ruby and Rails' profiling tools, provide a seamless integration between them on the most recent versions and create alternate, more intuitive output formats.
+
+As mentioned in chapter~\ref{cha:introduction}, Twitter---and a few other renowned platforms---had many scalability issues which were not discrete, some becoming quite famous. However, the global awareness of the Ruby on Rails community regarding the importance of scalability is still remarkably low. Most plugins do not support Ruby 1.9 and do not function under Rails 3, despite having the updated API available shortly after its development began, back in early 2009. Famous Rails applications, like Redmine, also do not support Ruby 1.9 and haven't started upgrading to Rails 3. It is important to increase the community's \textit{momentum} by updating famous plugins and applications, pushing it forward and possibly igniting an update-focused philosophy.
+
+Using the aforementioned perspective, specific components have specific issues that need to be addressed. They can pose as obstacles when attempting to solve the previously mentioned problems. These issues are explained and explored on the following sections.
+
+\section{Operating Systems}
+Focusing on finding specific Operating Systems bottlenecks and solving or improving them is unlikely to be worthwhile, given the huge community backing each one of them and the significant amount of time it spends in discussing, implementing and improving solutions to given bottlenecks.
+
+However, the lack of generic benchmarking tools limits one's ability to fairly compare the performance of operating systems. These should be created, taking into account common tasks performed by them. 
+
+Determining which OS best handles web server load with the default configuration is also important to build a starting point for deploying and optimizing Rails applications. 
+
+Finally, as mentioned in section~\ref{tech:sec:ruby}, Ruby is mainly developed in Linux but should easily run on many other operating systems. However, as seen on section~\ref{state:sec:operating_systems}, its performance can greatly differ depending on what OS is running it.
+
+\section{Ruby}
+Ruby 1.9 is supposed to have a noticeably better performance than its ancestor. Most Rails applications were developed with version 1.8 and would highly benefit from the new version's improvements if they were upgraded. It is crucial to determine the benefits of this upgrade to justify the effort needed to accomplish it. 
+
+As explained in section~\ref{state:sec:ruby}, most of the Ruby-related performance bottlenecks found in Rails applications are related to its garbage collector. Despite using a not very optimized garbage collection algorithm---\textit{mark-and-sweep}---it is not configurable, lacking the ability to adapt itself to the application it is running. As seen on section~\ref{tech:sec:ruby}, there are many benefits in having a configurable GC, so it becomes important to give YARV this flexibility. 
+
+Finally, the integration between Rails' profiling and benchmarking tools and Ruby is outdated or, in some cases, nonexistent. It is important to update the existing tools and create new ones, therefore improving YARV's data retrieval abilities and its integration with Rails' profiling and benchmarking facilities.
+
+\section{Rails Web Servers}
+There are many analysis concerning web server performance but unfortunately most of them are outdated, do not apply to nowadays' setups, do not cover a wide range of web servers or have relevant data missing. For instance, the high quality analysis mentioned in~\ref{state:sec:rails_web_servers} does not include Unicorn, nor does it test Mongrel, Passenger and Thin behind other web servers. One of the critically significant but frequently missing aspect in benchmarks is memory usage.
+
+It is also important to analyze the high-load response of each web server by stressing it to its limits and evaluating its behavior from a stability perspective. 
+
+An up-to-date analysis covering raw performance, high-load stability and memory usage is crucial for increasing developers' awareness of the benefits and shortcomings of each web server setup. Since most web servers are natively flexible and configurable, its essential to explore and analyze their configuration options as well.
+
+\section{Databases}
+The current implementation of the \textit{mysql2} library converts the data between MySQL types and Ruby objects immediately after fetching each row from the database. This behavior is not optimal for situations where there are more fields being fetched than those being used. Changing the program's flow in order to trigger type casting only when the variable is actually accessed can have a significant impact on the aforementioned conditions, becoming an important issue to address.
+
+This library is likely to replace Ruby's default in the future. It is being actively developed and provides significant ameliorations from the current library, \textit{mysql}. It is starting to gain a solid reputation within the Ruby community, posing as an excellent target for improvements in the Ruby-related database area.
+
+\section{Ruby on Rails}
+The current native profiling tools for Ruby on Rails are deprecated. They do not function properly on up-to-date environments and they highly depend on Ruby's profiling abilities which are very limited. Improving Ruby's profiling tools is not enough as they need to seamlessly integrate with Rails' facilities. For this to happen, Rails must also targeted for improvements by refactoring and improving the existent non-functional profiling tools.
+
+Rails 3's performance is significantly better when comparing to its predecessor, as mentioned in section~\ref{state:sec:ruby_on_rails}. However, the adoption of Rails 3 will probably be difficult and lengthy since applications need to be refactored and most plugins---one of the main advantages of this framework as explained in section~\ref{tech:sec:ruby_on_rails}---need to be rewritten. To motivate its early adoption and increase this version's \textit{momentum}, some of the most famous plugins need to be ported to the new version. Getting one of the most famous applications---Redmine---to work properly on Rails 3 would also increase the awareness of the new versions' benefits. Finally, some commonly known bottlenecks of Rails 2.3 should also be lightly addressed by the creation of small patches to circumvent the issues until version 3 is officially released.
+
+
+\begin{comment}
+Rails scalability should be easily accessible to everyone
+
+Improve existing tools, create/improve measurement tools
+
+Missing performance-oriented guidelines and conventions
+
+Missing and out-dated tools to profile Rails applications
+
+Optimal configurations and setups
+\end{comment}
+
+
+% Ruby
+There are many interpreters being used in production environments whose characteristics were explored in section~\ref{tech:sec:ruby}. Unfortunately, none except YARV fully support the most recent specification---1.9. It is likely that focusing on soon to be outdated solutions is not worthy. Concerning interpreter development and improvement, YARV was the interpreter targeted.
+
+% Web Servers
+
+Among the explored web servers, some are missing from this analysis. WEBrick is left out for obvious reasons---it was Rails' pioneer web server but lacks the efficiency to compete with nowadays alternatives. Mongrel, while representing a huge improvement over WEBrick, still lags behind more recently developed web servers as explored in section~\ref{state:sec:rails_web_servers}, also being excluded from further analysis.
+
+% Databases
+Benchmarking PostgreSQL against MySQL was discarded as a worthy task because of what was already exposed in section~\ref{state:sec:databases}. The benefits of adopting a schema-less were also presented in that same section. However, adapting \textit{Escolinhas} to this type of database for further evaluation would require a significant amount of refactoring and some deep architectural changes, being discarded as a possible approach to this component.
+
+% Rails
+
