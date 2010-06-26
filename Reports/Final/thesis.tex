@@ -19,7 +19,40 @@
 \usepackage{amsfonts}
 \usepackage{tkz-graph}
 \usepackage{multirow}
+\usepackage{booktabs}
+
 \usepackage{verbatim}
+\makeatletter 
+\g@addto@macro\@verbatim\small 
+\makeatother 
+
+\usepackage{color}
+\definecolor{grey}{rgb}{0.53,0.53,0.53}
+\definecolor{red}{rgb}{0.87,0.13,0.0}
+\definecolor{green}{rgb}{0.0,0.53,0.0}
+
+\usepackage{listings}
+\lstset{
+language=Ruby,                   % choose the language of the code
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,	                  % adds a frame around the code
+tabsize=2,	                    % sets default tabsize to 4 spaces
+captionpos=t,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+numbers=left,                   % where to put the line-numbers
+numberstyle=\scriptsize,        % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+keywordstyle=\bf \color{red},
+stringstyle=\color{green},
+identifierstyle=\color{black},
+commentstyle=\color{grey},
+%numberstyle=\color{darkgreen},
+}
 \usetikzlibrary{calc,arrows,shapes}
 
 \usepackage{enumerate}
@@ -54,6 +87,11 @@
 %%========================================
 %% Macros
 \include{macros}
+%%========================================
+
+%%========================================
+%% Hyphenation
+\hyphenation{}
 %%========================================
 
 %%========================================
@@ -150,8 +188,13 @@
     %\PrintIndex
 
     %% Comment next 2 commands if numbered appendixes not used
-    %\appendix
-    %\include{appendix_a}
+    \appendix
+    \include{appendix_a_ruby19_encoding_patch}
+    \include{appendix_b_ruby19_encoding_task}
+    \include{appendix_c_ruby19_configuration}
+    \include{appendix_d_ruby-prof_html_stack_printer}
+    \include{appendix_e_monitor}
+    \include{appendix_f_mysql2_patch}
     %\include{appendix_b}
   \end{singlespace}
 \end{document}

@@ -1,8 +1,9 @@
 \section{Ruby} % (fold)
 \label{solution:sec:ruby}
 
-\subsection{Methodology}
-The main focus was on the latest version of the official Ruby interpreter, being divided into three core activities. First of all, determining the real benefits of upgrading to the latest Ruby version, 1.9. If the upgrade was proven worthy, focus would shift towards improving YARV's GC by increasing its flexibility. After that, Ruby's profiling and information retrieval capabilities were enhanced.
+Concerning Ruby, the main focus was divided into three core activities. First of all, determining the real benefits of upgrading to the latest Ruby 1.9. After that, focus would shift towards porting Escolinhas to Ruby 1.9. Then, the aim was to improve YARV's GC by increasing its flexibility. Finally, Ruby's profiling and information retrieval capabilities were enhanced.
+
+There are many interpreters being used in production environments whose characteristics were explored in section~\ref{tech:sec:ruby}. Unfortunately, none except YARV fully support the most recent specification---1.9. It is likely that focusing on soon to be outdated solutions is not worthy. For this reason, YARV was the interpreter targeted for improvements.
 
 \begin{comment}
 Determine the benefits of upgrading to the latest version, 1.9
@@ -14,8 +15,72 @@ Add GC configurability
 Improve Ruby 1.9's profiling abilities and information retrieval
 \end{comment}
 
+\subsection{Benchmarking}
+As mentioned in section~\ref{state:sec:ruby}, the new Ruby interpreter, YARV, is supposed to significantly improve performance over its predecessor, MRI. Its first release happened more than a 2 years ago and its adoption is still very low, despite having new features and better supposedly better performance. Porting existing applications requires some development effort as there are small changes on existing functionality and behavior. Having said that Rails can easily have scalability issues, it would be expected that this version's adoption would rise considerably fast, albeit it this is not happing.
+
+To increase the community's awareness on the benefits from upgrading, these need to be accurately determined. The benchmarks shown on section~\ref{solution:sec:operating_systems} were reorganized to explicit the interpreter's disparity when it comes to performance, as shown on table~\ref{TABELA YARV MRI LINUX}.
+
+In comparison, YARV shows excellent results on this benchmark. It is approximately 89.59\% faster than the older 1.8 interpreter, MRI. This is a significant performance improvement and likely to motivate developers to switch to this version.
+
+It is also critical to determine the performance differences on a real Rails application. As this is also related to the Web Server in use, this subject will be researched throughly on section~\ref{solution:sec:rails_web_servers}.
+
 
 \subsection{Development}
+The development phase involved many distinct activities. The details on each one of them are explored and explained below.
+
+\subsubsection{Porting Escolinhas to Ruby 1.9}
+Escolinhas has over 70 models and database tables, over 130 thousand lines of Ruby code, uses over 40 Rails plugins and gems, and there are currently more than 10 development branches. It is a heavy and complex full-featured application and a great one to evaluate the effort needed to port an application to Ruby 1.9.
+
+The process was fairly simple. The main issue was related to character encodings in Portuguese literal strings on the source code and database, which emerged from the heavy changes regarding encoding handling in Ruby 1.9. A patch to fix literal string encoding can be found on appendix~\ref{ap:ruby19_encoding_patch}. Ruby also requires developers to set the default encoding for each file inside a comment in the beggining, or else it will use ASCII-8BIT which has its known limitations. A task developed to manage the default encoding in all files of a Ruby project is presented on appendix~\ref{ap:ruby19_encoding_task}.
+
+Other issues were mainly related to extracted functionality and syntax changes. The most common ones were:
+\begin{itemize}
+  \item \textit{Object.type} changed to {Object.class.name};
+  \item The \textit{String} class no longer has the \textit{normalize} method;
+  \item The case statement no longer supports ``:'' to separate the match word from the action to be taken.
+\end{itemize}
+
+As mentioned before, porting Escolinhas to Ruby 1.9 was a very fast and simple process. Measuring the effort in time units, porting to 1.9 accounted for less then 0.1\% of all the development endeavor. All changes were simple and straightforward. Taking the aforementioned performance benefits into account, porting an application to Ruby 1.9 is likely to be very worthy on most projects.
+
+\subsubsection{Increasing YARV's GC Flexibility}
+Ruby Enterprise Edition, as exposed in section~\ref{tech:sec:ruby}, allows users to set some GC parameters, providing adaptive performance. Adding this functionality to YARV was the goal, and it currently supports the following settings:
+\begin{description}
+  \item[RUBY\_HEAP\_MIN\_SLOTS,] the initial number of heap slots. It also represents the minimum number of slots, at all times (default: 10000);
+  \item[RUBY\_HEAP\_SLOTS\_INCREMENT,] the number of new slots to allocate when all initial slots are used (default: 10000);
+  \item[RUBY\_HEAP\_SLOTS\_GROWTH\_FACTOR,] the multiplicator used next time Ruby needs new heap slots (default: 1.8, meaning it will allocate 18000 new slots if default settings are in use);
+  \item[RUBY\_GC\_MALLOC\_LIMIT,] the number of C data structures that can be allocated before triggering the garbage collector. This one is very important since the default value makes the GC run when there are still empty heap slots because Rails allocates and deallocates a lot of data (default: 8000000);
+  \item[RUBY\_HEAP\_FREE\_MIN,] the number of free slots that should be present after GC finishes running. If there are fewer slots than those defined it will allocate new ones according to \textit{RUBY\_HEAP\_SLOTS\_GROWTH\_FACTOR} and the previously mentioned \textit{RUBY\_HEAP\_SLOTS\_INCREMENT} parameters (default: 4096).
+\end{description}
+The developer can put these options and their values in the system's environment as explained in appendix~\ref{ap:ruby19_configuration} and the Ruby interpreter will detect them and apply them to its internal configuration.
+
+This project is open-source software and is hosted on GitHub~\footnote{\url{http://github.com/goncalossilva/ruby/}}.
+
+RESULTS???
+
+\subsubsection{Storage and Retrieval of Profiling Information}
+The most recent version of Ruby already possesses an embedded profiler. It records important information like the time spent in garbage collection, the number of live objects in the heap or even the total size of allocated memory, among others. Users can retrieve its current status in a properly formated string containing all the data.
+
+This current implementation has 3 main issues that can affect many profiling situations. Firstly, ``string'' the only format in which this information can be retrieved. Though being optimized for the Human eye, it is not very suited for automatic processing. The second issue is related with the profiler's inability to record data accumulatively. For instance, if a given task allocates 300 objects but triggers the GC many times, the developer will not be aware of those 300 allocations since the garbage collector will probably have freed some of them. Lastly, the profiler does not track down the number of times that the garbage collector is triggered. This information is crucial to optimize applications or code snippets since, based on what was explained in section~\ref{state:sec:ruby}, avoiding the garbage collector will increase its performance.
+
+In this development phase, there were some clear goals:
+\begin{enumerate}
+  \item Add the ability to retrieve profiling information in hash format;
+  \item Record the all time number and size of data allocation;
+  \item Record the number of times that the garbage collector is triggered;
+\end{enumerate}
+
+This work was developed as a series of open-source patches for the most recent Ruby versions and is hosted on GitHub~\footnote{\url{http://github.com/wycats/ruby-prof/tree/master/patches/gcdata/}}.
+
+\subsection{Graphical Interface for Profiling Applications}
+There are many tools available to profile Ruby and Rails applications. However, most of them record their analysis information in text. While this format suits most situations as very convenient there are some situations where some kind of graphical interface would be more appropriate. A solid example of this situation is a call stack. Albeit being acceptable to read and understand a small call stack in a console or text file, Rails applications tend to have huge call stacks which, unfortunately, are very hard to read and understand on this format.
+
+Stephen Kaes once developed an hierarchical HTML output format for ruby-prof~\footnote{\url{http://ruby-prof.rubyforge.org/}} which is one of the most famous Ruby profilers and the only one that is officially supported in Rails. However, its development was halted and as the development of Ruby advanced this HTML printer soon became deprecated and stopped working. Users on the most recent versions of Ruby, from 1.8.7 to 1.9.2, could not use this printer to analyze the call stacks of their applications or code snippets.
+
+The goal was to get this hierarchical HTML printer working with the latest Ruby versions. Firstly, it involved getting ruby-prof's compatibility with Ruby 1.9 increased and then porting the printer to this up-to-date version.
+
+This work was done in collaboration with Yehuda Katz~\footnote{\url{http://yehudakatz.com/}}, one of Rails' core team members. The working printer~\footnote{\url{http://github.com/wycats/ruby-prof/blob/master/lib/ruby-prof/call_stack_printer.rb}} is part of my public ``ruby-prof'' branch on GitHub~\footnote{\url{http://github.com/wycats/ruby-prof/}} and an example output is shown on appendix~\ref{}
+
+\begin{comment}
 Port escolinhas to 1.9
 
 Add GC configurability
@@ -23,8 +88,4 @@ Add GC configurability
 Add the ability to store and retrieve profiling information from ruby
 
 Ported a graphical profiling tool that enables call stacks w/ time
-
-
-\subsection{Benchmarking}
-Benchmark different ruby versions (and my tweaked ruby version) and analysis
-
+\end{comment}

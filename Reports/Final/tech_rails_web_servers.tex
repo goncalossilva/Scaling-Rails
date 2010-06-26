@@ -29,17 +29,17 @@ Mongrel also optimized the TCP stack by changing Ruby's default socket listening
 
 
 \subsection{Thin}
-Thin was released in 2008 and was the first Ruby web server which did not follow the \textit{one thread per request} convention. It uses Mongrel's HTTP parser and \textit{EventMachine} as its I/O back-end, allowing it to use a fast asynchronous event loop in a single thread for all incoming requests~\cite{thin}. Thin recently became able to combine threading with its philosophy, by allowing the creation of a background pool of 20 threads~\cite{ruby_webservers}. Thin's request handling is demonstrated on figure~\ref{fig:thin_architecture}.
+Thin was released in 2008 and was the first Ruby web server which did not follow the \textit{one thread per request} convention. It uses Mongrel's HTTP parser and \textit{EventMachine} as its I/O back-end, allowing it to use a fast asynchronous event loop in a single thread for all incoming requests~\cite{thin}. Thin recently became able to combine threading with its philosophy, by allowing the creation of a background pool of 20 threads~\cite{ruby_webservers}. Thin is written in C, C++ and Ruby and is optimized for small requests and fast clients. Its request handling is demonstrated on figure~\ref{fig:thin_architecture}.
 \begin{figure}[h]
   \centering
     \includegraphics[width=0.75\textwidth]{thin_architecture}
   \caption{Thin's request handling process}
   \label{fig:thin_architecture}
 \end{figure}
- This setup yields better performance and scalability than Mongrel, especially when serving small requests like, for example, API calls. This is mainly related to the fact that this web server does not launch a new thread for each request, requiring less memory and no context switches~\cite{ruby_webservers}.
+This setup yields better performance and scalability than Mongrel, especially when serving small requests like, for example, API calls. This is mainly related to the fact that this web server does not launch a new thread for each request, requiring less memory and no context switches~\cite{ruby_webservers}.
  
 \subsection{Unicorn}
-Unicorn's first stable version was released in 2009. It is a self-contained web server designed to take advantage of Unix-based kernels and is optimized for fast clients with low latency~\cite{unicorn}. It delegates every task that is better supported by the operating system, \textit{Nginx} or \textit{Rack} to themselves, respectively. It uses one master process that spawns and reaps a user-defined number of worker processes, without any thread usage. One of its main features is that load balancing is done by the OS kernel, avoiding that requests pile up behind a busy worker. When used in a production environment it should be deployed in conjunction with a reverse proxy capable of fully buffering both the requests and responses between itself and a slow client.
+Unicorn's first stable version was released in 2009. It is a self-contained web server designed to take advantage of Unix-based kernels and is optimized for fast clients with low latency~\cite{unicorn}. It delegates every task that is better supported by the operating system, \textit{Nginx} or \textit{Rack} to themselves, respectively. It uses one master process that spawns and reaps a user-defined number of worker processes, without any thread usage. One of its main features is that load balancing is done by the OS kernel, avoiding that requests pile up behind a busy worker. Unicorn is written in Ruby, except for its HTML parser which is based on Mongrel's and, consequently, is written in C. When used in a production environment it should be deployed in conjunction with a reverse proxy capable of fully buffering both the requests and responses between itself and a slow client.
 Unicorn's request handling is demonstrated on figure~\ref{fig:unicorn_architecture}.
 \begin{figure}[h]
   \centering
@@ -50,7 +50,7 @@ Unicorn's request handling is demonstrated on figure~\ref{fig:unicorn_architectu
 
 
 \subsection{Passenger}
-Passenger was also released in 2008 but it had a big difference from the other options---it was not a self-contained web server. Passenger makes use of established web servers like Apache or Nginx by using their reliable web stack. It is used as a module or extension to these generic web servers, adding the needed functionality to support Ruby and handling certain types of requests~\cite{passenger_whatis}.
+Passenger was also released in 2008 but it had a big difference from the other options---it was not a self-contained web server. Passenger makes use of established web servers like Apache or Nginx by using their reliable web stack. It is mostly written in C++ and used as a module or extension to these generic web servers, adding the needed functionality to support Ruby and handling certain types of requests~\cite{passenger_whatis}.
 
 When the web server starts, having Passenger loaded as a module, it launches a Ruby process that will be responsible for all the other processes handling the Ruby application, called the \textit{worker processes}. Each request is delivered to the firstly created Ruby processes---the master process---which forwards it to one of its workers. These worker processes are single threaded and handle one request at a time~\cite{ruby_webservers}. Passenger's request handling is demonstrated on figure~\ref{fig:passenger_architecture}.
 \begin{figure}[h]

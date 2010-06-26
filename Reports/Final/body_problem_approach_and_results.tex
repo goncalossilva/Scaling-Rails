@@ -37,6 +37,70 @@ Two distinct machines were used during this research. Due to hardware malfunctio
   \label{tab:machines_hardware_specification}
 \end{table}
 
+When benchmarking, the same software versions were used across all systems and environments. Table~\ref{tab:software_versions} explicits the software versions that were used.
+\begin{table}[ht]
+  \centering
+  
+  \begin{tabular}{p{0.25\textwidth}|p{0.25\textwidth}}
+    \textsc{Software/Package}
+  & \textsc{version} \\
+  \hline
+    MRI
+  & 1.8.7 (patchlevel 249) \\
+  
+    YARV
+  & 1.9.1 (patchlevel 378) \\
+  
+    Rails
+  & 2.3.5 \\
+  
+    FreeBSD
+  & 8 \\
+  
+    Linux Kernel
+  & 2.6.26 \\
+  
+    hdparm
+  & 9.15 \\
+  
+    gzip
+  & 1.3.12 \\
+  
+    lame
+  & 3.98.2 \\
+  
+    vorbis-tools
+  & 1.2.0 \\
+  
+    Apache
+  & 2.2.14 \\
+  
+    Nginx
+  & 0.7.64 \\
+  
+    Cherokee
+  & 0.99.42 \\
+  
+    Thin
+  & 1.2.7 \\
+  
+    Unicorn
+  & 0.97.0 \\
+  
+    Passenger
+  & 2.2.11 \\
+  
+    autobench
+  & 2.1.2 \\
+  
+    httperf
+  & 0.9.0 \\
+  \end{tabular}
+  \caption{Software versions in use}
+  \label{tab:machines_hardware_specification}
+\end{table}
+All packages were compiled from source using GCC 4.3.4, with \textit{``-O2 -march=nocona -pipe''} as their compilation flags.
+
 To create a centralized set of conventions and guidelines for scaling Ruby on Rails applications, there is need to analyze and benchmark all worthy alternatives for each component. In order to facilitate the process of profiling Rails applications by building new and intuitive tools while updating the existing ones, Rails and Ruby must be tweaked to enable and accommodate the changes. Finally, to improve the global awareness of the importance of this issue, there is need to gather the benefits associated with it, provide a smoother transition by updating famous Rails plugins and to increase this subjects' notoriety by updating one of the most renowned Ruby on Rails projects---Redmine.
 
 In order to accomplish the aforementioned tasks, every component was specifically addressed. The work done is presented and explained in the following sections.

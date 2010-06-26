@@ -58,17 +58,3 @@ Missing and out-dated tools to profile Rails applications
 
 Optimal configurations and setups
 \end{comment}
-
-
-% Ruby
-There are many interpreters being used in production environments whose characteristics were explored in section~\ref{tech:sec:ruby}. Unfortunately, none except YARV fully support the most recent specification---1.9. It is likely that focusing on soon to be outdated solutions is not worthy. Concerning interpreter development and improvement, YARV was the interpreter targeted.
-
-% Web Servers
-
-Among the explored web servers, some are missing from this analysis. WEBrick is left out for obvious reasons---it was Rails' pioneer web server but lacks the efficiency to compete with nowadays alternatives. Mongrel, while representing a huge improvement over WEBrick, still lags behind more recently developed web servers as explored in section~\ref{state:sec:rails_web_servers}, also being excluded from further analysis.
-
-% Databases
-Benchmarking PostgreSQL against MySQL was discarded as a worthy task because of what was already exposed in section~\ref{state:sec:databases}. The benefits of adopting a schema-less were also presented in that same section. However, adapting \textit{Escolinhas} to this type of database for further evaluation would require a significant amount of refactoring and some deep architectural changes, being discarded as a possible approach to this component.
-
-% Rails
-
