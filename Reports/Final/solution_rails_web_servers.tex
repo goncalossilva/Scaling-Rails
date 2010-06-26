@@ -72,7 +72,51 @@ The test was similar to the one explained in the previous sections. It tested th
   \caption{Passenger options and values}
   \label{tab:passenger4_configuration}
 \end{table}
-The results are exhibited on table~\ref{TABELA PASSENGER}.
+The results are exhibited on table~\ref{tab:passenger_benchmark}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Passenger Benchmark Results on Apache and Nginx}
+  \begin{tabular}{|c|c|c|c|c|c|}
+
+\hline
+  Req. / Conc. & Page & Web Server & Requests/s (\#) & Total time (s) & Mem. Usage (B) \\ \hline
+\multirow{6}{*}{50/1} & \multirow{2}{*}{Light} & Apache & \textbf{9.37} & \textbf{5.336} & 164429\\\cline{3-6}
+ &  & Nginx & 9.1 & 5.496 & \textbf{154437}\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Apache & \textbf{1.18} & \textbf{42.494} & 154696\\\cline{3-6}
+ &  & Nginx & 1.16 & 43.072 & \textbf{142983}\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Apache & 6.24 & 8.017 & 185727\\\cline{3-6}
+ &  & Nginx & \textbf{6.36} & \textbf{7.863} & \textbf{154383}\\\hline
+\multirow{6}{*}{100/10} & \multirow{2}{*}{Light} & Apache & 12.06 & 8.294 & 207374\\\cline{3-6}
+ &  & Nginx & \textbf{12.28} & \textbf{8.146} & \textbf{154453}\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Apache & \textbf{2.17} & \textbf{45.988} & 168179\\\cline{3-6}
+ &  & Nginx & 2.1 & 47.634 & \textbf{156119}\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Apache & \textbf{12.84} & \textbf{7.79} & 181126\\\cline{3-6}
+ &  & Nginx & 11.94 & 8.375 & \textbf{149634}\\\hline
+\multirow{6}{*}{500/50} & \multirow{2}{*}{Light} & Apache & \textbf{11.63} & \textbf{42.979} & 235130\\\cline{3-6}
+ &  & Nginx & 11.53 & 43.383 & \textbf{141376}\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Apache & FAIL & FAIL & 207180\\\cline{3-6}
+ &  & Nginx & \textbf{2.11} & \textbf{237.37} & \textbf{156234}\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Apache & \textbf{12.49} & \textbf{40.043} & 200330\\\cline{3-6}
+ &  & Nginx & 12.34 & 40.51 & \textbf{141514}\\\hline
+\multirow{6}{*}{500/100} & \multirow{2}{*}{Light} & Apache & FAIL & FAIL & 255006\\\cline{3-6}
+ &  & Nginx & \textbf{11.48} & \textbf{43.546} & \textbf{141438}\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Apache & FAIL & FAIL & 220525\\\cline{3-6}
+ &  & Nginx & \textbf{2.1} & \textbf{238.16} & \textbf{156258}\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Apache & FAIL & FAIL & 218195\\\cline{3-6}
+ &  & Nginx & \textbf{12.42} & \textbf{40.273} & \textbf{154676}\\\hline
+\multirow{6}{*}{2500/500} & \multirow{2}{*}{Light} & Apache & FAIL & FAIL & 238933\\\cline{3-6}
+ &  & Nginx & FAIL & FAIL & \textbf{154599}\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Apache & FAIL & FAIL & 220258\\\cline{3-6}
+ &  & Nginx & FAIL & FAIL & \textbf{143133}\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Apache & FAIL & FAIL & 228932\\\cline{3-6}
+ &  & Nginx & FAIL & FAIL & \textbf{154699}\\\hline
+\multirow{2}{*}{Total} &  & Apache &  & \textbf{200.941} & 199825\\\cline{2-6}
+ &  & Nginx &  & 204.479 & \textbf{150292}\\\hline
+  \end{tabular}
+  
+  \label{tab:passenger_benchmark}
+\end{table}
 
 Apache failed more tests under a rather low concurrency level---100 simultaneous requests---than Nginx, which indicates that the current setup has some scalability issues. It should be noticed that when paired with Nginx, Passenger uses less memory. 
 
@@ -81,7 +125,51 @@ As mentioned before, Unicorn and Thin are very similar in their goals: they are 
 
 In real world applications, web servers must be ready to serve slow clients and, eventually, heavy pages. Since both web servers are not optimized for these situations, the usage of a reverse proxy is required for request and response buffering purposes.
 
-This benchmark followed the same conditions of the aforementioned ones regarding concurrency tests, number of processes, test pages and the usage of \textit{ab} to make the measurements. Thin's configuration was the same and Unicorn's was very similar to Thin's. Since Nginx yielded excellent results in the previous benchmarks, it was used as both web server's reverse proxy. The results can be found on table~\ref{TABELA THIN UNICORN}.
+This benchmark followed the same conditions of the aforementioned ones regarding concurrency tests, number of processes, test pages and the usage of \textit{ab} to make the measurements. Thin's configuration was the same and Unicorn's was very similar to Thin's. Since Nginx yielded excellent results in the previous benchmarks, it was used as both web server's reverse proxy. The results can be found on table~\ref{tab:thin_unicorn_benchmark}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Thin \textit{versus} Unicorn Benchmark Results}
+  \begin{tabular}{|c|c|c|c|c|c|}
+
+\hline
+  Req. / Conc. & Page & Web Server & Requests/s (\#) & Total time (s) & Mem. Usage (B) \\ \hline
+\multirow{6}{*}{50/1} & \multirow{2}{*}{Light} & Thin & \textbf{9.24} & \textbf{5.411} & \textbf{121213}\\\cline{3-6}
+ &  & Unicorn & 9.17 & 5.45 & 160823\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Thin & 1.22 & 41 & \textbf{121506}\\\cline{3-6}
+ &  & Unicorn & \textbf{1.25} & \textbf{39.849} & 161062\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Thin & 5.99 & 8.341 & \textbf{121325}\\\cline{3-6}
+ &  & Unicorn & \textbf{6.89} & \textbf{7.257} & 160845\\\hline
+\multirow{6}{*}{100/10} & \multirow{2}{*}{Light} & Thin & 11.84 & 8.444 & \textbf{121412}\\\cline{3-6}
+ &  & Unicorn & \textbf{12.22} & \textbf{8.182} & 160828\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Thin & 2.25 & 44.495 & \textbf{121666}\\\cline{3-6}
+ &  & Unicorn & \textbf{2.28} & \textbf{43.832} & 161035\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Thin & 12.14 & 8.236 & \textbf{121402}\\\cline{3-6}
+ &  & Unicorn & \textbf{12.46} & \textbf{8.023} & 160865\\\hline
+\multirow{6}{*}{500/50} & \multirow{2}{*}{Light} & Thin & \textbf{11.67} & \textbf{42.332} & \textbf{121593}\\\cline{3-6}
+ &  & Unicorn & 11.62 & 43.013 & 160919\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Thin & \textbf{2.37} & \textbf{212.427} & \textbf{125128}\\\cline{3-6}
+ &  & Unicorn & 2.31 & 216.525 & 161113\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Thin & \textbf{12.45} & \textbf{40.173} & \textbf{121625}\\\cline{3-6}
+ &  & Unicorn & 12.44 & 40.207 & 160955\\\hline
+\multirow{6}{*}{500/100} & \multirow{2}{*}{Light} & Thin & \textbf{11.48} & \textbf{43.546} & \textbf{121613}\\\cline{3-6}
+ &  & Unicorn & 11.46 & 43.618 & 160997\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Thin & \textbf{2.45} & \textbf{203.037} & \textbf{127759}\\\cline{3-6}
+ &  & Unicorn & 2.3 & 217.513 & 161207\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Thin & 12.54 & 39.883 & \textbf{121650}\\\cline{3-6}
+ &  & Unicorn & \textbf{12.65} & \textbf{39.516} & 161027\\\hline
+\multirow{6}{*}{2500/500} & \multirow{2}{*}{Light} & Thin & FAIL & FAIL & \textbf{122012}\\\cline{3-6}
+ &  & Unicorn & FAIL & FAIL & 161045\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Thin & FAIL & FAIL & \textbf{127524}\\\cline{3-6}
+ &  & Unicorn & FAIL & FAIL & 161193\\\cline{2-6}
+ & \multirow{4}{*}{Heaviest} & Thin & FAIL & FAIL & \textbf{122020}\\\cline{3-6}
+ &  & Unicorn & FAIL & FAIL & 161089\\\hline
+\multirow{2}{*}{Total} &  & Thin &  & \textbf{697.325} & \textbf{122324}\\\cline{2-6}
+ &  & Unicorn &  & 712.985 & 160973\\\hline
+  \end{tabular}
+  
+  \label{tab:thin_unicorn_benchmark}
+\end{table}
 
 Unicorn's performance is very similar to Thin's. Thin was slightly faster in total while using less memory so it yields a very slim advantaged on the performed benchmarks.
 
@@ -142,6 +230,48 @@ Unicorn is a very configurable web server. Its configuration is written in Ruby 
 \subsubsection{Thin Performance with Threading Enabled}
 Thin recently started to offer the an option which, when activated, will cause requests to be dispatched in a background pool of 20 threads. This slightly contradicts its initial one-client-at-a-time philosophy, though it still relies on an asynchronous event loop for each thread.
 
-A benchmark comparing Thin's performance when threaded and non-threaded was made using the three previously mentioned pages. Four workers were used in each test. The results are exhibited on table~\ref{TABELA THIN THREAD}.
+A benchmark comparing Thin's performance when threaded and non-threaded was made using the three previously mentioned pages. Four workers were used in each test. The results are exhibited on table~\ref{tab:thin_threaded_benchmark}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Thin with Threading Benchmark Results}
+  \begin{tabular}{|c|c|c|c|c|c|}
+
+\hline
+  Req. / Conc. & Page & Web Server & Requests/s (\#) & Total time (s) & Mem. Usage (B) \\ \hline
+\multirow{6}{*}{50/1} & \multirow{2}{*}{Light} & Thin & \textbf{9.24} & \textbf{\textbf{9.24}} & \textbf{121213}\\\cline{3-6}
+ &  & Thin(threaded) & 7.5 & 6.665 & 126491\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Thin & \textbf{1.22} & \textbf{\textbf{1.22}} & \textbf{121506}\\\cline{3-6}
+ &  & Thin(threaded) & 0.91 & 55.221 & 128809\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Thin & \textbf{5.99} & \textbf{\textbf{5.99}} & \textbf{121325}\\\cline{3-6}
+ &  & Thin(threaded) & 4.67 & 10.711 & 126954\\\hline
+\multirow{6}{*}{100/10} & \multirow{2}{*}{Light} & Thin & \textbf{11.84} & \textbf{\textbf{11.84}} & \textbf{121412}\\\cline{3-6}
+ &  & Thin(threaded) & 11.81 & 8.465 & 128097\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Thin & \textbf{2.25} & \textbf{\textbf{2.25}} & \textbf{121666}\\\cline{3-6}
+ &  & Thin(threaded) & 1.84 & 54.468 & 133241\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Thin & \textbf{12.14} & \textbf{\textbf{12.14}} & \textbf{121402}\\\cline{3-6}
+ &  & Thin(threaded) & 11.73 & 8.527 & 128709\\\hline
+\multirow{6}{*}{500/50} & \multirow{2}{*}{Light} & Thin & \textbf{11.67} & \textbf{\textbf{11.67}} & \textbf{121593}\\\cline{3-6}
+ &  & Thin(threaded) & 11.47 & 43.605 & 129938\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Thin & 2.37 & 212.427 & \textbf{125128}\\\cline{3-6}
+ &  & Thin(threaded) & FAIL & FAIL & 152066\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Thin & \textbf{12.45} & \textbf{\textbf{12.45}} & \textbf{121625}\\\cline{3-6}
+ &  & Thin(threaded) & 11.9 & 42.005 & 130860\\\hline
+\multirow{6}{*}{500/100} & \multirow{2}{*}{Light} & Thin & 11.48 & 43.546 & \textbf{121613}\\\cline{3-6}
+ &  & Thin(threaded) & \textbf{11.6} & \textbf{\textbf{11.6}} & 130082\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Thin & 2.45 & 203.037 & \textbf{127759}\\\cline{3-6}
+ &  & Thin(threaded) & FAIL & FAIL & 139153\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Thin & \textbf{12.54} & \textbf{\textbf{12.54}} & \textbf{121650}\\\cline{3-6}
+ &  & Thin(threaded) & 11.68 & 42.818 & 130909\\\hline
+\multirow{6}{*}{2500/500} & \multirow{2}{*}{Light} & Thin & FAIL & FAIL & \textbf{122012}\\\cline{3-6}
+ &  & Thin(threaded) & FAIL & FAIL & 130558\\\cline{2-6}
+ & \multirow{2}{*}{Heavy} & Thin & FAIL & FAIL & \textbf{127524}\\\cline{3-6}
+ &  & Thin(threaded) & FAIL & FAIL & 134980\\\cline{2-6}
+ & \multirow{2}{*}{Heaviest} & Thin & FAIL & FAIL & \textbf{122020}\\\cline{3-6}
+ &  & Thin(threaded) & FAIL & FAIL & 131290\\\hline
+  \end{tabular}
+  
+  \label{tab:thin_threaded_benchmark}
+\end{table}
 
 Threaded Thin actually performs worse in these test pages. It uses slightly more memory and generally needs a small amount of extra time to complete each test. Threads have an associated overhead mainly related to the spawning process and the context switches they provoke. Since Thin is based on a really fast asynchronous loop, it is likely that this processing overhead is actually slowing the web server down.
