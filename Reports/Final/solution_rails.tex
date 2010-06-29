@@ -11,6 +11,7 @@ Push the Rails community forward
 \subsection{Benchmarking}
 Rails developers can often incur in some development performance pitfalls which can easily be addressed by using some of Rails' powerful functionality. This section will cover some of these possible pitfalls, propose solutions and generally assert their performance differences.
 
+
 \subsubsection{Eager Loading}
 Eager loading a core feature of Rails which, in certain situations, can lead to significant performance slowdowns because of its absence or misuse. It allows the developer to specify if and which associations should be loaded up front, being the opposite of lazy loading. A classical example of the usefulness of this feature consists in a blog post with comments in which rendering the post's page will also render its comments. Eager loading allows the developer to specify that the comments should be loaded alongside the post, instructing Rails to only use two database queries---one for the post and one for its comments. If not explicitly specified, Rails will load each comment independently while rendering them. Eager loading the post's comments is illustrated in the following code.
 \begin{lstlisting}[xleftmargin=30pt,xrightmargin=30pt]
@@ -33,6 +34,7 @@ A simple benchmark was performed on a scaffold blog Rails application. The Rails
 \end{table}
 
 In this extreme example, eager loading the data took $\pm$7\% of the time needed to lazy load the data, which is Rails default behavior. Eager loading can have a significant performance impact, depending on the context, as exemplified.
+
 
 \subsubsection{Transactions}
 Rails wraps every database write and update inside a transaction if not instructed otherwise. This happens because of its before/after filter functionality, which allows developers to hook code before and after certain actions are executed. In these cases, the operation and its filters are wrapped inside a transaction.
@@ -61,6 +63,7 @@ In this example, instead of using one hundred transactions Rails will actually u
 
 Using a global transaction on the heaviest test implied a $\pm$93\% reduction on the time needed to write the data. On the lighter test, however, this reduction was of $\pm$22\%. On consecutive writes and/or updates, using a global transaction can significantly increase the performance of the operation.
 
+
 \subsubsection{Magic Finders}
 Rails has a feature commonly called ``magic finders''. It improves code's readability by allowing the developer to replace some calls with smaller and more readable ones. The following example illustrates this feature, comparing with a regular call.
 \begin{lstlisting}[xleftmargin=30pt,xrightmargin=30pt]
@@ -83,6 +86,7 @@ These calls, however, have an associated performance penalty. Using the same tes
 \end{table}
 
 The normal find only takes $\pm$32\% of the time needed by the magic find to complete. Since there is a readability/performance trade-off, using either syntaxes is a decision which depends on the project and its developers. The general performance penalty associated with the commonly used magic finders is, however, significant and should be taken into account.
+
 
 \subsubsection{Fetching Large Groups of Records}
 In certain situations, Rails applications need to fetch a significant amount of rows from the database, instantiate each model object and render them in a view. Using the ``find'' helper, this operation can be heavy on memory, as it fetches and loads all records into Ruby objects, and will lock the application until all operations are complete.
@@ -108,11 +112,13 @@ Using the alternative method to fetch records in batches, the application needed
 \subsection{Development}
 The development phase regarding this component involved many distinct activities. First of all, it was crucial to refactor Rails' native profile and benchmarking tools. Taking into consideration that the release of the new version of the Ruby on Rails framework is nearing, it was important to motivate its early adoption by porting some widely used plugins/gems and one of this framework's most famous applications to the most recent version. After that, a small task related to adding support for the Nginx's \textit{X-Accel-Redirect} to Rails was performed. Finally, an overview on the current work under the Ruby Summer of Code program is given.
 
+
 \subsubsection{Refactoring Rails Profiling/Benchmarking Tools}
 Rails' profiling and benchmarking tools were nonfunctional for Ruby 1.9, as they relied on an outdated architecture. Ruby evolved very fast and these tools did not keep up, becoming deprecated and useless when used on this version.
 
 Adding Ruby 1.9  support to these tools was crucial, since developers could not rely on the native tools when benchmarking and profiling their applications. By taking advantage of the enhances made to Ruby's profiling tools mentioned in section~\ref{solution:sec:ruby}, Rails was overhauled~\footnote{\url{http://github.com/rails/rails/commits/master?author=goncalossilva}} and now fully supports profiling and benchmarking under Ruby 1.9.
 % TODO: + detail? Ademar
+
 
 \subsubsection{Porting Plugins to Rails 3}
 Rails 3 adoption by developers is highly conditioned by plugin availability. As mentioned in section~\ref{tech:sec:ruby_on_rails}, there is a significant amount of plugins available for Ruby on Rails. However, due to the recent Rails' architectural changes, authors generally need to update their plugins/gems to be compatible to this version. The lack of available plugins will certainly limit the adoption rate of this version. In order to help alleviating this problem, some famous plugins were updated to comply with the new Rails API for plugins/gems. Their names and functionality are:
@@ -123,13 +129,16 @@ Rails 3 adoption by developers is highly conditioned by plugin availability. As 
 \end{description}
 All the mentioned plugins were refactored to use the new plugin APIs. Some tests also needed refactoring, as they used deprecated Rails code. However, updating \textit{permalink\_fu} also involved replacing its character conversion engine since it relied on deprecated Ruby 1.8 functionality, meaning this plugin was not compatible with Ruby's most recent version. On the other hand, \textit{acts\_as\_paranoid} had to be completely rewritten. It was initially developed for Rails 1 and slightly patched to work on Rails 2, having a deprecated architecture which was incompatible with Rails 3. Recreating this plugin from ground up with Rails 3 in mind allowed a $\pm$70\% reduction in lines of code.
 
+
 \subsubsection{Porting Redmine to Rails 3}
 Redmine\footnote{\url{http://www.redmine.org/}} is an open-source flexible project management web application written in Ruby on Rails, created by Jean-Philippe Lang. It is one of the most famous open-source Rails projects, having more than 90 reported major installations worldwide~\cite{redmine_installations}, including the development teams of Ruby, phpBB and Lighttpd. It is a complex platform with over 60 models and 65000 lines of code.
 
 Redmine was upgraded to use Rails 3 and the source code is at GitHub\footnote{\url{http://github.com/goncalossilva/redmine}}. This upgrade increased Rails 3's visibility while showing the potential performance improvements in upgrading, since this version is reportedly faster. The benefits can be experienced by the users themselves while using Redmine. Many issues had to be addressed, including fixes on the application initialization process, string handling, parameter filtering, plugin support, usage of Javascript helpers and method overriding, among others. All changes can be explored in detail on the project's commit log at GitHub.
 
+
 \subsubsection{Adding X-Accel-Redirect Support to Rails}
 Rails lacks support for Nginx's \textit{X-Accel-Redirect} by default, so a plugin to add it was developed\footnote{\url{http://github.com/goncalossilva/X-Accel-Redirect}}. Similar to Apache's \textit{X-Sendfile}, \textit{X-Accel-Redirect} can be useful when a user requests the download of a file from the server. If this flag is set on the response body, it will instruct Nginx to handle the file delivery itself. This way, the Rails process will be free to handle other requests instead of blocking to serve the file, delegating that task to Nginx.
+
 
 \subsubsection{Benchmarking Continuous Integration}
 Late in this project's course, applications for the Ruby Summer of Code\footnote{\url{http://www.rubysoc.org/}} began. This program is similar to Google Summer of Code, being a student internship program designed to help fund student development of Ruby-related projects during the summer.
@@ -140,8 +149,8 @@ The decision to apply for this program was made, by proposing the development of
 
 The whole Rails community would benefit from having an official benchmarking suite for Ruby on Rails. On one hand, developers would have increased awareness on the framework's performance. They would be able to benchmark their changes and understand their impact on every component, making small adjustments if any significant performance regressions were found. On the other hand, the community would also benefit since Rails would definitely become faster and more scalable over time.
 
-\subsection{Article Series}
 
-A series of performance-oriented articles for the \textit{Rails Magazine} has also begun. The first article is already present on the sixth edition of the magazine, with more to follow on each one of the future releases. Similarly to this project, this article performance series will cover all system's components, having already started with an introduction to this subject.
+\subsection{Performance-oriented Article Series}
+A series of performance-oriented articles for the \textit{Rails Magazine} has also begun. The first article is already present on the sixth edition of the magazine~\cite{rails_magazine_6}, with more to follow on future releases. Similarly to this thesis, this article performance series will cover all system's components, having already started with an introduction to this subject.
 
 Publishing articles on this matter on such a popular magazine increases this subjects visibility and the importance in building highly scalable Ruby on Rails applications, possibly igniting the aforementioned community's awareness on this subject.
