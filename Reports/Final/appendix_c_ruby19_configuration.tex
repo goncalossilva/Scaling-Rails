@@ -1,0 +1,13 @@
+\chapter{Ruby 1.9 configuration} % (fold)
+\label{ap:ruby19_configuration}
+
+The following command snippet starts the Ruby interpreter with an example configuration on UNIX.\\\\
+
+\begin{lstlisting}[language=bash]
+export RUBY_HEAP_SLOTS_INCREMENT=500000
+export RUBY_HEAP_MIN_SLOTS=500000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1.1
+export RUBY_GC_MALLOC_LIMIT=40000000
+export RUBY_HEAP_FREE_MIN=100000
+ruby
+\end{lstlisting}

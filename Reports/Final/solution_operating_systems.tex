@@ -1,51 +1,71 @@
 \section{Operating Systems} % (fold)
 \label{solution:sec:operating_systems}
 
-Using Linux and BSD, the focus on this system component was to create generic benchmarking tools, determine the operating system in which common web servers perform better and to determine the OS in which the official Ruby interpreters have the best performance.
+Using Linux and BSD, the focus on this system component was to create a generic benchmarking script, determine the operating system in which common web servers perform better and to determine the OS in which the official Ruby interpreters have the best performance.
 
-As exposed in chapter~\ref{state:sec:operating_systems}, Windows is not a suitable OS for production environments of Ruby on Rails applications because of its poor and inefficient support for this applications that use this framework, being excluded from further research. On the other hand, Mac OS X Server requires specific hardware so any comparison's would not be rigorous. Its performance is expected to be similar to BSD systems since, as mentioned in section~\ref{tech:sec:operating_systems}, its kernel is based on this OS, reducing the downside of its exclusion.
+As exposed in chapter~\ref{state:sec:operating_systems}, Windows is not a suitable OS for production environments of Ruby on Rails applications because of its poor and inefficient support for this applications that use this framework, being excluded from further research. On the other hand, Mac OS X Server requires specific hardware so any comparison's would not be rigorous, also being excluded from further research. However, its performance is expected to be similar to BSD systems since, as mentioned in section~\ref{tech:sec:operating_systems}, its kernel is based on this OS, reducing the downside of its exclusion. 
 
-\begin{comment}
-Create generic and specific tools of OS performance measurement
-
-Find the best OS for Rails by benchmarking the most likely candidates (same hardware)
-
-Tweak OSes configurations
-
-OSes are already highly optimized, OS development doesn't make much sense
-\end{comment}
-
+The work on the remaining components will be conducted using the OS---Linux or BSD---and distribution which yields the best results in this phase.
 
 \subsection{Development}
-Concerning development, a generic benchmarking script was created. This script was based on a few commonly found tools on Unix setups and consists on 5 micro-tests and 1 macro-test, respectively:
+Concerning development, a generic benchmarking script was created. This script was based on a few commonly found tools on UNIX setups and consists on 5 micro tests and 1 macro test, respectively:
 \begin{enumerate}
-  \item Use hdparm to time cached reads on the disk;
-  \item Compress a 2.5GB file to ZIP format using gzip;
+  \item Use hdparm\footnote{\url{http://sourceforge.net/projects/hdparm/}} to time cached reads on the disk;
+  \item Compress a 2.5GB file to ZIP format using gzip\footnote{\url{http://www.gzip.org/}};
   \item Uncompress the previously created archive;
-  \item Convert a 214MB WAV file to MP3 using lame;
-  \item Convert the same 214MB WAV file to OGG using vorbis-tools;
-  \item Parallelly run all the aforementioned benchmarks while extracting, compiling, installing and removing PHP 5.2.12.
+  \item Convert a 214MB WAV file to MP3 using the lame MP3 encoder\footnote{\url{http://lame.sourceforge.net/}};
+  \item Convert the same 214MB WAV file to OGG using vorbis-tools\footnote{\url{http://vorbis.com/}};
+  \item Parallelly run all the aforementioned benchmarks while extracting, compiling, installing and removing PHP\footnote{\url{http://php.net/}} 5.2.12.
 \end{enumerate}
-The script measures the real amount of time needed to accomplish each task, the number of voluntary context switches and the average CPU usage. GNU time is used to make all measurements except in the first test, since hdparm itself measures the amount of cached data read in 2 seconds yielding results in MB/second. All tests are ran a configurable amount of times to cancel circumstantial issues, the default being 3. Exception is made on the last test which is very heavy and lengthy, so it only runs once.
+The script measures the amount of time---user plus system time, discarding waiting periods---needed to accomplish each task, the number of voluntary context switches and the average CPU usage. GNU time\footnote{\url{http://www.gnu.org/software/time/}} is used to make all measurements except in the first test, since hdparm itself measures the amount of cached data which is read in 2 seconds, yielding results in MB per second. All tests are ran a configurable amount of times to cancel circumstantial issues, the default being 3. Exception is made on the last test which is very heavy and lengthy, so it only runs once.
 
-The first test aims at testing hard drive access speed, which are dependent on the filesystem in use and the OS's IO management. The second and third tests are more complex since but similar. Both read a file with considerable size from the disk, convert it and write the result. However, the main bottleneck happens when writing the result file since writing is slower process than reading and the ZIP algorithm is lightweight and fast. The fourth and fifth tests are more CPU-intensive. Audio format conversions tend to demand a significant amount of processing power. The tools in use---lame and vorbis-tools---stress the OS even further by using multiple processes and threads, inducing various context switches. Finally, the last test aims at testing the OS's ability to manage a high workload since multiple heavy tasks are being carried simultaneously, involving concurrent IO, context switches, scheduling and a few other core tasks.
+The first test aims at testing hard drive access speed, which are dependent on the filesystem in use and the OS's I/O management. The second and third tests are more complex since but similar. Both read a file with considerable size from the disk, convert it and write the result. However, the main bottleneck happens when writing the result file since writing is slower process than reading and the ZIP algorithm is lightweight and fast. The fourth and fifth tests are more CPU-intensive. Audio format conversions tend to demand a significant amount of processing power. The tools in use---lame and vorbis-tools---stress the OS even further by using multiple processes and threads, inducing various context switches. Finally, the last test aims at testing the OS's ability to manage a high workload since multiple heavy tasks are being carried simultaneously, involving concurrent I/O, multiple context switches, scheduling and a few other core tasks.
 
 \subsection{Benchmarking}
-The benchmarking phase had the clear goal of defining which is the likely best OS to invest in the remaining work. It was also very important to gather data about each OS/distribution behavior so that it would be inserted in the aforementioned guidelines in conventions.
+The benchmarking phase had the clear goal of defining which is the best OS to invest in the remaining work. It was also very important to gather data about each OS/distribution's behavior so that it would be inserted in the aforementioned guidelines in conventions.
 
-\subsubsection{Generic Benchmarking of Linux distributions}
-First of all, it was important to choose one of the Linux distributions mentioned in section~\ref{tech:sec:operating_systems} to be stacked against FreeBSD, the most popular BSD distribution. A benchmark using the aforementioned generic script was performed on Ubuntu Server, Debian, CentOS and Gentoo. All distributions were running their default configurations for all packages. The results are shown in table~\ref{TABELA TABELA}.
-\\
-TABELA TABELA
-\\
-Gentoo's performance is better by a slight margin in the first test, yielding results which range from 3\% to 7\% better than the other distributions. The second test yielded similar results, with Debian's performance being very close to Gentoo's. CentOS shows serious issues in this test, being 502\% slower than Gentoo. Regarding the third test, Gentoo showed the best result, followed by Debian's. CentOS yields very poor results again, being 1903\% slower than Gentoo. Quite unexpectedly, CentOS had the best performance in the fourth test by a comfortable margin, with Debian's results being the second best once again. Ubuntu yielded the best performance in the fifth test, with Debian and Gentoo having very close results. CentOS shows the worst results by a considerable 13\% margin. Finally, Debian yielded the best results in the final test by a substantial margin. CentOS's results, once more, show a considerable performance deficiency when compared to the other distributions' results.
+\subsubsection{Generic Benchmarking of Linux Distributions}
+First of all, it was important to choose one of the Linux distributions mentioned in section~\ref{tech:sec:operating_systems} to be stacked against FreeBSD, the most popular BSD distribution. A benchmark using the aforementioned generic script was performed on Ubuntu Server, Debian, CentOS and Gentoo. All distributions were running their default configurations for all packages. The results are shown in table~\ref{tab:os_generic_benchmark}.
+\begin{table}[ht]
+  \centering
+  \caption{Generic Benchmark of Linux Distributions Result}
+  \label{tab:os_generic_benchmark}
+  
+  \begin{tabular}{l|c|c|c|c|c}
 
-According to these results, Gentoo is the best distribution in CPU usage and IO operations on a single instance, present in tests 1, 2 and 3. When it comes to almost pure CPU usage, CentOS and Ubuntu yield the best results. Last but not least, Debian showed an impressive behavior handling concurrent tasks present in the last test.
+    \multicolumn{1}{c|}{\textbf{\textsc{Test}}} & \textbf{\textsc{Units}} & \textbf{\textsc{Gentoo}} & \textbf{\textsc{Ubuntu}} & \textbf{\textsc{Debain}} & \textbf{\textsc{CentOS}} \\ \hline
+    hdparm & MB/s & \textbf{2350} & 2293 & 2191 & 2220 \\ \hline
+
+    \multirow{3}{*}{gzip} & user+sys/s & \textbf{137.75} & 147.53 & 137.89 & 691.58 \\ \cline{2-6}
+    & voluntary context switches/n & 5878 & 8111 & 417 & 2530 \\ \cline{2-6}
+    & average cpu usage/\% & 80\% & 81\% & 94\% & 50\% \\ \hline
+
+    \multirow{3}{*}{gunzip} & user+sys/s & \textbf{22.21} & 27.69 & 23.84 & 422.72 \\ \cline{2-6}
+    & voluntary context switches/n & 7498 & 7852 & 218 & 4905 \\ \cline{2-6}
+    & average cpu usage/\% & 41\% & 47\% & 73\% & 34\% \\ \hline
+
+    \multirow{3}{*}{lame} & user+sys/s & 101.69 & 101.67 & 92.18 & \textbf{83.98} \\ \cline{2-6}
+    & voluntary context switches/n & 8 & 7 & 2 & 36 \\ \cline{2-6}
+    & average cpu usage/\% & 100\% & 99\% & 99\% & 98\% \\ \hline
+
+    \multirow{3}{*}{oggenc} & user+sys/s & 39.09 & \textbf{37.75} & 38.58 & 42.59 \\ \cline{2-6}
+    & voluntary context switches/n & 7 & 12 & 35 & 178 \\ \cline{2-6}
+    & average cpu usage/\% & 99\% & 99\% & 100\% & 99\% \\ \hline
+
+    \multirow{3}{*}{workload} & user+sys/s & 379 & 318 & \textbf{202} & 1622 \\ \cline{2-6}
+    & voluntary context switches/n & 102525 & 27035 & 6491 & 20537 \\ \cline{2-6}
+    & average cpu usage/\% & 151\% & 129\% & 118\% & 58\% \\
+  \end{tabular}
+\end{table}
+
+Gentoo's performance is slightly superior in the first test, yielding results which range from 3\% to 7\% better than the other distributions. The second test resulted in similar results, with Debian's performance being very close to Gentoo's. CentOS shows serious issues in this test, being approximately 502\% slower than Gentoo. Regarding the third test Gentoo showed superior performance again, with Debian having the second best results. CentOS yields very poor results again, being approximately 1903\% slower than Gentoo. Quite unexpectedly, CentOS had the best performance in the fourth test by a comfortable margin, with Debian's results being the second best once again. Ubuntu yielded the best performance in the fifth test, with Debian and Gentoo having very close results. CentOS shows the worst results by a considerable 13\% margin. Finally, Debian yielded the best results in the final test by a substantial margin. CentOS's results, once more, show a considerable performance deficiency when compared to the other distributions' results.
+
+According to these results, Gentoo is the best distribution in CPU usage and I/O operations on a single instance, present in tests 1, 2 and 3. When it comes to almost pure CPU usage, present in tests 4 and 5, CentOS and Ubuntu yielded the best results. Last but not least, Debian showed an impressive behavior handling multiple concurrent tasks, present in the last test.
 
 CentOS's behavior was unstable and inconsistent. Given these results, it was discarded from future work.
 
 \subsubsection{Web Server Benchmarking on Linux distributions}
-Since there are still 3 possible Linux distributions to be compared with FreeBSD, a different benchmark was endured. This time, its focus was oriented towards web server performance.
+Since there are still 3 possible Linux distributions to be compared with FreeBSD, a different benchmark was conducted. This time, its focus was oriented towards web server performance.
 
 This test used a simple static HTML page served by either Apache or Nginx. Using Ubuntu Server, Debian and Gentoo many requests/concurrency combinations were used, namely:
 \begin{enumerate}
@@ -53,58 +73,416 @@ This test used a simple static HTML page served by either Apache or Nginx. Using
   \item 100000 requests, 1000 concurrent;
   \item 100000 requests, 10000 concurrent.
 \end{enumerate}
-Apache's ab utility was used to perform the tests. All of them were local, providing zero network overhead since the goal is to measure raw web server performance on each OS. If any request took more than 30 seconds to be replied to the test was considered a failure, as a higher response time is not acceptable in real world applications. The web server configurations were not the default ones on this test. Since some distributions loaded more modules than others and this could have a significant impact the web server performance, all unnecessary modules and options for this benchmark were removed from the configurations.
+Apache's ab\footnote{\url{http://httpd.apache.org/docs/2.0/programs/ab.html}} was used to perform the tests. Since the goal was to measure raw web server performance on each OS all requests were local, providing zero network overhead. If more than 1\% of the requests took more than 30 seconds to be replied to the test was considered a failure, as it already surpasses an acceptable response time in real world applications. The web server configurations were not the default ones on this test. Since some distributions loaded more modules than others and this could have a significant impact on the web server performance, all unnecessary modules and options for this benchmark were removed from the configurations.
+\begin{table}[ht]
+  \centering
+  \caption{OS Benchmark Using Apache (10000/1000)}
+  \label{tab:os_apache_10000_1000}
+  
+  \begin{tabular}{l|c|c|c}
+    & \textbf{\textsc{Gentoo}} & \textbf{\textsc{Ubuntu}} & \textbf{\textsc{Debian}} \\ \hline
+    Total time (s) & \textbf{1.339} & 9.755 & 1.449 \\ \hline
+    Requests per second (n) & \textbf{7468.32} & 1025.13 & 6901.61 \\ \hline
+    Time per request (ms) & \textbf{133.899} & 975.490 & 144.894 \\ \hline
+    Transfer rate (KB/s) & 2053.30 & 453.50 & \textbf{2966.13} \\ \hline
+    Total connection time avg (ms) & 29 & 98 & \textbf{25} \\ \hline
+    Total connection time min (ms) & 15 & \textbf{4} & 7 \\ \hline
+    Total connection time max (ms) & \textbf{668} & 9755 & 1444 \\
+  \end{tabular}
+\end{table}
 
-Regarding the Apache benchmark, table~\ref{WWWWWWWWWWWW} shows that Gentoo had the best performance in the first Apache test, with Debian achieving similar results. Ubuntu, however, did not cope with the other's behavior, needing a considerable amount of extra time to accomplish the same test. As seen on table~\ref{WWWWWWWWWWWWW}, Gentoo showed the best performance in the second Apache test. Debian had a considerably worse performance and Ubuntu failed this test as many requests took more than the aforementioned 30 seconds to be replied to. Finally, table~\ref{WWWWWWWWWWWWWWWW} shows the results of the last Apache benchmark, where all distributions failed to successfully complete the benchmark except Gentoo, which needed a high average amount of time to complete but was still able to reply to all requests within the established time limit.
+\begin{table}[ht]
+  \centering
+  \caption{OS Benchmark Using Apache (100000/1000)}
+  \label{tab:os_apache_100000_1000}
+  
+  \begin{tabular}{l|c|c|c}
+    
+    & \textbf{\textsc{Gentoo}} & \textbf{\textsc{Ubuntu}} & \textbf{\textsc{Debian}} \\ \hline
+    Total time (s) & \textbf{14.835} & FAIL & 57.382 \\ \hline
+    Requests per second (n) & \textbf{6740.75} & FAIL & 1742.70 \\ \hline
+    Time per request (ms) & \textbf{148.351} & FAIL & 573.822 \\ \hline
+    Transfer rate (KB/s) & \textbf{1849.76} & FAIL & 748.84 \\ \hline
+    Total connection time avg (ms) & \textbf{70} & FAIL & 330 \\ \hline
+    Total connection time min (ms) & 15 & FAIL & \textbf{0} \\ \hline
+    Total connection time max (ms) & \textbf{12050} & FAIL & 48966 \\
+  \end{tabular}
+\end{table}
 
-Concerning the Nginx benchmark, table~\ref{WWWWWWWWWWWW} shows that this time it was Debian to achieve the best result on the first benchmark, yielding impressive performance. The results of the second test are shown on table~\ref{WWWWWWWWWWWW} and Debian seems to be the best performing distribution once again. The third test's results showed some unexpected results since, similarly to the Apache benchmark, neither Debian nor Ubuntu were able to cope with the high demand, leaving the best result to Gentoo which was the only distribution to successfully complete the final test. These results can be found in table~\ref{WWWWWWWWWWWW}.
+\begin{table}[ht]
+  \centering
+  \caption{OS Benchmark Using Apache (100000/10000)}
+  \label{tab:os_apache_100000_10000}
+  
+  \begin{tabular}{l|c|c|c}
+  
+    & \textbf{\textsc{Gentoo}} & \textbf{\textsc{Ubuntu}} & \textbf{\textsc{Debian}} \\ \hline
+    Total time (s) & 24.083 & FAIL & FAIL \\ \hline
+    Requests per second (n) & 4152.25 & FAIL & FAIL \\ \hline
+    Time per request (ms) & 2408.331 & FAIL & FAIL \\ \hline
+    Transfer rate (KB/s) & 1139.70 & FAIL & FAIL \\ \hline
+    Total connection time avg (ms) & 148 & FAIL & FAIL \\ \hline
+    Total connection time min (ms) & 32 & FAIL & FAIL \\ \hline
+    Total connection time max (ms) & 23422 & FAIL & FAIL \\
+  \end{tabular}
+\end{table}
 
-Gentoo showed an excellent behavior when scaling. The difference in average time taken for each request on tests 1 and 2 of both web servers is remarkably small. It was also the only distribution to be able to cope with 100000 requests with 10000 of them concurrent, either on Apache and Nginx. These results allowed to confidently decide that Gentoo is the best distribution to compare to FreeBSD.
+Regarding the Apache benchmark, table~\ref{tab:os_apache_10000_1000} shows that Gentoo had the best performance in the first Apache test, with Debian achieving similar results. Ubuntu, however, did not cope with the other's behavior, needing a considerable amount of extra time to accomplish the same test. As seen on table~\ref{tab:os_apache_100000_1000}, Gentoo showed the best performance in the second Apache test. Debian had a considerably worse performance and Ubuntu failed this test as many requests took more than the aforementioned 30 seconds to be replied to. Finally, table~\ref{tab:os_apache_100000_10000} shows the results of the last Apache benchmark, where all distributions failed to successfully complete the benchmark except Gentoo, which needed a high average amount of time to complete each request but was still able to reply to all requests within the established time limit.
+\begin{table}[ht]
+  \centering
+  \caption{OS Benchmark Using Nginx (10000/1000)}
+  \label{tab:os_nginx_10000_1000}
+  
+  \begin{tabular}{l|c|c|c}
+
+    & \textbf{\textsc{Gentoo}} & \textbf{\textsc{Ubuntu}} & \textbf{\textsc{Debian}} \\ \hline
+    Total time (s) & 0.833 & 0.791 & \textbf{0.540} \\ \hline
+    Requests per second (n) & 12001.11 & \textbf{12647.47} & 10000.00 \\ \hline
+    Time per request (ms) & 83.326 & 79.067 & \textbf{54.013} \\ \hline
+    Transfer rate (KB/s) & 3065.96 & 4439.88 & \textbf{6576.40} \\ \hline
+    Total connection time avg (ms) & 55 & 15 & \textbf{11} \\ \hline
+    Total connection time min (ms) & 40 & 8 & \textbf{5} \\ \hline
+    Total connection time max (ms) & \textbf{75} & 256 & 225 \\
+  \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \caption{OS Benchmark Using Nginx (100000/1000)}
+  \label{tab:os_nginx_100000_1000}
+  
+  \begin{tabular}{l|c|c|c}
+
+    & \textbf{\textsc{Gentoo}} & \textbf{\textsc{Ubuntu}} & \textbf{\textsc{Debian}} \\ \hline
+    Total time (s) & 7.883 & 14.835 & \textbf{6.312} \\ \hline
+    Requests per second (n) & 12685.55 & 6740.75 & \textbf{15842.34} \\ \hline
+    Time per request (ms) & 78.830 & 148.351 & \textbf{63.122} \\ \hline
+    Transfer rate (KB/s) & 3168.52 & 1849.76 & \textbf{5608.19} \\ \hline
+    Total connection time avg (ms) & 78 & 70 & \textbf{45} \\ \hline
+    Total connection time min (ms) & 48 & 15 & \textbf{7} \\ \hline
+    Total connection time max (ms) & \textbf{3090} & 12050 & 3674 \\
+  \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \caption{OS Benchmark Using Nginx (100000/10000)}
+  \label{tab:os_nginx_100000_10000}
+  
+  \begin{tabular}{l|c|c|c}
+
+    & \textbf{\textsc{Gentoo}} & \textbf{\textsc{Ubuntu}} & \textbf{\textsc{Debian}} \\ \hline
+    Total time (s) & 11.555 & FAIL & FAIL \\ \hline
+    Requests per second (n) & 8654.34 & FAIL & FAIL \\ \hline
+    Time per request (ms) & 1155.489 & FAIL & FAIL \\ \hline
+    Transfer rate (KB/s) & 2212.22 & FAIL & FAIL \\ \hline
+    Total connection time avg (ms) & 1083 & FAIL & FAIL \\ \hline
+    Total connection time min (ms) & 272 & FAIL & FAIL \\ \hline
+    Total connection time max (ms) & 4473 & FAIL & FAIL \\
+  \end{tabular}
+\end{table}
+
+Concerning the Nginx benchmark, table~\ref{tab:os_nginx_10000_1000} shows that this time it was Debian to achieve the best result on the first benchmark, yielding an impressive performance. The results of the second test are shown on table~\ref{tab:os_nginx_100000_1000} and Debian seems to be the best performing distribution once again, with Ubuntu not starting to show signs of not being able to cope with the demand. The third test's results showed some unexpected results since, similarly to the Apache benchmark, neither Debian nor Ubuntu were able to reply to at least 99\% of the requests withing 30 seconds, leaving the best result to Gentoo which was the only distribution to successfully complete the final test. The final test results can be found in table~\ref{tab:os_nginx_100000_10000}.
+
+Gentoo showed an excellent behavior when scaling. The difference in the average time needed to complete each request on tests 1 and 2 of both web servers is remarkably small. It was also the only distribution to be able to cope with 100000 requests with 10000 of them concurrent, either on Apache and Nginx. These results allowed to confidently decide that Gentoo is the best distribution to compare to FreeBSD.
 
 \subsubsection{Ruby Benchmark on Gentoo Linux and FreeBSD}
-Given this research's scope, it is important to determine which of the aforementioned OSes---Gentoo Linux or FreeBSD---provide the best environment for a Ruby on Rails application. A Ruby on Rails application, as the name implies, is written in Ruby just like the framework it is using. Therefore, Ruby is a core component from Rails' perspective. The official Ruby interpreters are likely to yield different performance results on different OSes since they are mainly developed in Linux and then ported to other Operating Systems. If we take into account the already known differences stated on section~\ref{state:sec:operating_systems}, benchmarking this core component is likely to yield different results and to enable a confident assertion about the OS in which it is developed---Linux---is the best for a Ruby on Rails application or not.
+Given this research's scope, it is important to determine which of the aforementioned operating systems---Gentoo Linux or FreeBSD---provide the best environment for a Ruby on Rails application. A Ruby on Rails application, as the name implies, is written in Ruby just like the framework it is using. Therefore, Ruby is a core component from Rails' perspective. The official Ruby interpreters are likely to yield different performance results on different operating systems since they are mainly developed in Linux and then ported to other OS. If we take into account the already known differences stated on section~\ref{state:sec:operating_systems}, benchmarking this core component is likely to yield different results and to enable a trustful assertion about the OS in which it is developed---Linux---is or is not the best for a Ruby on Rails application.
 
-For this benchmark, Antonio Cangiano's Ruby benchmarking suite~\cite[ruby-benchmarking-suite] was used. It currently contains 62 micro benchmarks which test specific Ruby features, 8 macro benchmarks which test multiple Ruby features in a single test and 3 RDoc-related benchmarks. Each benchmark ran 5 times and had a 300 second timeout. This high test variety provides a wide coverage of many Ruby features, solidly asserting about the interpreter's overall performance. All tests were ran using both Ruby interpreters, MRI (Ruby 1.8) and YARV (Ruby 1.9), in both operating systems.
-\\
-TABELA TABELA
-\\
-As seen on table~\ref{TABELA MRI}, MRI has a better overall performance in Linux. The average improvement is of 29.34\%.
+For this benchmark, Antonio Cangiano's Ruby benchmarking suite\footnote{\url{http://github.com/acangiano/ruby-benchmark-suite/}} was used. It currently contains 62 micro benchmarks which test specific Ruby features, 8 macro benchmarks which test multiple Ruby features in a single test and 3 RDoc\footnote{\url{http://rdoc.sourceforge.net/}}-related benchmarks. This high test variety provides a wide coverage of many Ruby features, solidly asserting about the interpreter's overall performance. Each benchmark had a 300 second timeout and ran 5 times, after which the best run was picked. All tests used both official Ruby interpreters---MRI (Ruby 1.8) and YARV (Ruby 1.9)---in both operating systems.
 
-Table~\ref{TABELA YARV} shows the results of the YARV benchmark. Similarly to MRI's benchmark, YARV has a better overall performance in Linux. The average improvement is 22.21\% on this test.
+For readability purposes, each benchmark description indicates if it is a micro, macro or rdoc benchmark. It also states the test ran by using a simplified name which illustrates its purpose. The used format is as follows:
+\begin{verbatim}
+[macro|micro|rdoc]/simplified_name
+\end{verbatim}
+Additionally, the input size is also mentioned and its meaning depends on the test itself. For instance, when calculating $\pi$ it indicates the number of decimal places to determine and when calculating prime numbers it indicates the maximum number to calculate.
 
-After eliminating FreeBSD from the benchmarking subjects, Gentoo Linux is the OS that will be used in future work. It is very stable, configurable and enables improved performance of Ruby-related software when compared to FreeBSD.
+The following tables will present the amount of time each test needed to complete on each operating system and interpreter, in seconds.
 
-\begin{comment}
-Use the generic benchmarks mentioned above
+\begin{center}
+\renewcommand{\arraystretch}{0.85}
+\normalsize
+  \begin{longtable}{l|c|c|c|c}
+  \caption[MRI Benchmark on Gentoo and FreeBSD]{MRI Benchmark on Gentoo and FreeBSD} \label{tab:mri_benchmark_gentoo_freebsd} \\
 
-Web server benchmark (Nginx/Apache on each disto)
+  \multicolumn{1}{c|}{\textbf{Benchmark}} & \textbf{Input Size} & \textbf{1.8.7 (Gentoo)} & \textbf{1.8.7 (FreeBSD)} & \textbf{Ratio} \\ \hline 
+  \endfirsthead
 
-Ruby benchmarks on each OS
+  \multicolumn{5}{c}%
+  {{\bfseries \tablename\ \thetable{} --- continued from previous page}} \\
+  \multicolumn{1}{c|}{\textbf{Benchmark}} & \textbf{Input Size} & \textbf{1.8.7 (Gentoo)} & \textbf{1.8.7 (FreeBSD)} & \textbf{Ratio} \\ 
+  \endhead
 
-Show results and analysis
-\end{comment}
+  \multicolumn{5}{r}{{\tablename\ \thetable{} --- continued on the next page}} \\ \hline
+  \endfoot
+
+  \endlastfoot
+
+  macro/cal & 500 & \textbf{1.990} & 2.608 & 31.04\% \\ \hline
+  macro/dirp & 10000 & \textbf{0.386} & 0.465 & 20.53\% \\ \hline
+  macro/gzip & 100 & \textbf{6.141} & 6.528 & 6.30\% \\ \hline
+  macro/hilbert\_matrix & 10 & \textbf{0.036} & 0.048 & 33.21\% \\ \hline
+  macro/hilbert\_matrix & 20 & \textbf{0.335} & 0.431 & 28.83\% \\ \hline
+  macro/hilbert\_matrix & 30 & \textbf{1.367} & 1.667 & 22.01\% \\ \hline
+  macro/hilbert\_matrix & 40 & \textbf{3.866} & 4.532 & 17.23\% \\ \hline
+  macro/hilbert\_matrix & 50 & \textbf{8.868} & 9.309 & 4.97\% \\ \hline
+  macro/hilbert\_matrix & 60 & \textbf{18.399} & 18.489 & 0.49\% \\ \hline
+  macro/list & 1000 & \textbf{0.053} & 0.066 & 24.16\% \\ \hline
+  macro/list & 10000 & 7.154 & \textbf{6.291} & 13.73\% \\ \hline
+  macro/mpart & 300 & \textbf{0.039} & 0.190 & 383.32\% \\ \hline
+  macro/norvig\_spelling & 50 & \textbf{8.562} & 11.937 & 39.43\% \\ \hline
+  macro/observ & 100000 & \textbf{0.612} & 0.813 & 32.78\% \\ \hline
+  macro/parse\_log & 100 & \textbf{1.151} & 1.200 & 4.27\% \\ \hline
+  macro/pi & 1000 & \textbf{0.026} & 0.030 & 16.45\% \\ \hline
+  macro/pi & 10000 & 2.127 & \textbf{2.108} & 0.92\% \\ \hline
+  macro/rcs & 100 & \textbf{0.753} & 0.788 & 4.65\% \\ \hline
+  macro/sudoku & 1 & \textbf{10.153} & 15.881 & 56.42\% \\ \hline
+  micro/app\_factorial & 5000 & StackError & StackError &  \\ \hline
+  micro/app\_fib & 30 & \textbf{1.587} & 2.473 & 55.83\% \\ \hline
+  micro/app\_fib & 35 & \textbf{17.854} & 27.183 & 52.25\% \\ \hline
+  micro/app\_mandelbrot & 1 & \textbf{1.899} & 2.443 & 28.65\% \\ \hline
+  micro/app\_pentomino & 1 & SignalException & SignalException &  \\ \hline
+  micro/app\_tak & 7 & \textbf{1.173} & 1.759 & 49.92\% \\ \hline
+  micro/app\_tak & 8 & \textbf{3.405} & 5.003 & 46.93\% \\ \hline
+  micro/app\_tak & 9 & \textbf{8.910} & 13.285 & 49.09\% \\ \hline
+  micro/app\_tarai & 3 & \textbf{3.873} & 6.021 & 55.47\% \\ \hline
+  micro/app\_tarai & 4 & \textbf{4.670} & 7.260 & 55.47\% \\ \hline
+  micro/app\_tarai & 5 & \textbf{5.654} & 8.826 & 56.10\% \\ \hline
+  micro/binary\_trees & 1 & \textbf{54.757} & 74.456 & 35.98\% \\ \hline
+  micro/count\_multithreaded & 1 & \textbf{0.004} & 0.004 & 2.75\% \\ \hline
+  micro/count\_multithreaded & 2 & 0.009 & \textbf{0.009} & 0.30\% \\ \hline
+  micro/count\_multithreaded & 4 & \textbf{0.017} & 0.017 & 0.65\% \\ \hline
+  micro/count\_multithreaded & 8 & \textbf{0.034} & 0.034 & 0.23\% \\ \hline
+  micro/count\_multithreaded & 16 & \textbf{0.067} & 0.068 & 1.96\% \\ \hline
+  micro/count\_shared\_thread & 1 & \textbf{0.044} & 0.050 & 13.92\% \\ \hline
+  micro/count\_shared\_thread & 2 & \textbf{0.044} & 0.050 & 13.49\% \\ \hline
+  micro/count\_shared\_thread & 4 & \textbf{0.044} & 0.050 & 13.31\% \\ \hline
+  micro/count\_shared\_thread & 8 & \textbf{0.044} & 0.050 & 12.37\% \\ \hline
+  micro/count\_shared\_thread & 16 & \textbf{0.045} & 0.050 & 12.62\% \\ \hline
+  micro/eval & 1000000 & \textbf{1.843} & 2.611 & 41.64\% \\ \hline
+  micro/fannkuch & 6 & \textbf{0.005} & 0.007 & 32.24\% \\ \hline
+  micro/fannkuch & 8 & \textbf{0.398} & 0.466 & 17.25\% \\ \hline
+  micro/fannkuch & 10 & \textbf{44.995} & 49.869 & 10.83\% \\ \hline
+  micro/fasta & 1000000 & \textbf{37.028} & 69.053 & 86.49\% \\ \hline
+  micro/fiber\_ring & 10 & LoadError & LoadError &  \\ \hline
+  micro/fiber\_ring & 100 & LoadError & LoadError &  \\ \hline
+  micro/fiber\_ring & 1000 & LoadError & LoadError &  \\ \hline
+  micro/fractal & 5 & \textbf{4.520} & 4.900 & 8.39\% \\ \hline
+  micro/gc\_array & 1 & \textbf{44.990} & 50.502 & 12.25\% \\ \hline
+  micro/gc\_mb & 500000 & \textbf{0.687} & 0.883 & 28.58\% \\ \hline
+  micro/gc\_mb & 1000000 & \textbf{1.513} & 1.987 & 31.31\% \\ \hline
+  micro/gc\_mb & 3000000 & \textbf{3.535} & 5.761 & 62.96\% \\ \hline
+  micro/gc\_string & 1 & \textbf{7.874} & 14.727 & 87.03\% \\ \hline
+  micro/knucleotide & 1 & \textbf{1.396} & 1.857 & 33.03\% \\ \hline
+  micro/lucas\_lehmer & 9689 & 4.019 & \textbf{3.975} & 1.10\% \\ \hline
+  micro/lucas\_lehmer & 9941 & 4.342 & \textbf{4.282} & 1.42\% \\ \hline
+  micro/lucas\_lehmer & 11213 & 6.174 & \textbf{6.068} & 1.76\% \\ \hline
+  micro/lucas\_lehmer & 19937 & 33.143 & \textbf{32.628} & 1.58\% \\ \hline
+  micro/mandelbrot & 1 & \textbf{55.460} & 62.065 & 11.91\% \\ \hline
+  micro/mbari\_bogus1 & 1 & StackError & StackError &  \\ \hline
+  micro/mergesort & 1 & \textbf{1.914} & 2.396 & 25.22\% \\ \hline
+  micro/mergesort\_hongli & 3000 & \textbf{4.423} & 5.638 & 27.47\% \\ \hline
+  micro/meteor\_contest & 1 & \textbf{25.352} & 35.424 & 39.73\% \\ \hline
+  micro/monte\_carlo\_pi & 10000000 & \textbf{12.178} & 15.732 & 29.18\% \\ \hline
+  micro/nbody & 100000 & \textbf{7.046} & 7.921 & 12.42\% \\ \hline
+  micro/nsieve & 9 & \textbf{15.221} & 19.085 & 25.39\% \\ \hline
+  micro/nsieve\_bits & 8 & \textbf{19.753} & 30.533 & 54.57\% \\ \hline
+  micro/open\_many\_files & 50000 & \textbf{0.211} & 0.356 & 68.80\% \\ \hline
+  micro/partial\_sums & 2500000 & \textbf{18.003} & 19.447 & 8.02\% \\ \hline
+  micro/primes & 3000 & \textbf{5.057} & 7.247 & 43.31\% \\ \hline
+  micro/primes & 30000 & SignalException & SignalException &  \\ \hline
+  micro/primes & 300000 & SignalException & SignalException &  \\ \hline
+  micro/primes & 3000000 & SignalException & SignalException &  \\ \hline
+  micro/quicksort & 1 & \textbf{7.116} & 13.709 & 92.65\% \\ \hline
+  micro/read\_large & 100 & \textbf{6.337} & 11.705 & 84.69\% \\ \hline
+  micro/regex\_dna & 20 & \textbf{2.644} & 3.843 & 45.36\% \\ \hline
+  micro/reverse\_compliment & 1 & \textbf{3.702} & 5.343 & 44.32\% \\ \hline
+  micro/simple\_connect & 1 & 0.134 & SocketError &  \\ \hline
+  micro/simple\_connect & 100 & 0.143 & SocketError &  \\ \hline
+  micro/simple\_connect & 500 & 0.175 & SocketError &  \\ \hline
+  micro/simple\_server & 1 & 0.134 & SocketError &  \\ \hline
+  micro/simple\_server & 100 & 0.136 & SocketError &  \\ \hline
+  micro/simple\_server & 100000 & 1.427 & SocketError &  \\ \hline
+  micro/so\_ackermann & 7 & 0.494 & StackError &  \\ \hline
+  micro/so\_ackermann & 9 & StackError & StackError &  \\ \hline
+  micro/so\_array & 9000 & \textbf{6.867} & 11.425 & 66.37\% \\ \hline
+  micro/so\_count\_words & 100 & \textbf{2.408} & 2.455 & 1.93\% \\ \hline
+  micro/so\_exception & 500000 & \textbf{8.009} & 10.815 & 35.03\% \\ \hline
+  micro/so\_lists & 1000 & \textbf{8.649} & 11.233 & 29.89\% \\ \hline
+  micro/so\_lists\_small & 1000 & \textbf{1.741} & 2.264 & 30.03\% \\ \hline
+  micro/so\_matrix & 60 & \textbf{1.924} & 2.821 & 46.66\% \\ \hline
+  micro/so\_object & 500000 & \textbf{1.424} & 2.054 & 44.30\% \\ \hline
+  micro/so\_object & 1000000 & \textbf{2.825} & 4.104 & 45.31\% \\ \hline
+  micro/so\_object & 1500000 & \textbf{4.265} & 6.165 & 44.56\% \\ \hline
+  micro/so\_sieve & 4000 & \textbf{54.784} & 58.611 & 6.99\% \\ \hline
+  micro/socket\_transfer\_1mb & 10000 & 0.353 & SocketError &  \\ \hline
+  micro/socket\_transfer\_1mb & 1000000 & 0.356 & SocketError &  \\ \hline
+  micro/spectral\_norm & 100 & \textbf{0.932} & 1.433 & 53.73\% \\ \hline
+  micro/string\_concat & 10000000 & \textbf{5.655} & 12.219 & 116.07\% \\ \hline
+  micro/sum\_file & 100 & \textbf{9.920} & 15.563 & 56.89\% \\ \hline
+  micro/word\_anagrams & 1 & \textbf{7.750} & 9.853 & 27.14\% \\ \hline
+  micro/write\_large & 100 & \textbf{0.157} & 0.489 & 212.46\% \\ \hline
+  rdoc/against\_itself\_darkfish & 1 & \textbf{13.118} & 15.236 & 16.14\% \\ \hline
+  rdoc/against\_itself\_ri & 1 & \textbf{12.854} & 16.533 & 28.62\% \\ \hline
+  rdoc/core\_darkfish & 1 & SystemExit & SystemExit & \multicolumn{1}{l|}{} \\ \hline
+  \textbf{Total} & \multicolumn{1}{l|}{\textbf{}} & \textbf{700.311} & \textbf{905.764} & \textbf{29.34\%} \\
+  \end{longtable}
+\end{center}
+
+As seen on table~\ref{tab:mri_benchmark_gentoo_freebsd}, MRI has a consistently better overall performance in Linux. The average improvement is of 29.34\%. Some prominent differences include the ``mpar'' test which splits a file into multiple parts, ``write\_large'', ``read\_large'' and the ``open\_many\_files'' test, indicating that I/O in MRI is much faster under Linux than under BSD. Other notable differences include string concatenation, its garbage collection and the ``quicksort'' test.
+
+\begin{center}
+\renewcommand{\arraystretch}{0.85}
+\normalsize
+  \begin{longtable}{l|c|c|c|c}
+  \caption[YARV Benchmark on Gentoo and FreeBSD]{YARV Benchmark on Gentoo and FreeBSD} \label{tab:yarv_benchmark_gentoo_freebsd} \\
+
+  \multicolumn{1}{c|}{\textbf{Benchmark}} & \textbf{Input Size} & \textbf{1.9.1 (Gentoo)} & \textbf{1.9.1 (FreeBSD)} & \textbf{Ratio} \\ \hline 
+  \endfirsthead
+
+  \multicolumn{5}{c}%
+  {{\bfseries \tablename\ \thetable{} --- continued from previous page}} \\
+  \multicolumn{1}{c|}{\textbf{Benchmark}} & \textbf{Input Size} & \textbf{1.9.1 (Gentoo)} & \textbf{1.9.1(FreeBSD)} & \textbf{Ratio} \\ 
+  \endhead
+
+  \multicolumn{5}{r}{{\tablename\ \thetable{} --- continued on the next page}} \\ \hline
+  \endfoot
+
+  \endlastfoot
+
+  macro/cal & 500 & 0.289 & \textbf{0.287} & 0.48\% \\ \hline
+  macro/dirp & 10000 & 0.393 & \textbf{0.384} & 2.45\% \\ \hline
+  macro/gzip & 100 & \textbf{5.979} & 6.441 & 7.71\% \\ \hline
+  macro/hilbert\_matrix & 10 & \textbf{0.002} & 0.002 & 4.98\% \\ \hline
+  macro/hilbert\_matrix & 20 & \textbf{0.031} & 0.034 & 9.32\% \\ \hline
+  macro/hilbert\_matrix & 30 & \textbf{0.154} & 0.166 & 7.85\% \\ \hline
+  macro/hilbert\_matrix & 40 & \textbf{0.477} & 0.514 & 7.71\% \\ \hline
+  macro/hilbert\_matrix & 50 & \textbf{1.256} & 1.347 & 7.22\% \\ \hline
+  macro/hilbert\_matrix & 60 & \textbf{3.024} & 3.206 & 6.01\% \\ \hline
+  macro/list & 1000 & \textbf{0.026} & 0.035 & 31.92\% \\ \hline
+  macro/list & 10000 & \textbf{2.758} & 3.468 & 25.76\% \\ \hline
+  macro/mpart & 300 & \textbf{0.034} & 0.189 & 461.63\% \\ \hline
+  macro/norvig\_spelling & 50 & ArgumentError & ArgumentError &  \\ \hline
+  macro/observ & 100000 & \textbf{0.360} & 0.378 & 4.96\% \\ \hline
+  macro/parse\_log & 100 & 0.309 & \textbf{0.278} & 11.17\% \\ \hline
+  macro/pi & 1000 & \textbf{0.024} & 0.027 & 12.38\% \\ \hline
+  macro/pi & 10000 & \textbf{2.034} & 2.444 & 20.19\% \\ \hline
+  macro/rcs & 100 & \textbf{0.581} & 0.634 & 9.26\% \\ \hline
+  macro/sudoku & 1 & \textbf{1.661} & 1.859 & 11.91\% \\ \hline
+  micro/app\_factorial & 5000 & \textbf{0.037} & 0.047 & 25.63\% \\ \hline
+  micro/app\_fib & 30 & \textbf{0.189} & 0.192 & 1.97\% \\ \hline
+  micro/app\_fib & 35 & \textbf{2.099} & 2.122 & 1.10\% \\ \hline
+  micro/app\_mandelbrot & 1 & \textbf{0.277} & 0.288 & 3.79\% \\ \hline
+  micro/app\_pentomino & 1 & \textbf{24.784} & 25.306 & 2.11\% \\ \hline
+  micro/app\_tak & 7 & 0.143 & \textbf{0.140} & 2.45\% \\ \hline
+  micro/app\_tak & 8 & \textbf{0.414} & 0.401 & 3.19\% \\ \hline
+  micro/app\_tak & 9 & 1.091 & \textbf{1.056} & 3.36\% \\ \hline
+  micro/app\_tarai & 3 & 0.492 & \textbf{0.487} & 1.06\% \\ \hline
+  micro/app\_tarai & 4 & 0.604 & \textbf{0.589} & 2.60\% \\ \hline
+  micro/app\_tarai & 5 & 0.731 & \textbf{0.713} & 2.53\% \\ \hline
+  micro/binary\_trees & 1 & \textbf{12.500} & 12.678 & 1.43\% \\ \hline
+  micro/count\_multithreaded & 1 & \textbf{0.006} & 0.007 & 12.19\% \\ \hline
+  micro/count\_multithreaded & 2 & \textbf{0.012} & 0.014 & 13.36\% \\ \hline
+  micro/count\_multithreaded & 4 & \textbf{0.025} & 0.027 & 10.67\% \\ \hline
+  micro/count\_multithreaded & 8 & \textbf{0.049} & 0.055 & 11.09\% \\ \hline
+  micro/count\_multithreaded & 16 & \textbf{0.100} & 0.110 & 10.42\% \\ \hline
+  micro/count\_shared\_thread & 1 & \textbf{0.061} & 0.067 & 9.37\% \\ \hline
+  micro/count\_shared\_thread & 2 & \textbf{0.061} & 0.068 & 11.06\% \\ \hline
+  micro/count\_shared\_thread & 4 & \textbf{0.061} & 0.067 & 10.12\% \\ \hline
+  micro/count\_shared\_thread & 8 & \textbf{0.062} & 0.069 & 10.24\% \\ \hline
+  micro/count\_shared\_thread & 16 & \textbf{0.062} & 0.069 & 11.56\% \\ \hline
+  micro/eval & 1000000 & \textbf{5.892} & 6.408 & 8.76\% \\ \hline
+  micro/fannkuch & 6 & \textbf{0.003} & 0.004 & 16.37\% \\ \hline
+  micro/fannkuch & 8 & \textbf{0.252} & 0.291 & 15.35\% \\ \hline
+  micro/fannkuch & 10 & \textbf{29.300} & 33.422 & 14.07\% \\ \hline
+  micro/fasta & 1000000 & \textbf{13.992} & 14.939 & 6.77\% \\ \hline
+  micro/fiber\_ring & 10 & \textbf{0.000} & 0.000 & 13.89\% \\ \hline
+  micro/fiber\_ring & 100 & 0.018 & \textbf{0.017} & 8.72\% \\ \hline
+  micro/fiber\_ring & 1000 & \textbf{1.724} & 1.948 & 13.04\% \\ \hline
+  micro/fractal & 5 & \textbf{3.004} & 3.081 & 2.55\% \\ \hline
+  micro/gc\_array & 1 & \textbf{39.619} & 100.169 & 152.83\% \\ \hline
+  micro/gc\_mb & 500000 & \textbf{0.173} & 0.212 & 22.83\% \\ \hline
+  micro/gc\_mb & 1000000 & \textbf{0.346} & 0.412 & 19.09\% \\ \hline
+  micro/gc\_mb & 3000000 & \textbf{1.087} & 1.424 & 31.05\% \\ \hline
+  micro/gc\_string & 1 & \textbf{3.090} & 4.339 & 40.42\% \\ \hline
+  micro/knucleotide & 1 & \textbf{0.826} & 0.854 & 3.37\% \\ \hline
+  micro/lucas\_lehmer & 9689 & 4.611 & \textbf{4.498} & 2.53\% \\ \hline
+  micro/lucas\_lehmer & 9941 & 4.980 & \textbf{4.852} & 2.63\% \\ \hline
+  micro/lucas\_lehmer & 11213 & 7.096 & \textbf{6.924} & 2.49\% \\ \hline
+  micro/lucas\_lehmer & 19937 & 38.069 & \textbf{36.967} & 2.98\% \\ \hline
+  micro/mandelbrot & 1 & 30.207 & \textbf{29.574} & 2.14\% \\ \hline
+  micro/mbari\_bogus1 & 1 & \textbf{0.008} & 0.012 & 54.43\% \\ \hline
+  micro/mergesort & 1 & \textbf{0.659} & 0.697 & 5.79\% \\ \hline
+  micro/mergesort\_hongli & 3000 & \textbf{1.108} & 1.150 & 3.85\% \\ \hline
+  micro/meteor\_contest & 1 & \textbf{7.633} & 7.825 & 2.51\% \\ \hline
+  micro/monte\_carlo\_pi & 10000000 & \textbf{7.828} & 7.924 & 1.24\% \\ \hline
+  micro/nbody & 100000 & \textbf{5.569} & 6.258 & 12.38\% \\ \hline
+  micro/nsieve & 9 & NoMethodError & NoMethodError &  \\ \hline
+  micro/nsieve\_bits & 8 & \textbf{2.385} & 2.499 & 4.79\% \\ \hline
+  micro/open\_many\_files & 50000 & \textbf{0.245} & 0.433 & 77.22\% \\ \hline
+  micro/partial\_sums & 2500000 & \textbf{14.396} & 16.611 & 15.39\% \\ \hline
+  micro/primes & 3000 & \textbf{0.012} & 0.013 & 9.31\% \\ \hline
+  micro/primes & 30000 & 0.128 & \textbf{0.126} & 1.87\% \\ \hline
+  micro/primes & 300000 & 1.404 & \textbf{1.367} & 2.71\% \\ \hline
+  micro/primes & 3000000 & 17.761 & \textbf{17.544} & 1.24\% \\ \hline
+  micro/quicksort & 1 & \textbf{1.432} & 1.501 & 4.81\% \\ \hline
+  micro/read\_large & 100 & \textbf{2.441} & 2.881 & 18.03\% \\ \hline
+  micro/regex\_dna & 20 & 2.797 & \textbf{2.760} & 1.34\% \\ \hline
+  micro/reverse\_compliment & 1 & \textbf{2.782} & 3.344 & 20.22\% \\ \hline
+  micro/simple\_connect & 1 & 0.216 & SocketError &  \\ \hline
+  micro/simple\_connect & 100 & 0.143 & SocketError &  \\ \hline
+  micro/simple\_connect & 500 & 0.173 & SocketError &  \\ \hline
+  micro/simple\_server & 1 & 0.138 & SocketError &  \\ \hline
+  micro/simple\_server & 100 & 0.138 & SocketError &  \\ \hline
+  micro/simple\_server & 100000 & 1.411 & SocketError &  \\ \hline
+  micro/so\_ackermann & 7 & 0.059 & \textbf{0.056} & 4.98\% \\ \hline
+  micro/so\_ackermann & 9 & 0.957 & \textbf{0.909} & 5.24\% \\ \hline
+  micro/so\_array & 9000 & \textbf{1.938} & 2.057 & 6.11\% \\ \hline
+  micro/so\_count\_words & 100 & \textbf{2.831} & 3.453 & 21.98\% \\ \hline
+  micro/so\_exception & 500000 & \textbf{8.324} & 9.018 & 8.33\% \\ \hline
+  micro/so\_lists & 1000 & \textbf{4.483} & 4.876 & 8.76\% \\ \hline
+  micro/so\_lists\_small & 1000 & \textbf{0.905} & 0.985 & 8.78\% \\ \hline
+  micro/so\_matrix & 60 & 0.592 & \textbf{0.554} & 6.95\% \\ \hline
+  micro/so\_object & 500000 & \textbf{0.413} & 0.431 & 4.28\% \\ \hline
+  micro/so\_object & 1000000 & \textbf{0.817} & 0.862 & 5.52\% \\ \hline
+  micro/so\_object & 1500000 & \textbf{1.224} & 1.294 & 5.67\% \\ \hline
+  micro/so\_sieve & 4000 & \textbf{8.650} & 9.031 & 4.40\% \\ \hline
+  micro/socket\_transfer\_1mb & 10000 & 0.306 & SocketError &  \\ \hline
+  micro/socket\_transfer\_1mb & 1000000 & 0.304 & SocketError &  \\ \hline
+  micro/spectral\_norm & 100 & 0.233 & \textbf{0.230} & 1.00\% \\ \hline
+  micro/string\_concat & 10000000 & \textbf{1.525} & 2.793 & 83.09\% \\ \hline
+  micro/sum\_file & 100 & \textbf{3.817} & 4.081 & 6.94\% \\ \hline
+  micro/word\_anagrams & 1 & \textbf{3.775} & 4.054 & 7.40\% \\ \hline
+  micro/write\_large & 100 & \textbf{0.147} & 0.470 & 219.43\% \\ \hline
+  rdoc/against\_itself\_darkfish & 1 & \textbf{6.991} & 7.561 & 8.16\% \\ \hline
+  rdoc/against\_itself\_ri & 1 & \textbf{5.580} & 9.178 & 64.47\% \\ \hline
+  rdoc/core\_darkfish & 1 & SystemExit & 114.611 &  \\ \hline
+  \textbf{Total} & \multicolumn{1}{l|}{\textbf{}} & \textbf{369.389} & \textbf{451.437} & \textbf{22.21\%} \\
+  \end{longtable}
+\end{center}
+Table~\ref{tab:yarv_benchmark_gentoo_freebsd} shows the results of the YARV benchmark. Similarly to MRI's benchmark, YARV has a better overall performance in Linux. The average improvement is 22.21\% on this interpreter. The most prominent results are equally I/O related. Garbage collecting an array in YARV under FreeBSD is slower than doing it under MRI, which is an unexpected outcome. This activity is $\pm$153\% faster when performed under Linux.
+
+Somewhat exceptedly, YARV and MRI's performance is considerably better in the Linux operating system. After eliminating FreeBSD from the benchmarking subjects, Gentoo is the Linux distribution that will be used in future work. It is very stable, configurable and enables improved performance of Ruby-related software when compared to FreeBSD.
 
 
 \subsection{Tweaking}
-There are many configurations and options that can be fine-tuned on an Operating System. Sysctl enables kernel parameter configuration at runtime. The aforeshown web server benchmarks required some optimization changes to improve the system's stability under high-load. These are shown on table~\ref{tab:sysctl}.
+There are many configurations and options that can be fine-tuned in operating systems. Sysctl enables kernel parameter configuration at runtime. The aforeshown web server benchmarks required some optimization changes to improve the system's stability under such a high-load. These are shown on table~\ref{tab:sysctl}.
 \begin{table}[ht]
   \centering
   
-  \begin{tabular}{p{0.05\textwidth}|p{0.32\textwidth}|p{0.25\textwidth}}
-    \textsc{\#} 
-  & \textsc{Name}
-  & \textsc{Value} \\
-  \hline
-  1 & net.core.rmem\_max & 16777216 \\
-  2 & net.core.wmem\_max & 16777216 \\
-  3 & net.ipv4.tcp\_rmem & 4096~\, 87380~\, 16777216 \\  
-  4 & net.ipv4.tcp\_wmem & 4096~\, 87380~\, 16777216 \\
-  5 & net.core.netdev\_max\_backlog & 4096 \\
-  6 & net.core.somaxconn & 4096 \\
-  7 & net.ipv4.tcp\_tw\_reuse & 1 \\
-  8 & net.ipv4.tcp\_tw\_recycle & 1 \\
-  9 & net.ipv4.tcp\_fin\_timeout & 15 \\
-  10 & net.ipv4.tcp\_timestamps & 0 \\
+  \begin{tabular}{c|p{0.32\textwidth}|p{0.25\textwidth}}
+  \multicolumn{1}{c|}{\textbf{\textsc{\#}}} & \multicolumn{1}{c|}{\textbf{\textsc{Name}}} & \multicolumn{1}{c}{\textbf{\textsc{Value}}} \\ \hline
+  
+  1 & net.core.rmem\_max & 16777216 \\ \hline
+  2 & net.core.wmem\_max & 16777216 \\ \hline
+  3 & net.ipv4.tcp\_rmem & 4096~\, 87380~\, 16777216 \\ \hline
+  4 & net.ipv4.tcp\_wmem & 4096~\, 87380~\, 16777216 \\ \hline
+  5 & net.core.netdev\_max\_backlog & 4096 \\ \hline
+  6 & net.core.somaxconn & 4096 \\ \hline
+  7 & net.ipv4.tcp\_tw\_reuse & 1 \\ \hline
+  8 & net.ipv4.tcp\_tw\_recycle & 1 \\ \hline
+  9 & net.ipv4.tcp\_fin\_timeout & 15 \\ \hline
+  10 & net.ipv4.tcp\_timestamps & 0 \\ \hline
   11 & net.ipv4.tcp\_orphan\_retries & 1 \\
   
   \end{tabular}
@@ -113,8 +491,8 @@ There are many configurations and options that can be fine-tuned on an Operating
 \end{table}
 Options 1, 2, 3 and 4 increase the TCP buffers on read/write, improving the system performance when dealing with big transfers. Options 5 and 6 increase the number of connections which are allowed to be queued behind a busy kernel. Options 7 and 8 enable socket reusing and fast socket recycling. Option 9 decreases the time allowed for a socket to exists without a connection. Option 10 disables timestamps in packet headers, reducing the packet's size. Finally, option 11 decreases the number of retries before killing the TCP connection.
 
-The number of opened files limit also had to be increased in the system's limits configuration. It defaults to 1024 which is very low on a server, taking into account that each socket connection uses a file on a UNIX system. This would generally cap the system's concurrency ability to ~1000, so it was increased to 65536.
+The number of opened files limit also had to be increased in the system's limits configuration. It defaults to 1024 which is very low on a server, taking into account that each socket connection uses a file on a UNIX system. This would generally cap the system's concurrency ability to $\pm$1000, so it was increased to 65536.
 
-A few other options are worth investigating. Many server-oriented distributions use the Deadline IO scheduler which gives a higher priority to read requests, while others use the CFQ scheduler which is commonly found on desktop systems. Preemption should also be disabled on a server kernel. In non-preemptive configurations, kernel code runs until completion---the scheduler can't touch it until it's finished. Server kernels should also have their timer interrupt rate set to 100Hz, which causes higher latency but lower overhead, yielding superior raw processing power.
+A few other options are worth investigating. Many server-oriented distributions use the Deadline I/O scheduler which gives a higher priority to read requests, while others use the fair CFQ I/O scheduler which is commonly found on desktop systems. Preemption should also be disabled on a server kernel. In non-preemptive configurations, kernel code runs until completion---the scheduler can't touch it until it is finished. Server kernels should also have their timer interrupt rate set to 100Hz, which causes higher latency but lower overhead, yielding superior raw processing power.
 
-On a side note, all the aforementioned configuration changes were in use in all benchmarks.
+All the aforementioned configuration changes were in use in during all benchmarks.

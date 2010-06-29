@@ -11,8 +11,8 @@
   
 \NeedsTeXFormat{LaTeX2e}
 \def \filename {feupteses.sty}
-\def \filedate {2008/05/16}
-\def \fileversion {0.9b}
+\def \filedate {2009/09/04}
+\def \fileversion {0.9f}
 \ProvidesPackage {feupteses}[\filedate\space\fileversion\space]
 \typeout {Document Style `FEUP Teses' \fileversion\space <\filedate>}
 
@@ -36,6 +36,11 @@
 \@alpharefsfalse
 \DeclareOption{alpharefs}{\@alpharefstrue}
 
+% Option for print on paper
+\newif\if@print
+\@printfalse
+\DeclareOption{print}{\@printtrue}
+
 \ProcessOptions\relax
 
 % First thing we do is make sure that report has been loaded.  A
@@ -56,6 +61,9 @@ with the `report' document style}{}}{}
 % for and fix such page breaks)
 %\brokenpenalty=10000
 \brokenpenalty=9000
+
+%% Ensure correct font encoding
+\usepackage[T1]{fontenc}
 
 %% Global layout of the document
 
@@ -159,14 +167,16 @@ with the `report' document style}{}}{}
   \par%
   \center{\noindent\large #1: #2 #3}}}
 
+%if provisional add a watermark
+
 \if@provisional
-   \if@portugues
-      \def\@provisionaltext{Vers\~{a}o Provis\'{o}ria}
+  \usepackage[firstpage]{draftwatermark}
+  \SetWatermarkFontSize{72pt}
+  \if@portugues
+     \SetWatermarkText{Para Aprecia\c{c}\~{a}o por J\'{u}ri}
    \else
-      \def\@provisionaltext{Provisional Version}
+     \SetWatermarkText{For Jury Evaluation}
    \fi
-\else
-   \def\@provisionaltext{\@empty}
 \fi
 
 % Copyrights
@@ -180,6 +190,7 @@ with the `report' document style}{}}{}
 %% TITLE page
 \def\maketitle{%
 \newbox\@crestbox
+
 %% TITLE page
 \begin{titlepage}
 {\vspace{-15mm}\Large\bf \textsc{\@school}}
@@ -192,8 +203,8 @@ with the `report' document style}{}}{}
 {\def\baselinestretch{1.2}\Huge\bf \@title \par}
 \vskip 10mm%
 {\Large\bf \@author}%
-\vskip 10mm%
-{\Large\textsc \@provisionaltext}
+%\vskip 10mm%
+%{\Large\textsc \@provisionaltext}
 \vfill%
 {\large \@degree}%
 \vskip 2mm
@@ -201,6 +212,7 @@ with the `report' document style}{}}{}
 \vskip 10 mm
 \@thesisdate
 \end{titlepage}%
+
 %copyright page
 \ifx\@copyrightnotice\@empty
   \relax
@@ -256,7 +268,7 @@ with the `report' document style}{}}{}
 \def\version#1{\gdef\@version{\sl Version #1 (\today)}}
 \fi
 \if@provisional
-   \typeout {Using version; provisional document}
+   \typeout {Using version annotation because the document is provisional}
 \else
    \noversiontrue
 \fi
@@ -299,7 +311,7 @@ with the `report' document style}{}}{}
 \normallineskip 1pt
 \onehalfspacing	% one and a half line spacing
 \setcounter{secnumdepth}{3}      % to number subsubsections
-\setcounter{tocdepth}{3}         % sets the depth of sectional units listed in the toc
+\setcounter{tocdepth}{2}         % sets the depth of sectional units listed in the toc
 \setcounter{topnumber}{1}        % maximum number of floats at top of page
 %\renewcommand{\topfraction}{0.8} % maximum fraction of the page occupied by floats
 
@@ -313,6 +325,22 @@ with the `report' document style}{}}{}
 
 %\RequirePackage[pdftex,pdfpagelabels,bookmarks,hyperindex,hyperfigures,backref,pagebackref]{hyperref}
 \RequirePackage[pdftex,pdfpagelabels,bookmarks,hyperindex,hyperfigures]{hyperref}
+
+\if@print
+
+\hypersetup{%
+   plainpages=false, 
+   pdfpagelayout=SinglePage,
+   bookmarksopen=false,
+   bookmarksnumbered=true,
+   breaklinks=true,
+   linktocpage,
+   colorlinks=false,
+   pdfborder=0 0 0
+}
+
+\else
+
 \hypersetup{%
    plainpages=false, 
    pdfpagelayout=SinglePage,
@@ -326,6 +354,8 @@ with the `report' document style}{}}{}
    citecolor=blue,
    anchorcolor=green
 }
+
+\fi
 
 \newcommand{\StartPrelim}{\cleardoublepage\pagenumbering{roman}\setcounter{page}{1}\pagestyle{fancy}}
 \newcommand{\StartBody}{\cleardoublepage\pagenumbering{arabic}\setcounter{page}{1}}
@@ -345,7 +375,7 @@ with the `report' document style}{}}{}
 \newcommand{\PrintBib}[1]{%
   \renewcommand{\bibname}{Refer\^{e}ncias}%
   \if@numericrefs%
-    \bibliographystyle{unsrt}%
+    \bibliographystyle{unsrt-pt}%
   \else%
     \if@alpharefs%
       \bibliographystyle{alpha-pt}%
@@ -353,14 +383,16 @@ with the `report' document style}{}}{}
       \bibliographystyle{plainnat-pt}%
     \fi%
   \fi%
-  \bibliography{#1}%
-  \addcontentsline{toc}{chapter}{Refer\^{e}ncias}}
+  \cleardoublepage%
+  \phantomsection%
+  \addcontentsline{toc}{chapter}{Refer\^{e}ncias}%
+  \bibliography{#1}}
 
 \newcommand{\PrintIndex}{%
- \cleardoublepage%
- \phantomsection
- \renewcommand{\indexname}{\'{I}ndice Remissivo}%
-  \addcontentsline{toc}{chapter}{\'{I}ndice Remissivo}% 
+  \cleardoublepage%
+  \phantomsection
+  \renewcommand{\indexname}{\'{I}ndice Remissivo}%
+  \addcontentsline{toc}{chapter}{\'{I}ndice Remissivo}%
   \printindex}
 
 \else
@@ -381,13 +413,15 @@ with the `report' document style}{}}{}
       \bibliographystyle{plainnat}%
     \fi%
   \fi%
-  \bibliography{#1}%
-  \addcontentsline{toc}{chapter}{References}}
+  \cleardoublepage%
+  \phantomsection%
+  \addcontentsline{toc}{chapter}{References}%
+  \bibliography{#1}}
 
 \newcommand{\PrintIndex}{%
   \cleardoublepage%
-  \phantomsection
-  \addcontentsline{toc}{chapter}{Index}% 
+  \phantomsection%
+  \addcontentsline{toc}{chapter}{Index}%
   \printindex}
 
 \fi

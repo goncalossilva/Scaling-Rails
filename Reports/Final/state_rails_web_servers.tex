@@ -41,43 +41,37 @@ WEBrick and Thin do not try to optimize the TCP stack while Mongrel uses two con
 From all the exposed Rails web servers, Passenger presents itself as the easiest to setup in a server environment~\cite{ruby_webservers} since it can be installed as a module for other easily installable web servers like Apache or Nginx.
 
 \subsection{Benchmarks}
-Some benchmarks were endured by Muhammed Ali~\cite{ruby_webservers}, whose results are showed on table~\ref{tab:webserver_benchmarks}.
+Some benchmarks were conducted by Muhammed Ali~\cite{ruby_webservers}, whose results are showed on table~\ref{tab:webserver_benchmarks}.
 \begin{table}[h!t]
   \centering
   
-  \begin{tabular}{p{1.3cm}|p{1.8cm}|p{2cm}|p{2cm}|p{2cm}|p{1.3cm}|p{2cm}}
-    \textsc{Test}
-  & \textsc{Users}
-  & \textsc{Requests}
-  & \textsc{WEBrick}
-  & \textsc{Mongrel}
-  & \textsc{Thin}
-  & \textsc{Passenger} \\
+  \begin{tabular}{c|c|c|c|c|c|c}
+    \textsc{\textbf{Test}} & \textsc{\textbf{Users}} & \textsc{\textbf{Requests}} & \textsc{\textbf{WEBrick}} & \textsc{\textbf{Mongrel}} & \textsc{\textbf{Thin}} & \textsc{\textbf{Passenger}} \\
   \hline
 
-  \multirow{3}{*}{1}
+  \multirow{3}{*}{\textbf{1}}
   & 10 & 1000 & 169 & 438 & 650 & 497\\
   & 100 & 1000 & 209 & 451 & 613 & 509\\
   & 1000 & 1000 & 250 & 446 & 615 & 324\\
   \hline
     
-  \multirow{3}{*}{2}
+  \multirow{3}{*}{\textbf{2}}
   & 10 & 1000 & 115 & 309 & 365 & 305\\
   & 100 & 1000 & 165 & 299 & 350 & 316\\
   & 1000 & 1000 & 194 & 284 & 346 & 307\\
   \hline
   
-  \multirow{2}{*}{3}
+  \multirow{2}{*}{\textbf{3}}
   & 10 & 1000 & 41 & 44 & 43 & 45\\
   & 100 & 1000 & 41 & 42 & 45 & 44\\
   \hline
 
-  \multirow{2}{*}{4}
+  \multirow{2}{*}{\textbf{4}}
   & 10 & 1000 & 41 & 37 & 55 & 79\\
   & 100 & 1000 & 41 & 37 & 54 & 79\\
   \hline
   
-  \multirow{2}{*}{5}
+  \multirow{2}{*}{\textbf{5}}
   & 10 & 1000 & 6 & 5 & 7 & 10\\
   & 100 & 1000 & 6 & 5 & 2 & 10\\
   
@@ -89,5 +83,5 @@ All tests consist in serving dynamic requests from a single Rails process. All r
 
 According to Muhammed's analysis, WEBrick is evidently slow when compared to its counterparts. Mongrel performs much better that its ancestor and both Thin and Passenger improve over it. Thin is clearly the best web server for serving small requests. Passenger, though, is the one to scale better since it performs similarly with 10 or 1000 concurrent users. It also shows better performance when handling large responses. Its performance could be different if it was using Nginx as its back-end instead of Apache.
 
-Unicorn was not contemplated on the previously shown tests but it has been gaining reputation and its adoption is increasing. \textit{Twitter}, the problematic platform mentioned before, recently switched over to Unicorn as its web server, publicly praising some of its features. Among them are its request queue handling, master/slaves architecture, error encapsulation and recovery, CPU usage and a feature called \textit{zero-downtime deployment} that ``works beautifully''~\cite{twitter_unicorn}.
+Unicorn was not contemplated on the previously shown tests but it has been gaining reputation and its adoption is increasing. \textit{Twitter}, the popular Rails-based platform mentioned before, recently switched over to Unicorn as its web server, publicly praising some of its features. Among them are its request queue handling, master/slaves architecture, error encapsulation and recovery, CPU usage and a feature called \textit{zero-downtime deployment} that ``works beautifully''~\cite{twitter_unicorn}.
 

@@ -4,13 +4,16 @@
 % FEUP, JCL & JCF, Tue May 20 18:53:15 2008
 %
 % PLEASE send improvements to jlopes at fe.up.pt, jcf at fe.up.pt
+%
 
 %%========================================
-%% Commands: pdflatex thesis
-%%           bibtex thesis
-%%           makeindex thesis (only if creating an index) 
-%%           pdflatex thesis
+%% Commands: pdflatex mieic
+%%           bibtex mieic
+%%           makeindex mieic (only if crating an index) 
+%%           pdflatex mieic
 %%========================================
+
+%% For one side layout comment next line and uncomment the second line
 \documentclass[11pt,a4paper,twoside,openright]{report}
 \usepackage[utf8]{inputenx}
 \usepackage[official]{eurosym}
@@ -19,7 +22,7 @@
 \usepackage{amsfonts}
 \usepackage{tkz-graph}
 \usepackage{multirow}
-\usepackage{booktabs}
+\usepackage{longtable} % needs font/line height hack (it's local right now)
 
 \usepackage{verbatim}
 \makeatletter 
@@ -58,8 +61,8 @@ commentstyle=\color{grey},
 \usepackage{enumerate}
 
 %% For the final version, comment next line and uncomment the second line
-%\usepackage[provisional,numericrefs]{feupteses}
-\usepackage[alpharefs]{feupteses} 
+\usepackage[provisional,numericrefs]{feupteses}
+%\usepackage[alpharefs]{feupteses} 
 
 %% Options: 
 %% - portuges: titles, etc in portuguese
@@ -73,7 +76,7 @@ commentstyle=\color{grey},
 %% Include MIEIC definitions different from standard style
 \usepackage{mieicpatch}
 
-\version{1.0}
+\version{0.99}
 
 %% Uncomment in the final version in order to make version footer disappear
 %% \noversiontrue
@@ -103,10 +106,9 @@ commentstyle=\color{grey},
   %%----------------------------------------
   \title{\ProjectName}
   \author{\ProjectAuthor}
-  \degree{State of the Art Review\\[2mm]
-  Master in Informatics and Computing Engineering}
+  \degree{Master in Informatics and Computing Engineering}
   %% Date of submission
-  \thesisdate{29$^{th}$ January, 2010}
+  \thesisdate{28$^{th}$ June, 2010}
 
   %% Insert copyright text if used
   %\copyrightnotice{Name of the Author, 2008}

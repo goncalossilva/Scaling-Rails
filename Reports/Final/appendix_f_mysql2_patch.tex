@@ -1,0 +1,380 @@
+\chapter{Patch which adds lazy type casting to mysql2} % (fold)
+\label{ap:ruby19_encoding_patch}
+
+A patch which enables lazy type casting of fields on of Ruby's \textit{MySQL} database libraries, \textit{mysql2}.
+
+\begin{lstlisting}
+diff --git a/ext/mysql2_ext.c b/ext/mysql2_ext.c
+index 3f791d3..fadea7b 100644
+--- a/ext/mysql2_ext.c
++++ b/ext/mysql2_ext.c
+@@ -370,7 +370,7 @@ static VALUE nogvl_read_query_result(void *ptr)
+   return res == 0 ? Qtrue : Qfalse;
+ }
+ 
+-/* mysql_store_result may (unlikely) read rows off the socket */
++/*  may (unlikely) read rows off the socket */
+ static VALUE nogvl_store_result(void *ptr)
+ {
+   MYSQL * client = ptr;
+@@ -521,92 +521,8 @@ static VALUE rb_mysql_result_fetch_row(int argc, VALUE * argv, VALUE self) {
+       }
+       rb_ary_store(wrapper->fields, i, field);
+     }
+-
++    VALUE val = INT2NUM(wrapper->lastRowProcessed+i);
+     if (row[i]) {
+-      VALUE val;
+-      switch(fields[i].type) {
+-        case MYSQL_TYPE_NULL:       // NULL-type field
+-          val = Qnil;
+-          break;
+-        case MYSQL_TYPE_BIT:        // BIT field (MySQL 5.0.3 and up)
+-          val = rb_str_new(row[i], fieldLengths[i]);
+-          break;
+-        case MYSQL_TYPE_TINY:       // TINYINT field
+-        case MYSQL_TYPE_SHORT:      // SMALLINT field
+-        case MYSQL_TYPE_LONG:       // INTEGER field
+-        case MYSQL_TYPE_INT24:      // MEDIUMINT field
+-        case MYSQL_TYPE_LONGLONG:   // BIGINT field
+-        case MYSQL_TYPE_YEAR:       // YEAR field
+-          val = rb_cstr2inum(row[i], 10);
+-          break;
+-        case MYSQL_TYPE_DECIMAL:    // DECIMAL or NUMERIC field
+-        case MYSQL_TYPE_NEWDECIMAL: // Precision math DECIMAL or NUMERIC field (MySQL 5.0.3 and up)
+-          val = rb_funcall(cBigDecimal, intern_new, 1, rb_str_new(row[i], fieldLengths[i]));
+-          break;
+-        case MYSQL_TYPE_FLOAT:      // FLOAT field
+-        case MYSQL_TYPE_DOUBLE:     // DOUBLE or REAL field
+-          val = rb_float_new(strtod(row[i], NULL));
+-          break;
+-        case MYSQL_TYPE_TIME: {     // TIME field
+-          int hour, min, sec, tokens;
+-          tokens = sscanf(row[i], "%2d:%2d:%2d", &hour, &min, &sec);
+-          val = rb_funcall(rb_cTime, intern_local, 6, INT2NUM(0), INT2NUM(1), INT2NUM(1), INT2NUM(hour), INT2NUM(min), INT2NUM(sec));
+-          break;
+-        }
+-        case MYSQL_TYPE_TIMESTAMP:  // TIMESTAMP field
+-        case MYSQL_TYPE_DATETIME: { // DATETIME field
+-          int year, month, day, hour, min, sec, tokens;
+-          tokens = sscanf(row[i], "%4d-%2d-%2d %2d:%2d:%2d", &year, &month, &day, &hour, &min, &sec);
+-          if (year+month+day+hour+min+sec == 0) {
+-            val = Qnil;
+-          } else {
+-            if (month < 1 || day < 1) {
+-              rb_raise(cMysql2Error, "Invalid date: %s", row[i]);
+-              val = Qnil;
+-            } else {
+-              val = rb_funcall(rb_cTime, intern_local, 6, INT2NUM(year), INT2NUM(month), INT2NUM(day), INT2NUM(hour), INT2NUM(min), INT2NUM(sec));
+-            }
+-          }
+-          break;
+-        }
+-        case MYSQL_TYPE_DATE:       // DATE field
+-        case MYSQL_TYPE_NEWDATE: {  // Newer const used > 5.0
+-          int year, month, day, tokens;
+-          tokens = sscanf(row[i], "%4d-%2d-%2d", &year, &month, &day);
+-          if (year+month+day == 0) {
+-            val = Qnil;
+-          } else {
+-            if (month < 1 || day < 1) {
+-              rb_raise(cMysql2Error, "Invalid date: %s", row[i]);
+-              val = Qnil;
+-            } else {
+-              val = rb_funcall(cDate, intern_new, 3, INT2NUM(year), INT2NUM(month), INT2NUM(day));
+-            }
+-          }
+-          break;
+-        }
+-        case MYSQL_TYPE_TINY_BLOB:
+-        case MYSQL_TYPE_MEDIUM_BLOB:
+-        case MYSQL_TYPE_LONG_BLOB:
+-        case MYSQL_TYPE_BLOB:
+-        case MYSQL_TYPE_VAR_STRING:
+-        case MYSQL_TYPE_VARCHAR:
+-        case MYSQL_TYPE_STRING:     // CHAR or BINARY field
+-        case MYSQL_TYPE_SET:        // SET field
+-        case MYSQL_TYPE_ENUM:       // ENUM field
+-        case MYSQL_TYPE_GEOMETRY:   // Spatial fielda
+-        default:
+-          val = rb_str_new(row[i], fieldLengths[i]);
+-#ifdef HAVE_RUBY_ENCODING_H
+-          // rudimentary check for binary content
+-          if ((fields[i].flags & BINARY_FLAG) || fields[i].charsetnr == 63) {
+-            rb_enc_associate_index(val, binaryEncoding);
+-          } else {
+-            rb_enc_associate_index(val, utf8Encoding);
+-          }
+-#endif
+-          break;
+-      }
+       rb_hash_aset(rowHash, field, val);
+     } else {
+       rb_hash_aset(rowHash, field, Qnil);
+@@ -651,20 +567,20 @@ static VALUE rb_mysql_result_each(int argc, VALUE * argv, VALUE self) {
+         wrapper->lastRowProcessed++;
+       }
+ 
+-      if (row == Qnil) {
++      /*if (row == Qnil) {
+         // we don't need the mysql C dataset around anymore, peace it
+         rb_mysql_result_free_result(wrapper);
+         return Qnil;
+-      }
++      }*/
+ 
+       if (block != Qnil) {
+         rb_yield(row);
+       }
+     }
+-    if (wrapper->lastRowProcessed == wrapper->numberOfRows) {
++    /*if (wrapper->lastRowProcessed == wrapper->numberOfRows) {
+       // we don't need the mysql C dataset around anymore, peace it
+       rb_mysql_result_free_result(wrapper);
+-    }
++    }*/
+   }
+ 
+   return wrapper->rows;
+@@ -686,6 +602,118 @@ static VALUE rb_raise_mysql2_error(MYSQL *client) {
+   return Qnil;
+ }
+ 
++static VALUE rb_mysql_result_cast(VALUE self, VALUE index) {
++  mysql2_result_wrapper * wrapper;
++  MYSQL_FIELD * field = NULL;
++  MYSQL_ROW row;
++  VALUE val;
++  unsigned long * fieldLengths;
++  void * ptr;
++  
++  GetMysql2Result(self, wrapper);
++  
++  if (wrapper->numberOfFields == 0) {
++    wrapper->numberOfFields = mysql_num_fields(wrapper->result);
++    wrapper->fields = rb_ary_new2(wrapper->numberOfFields);
++  }
++  
++  unsigned long r = index / wrapper->numberOfRows;
++  int c = index % wrapper->numberOfFields;
++  
++  ptr = wrapper->result;
++  mysql_data_seek(ptr, r); // <--- Segmentation fault
++  row = (MYSQL_ROW)rb_thread_blocking_region(nogvl_fetch_row, ptr, RUBY_UBF_IO, 0);
++  
++  field = mysql_fetch_field_direct(ptr, c);
++  fieldLengths = mysql_fetch_lengths(wrapper->result);
++  
++  switch(field->type) {
++    case MYSQL_TYPE_NULL:       // NULL-type field
++      val = Qnil;
++      break;
++    case MYSQL_TYPE_BIT:        // BIT field (MySQL 5.0.3 and up)
++      val = rb_str_new(row[c], fieldLengths[c]);
++      break;
++    case MYSQL_TYPE_TINY:       // TINYINT field
++    case MYSQL_TYPE_SHORT:      // SMALLINT field
++    case MYSQL_TYPE_LONG:       // INTEGER field
++    case MYSQL_TYPE_INT24:      // MEDIUMINT field
++    case MYSQL_TYPE_LONGLONG:   // BIGINT field
++    case MYSQL_TYPE_YEAR:       // YEAR field
++      val = rb_cstr2inum(row[c], 10);
++      break;
++    case MYSQL_TYPE_DECIMAL:    // DECIMAL or NUMERIC field
++    case MYSQL_TYPE_NEWDECIMAL: // Precision math DECIMAL or NUMERIC field (MySQL 5.0.3 and up)
++      val = rb_funcall(cBigDecimal, intern_new, 1, rb_str_new(row[c], fieldLengths[c]));
++      break;
++    case MYSQL_TYPE_FLOAT:      // FLOAT field
++    case MYSQL_TYPE_DOUBLE:     // DOUBLE or REAL field
++      val = rb_float_new(strtod(row[c], NULL));
++      break;
++    case MYSQL_TYPE_TIME: {     // TIME field
++      int hour, min, sec, tokens;
++      tokens = sscanf(row[c], "%2d:%2d:%2d", &hour, &min, &sec);
++      val = rb_funcall(rb_cTime, intern_local, 6, INT2NUM(0), INT2NUM(1), INT2NUM(1), INT2NUM(hour), INT2NUM(min), INT2NUM(sec));
++      break;
++    }
++    case MYSQL_TYPE_TIMESTAMP:  // TIMESTAMP field
++    case MYSQL_TYPE_DATETIME: { // DATETIME field
++      int year, month, day, hour, min, sec, tokens;
++      tokens = sscanf(row[c], "%4d-%2d-%2d %2d:%2d:%2d", &year, &month, &day, &hour, &min, &sec);
++      if (year+month+day+hour+min+sec == 0) {
++        val = Qnil;
++      } else {
++        if (month < 1 || day < 1) {
++          rb_raise(cMysql2Error, "Invalid date: %s", row[c]);
++          val = Qnil;
++        } else {
++          val = rb_funcall(rb_cTime, intern_local, 6, INT2NUM(year), INT2NUM(month), INT2NUM(day), INT2NUM(hour), INT2NUM(min), INT2NUM(sec));
++        }
++      }
++      break;
++    }
++    case MYSQL_TYPE_DATE:       // DATE field
++    case MYSQL_TYPE_NEWDATE: {  // Newer const used > 5.0
++      int year, month, day, tokens;
++      tokens = sscanf(row[c], "%4d-%2d-%2d", &year, &month, &day);
++      if (year+month+day == 0) {
++        val = Qnil;
++      } else {
++        if (month < 1 || day < 1) {
++          rb_raise(cMysql2Error, "Invalid date: %s", row[c]);
++          val = Qnil;
++        } else {
++          val = rb_funcall(cDate, intern_new, 3, INT2NUM(year), INT2NUM(month), INT2NUM(day));
++        }
++      }
++      break;
++    }
++    case MYSQL_TYPE_TINY_BLOB:
++    case MYSQL_TYPE_MEDIUM_BLOB:
++    case MYSQL_TYPE_LONG_BLOB:
++    case MYSQL_TYPE_BLOB:
++    case MYSQL_TYPE_VAR_STRING:
++    case MYSQL_TYPE_VARCHAR:
++    case MYSQL_TYPE_STRING:     // CHAR or BINARY field
++    case MYSQL_TYPE_SET:        // SET field
++    case MYSQL_TYPE_ENUM:       // ENUM field
++    case MYSQL_TYPE_GEOMETRY:   // Spatial fielda
++    default:
++      val = rb_str_new(row[c], fieldLengths[c]);
++#ifdef HAVE_RUBY_ENCODING_H
++      // rudimentary check for binary content
++      if ((field->flags & BINARY_FLAG) || field->charsetnr == 63) {
++        rb_enc_associate_index(val, binaryEncoding);
++      } else {
++        rb_enc_associate_index(val, utf8Encoding);
++      }
++#endif
++      break;
++  }
++  
++  return val;
++}
++
+ /* Ruby Extension initializer */
+ void Init_mysql2_ext() {
+   rb_require("date");
+@@ -709,6 +737,7 @@ void Init_mysql2_ext() {
+   rb_define_method(cMysql2Client, "async_result", rb_mysql_client_async_result, 0);
+   rb_define_method(cMysql2Client, "last_id", rb_mysql_client_last_id, 0);
+   rb_define_method(cMysql2Client, "affected_rows", rb_mysql_client_affected_rows, 0);
++  rb_define_method(cMysql2Client, "cast", rb_mysql_result_cast, 1);
+ 
+   cMysql2Error = rb_define_class_under(mMysql2, "Error", rb_eStandardError);
+   rb_define_method(cMysql2Error, "error_number", rb_mysql_error_error_number, 0);
+@@ -716,6 +745,9 @@ void Init_mysql2_ext() {
+ 
+   cMysql2Result = rb_define_class_under(mMysql2, "Result", rb_cObject);
+   rb_define_method(cMysql2Result, "each", rb_mysql_result_each, -1);
++  
++  //cMysql2Type = rb_define_class_under(mMysql2, "Type", rb_cObject);
++  //rb_define_singleton_method(cMysql2Type, "cast", rb_mysql_result_cast, 1);
+ 
+   VALUE mEnumerable = rb_const_get(rb_cObject, rb_intern("Enumerable"));
+   rb_include_module(cMysql2Result, mEnumerable);
+diff --git a/lib/active_record/connection_adapters/mysql2_adapter.rb b/lib/active_record/connection_adapters/mysql2_adapter.rb
+index 825dd44..7daa537 100644
+--- a/lib/active_record/connection_adapters/mysql2_adapter.rb
++++ b/lib/active_record/connection_adapters/mysql2_adapter.rb
+@@ -14,6 +14,12 @@ module ActiveRecord
+   module ConnectionAdapters
+     class Mysql2Column < Column
+       BOOL = "tinyint(1)".freeze
++      
++      def initialize(name, default, connection, sql_type = nil, null = true)
++        @connection = connection
++        super(name, default, sql_type, null)
++      end
++      
+       def extract_default(default)
+         if sql_type =~ /blob/i || type == :text
+           if default.blank?
+@@ -48,43 +54,47 @@ module ActiveRecord
+           when :boolean       then Object
+         end
+       end
+-
++      
++      # Gets the value (from the index)
+       def type_cast(value)
+         return nil if value.nil?
+         case type
+-          when :string                then value
+-          when :text                  then value
+-          when :integer               then value.to_i rescue value ? 1 : 0
+-          when :float                 then value.to_f # returns self if it's already a Float
+-          when :decimal               then self.class.value_to_decimal(value)
+-          when :datetime, :timestamp  then value.class == Time ? value : self.class.string_to_time(value)
+-          when :time                  then value.class == Time ? value : self.class.string_to_dummy_time(value)
+-          when :date                  then value.class == Date ? value : self.class.string_to_date(value)
+-          when :binary                then value
+-          when :boolean               then self.class.value_to_boolean(value)
+-          else value
++          when :string    then Mysql2::Type.cast(value)
++          when :text      then Mysql2::Type.cast(value)
++          when :integer   then Mysql2::Type.cast(value).to_i rescue Mysql2::Type.cast(value) ? 1 : 0
++          when :float     then Mysql2::Type.cast(value).to_f
++          when :decimal   then self.class.value_to_decimal(Mysql2::Type.cast(value))
++          when :datetime  then self.class.string_to_time(Mysql2::Type.cast(value))
++          when :timestamp then self.class.string_to_time(Mysql2::Type.cast(value))
++          when :time      then self.class.string_to_dummy_time(Mysql2::Type.cast(value))
++          when :date      then self.class.string_to_date(Mysql2::Type.cast(value))
++          when :binary    then self.class.binary_to_string(Mysql2::Type.cast(value))
++          when :boolean   then self.class.value_to_boolean(Mysql2::Type.cast(value))
++          else Mysql2::Type.cast(value)
+         end
+       end
+ 
+       def type_cast_code(var_name)
+         case type
+-          when :string                then nil
+-          when :text                  then nil
+-          when :integer               then "#{var_name}.to_i rescue #{var_name} ? 1 : 0"
+-          when :float                 then "#{var_name}.to_f"
+-          when :decimal               then "#{self.class.name}.value_to_decimal(#{var_name})"
+-          when :datetime, :timestamp  then "#{var_name}.class == Time ? #{var_name} : #{self.class.name}.string_to_time(#{var_name})"
+-          when :time                  then "#{var_name}.class == Time ? #{var_name} : #{self.class.name}.string_to_dummy_time(#{var_name})"
+-          when :date                  then "#{var_name}.class == Date ? #{var_name} : #{self.class.name}.string_to_date(#{var_name})"
+-          when :binary                then nil
+-          when :boolean               then "#{self.class.name}.value_to_boolean(#{var_name})"
++          when :string    then "Mysql2::Type.cast(#{var_name})"
++          when :text      then "Mysql2::Type.cast(#{var_name})"
++          when :integer   then "(Mysql2::Type.cast(#{var_name}).to_i rescue Mysql2::Type.cast(#{var_name}) ? 1 : 0)"
++          when :float     then "Mysql2::Type.cast(#{var_name}).to_f"
++          when :decimal   then "#{self.class.name}.value_to_decimal(Mysql2::Type.cast(#{var_name}))"
++          when :datetime  then "#{self.class.name}.string_to_time(Mysql2::Type.cast(#{var_name}))"
++          when :timestamp then "#{self.class.name}.string_to_time(Mysql2::Type.cast(#{var_name}))"
++          when :time      then "#{self.class.name}.string_to_dummy_time(Mysql2::Type.cast(#{var_name}))"
++          when :date      then "#{self.class.name}.string_to_date(Mysql2::Type.cast(#{var_name}))"
++          when :binary    then "#{self.class.name}.binary_to_string(Mysql2::Type.cast(#{var_name}))"
++          when :boolean   then "#{self.class.name}.value_to_boolean(Mysql2::Type.cast(#{var_name}))"
+           else nil
+         end
+       end
+ 
+       private
+         def simplified_type(field_type)
+-          return :boolean if Mysql2Adapter.emulate_booleans && field_type.downcase.index(BOOL)
++          puts field_type
++          return :boolean if Mysql2Adapter.emulate_booleans && @connection.cast(field_type).downcase.index(BOOL)
+           return :string  if field_type =~ /enum/i
+           return :integer if field_type =~ /year/i
+           super
+@@ -414,7 +424,7 @@ module ActiveRecord
+         columns = []
+         result = execute(sql, :skip_logging)
+         result.each(:symbolize_keys => true) { |field|
+-          columns << Mysql2Column.new(field[:Field], field[:Default], field[:Type], field[:Null] == "YES")
++          columns << Mysql2Column.new(field[:Field], field[:Default], @connection, field[:Type], field[:Null] == "YES")
+         }
+         columns
+       end
+@@ -592,4 +602,4 @@ module ActiveRecord
+         end
+     end
+   end
+-end
+\ No newline at end of file
++end
+\end{lstlisting}
