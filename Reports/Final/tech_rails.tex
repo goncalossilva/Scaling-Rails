@@ -4,16 +4,16 @@ David Hansson began developing a web-based project management tool oriented towa
 
 Rails started to become more mature over time and applications like Twitter, YellowPages, Hulu, Scribd and GitHub were built using this framework. Its popularity has grown significantly since the beginning and its adoption by popular platforms helped establishing Rails as a solid framework.
 
-Ruby on Rails has three main principles which motivated its creation~\cite{agile_webdevelopment_with_rails, ruby_on_rails_principles}:
+Ruby on Rails has three main principles behind its creation~\cite{agile_webdevelopment_with_rails, ruby_on_rails_principles}:
 \begin{description}
 \item[Convention over configuration.] In Rails, everything has a default configuration. The only exception is the database connection data. This way, developers only need to specify when they want to use unconventional configurations. This way, Rails offers simplicity while retaining high flexibility.
 \item[Don't Repeat Yourself.] Also known as DRY, this practice implies that the similar code snippets do not exist in separate locations. Every piece of knowledge is unique, definite and has a relevant representation. This simplifies modifications by the avoidance of having to change the same logic in different parts of the project, allowing the applications to keep a high consistency degree.
 \item[Model-View-Controller.] Rails follows the MVC architecture pattern, keeping the source code well organized by clearly separating the code according to its purpose. The \textit{Model} is responsible for maintain the state of the application, specifying the constraints its related data has to obey to. The \textit{Controller} receives the users' input, interacts with the model and finally renders a view page as the result. The \textit{View} can have multiple formats, from JSON to XML, and is essentially what is displayed to the users. This principle's schema is presented in figure~\ref{fig:mvc}.
 \begin{figure}[h]
   \centering
-    \includegraphics[width=0.75\textwidth]{mvc}
-  \caption{Model-View-Controller architectural pattern}
+  \caption{Model-View-Controller Architectural Pattern}
   \label{fig:mvc}
+    \includegraphics[width=0.75\textwidth]{mvc}
 \end{figure}\\
 \end{description}
 Rails' functionality can be altered and extended with \textit{plugins} and \textit{gems}. While being a full stack web framework, Rails does not aim to include every single feature. However, it has been built with a highly extensible infrastructure and it has a considerably large set of \textit{plugins} and compatible \textit{gems} nowadays~\cite{rails_magazine_1}.
@@ -21,7 +21,7 @@ Rails' functionality can be altered and extended with \textit{plugins} and \text
 
 \subsection{Rails 2}
 \label{tech:sec:ruby_on_rails:rails2}
-Rails 2 was first released in 2007 and is currently in version 2.3, released at the beginning of 2009. Throughout these 2 years the framework was improved by many contributors, aside from the core team~\cite{rails_core_team}. The framework is essentially divided in six essential modules~\cite{ruby_on_rails_principles, rails23_release_notes}:
+Rails 2 was first released in 2007. Its current version is 2.3, released at the beginning of 2009. Throughout these 2 years the framework was improved by many contributors, aside from the core team~\cite{rails_core_team}. The framework is essentially divided in six essential modules~\cite{ruby_on_rails_principles, rails23_release_notes}:
 \begin{description}
 \item[ActionPack] splits the response in two:  a request for the controller to handle and a template rendering part for the view to control.
 \item[ActiveRecord] is responsible for object handling and their database representations. Objects are directly linked to the database, so modifying them will modify the table definition they are associated with.

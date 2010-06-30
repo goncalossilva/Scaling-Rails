@@ -66,20 +66,19 @@ There is need for a solid set of generic development conventions and guidelines 
 
 This philosophy will be moslty applied in \textit{Escolinhas}\footnote{\url{http://escolinhas.pt}}, a rapidly growing Portuguese Ruby on Rails based project. \textit{Escolinhas} aims at sustaining social and collaborative work for children in elementary schools involving students, teachers and parents as its users. With the user demand increasing day by day, it becomes an excellent case-study application to research, test and apply all the work and discoveries made during the course of this thesis.
 
-The goals of ``Scaling Rails: a system-wide approach to performance optimization'' are to produce the aforementioned generic conventions and guidelines, to find generalist optimal configurations for the most important components that Rails depends on and to optimize them for the framework at use, all in the \textit{Escolinhas} context mentioned before. Other goals include improving the current profiling tools and increasing this subject's relevance amongst the Ruby on Rails community.
+Producing the aforementioned generic conventions and guidelines, fixing and greatly improving Rails-related profiling tools and increasing this subjects' awareness amongst the Ruby on Rails community are the main goals of ``Scaling Rails: a system-wide approach to performance optimization''.
 % section motivation_and_objectives (end)
-
 
 % TODO: Review at the end
 \section{Report Overview} % (fold)
 \label{sec:report_overview}
 The rest of this report is structured as follows.
 \begin{description}
-  \item[Chapter~\ref{cha:technologies}: ``Technologies''] gives an overview over this research's possibly involved technologies, providing important background information on each one of them.
-  \item[Chapter~\ref{cha:state_of_the_art}: ``State of the Art''] reviews each component's performance and scalability when compared to its alternatives along with a few other details.
-  \item[Chapter~\ref{cha:approach}: ``Approach''] suggests a possible approach into tackling the presented issue.
-  \item[Chapter~\ref{cha:conclusions}: ``Conclusions''] narrows alternatives down by using related work's conclusions, exposed in the state of the art, to discard certain options.
+  \item[Chapter~\ref{cha:technologies_review}: ``Technologies Review''] gives an overview over the involved technologies mentioned in this research, providing important background information on each one of them.
+  \item[Chapter~\ref{cha:state_of_the_art}: ``State of the Art in Rails Components' Performance''] reviews each component alternative's performance and scalability and provides other important details for the problem approach.
+  \item[Chapter~\ref{cha:problem_statement}: ``Problem Statement''] contains the problem to be addressed and throughly explains it, also exposing its usefulness.
+  \item[Chapter~\ref{cha:problem_approach_and_results}: ``Problem Approach and Results''] benchmarks each component's alternatives, analyzes their settings and possible configurations, and details the developments made concerning each component.
+  \item[Chapter~\ref{cha:conclusions}: ``Conclusions''] reviews the project, drawing conclusions about the issues addressed in ~\ref{cha:problem_statement}. It also provides a summary of contributions and some insights on which future developments have been considered.
 \end{description}
-% section report_overview (end)
 
 % chapter introduction (end)

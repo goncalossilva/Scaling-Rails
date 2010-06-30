@@ -3,21 +3,37 @@
 \chapter*{Abstract}
 \pdfbookmark[0]{Abstract}{abstract}
 
-Web's popularity and importance on everyday life increases day by day. Its users create new standards and expectations, demanding better user experiences in their daily interactions. Availability and response times are key factors to every website's success. The noticeable Web growth encouraged the creation of better tools to improve the quality of web applications. One of this tools is Ruby on Rails, a framework built on top of the Ruby programming language.
+Web's popularity and importance on everyday life increases day by day. Its users have high expectations and require better user experiences in their daily interactions. Ruby on Rails was created as a tool to help coping with this demand. This framework is criticized for issues with scalability. The lack of generic guidelines, profiling tools and global awareness of the importance of building highly performant applications all contribute to this problem.
 
-Rails scalability is questionable since many platforms experienced performance and availability difficulties when having to respond to increased popularity. One of these platforms was Twitter. 
+Producing the aforementioned generic guidelines, greatly improving Rails-related profiling tools and increasing this subjects' awareness inside the community are the main goals of this work.
 
-Rails performance is dependent on all the underlying components like the operating system, ruby, web server, database, rails itself and its superjacent application. A key concept in Rails' performance tuning and optimization is to analyze and improve each component from the framework's point of view. No component should be optimized as an individual, independent part --- the whole system must be taken into account when optimizing, considering each component's sensitive dependencies.
+System components have been addressed in three main phases: benchmark, tweak and develop, all from a Rails-centered perspective. Benchmarking operating systems involved comparing various Linux distributions and FreeBSD. Gentoo was the best performing alternative. As of tweaking, kernel configurations were explored. A generic benchmarking script for UNIX systems was developed.
 
-This report is a review on the state of the art in scaling Rails. It starts by exposing reliable software alternatives to each component and explains their characteristics, principles, philosophies and architecture, providing a solid base for their analysis. Their state of the art is reviewed, exhibiting related work and its results. A problem-solving approach to this issue is then proposed, along with its respective scheduling which will be endured at \textit{Escolinhas}, an expanding Ruby on Rails application. Finally, an analysis is performed on the aforementioned related work and future options are narrowed down according to other research's results.
+Regarding Ruby interpreters, YARV outperforms and improves the scalability of Rails applications over MRI. Its garbage collector's flexibility was enhanced for adaptive performance. Its storage and retrieval capabilities of profiling information were extended and a graphical profiling output integrated. 
+
+As of web servers, a memory usage monitoring script was developed. All web servers yielded similar performance results, although Thin had a remarkably lower memory consumption. Nginx was the best performing reverse proxy. Finally, many configuration options were explored. 
+
+Regarding databases, a Ruby database library for MySQL was improved.
+
+Concerning Rails, common pitfalls were exposed and solutions presented, exploiting their performance differences. Its profiling tools were improved and now seamlessly integrate with Ruby's. Redmine and many plugins were ported to the latest versions of Ruby and Rails. Finally, an article series on performance optimization was started, as well as the development of an official benchmarking suite for performance-oriented continuous integration.
+
+The aforementioned generic guidelines and conventions were created. The native profiling tools of Ruby and Rails were refactored. Revamping the profiling tools, porting Redmine and plugins, writing an article series, adding flexibility to YARV's garbage collector and developing a benchmarking suite for continuous integration are activities which generally contribute to the awareness on this subjects' importance.
 
 \chapter*{Resumo}
 \pdfbookmark[0]{Resumo}{resumo}
 
-A popularidade e importância da Web na vida quotidiana aumenta de dia para dia. Os seus utilizadores criam novos padrões e expectativas, exigindo melhores experiências de utilização na sua interacção com a plataforma. A disponibilidade e tempo de resposta de um sítio na Internet revelam-se como sendo factores críticos de sucesso. O notório crescimento da Web motivou a criação de melhores ferramentas que permitissem desenvolver aplicações com qualidade superior. Uma destas ferramentas é o Ruby on Rails, escrita na linguagem de programação Ruby.
+A importância da Web aumenta diariamente. Os utilizadores têm expectativas elevadas, exigindo experiências de alta qualidade. O Ruby on Rails ajuda a colmatar estas exigências, embora se critique a sua escalabilidade. A falta de guias genéricos, ferramentas de análise de desempenho e consciência da importância do desempenho contribuem para este problema.
 
-A escalabilidade do Rails é questionável já que várias plataformas apresentaram problemas de eficiência e disponibilidade quando viram a sua popularidade aumentada. Uma destas plataformas foi o Twitter.
+Os objectivos principais deste trabalho foram os de criar os referidos guias genéricos, melhorar as ferramentas de análise de desempenho existentes e aumentar a importância deste assunto.
 
-O desempenho do Rails depende de todos os seus componentes subjacentes como o sistema operativo, o ruby, o servidor web, a base de dados, o próprio Rails e a aplicação sobrejacente. Um conceito fundamental na optimização de desempenho do Rails consiste em analisar e melhorar cada componente do ponto de vista do Rails. Nenhum componente deve ser optimizado como se fosse uma parte independente do sistema --- todos os componentes devem ser tidos em conta quando se optimiza, tendo sempre em conta o impacto que estes poderão ter nos restantes.
+Trabalharam-se os componentes em três fases: testes, configurações e desenvolvimento, sempre da perspectiva do Rails. Quanto a sistemas operativos, comparam-se várias distribuições de Linux e o FreeBSD. O Gentoo foi a alternativa com melhor desempenho. Várias opções do \textit{kernel} foram exploradas. Foi desenvolvida uma rotina de teste genérico de desempenho para sistemas UNIX.
 
-Neste relatório é apresentada uma revisão do estado da arte sobre a escalabilidade do Rails. Começa-se por expor alternativas viáveis para cada componente e explica-se as suas características, pormenores e arquitectura, criando uma base sólida para a sua análise. O estado da arte de cada uma destas alternativas é então revisto, expondo trabalhos relacionados e as suas conclusões. Uma aproximação à solução deste problema é proposta, acompanhada da sua calendarização, que será aplicada no contexto do \textit{Escolinhas}, uma aplicação em crescimento desenvolvida em Ruby on Rails. Por fim, é feita uma análise sobre as alternativas supracitadas e estas são limitadas pelas descobertas feitas em projectos realizados.
+Quanto ao Ruby, o YARV tem melhor desempenho que o MRI. Várias opções de parametrização foram introduzidas no seu \textit{garbage collector}. A sua capacidade de análise de desempenho foi aumentada e estendida.
+
+No que toca aos servidores web, foi desenvolvida uma rotina de monitorização de memória. Todos eles evidenciam um desempenho similar, embora o Thin se destaque pela baixa utilização de memória. O Nginx obteve os melhores resultados como \textit{reverse proxy}.
+
+Relativamente às bases de dados, uma biblioteca Ruby de MySQL foi melhorada.
+
+Quanto ao Rails, vários problemas recorrentes foram analisados e foram propostas soluções. As ferramentas nativas de análise de desempenho foram melhoradas e integram, agora, com as do Ruby. A Redmine e vários \textit{plugins} foram portados para as últimas versões do Ruby e do Rails. Por fim, deu-se inicio a uma série de artigos sobre optimização de desempenho bem como se iniciou o desenvolvimento de uma bancada oficial de testes de desempenho para a integração contínua do Rails.
+
+Criaram-se as linhas de guia genéricas referidas. Aprimoraram-se as ferramentas de análise de desempenho do Ruby e do Rails. Estas melhorias, a actualização da Redmine e \textit{plugins}, a série de publicações, a adição de flexibilidade ao YARV e o melhoramento da integração contínua do Rails são actividades que ajudam a aumentar a importância geral deste assunto na comunidade.

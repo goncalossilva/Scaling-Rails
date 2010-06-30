@@ -17,12 +17,12 @@ Concerning development, a generic benchmarking script was created. This script w
   \item Convert the same 214MB WAV file to OGG using vorbis-tools\footnote{\url{http://vorbis.com/}};
   \item Parallelly run all the aforementioned benchmarks while extracting, compiling, installing and removing PHP\footnote{\url{http://php.net/}} 5.2.12.
 \end{enumerate}
-The script measures the amount of time---user plus system time, discarding waiting periods---needed to accomplish each task, the number of voluntary context switches and the average CPU usage. GNU time\footnote{\url{http://www.gnu.org/software/time/}} is used to make all measurements except in the first test, since hdparm itself measures the amount of cached data which is read in 2 seconds, yielding results in MB per second. All tests are ran a configurable amount of times to cancel circumstantial issues, the default being 3. Exception is made on the last test which is very heavy and lengthy, so it only runs once.
+This script's goal is to measure the amount of time---user plus system time, discarding waiting periods---needed to accomplish each task, the number of voluntary context switches and the average CPU usage. GNU time\footnote{\url{http://www.gnu.org/software/time/}} is used to make all measurements except in the first test, since hdparm itself measures the amount of cached data which is read in 2 seconds, yielding results in MB per second. All tests are ran a configurable amount of times to cancel circumstantial issues, the default being 3. Exception is made on the last test which is very heavy and lengthy, so it only runs once.
 
 The first test aims at testing hard drive access speed, which are dependent on the filesystem in use and the OS's I/O management. The second and third tests are more complex since but similar. Both read a file with considerable size from the disk, convert it and write the result. However, the main bottleneck happens when writing the result file since writing is slower process than reading and the ZIP algorithm is lightweight and fast. The fourth and fifth tests are more CPU-intensive. Audio format conversions tend to demand a significant amount of processing power. The tools in use---lame and vorbis-tools---stress the OS even further by using multiple processes and threads, inducing various context switches. Finally, the last test aims at testing the OS's ability to manage a high workload since multiple heavy tasks are being carried simultaneously, involving concurrent I/O, multiple context switches, scheduling and a few other core tasks.
 
 \subsection{Benchmarking}
-The benchmarking phase had the clear goal of defining which is the best OS to invest in the remaining work. It was also very important to gather data about each OS/distribution's behavior so that it would be inserted in the aforementioned guidelines in conventions.
+The benchmarking phase had the clear goal of defining which is the best OS to invest in the remaining work. It was also very important to gather data about each OS/distribution's behavior so that it would be inserted in the aforementioned guidelines and conventions.
 
 \subsubsection{Generic Benchmarking of Linux Distributions}
 First of all, it was important to choose one of the Linux distributions mentioned in section~\ref{tech:sec:operating_systems} to be stacked against FreeBSD, the most popular BSD distribution. A benchmark using the aforementioned generic script was performed on Ubuntu Server, Debian, CentOS and Gentoo. All distributions were running their default configurations for all packages. The results are shown in table~\ref{tab:os_generic_benchmark}.
@@ -329,7 +329,7 @@ The following tables will present the amount of time each test needed to complet
   \end{longtable}
 \end{center}
 
-As seen on table~\ref{tab:mri_benchmark_gentoo_freebsd}, MRI has a consistently better overall performance in Linux. The average improvement is of 29.34\%. Some prominent differences include the ``mpar'' test which splits a file into multiple parts, ``write\_large'', ``read\_large'' and the ``open\_many\_files'' test, indicating that I/O in MRI is much faster under Linux than under BSD. Other notable differences include string concatenation, its garbage collection and the ``quicksort'' test.
+As seen on table~\ref{tab:mri_benchmark_gentoo_freebsd}, MRI has a consistently better overall performance in Linux. The average improvement is of 29.34\%. Some prominent differences include the ``mpar'' test which splits a file into multiple parts and the tests entitled ``write\_large'', ``read\_large'' and ``open\_many\_files'', indicating that I/O in MRI is much faster under Linux than under BSD. Other notable differences include string concatenation, its garbage collection and the ``quicksort'' test.
 
 \begin{center}
 \renewcommand{\arraystretch}{0.85}
@@ -469,6 +469,8 @@ Somewhat exceptedly, YARV and MRI's performance is considerably better in the Li
 There are many configurations and options that can be fine-tuned in operating systems. Sysctl enables kernel parameter configuration at runtime. The aforeshown web server benchmarks required some optimization changes to improve the system's stability under such a high-load. These are shown on table~\ref{tab:sysctl}.
 \begin{table}[ht]
   \centering
+  \caption{Sysctl Options and Values}
+  \label{tab:sysctl}
   
   \begin{tabular}{c|p{0.32\textwidth}|p{0.25\textwidth}}
   \multicolumn{1}{c|}{\textbf{\textsc{\#}}} & \multicolumn{1}{c|}{\textbf{\textsc{Name}}} & \multicolumn{1}{c}{\textbf{\textsc{Value}}} \\ \hline
@@ -486,8 +488,6 @@ There are many configurations and options that can be fine-tuned in operating sy
   11 & net.ipv4.tcp\_orphan\_retries & 1 \\
   
   \end{tabular}
-  \caption{Sysctl options and values}
-  \label{tab:sysctl}
 \end{table}
 Options 1, 2, 3 and 4 increase the TCP buffers on read/write, improving the system performance when dealing with big transfers. Options 5 and 6 increase the number of connections which are allowed to be queued behind a busy kernel. Options 7 and 8 enable socket reusing and fast socket recycling. Option 9 decreases the time allowed for a socket to exists without a connection. Option 10 disables timestamps in packet headers, reducing the packet's size. Finally, option 11 decreases the number of retries before killing the TCP connection.
 

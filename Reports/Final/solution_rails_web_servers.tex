@@ -8,7 +8,7 @@ Among the previously introduced web servers, some are missing from this analysis
 \subsection{Development}
 Monitoring memory usage is crucial to evaluate the performance of a web server. A web server that consumes less memory is likely to scale better since it can spawn more working processes/threads in the same setup.
 
-There was need for a small utility to measure the memory usage of specified processes over time, providing the ability to configure its refresh interval. It had to be very light not to interfere with the tests, should rely on the operating system's data and preferably output in a easily parsable format. This tool was created and is presented on appendix~\ref{app:monitor}. It takes a few arguments, namely:
+There was need for a small utility to measure the memory usage of specified processes over time, providing the ability to configure its refresh interval. It had to be very light not to interfere with the tests, should rely on the operating system's data and preferably output in a easily parsable format. This tool was created and is presented on appendix~\ref{ap:monitor}. It takes a few arguments, namely:
 \begin{itemize}
   \item Directory to use when outputting the results;
   \item Refresh interval in seconds (optional, default: 1);
@@ -118,7 +118,7 @@ Passenger is different from the previously mentioned web servers. It is not a we
 The test was similar to the one explained in the previous sections. It tested the same request/concurrency combinations, used \textit{ab} to measure the response rate and used the previously mentioned monitoring script to measure the memory usage. It also used 4 Passenger instances. The Passenger-specific configurations were the same on both web servers---Apache and Nginx---and can be seen on table~\ref{tab:passenger4_configuration}.
 \begin{table}[h!t]
   \centering
-  \caption{Passenger options and values}
+  \caption{Passenger Options and Values}
   \label{tab:passenger4_configuration}
   
   \begin{tabular}{p{0.35\textwidth}|p{0.20\textwidth}}
@@ -242,7 +242,7 @@ Similarly to real applications, more processes were used as well. Instead of the
 In this benchmark, however, the measurement tool was~\textit{autobench}~\footnote{\url{http://www.xenoclast.org/autobench/}}, a wrapper around on HP's~\textit{httperf}~\footnote{\url{http://www.hpl.hp.com/research/linux/httperf/}}. Instead of continuously dumping requests to the target host like \textit{ab} does, \textit{autobench} runs a number of times against the specified host(s), increasing the number of requested connections per second on each iteration. Then it tries to find the highest request rate in which the web server remains stable and aims at maintaining the rate for the remaining simulation time, which is defined by the user.
 
 The first round of tests was made using Ruby 1.8. The results for the heavy page filled with dynamic content---page 1---are presented on figure~\ref{fig:page1_autobench_ruby18_results}.
-\begin{figure}[h!]
+\begin{figure}[h!t]
   \centering
     \caption{Autobench Results on Page 1 (Ruby 1.8)}
     \includegraphics[width=0.95\textwidth]{results_autobench_replies_homepage_ruby18}
@@ -252,7 +252,7 @@ The first round of tests was made using Ruby 1.8. The results for the heavy page
 The test tool, \textit{autobench}, was unable to find a stable request rate on this page. All web servers behaved similarly poor. 
 
 As for the regular page with moderate usage of dynamic content---page 2---the results can be found on figure~\ref{fig:page2_autobench_ruby18_results}.
-\begin{figure}[h!]
+\begin{figure}[h!t]
   \centering
     \caption{Autobench Results on Page 2 (Ruby 1.8)}
     \includegraphics[width=0.95\textwidth]{results_autobench_replies_portal_ruby18}
@@ -262,7 +262,7 @@ As for the regular page with moderate usage of dynamic content---page 2---the re
 On this test all web servers were able to consistently serve requests, stabilizing at a rate of 10-12 requests per second. Although all had very similar performances, Unicorn with 60 workers consistently yielded slightly better results.
 
 Finally, as for the complex but small API request---page 3---the results are exhibited on figure~\ref{fig:page3_autobench_ruby18_results}.
-\begin{figure}[h!]
+\begin{figure}[h!t]
   \centering
     \caption{Autobench Results on Page 3 (Ruby 1.8)}
     \includegraphics[width=0.95\textwidth]{results_autobench_replies_publication_ruby18}
@@ -272,7 +272,7 @@ Finally, as for the complex but small API request---page 3---the results are exh
 Once again, all web servers were able to maintain a solid request rate, which was stable around 10-13. Unicorn, both with 30 and 60 workers, seems to have a slight performance advantage over its competitors.
 
 The second round was made using Ruby 1.9 on exactly the same pages. The results for the heavy page filled with dynamic content---page 1---can be seen on figure~\ref{fig:page1_autobench_ruby19_results}.
-\begin{figure}[h!]
+\begin{figure}[h!t]
   \centering
     \caption{Autobench Results on Page 1 (Ruby 1.9)}
     \includegraphics[width=0.95\textwidth]{results_autobench_replies_homepage_ruby19}
@@ -282,7 +282,7 @@ The second round was made using Ruby 1.9 on exactly the same pages. The results 
 All web servers have shown extreme improvements after switching to Ruby 1.9 on this page. Most of them were stable through 15-16 iterations instead of a single one and the response rate increased from 2,5 to 4,5-5,5. Thin is the most notable exception, loosing stability after 6 iterations. However, it still represents a remarkable improvement over the previous tests with Ruby 1.8.
 
 As for the regular page with moderate usage of dynamic content---page 2---the results are presented on figure~\ref{fig:page2_autobench_ruby19_results}.
-\begin{figure}[h!]
+\begin{figure}[h!t]
   \centering
     \caption{Autobench Results on Page 2 (Ruby 1.9)}
     \includegraphics[width=0.95\textwidth]{results_autobench_replies_portal_ruby19}
@@ -292,7 +292,7 @@ As for the regular page with moderate usage of dynamic content---page 2---the re
 All web servers performed similarly on this test. The results were also very similar to the same test with Ruby 1.8, mainly due to the fact that this page is relatively light on Ruby code.
 
 Finally, as for the complex but small API request---page 3---the results can be found on figure~\ref{fig:page3_autobench_ruby19_results}.
-\begin{figure}[h!]
+\begin{figure}[h!t]
   \centering
     \caption{Autobench Results on Page 3 (Ruby 1.9)}
     \includegraphics[width=0.95\textwidth]{results_autobench_replies_publication_ruby19}

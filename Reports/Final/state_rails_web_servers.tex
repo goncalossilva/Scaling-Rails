@@ -2,7 +2,7 @@
 \label{state:sec:rails_web_servers}
 The first Rails web server was WEBrick, publicly released in 2000. Mongrel came in 2006 and soon after Thin and Passenger followed.
 
-Using the aforementioned web servers, Muhammed Ali did an extensive overview of some characteristics that heavily contribute to web server performance~\cite{ruby_webservers}. Muhammed's analysis is exposed in the following sections, along with a brief overview of how each web server handles them.
+Using the aforementioned web servers, Muhammed Ali did an extensive overview of some characteristics that heavily contribute to web server performance~\cite{ruby_webservers}. His analysis is exposed in the following sections, along with a brief overview of how each web server handles them.
 
 \subsection{Data Copying}
 When a server fetches a file from the disk or a back end server it usually copies it to kernel space in order to send it to the client. There are ways of sending the data directly without copying it, called \textit{zero-copy} techniques~\cite{ zero-copy_data_transfer}.
@@ -37,13 +37,15 @@ WEBrick's HTTP parser is written in pure Ruby, having poor performance. Mongrel,
 \subsection{TCP Stack}
 Web servers can tune TCP operations by specifying a set of options allowed by the TCP protocol implementation.
 
-WEBrick and Thin do not try to optimize the TCP stack while Mongrel uses two configuration options that increase the number of allowed waiting connections and \textit{TCP\_CORK} to optimize bandwith usage. Finally, these kinds of optimizations on Passenger depend on whether its underlying web server is using TCP stack optimization configurations.\\\\% FIXME: hack :|
+WEBrick and Thin do not try to optimize the TCP stack while Mongrel uses two configuration options that increase the number of allowed waiting connections and optimize bandwidth usage. Finally, these kinds of optimizations on Passenger depend on whether its underlying web server is using TCP stack optimization configurations.\\\\% FIXME: hack :|
 From all the exposed Rails web servers, Passenger presents itself as the easiest to setup in a server environment~\cite{ruby_webservers} since it can be installed as a module for other easily installable web servers like Apache or Nginx.
 
 \subsection{Benchmarks}
 Some benchmarks were conducted by Muhammed Ali~\cite{ruby_webservers}, whose results are showed on table~\ref{tab:webserver_benchmarks}.
 \begin{table}[h!t]
   \centering
+  \caption{Web Server Benchmark Results}
+  \label{tab:webserver_benchmarks}
   
   \begin{tabular}{c|c|c|c|c|c|c}
     \textsc{\textbf{Test}} & \textsc{\textbf{Users}} & \textsc{\textbf{Requests}} & \textsc{\textbf{WEBrick}} & \textsc{\textbf{Mongrel}} & \textsc{\textbf{Thin}} & \textsc{\textbf{Passenger}} \\
@@ -76,8 +78,6 @@ Some benchmarks were conducted by Muhammed Ali~\cite{ruby_webservers}, whose res
   & 100 & 1000 & 6 & 5 & 2 & 10\\
   
   \end{tabular}
-  \caption{Web server benchmark results}
-  \label{tab:webserver_benchmarks}
 \end{table}
 All tests consist in serving dynamic requests from a single Rails process. All requests are made concurrently and each web server's results are in number of requests handled per second. Test 1 is a sample ``Hello World!'' page. Test 2 fetches a database record and renders it as an ERB template. Test 3 marshals 500 complex objects. Test 4 sends a large 1MB response. Finally, test 5 sends a very large 10MB response.
 

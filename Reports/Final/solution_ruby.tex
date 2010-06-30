@@ -310,7 +310,7 @@ A benchmark comparing these configurations with the default ones was conducted a
 
 The aforementioned parameters changed YARV's performance, having an overall improvement of $\pm$15,2\%. Since it was configured to have a less sensible threshold, GC is triggered less often causing improved execution times. The usage of these parameters also slightly improved the average memory usage throughout all tests, lowering it from 30,81MB to 29,09MB. This is mainly due to the fact that the allocation rate is less exponential thus provoking a more linear heap growth.
 
-The Ruby fork used to develop this functionality is open-source and hosted on GitHub~\footnote{\url{http://github.com/goncalossilva/ruby/}}.
+The Ruby fork where this functionality was implemented is open-source and hosted on GitHub~\footnote{\url{http://github.com/goncalossilva/ruby/}}.
 
 \subsubsection{Storage and Retrieval of Profiling Information}
 The most recent version of Ruby already possesses an embedded profiler. It records important information like the time spent in garbage collection, the number of live objects in the heap or even the total size of allocated memory, among others. Users can retrieve its current status in a properly formated string containing all the data.
