@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+  ServerName 127.0.0.1
+  DocumentRoot /webapps/escolinhas/public
+  <Directory "/webapps/escolinhas/public">
+     AllowOverride None
+     Order allow,deny
+     Allow from all
+     Options -MultiViews
+     Options FollowSymLinks
+  </Directory>
+</VirtualHost>

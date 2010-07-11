@@ -1,0 +1,15 @@
+--- 
+pid: tmp/pids/thin.pid
+wait: 30
+timeout: 30
+log: log/thin.log
+max_conns: 500
+require: []
+
+max_persistent_conns: 30
+environment: production
+servers: 2
+port: 5000
+daemonize: true
+socket: /tmp/thin.escolinhas.sock
+chdir: /webapps/escolinhas
