@@ -1,0 +1,25 @@
+\chapter{“Scaling Rails” Article on Rails Magazine} % (fold)
+\label{ap:rails_magazine}
+
+Scaling Rails\\
+\textit{by Gonçalo Silva}\\\\\\
+The term Web 2.0, born somewhere in 2001, is related to improving the first version of the Web. It aims at improving user experiences, by providing better usability and more dynamic content. Many web frameworks, including Ruby on Rails, were born as part of this huge web momentum that we still live in nowadays.\\\\
+Most websites are built to provide great user experiences. Recent studies show that users won't wait longer than 8 seconds before leaving a slow or unresponsive website. This value keeps getting lower and lower as users become more demanding.\\\\
+This is the introductory article in a short series related to Ruby on Rails Scalability and Performance Optimization. This great framework's performance is conditioned by every related component, besides itself.
+
+\section{Website Performance}
+Developers often oversee that web applications need to be fast and very responsive as part of a richer user experience. Having a highly efficient platform will generally allow lower expenses on hardware but also lower response times, making its users happier. In some cases this  need can be extreme---a high-demand platform strives for scalability as its users keep growing.\\\\
+Ruby on Rails is widely known for being optimized for programmer productivity and happiness, but its scalability or performance are not generally favored. Many well-known platforms like Twitter or Scribd have put enormous efforts in improving these characteristics and sometimes faced a few issues while doing it---we all know the famous ``fail whale''.
+
+\section{System Resources}
+Very little people have access to topnotch resources. Most need to deploy and maintain a Rails application on a shared host, limited VPS or even a dedicated server. High-end computers or server clusters are not easily accessible by the masses but every developer should to be able to provide great services with limited resources.\\\\
+The answer to every scalability issue is not ``just throw hardware at it''.
+
+\section{Involved Components}
+Most servers run Linux, while a few use FreeBSD. Every operating system has a different philosophy to almost everything – from the file system to networking I/O, and these details can impact all the other components.\\\\
+Some applications use Ruby 1.8, while others are already riding Ruby 1.9. There are many Ruby interpreters, from MRI to YARV, including widely-known implementations like Ruby Enterprise Edition, JRuby or Rubinius. Each of these has its particular characteristics, offering different advantages and disadvantages.\\\\
+Very few applications are built or have been ported to Rails 3, which suffered huge improvements on performance. Porting is an important step as Rails 3 provides reduced computing times and memory usage, when compared to its predecessor.\\\\
+When it comes to web servers, the number of choices are tremendous. From the old combination of Apache and Mongrel, or the famous Passenger for Apache and Nginx, or even some newcomers like Thin and Unicorn, every application has an ideal setup and its web server architecture greatly impacts its performance and memory usage.\\\\
+The database choices, ranging from popular relational databases like MySQL to more recent projects like Cassandra or MongoDB are also associated with strong advantages and disadvantages. This aspect gains even greater importance when considering that the database is a major performance bottleneck.\\\\
+Let's not forget about the application itself: a few coding conventions could be followed to improve the application's performance, scalability and, most importantly, the code's quality.\\\\
+\textit{Your system, your architecture. It's all about choice.}

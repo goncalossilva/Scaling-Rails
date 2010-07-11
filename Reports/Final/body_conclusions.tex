@@ -5,18 +5,20 @@
 This section presents the conclusions gathered from this project, a summary of contributions and what may be done to extend and improve this work in the future.
 
 \section{Conclusions}
-The main objectives described in section~\ref{cha:problem_statement} have been fulfilled.
+The main objectives described in Section~\ref{cha:problem_statement} have been fulfilled.
 
-Generic guidelines and conventions for building highly performant and scalable Ruby on Rails applications have been created. The research performed to elaborate the technologies overview and the state of the art, exhibited in chapters~\ref{cha:technologies_review} and~\ref{cha:state_of_the_art}, supplied an important knowledge that shaped the initial decisions on what to further research. The conclusions drawn from the benchmarking phases of each component's analysis and their application to \textit{Escolinhas} allowed to fill in some the flaws found in the initial research, providing a solid knowledge base for the elaboration of the aforementioned guidelines and conventions. They can be found in appendix~\ref{ap:scaling_rails} and an online version\footnote{\url{http://goncalossilva.com/scaling_rails.html}} is also available.
+General guidelines and conventions for building highly performant and scalable Ruby on Rails applications have been created. The research performed to elaborate the technologies overview and the state of the art, exhibited in chapters~\ref{cha:technologies_review} and~\ref{cha:state_of_the_art}, supplied important knowledge that shaped the initial decisions on what to further research. The conclusions drawn from the benchmarking phases of each component's analysis and their application to \textit{Escolinhas.pt} allowed to fill in some the flaws found in the initial research, providing a solid knowledge base for the elaboration of the aforementioned guidelines and conventions. They can be found in appendix~\ref{ap:scaling_rails} and an online version\footnote{\url{http://goncalossilva.com/scaling_rails.html}} is also available.
 
-The native profiling tools for Ruby and Rails applications have been revamped and brought up to date. Rails' profiling tools were refactored in order to enable support for YARV, the official interpreter for Ruby 1.9. On the other hand, improvements were also made on YARV concerning this subject, by recording new information and enhancing its information retrieval capabilities.
+The native profiling tools for Ruby and Rails applications have been revamped and brought up to date. Rails' profiling tools were refactored in order to enable support for YARV, the official interpreter for Ruby 1.9. On the other hand, improvements were also made on YARV concerning this subject, by recording more information and enhancing its information retrieval and presentation capabilities.
 
-The global awareness of the importance in building highly performant and scalable Ruby on Rails applications also increased. Revamping the native profiling tools, adding configuration options to YARV's garbage collector, writing a series of articles oriented towards performance for Rails Magazine and developing an official benchmarking continuous integration suite for Rails, all contribute to an increased awareness on this matter, from the core team of Rails to the web developers themselves. Given the performance advantages of the latest versions of Rails, porting Redmine to Rails 3 increases the visibility of these benefits since Redmine's users are able to experience it themselves. Finally, adding support for Ruby 1.9 and Rails 3 to some famous plugins also lowers the porting effort for some applications.
+The global awareness of the importance in building highly performant and scalable Ruby on Rails applications also increased. Creating a general guide, revamping the native profiling tools, adding configuration options to YARV's garbage collector, starting a public blog on this subject, writing a series of articles oriented towards performance for Rails Magazine and developing an official benchmarking continuous integration suite for Rails, all contribute to an increased awareness of this matter, from the core team of Rails to the web developers themselves. Given the performance advantages of the latest versions of Rails, porting Redmine to Rails 3 increases the visibility of these benefits since Redmine's users are able to experience it themselves. Finally, adding support for Ruby 1.9 and Rails 3 to some famous plugins also lowers the porting effort for some applications.
+
+All these contributions positively affect Rails' performance and scalability. Some activities had direct impact on the performance of Rails-related components, like improving adding adaptive performance to YARV or adding lazy type casting to \textit{mysql2}. Others had indirect impact, like enhancing profiling tools or developing a benchmarking suite for Rails. Some of the remaining activities focused on evaluating the performance of component alternatives, exploring their configurations and making the results and conclusions public. All this work enabled a final but very important conclusion: general centralized information is more accessible, profiling Rails' applications became easier and the global awareness of the importance of this subject also increased. 
 
 \section{Summary of Contributions}
 The research and work performed in this thesis' context allowed to create new tools and contribute with new knowledge to the Ruby on Rails community.
 
-First of all, generic guidelines and conventions on building highly performant and scalable Ruby on Rails applications were created. They are exhibited on appendix~\ref{ap:scaling_rails}, also being available on the internet\footnote{\url{http://goncalossilva.com}}.
+First of all, generic guidelines and conventions on building highly performant and scalable Ruby on Rails applications were created. They are exhibited on appendix~\ref{ap:scaling_rails}, also being available on the internet\footnote{\url{http://goncalossilva.com/scaling_rails.html}}.
 
 Rails' native profiling and benchmarking tools got overhauled and now fully support Ruby 1.9.
 
@@ -24,33 +26,54 @@ Ruby 1.9's internal profiler was improved. It now stores more information than p
 
 Stephen Kaes' HTML printer for profiling Ruby applications was refactored to be compatible with recent Ruby interpreters, from 1.8.7 to 1.9.2. It was also integrated with the ``ruby-prof'' code profiler.
 
-\textit{Escolinhas}---the main test application---is now running on Ruby 1.9, notoriously benefiting from this version's performance improvements. Redmine---the aformentioned open-source project management tool---is now compatible with Rails 3, increasing the visibility of this version's benefits as a wide range of users are using this tool and are now able to personally experience the differences.
+\textit{Escolinhas.pt}---the main test application---is now running on Ruby 1.9, notoriously benefiting from this version's performance improvements.
 
-Some famous plugins---acts\_as\_list, acts\_as\_paranoid and permalink\_fu---were refactored and now use the new Rails API thus being Rails 3 compatible. On a related matter, permalink\_fu no longer requires Ruby 1.8 to function properly, as its character conversion engine has been completely rewritten and is now compatible with Ruby 1.9.
+Redmine---the aforementioned open-source project management tool---is now compatible with Rails 3, increasing the visibility of this version's benefits as a wide range of users are using this tool and are now able to personally experience the differences.
+
+Some reknowned plugins---acts\_as\_list, acts\_as\_paranoid and permalink\_fu---were refactored and now use the new Rails API thus being compatible with Rails 3. On a related matter, permalink\_fu no longer requires Ruby 1.8 to function properly, as its character conversion engine has been completely rewritten and is now compatible with Ruby 1.9.
 
 The first article of a performance-oriented series called ``Scaling Rails'' was published in the \textit{Rails Magazine}.
 
-Partial support for lazy type casting was added to \textit{mysql2}, an emerging MySQL Ruby library. In order to officialize this addition, missing support for some MySQL types is currently being developed and tested.
+Support for lazy type casting was added to \textit{mysql2}, an emerging MySQL Ruby library.
+
+A community blog tackling Rails' performance and scalability was started.
 
 A simple and lightweight utility for measuring the memory usage of multiple processes on UNIX systems was developed. A generic benchmarking script oriented towards operating system performance has also been created. It uses third-party tools which are cross-platform compatible except for ``hdparm'', which is disabled if not running on a Linux system.
 
-The performance of some Linux distributions---Ubuntu Server, Debian, CentOS and Gentoo---while performing generic tasks was analyzed, using the aforementioned benchmarking script. The performance of Ruby 1.8 and 1.9 was compared and demonstrated on multiple operating systems as well. Possible configuration options of Linux systems were also explored.
+The performance of some server-oriented Linux distributions---Debian, Ubuntu Server, CentOS and Gentoo---while performing general tasks was analyzed, using the aforementioned benchmarking script. The performance of Ruby 1.8 and 1.9 was compared and demonstrated on multiple operating systems as well. Possible configuration options of Linux systems were also explored.
 
 The performance of multiple Ruby web servers was exhaustively compared, including an analysis of some distinct configuration options found in each web server and their impact on its behavior.
 
-Finally, the performance impact of some Ruby on Rails features was exploredr6, namely: eager loading, transactions, magic finders and fetching large groups of records.
+Finally, the performance impact of some Ruby on Rails features was explored, namely: eager loading, transactions, magic finders and fetching large groups of records.
+
+
+\section{Ongoing Work}
+Some of the activities started during the course of the project are not yet fully complete. This section explores them, giving an overview of the remaining work.
+
+\subsection{Lazy Type Casting in mysql2}
+This Ruby library now lazy type casts database values. However, support for less common MySQL data types is currently being enhanced. This optimized version of \textit{mysql2} will be released as soon as the testing phase ends.
+
+\subsection{Community Blog}
+The aforementioned community blog is an ongoing project, as more content is being frequently added and future work will be publicly presented there.
+
+\subsection{Performance-oriented Article Series}
+Notwithstanding the already published article, there are others currently being written and improved for further releases of \textit{Rails Magazine}.
+
+\subsection{Benchmarking Continuous Integration}
+The development of the official performance-oriented continuous integration process for Ruby on Rails started at the end of May and will continue until mid-August. This is the official project schedule of Ruby Summer of Code, the program under which this project is being developed.
+
 
 \section{Future Research}
-During the course of the project, many ideas were considered, but some of them could not have been pursued within the available time frame. This section presents some of these ideas.
+Many ideas were considered during the course of the project, but some of them could not have been pursued within the available time frame. This section presents some of these ideas, which can be pursued by the thesis' author or other researchers in the future.
 
 \subsection{Approaching Non-Relational Databases}
 The current research has focused on the ``Ruby component'' of the most popular database among Rails' developers---Ruby's \textit{MySQL} library. However, it would be interesting to explore the benefits of using a non-relational database, especially when taking into account the feedback some people are giving on the performance improvements these databases provide. Since these require the usage of specific ORM's, adding native support in Active Record for some of these databases---namely MongoDB and CouchDB---would probably increase their adoption among the developers.
 
 \subsection{Generational Garbage Collection}
-As previously mentioned, one of the main issues in Ruby, from the perspective of a Ruby on Rails applications, is its garbage collector. It is based on the simple \textit{mark-and-sweep} algorithm which is not very efficient for Rails applications, which frequently allocate and free considerable amounts of memory. Other interpreted languages such as Java and Python have a generational garbage collector, known for its superior efficiency. It would require a significant amount of effort to implement such algorithm on the Ruby interpreter since some C extensions rely on the current GC's behavior. However, it would be very interesting to analyze a working implementation of a generational garbage collector for Ruby from a performance standpoint.
+As previously mentioned, one of the main issues in Ruby, from the perspective of a Ruby on Rails application, is its garbage collector. It is based on the simple \textit{mark-and-sweep} algorithm which is not very efficient for Rails applications, which frequently allocate and free considerable amounts of memory. Other interpreted languages such as Java and Python have a generational garbage collector, known for its superior efficiency. It would require a significant amount of effort to implement such algorithm on the Ruby interpreter since some C extensions rely on the current GC's behavior. However, it would be very interesting to analyze a working implementation of a generational garbage collector for Ruby from a performance standpoint.
 
 \subsection{Native Caching}
-Caching is a recurring topic when optimizing web applications. Knowing that the database is often the major bottleneck found on these applications and considering that caching significantly decreases this bottleneck's impact, it would be interesting to add native caching support in Rails. While Rails has support for some famous tools like \textit{Memcached}\footnote{\url{http://memcached.org/}}, it natively lacks this support. Using third-party tools generally implies an extra effort since they are not as seamlessly integrated with Rails as a core component. \textit{Memcached}, for instance, requires that the developers use its methods to fetch the data from cache and, on the other hand, use Rails' methods to fetch data from the database. It also requires that the developers explicitly store the data in the cache every single time it changes and none of these procedures is automatic. However, if it was natively integrated, it would be possible to develop an optimized solution in which the developer would simply fetch the data, not needing to know if it was already cached, expired or any other specific detail provoked from using two separate interfaces for fetching data, depending on its location. This way, Rails would handle the caching and retrieval processes automatically.
+Caching is a recurring topic when optimizing web applications. Knowing that the database is often one the major bottlenecks found on these applications and considering that caching significantly decreases this bottleneck's impact, it would be interesting to add native caching support in Rails. While Rails has support for some reknowed tools like \textit{Memcached}\footnote{\url{http://memcached.org/}}, it natively lacks this support. Using third-party tools generally implies an extra effort since they are not as seamlessly integrated with Rails as a core component. \textit{Memcached}, for instance, requires that the developers use its methods to fetch the data from cache and, on the other hand, use Rails' methods to fetch data from the database. It also requires that the developers explicitly stores the data in the cache every single time it changes and none of these procedures is automatic. However, if it was natively integrated, it would be possible to develop an optimized solution in which the developer would simply fetch the data, not needing to know if it was already cached, expired or any other specific detail provoked from using two separate interfaces for fetching data, depending on its location. This way, Rails would handle the caching and retrieval processes automatically.
 
 \subsection{Alternative Ruby Interpreters}
 Many alternative Ruby interpreters are nearing 100\% compatibility with the Ruby 1.9 specification, namely \textit{JRuby} and \textit{Rubinius}. In a near future, these will be available as full-fledged Ruby implementations worth benchmarking and comparing with YARV, the official interpreter for the 1.9 specification.

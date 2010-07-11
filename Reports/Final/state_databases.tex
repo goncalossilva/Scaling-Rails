@@ -1,14 +1,14 @@
 \section{Databases} % (fold)
 \label{state:sec:databases}
 The database is responsible for persisting data. It stores information so it can be retrieved latter without needing to use the system's memory.
-The database usually represents a worrying bottleneck for high performance applications. It interacts with the disk---the system's main memory---and this generally represents a performance bottleneck~\cite{memory_wall}. Accessing the hard disk is a costly procedure and web applications need a very efficient database and configuration in order to diminish this bottleneck's impact.
+The database usually represents a worrying bottleneck for highly performant applications. It interacts with the disk---the system's main memory---and this generally represents a performance bottleneck~\cite{memory_wall}. Accessing the hard drive is a costly procedure and web applications need a very efficient database and configuration in order to diminish this bottleneck's impact.
 
 Across most relational databases---from MySQL to PostgreSQL and including proprietary products---MySQL consistently outperforms all others~\cite{benchmark_relational_databases}.
 
-Despite being the fastest schema-based database in production, a schema-less database like, for instance, MongoDB, often improves over MySQL's performance significantly. This kind of database is more flexible but it also uses more disk space, as row names are stored along with their content to enable this flexibility. MongoDB is not atomic, however, not enabling useful features like transactions~\cite{mysql_to_mongodb}. This is not related to the fact of being a schema-less database but with the databases' philosophy, contrary to CouchDB---another well-known schema-less database created by the Apache Foundation---which supports transactions, although under a performance penalty.
+Despite being the fastest schema-based database in production, a schema-less database like, for instance, MongoDB, often improves over MySQL's performance significantly. This kind of database is more flexible but it also uses more disk space, as row names are stored along with their content to enable this flexibility. MongoDB is not atomic, however, not enabling useful features like transactions~\cite{mysql_to_mongodb}. This is not related to the fact of being a schema-less database but with the databases' philosophy. Contrary, CouchDB---another well-known schema-less database created by the \textit{Apache Software Foundation}---supports transactions, although under a performance penalty.
 
 A critical, widely researched approach to improve a system's scalability is database caching. The reduction of disk access generally provides remarkable performance increases~\cite{scaling_rails_bottomup}, allowing improvements greater than 100\%~\cite{rapid_prototyping_mdd,high_performance_database_caching}.
 
-Alternative Ruby database adapters can significantly increase performance on database accesses. The \textit{mysql2} library, for instance, can decrease the database access time by nearly 400\%~\cite{brianmario_mysql2}.
+Alternative Ruby database adapters can significantly increase performance on database accesses. The \textit{mysql2} library, for instance, can decrease database access times by nearly 400\%~\cite{brianmario_mysql2}.
 
 % TODO: mention mysqlplus performance?

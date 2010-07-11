@@ -2,42 +2,42 @@
 \label{tech:sec:ruby}
 Ruby is a dynamic and object-oriented language created by Yukihiro Matsumoto, who released it to the public in 1995. The purpose was to create a ``language that was more powerful than Perl, and more object-oriented than Python''~\cite{interview_creator_ruby}.
 
-Ruby was inspired by languages such as Lisp, Smalltalk and Perl, and its core characteristics and features are~\cite{ruby_about, ruby_book}:
+Ruby was inspired by languages such as Lisp, Smalltalk and Perl, and its core characteristics and features include~\cite{ruby_about, ruby_book}:
 \begin{description}
   \item[Open source.] Ruby's license allows anyone to use, copy, modify or distribute it.
   \item[Pure object-oriented.] In Ruby, everything is an object, including classes, modules and data types---even numbers, booleans and null values which in other object-oriented languages are known as ``primitives''. An object's properties are known as ``instance variables'' and actions are ``methods''.
   \item[Flexible.] It not only features dynamic typing, but also very powerful reflective and metaprogramming capabilities. Ruby does not restrict what a programmer can do. Any part of Ruby code can be removed, redefined or extended, even at runtime. This is not only true for a programmer's own code, but also for core Ruby classes such as Object and String.
   \item[Automatic memory management.] Like other languages such as Java and contrary to C, developers do not manage the program's memory usage.
   \item[Portable.] Ruby is mainly developed in GNU/Linux but can run on most operating systems and platforms such as BSD, Mac OS X, Windows 95 and many others.
-  \item[Exception handling.] Ruby can recover from errors just like Java, C++ or Python.
+  \item[Exception handling.] Ruby can recover from errors just like Java, C++ and Python.
 \end{description}
-Ruby started to become popular in 2001, with the start of the~\textit{RubyGems}\footnote{\url{http://rubygems.org/}} project, which allows easy packaging and distribution of applications and libraries~\cite{railssolutions}. Ruby has two main versions, 1.8 and 1.9, the last one being publicly released approximately two years ago~\cite{ruby191_release}.
+Ruby started to become popular in 2001, with the start of the~\textit{RubyGems}\footnote{\url{http://rubygems.org/}} project, which allows easy packaging and distribution of applications and libraries~\cite{railssolutions}. Ruby has two main versions, 1.8 and 1.9, the last one having been publicly released approximately two years ago~\cite{ruby191_release}.
 
 
 \subsection{Ruby 1.8}
 The most commonly found version of Ruby in Rails' projects is the 1.8, mainly due to the fact that it was the officially recommended version for many years.
 
 \subsubsection{MRI}
-Ruby's 1.8 official interpreter was developed by the language's creator Yukihiro Matsumoto, also known as \emph{Matz} and its first public release happened in 1995. Some people mistake MRI for ``Main Ruby Implementation'' but the abbreviation is actually related to its creator's name---\emph{Matz Ruby Interpreter}. Some particular characteristics of this interpreter include:
+Ruby's 1.8 official interpreter was developed by the language's creator---Yukihiro Matsumoto, also known as \emph{Matz}---and its first public release happened in 1995. Some people mistake MRI for ``Main Ruby Implementation'' but the abbreviation is actually related to its creator's name---\emph{Matz Ruby Interpreter}. Some particular characteristics of this interpreter include:
 \begin{description}
 \item[Language.] MRI is written in C.
 \item[Threading.] It can emulate a threaded environment without relying on the operating system capabilities by using \textit{green threads}.
 \item[Garbage Collector.] The garbage collector is based on the simple \textit{mark-and-sweep} algorithm.
 \item[Extensions.]  Developers can extend Ruby's basic functionality by writing their own extensions. These can be written in Ruby or in native C, by using MRI's powerful API.
-\item[Bytecode Interpretation.] MRI lacks a bytecode interpreter. When a program is executed, MRI will parse its source and create its syntax tree. Then, it will iterate over this tree directly while executing the program.
+\item[Bytecode Interpretation.] MRI lacks a bytecode interpreter. When a program is executed, it parses its source and creates its syntax tree. Then, it iterates over this tree directly while executing the program.
 \end{description}
-It the only official Ruby interpreter for many years and, consequently, it is the most commonly used.
+MRI was the only official Ruby interpreter for many years and, consequently, it is the most widely used.
 
 
 \subsubsection{Ruby Enterprise Edition}
-This Ruby interpreter, also called REE, is based on the MRI source code. However, it includes many Rails-oriented enhancements. It was first released in 2003 and has been merging with MRI periodically, keeping its own changes aside. Its characteristics and differences from the official interpreter for version 1.8---MRI---include~\cite{rubyenterpriseedition}:
+This Ruby interpreter, called REE, is based on MRI's source code. However, it includes many Rails-oriented enhancements. It was first released in 2003 and has been merging with MRI periodically, keeping its own changes aside. Its characteristics and differences from the official interpreter for version 1.8---MRI---include~\cite{rubyenterpriseedition}:
 \begin{description}
-\item[Language.] Since REE is based on the MRI, it is written in C.
+\item[Language.] Since REE is based on MRI, it is written in C.
 \item[Threading.] The thread implementation is the same found on MRI.
 \item[Garbage Collector.]  The garbage collector was improved, being \textit{copy-on-write} friendly. This allows for reduced memory usage when paired with Passenger, who uses \textit{preforks} in combination with this feature.  It also enables the user to tweak its settings for adaptive performance.
-\item[Extensions.]  Just like MRI, it supports Ruby and native C extensions. 
+\item[Extensions.]  Just like MRI, it natively supports Ruby and C extensions. 
 \item[Bytecode Interpretation.] REE is mostly based in MRI's source code, as mentioned before, so it lacks a bytecode interpreter. It also iterates over the program's syntax tree directly.
-\item[Other Differences.] REE uses \textit{tcmalloc} for memory allocation, which improves the process's performance. It also allows better debugging by introducing the ability to inspect the garbage collectors' state and also to dump stack traces for all running threads.
+\item[Other Differences.] REE uses \textit{tcmalloc} for memory allocation, which improves the process's performance. It also allows better debugging by introducing the ability to inspect the garbage collector's state and to dump stack traces for all running threads.
  \end{description}
 This Ruby interpreter is normally paired with \textit{Phusion}'s\footnote{\url{http://www.phusion.nl/about.html}} web server---Passenger. Since they are developed by the same team, some optimizations are more noticeable when these two are being used together.
 
@@ -49,26 +49,25 @@ JRuby is a Java implementation of Ruby whose first version to support Rails was 
 \item[Threading.] The thread implementation is based on JVM threads. These are more efficient than the green threads used by MRI, since they are native threads.
 \item[Garbage Collector.]  The garbage collector is inherited from Java, being generational-based. It also inherits its heap and memory management, granting it greater performance since Java's memory management is overall very efficient.
 \item[Extensions.]  JRuby does not support native C extensions, but the most popular ones have already been ported to Java.
-\item[Other Differences.] Continuations and forks are not supported in JRuby. There are also a few small differences around its native \textit{endians} and time precision. It does, however, support the Ruby 1.8 specification to full extent and is currently used in many production environments.
 \item[Bytecode Interpretation.] In this concern, JRuby has the advantage of running on top of the JVM. The Ruby code can be interpreted directly, like MRI's behavior, but it can also be targeted for \textit{just-in-time} or \textit{ahead-of-time} compilation to Java bytecode, which is handled very efficiently by the JVM.
+\item[Other Differences.] Continuations and forks are not supported in JRuby. There are also a few small differences around its native \textit{endians} and time precision. It does, however, support the Ruby 1.8 specification to full extent and is currently used in many production environments.
 \end{description}
 
 
 \subsection{Ruby 1.9}
 This version represents a step forward in the Ruby programming language. It includes many new features and enhancements. Some of these include \textit{Fibers} and \textit{Non-blocking I/O} improvements~\cite{changes_ruby19}.
 
-
 \subsubsection{YARV}
-Yet Another RubyVM, also known as YARV, has been adopted as the official MRI's successor as the interpreter for version 1.9. For this same reason some people call it KRI or \textit{Koichi's Ruby Interpreter}. It consists on a bytecode interpreter designed specifically for Ruby and it is the only to fully support version 1.9's specification. Its author purpose, upon its creation, was to reduce execution times of Ruby programs and it differs a bit from other implementations~\cite{yarv, rubyvm_interview, ruby_intermediate_language}:
+Yet Another RubyVM, also known as YARV, has been adopted as MRI's successor, becoming the official interpreter for version 1.9. For this same reason some people call it KRI or \textit{Koichi's Ruby Interpreter}. It consists on a bytecode interpreter designed specifically for Ruby and it is the only to fully support version's 1.9 specification. Its author purpose, upon its creation, was to reduce execution times of Ruby programs and it differs a bit from other implementations~\cite{yarv, rubyvm_interview, ruby_intermediate_language}:
 \begin{description}
 \item[Language.] YARV was developed in C and reuses many parts of its predecessor, like the Ruby script parser, the object management mechanisms and the garbage collector.
-\item[Threading.] Contrary to MRI, YARV supports native threads. It also efficiently supports Fibers, previously called continuations, without suffering from serious performance issues like its predecessor~\cite{memory_leak_fix_18X}.
+\item[Threading.] Contrary to MRI, YARV supports native threads. It also efficiently supports \textit{Fibers}, previously called \textit{Continuations}, without suffering from serious performance issues like its predecessor~\cite{memory_leak_fix_18X}.
 \item[Garbage Collector.]  As aforementioned, YARV reuses MRI's code for its garbage collector.
 \item[Extensions.]  YARV supports its predecessor's extensions either they are written in Ruby or C. This represents, however, a bottleneck on parallel computing because of existing extensions' synchronization issues.
 \item[Bytecode Interpretation.] As mentioned before, the main difference between MRI and YARV when it comes to performance is related to the last's generation of intermediate code, which is much faster to process than parsing the program's syntax tree nodes one by one.
-\item[Other Differences.] There are many differences between YARV and MRI, the reference interpreter. An important one is the usage of Fibers which allows the developer to do cooperative scheduling instead of using the preemptive context switch model, commonly used in threading scheduling. On the same subject, Fibers are cheaper to create than threads. 
+\item[Other Differences.] There are many differences between YARV and MRI, the reference interpreter. An important one is the usage of \textit{Fibers} which allows the developer to do cooperative scheduling instead of using the preemptive context switch model, commonly used in thread scheduling. On the same subject, \textit{Fibers} are cheaper to create than threads. 
 \end{description}
-YARV initially had a great impact in the Ruby community for its enhancements. It brings many advantages as new features, better performance and improved memory usage. However, it has not been extensively adopted because of some existent incompatibilities with some libraries which have not been upgraded to comply with Ruby's new specification~\cite{rubys_challenge_2009}.
+YARV initially had a great impact in the Ruby community for its enhancements. It brings many advantages as new features, better performance and improved memory usage. However, it has not been extensively adopted because of some existing incompatibilities with some libraries which have not been upgraded to comply with Ruby's new specification~\cite{rubys_challenge_2009}.
 
 
 \subsection{Promising interpreters in heavy development}
@@ -77,9 +76,9 @@ There are many \textit{work-in-progress} implementations of interpreters of the 
 
 \subsubsection{Rubinius}
 
-Rubinius has a great deal of focus on performance and its features include support for native POSIX threads, a generational garbage collector, compatibility with MRI/YARV extensions and a more efficient bytecode compiler~\cite{rubinius, rubinius_virtual_machine, rubinius_virtual_machine_rewrite}. Unfortunately Rubinius only supports 93\% of the Ruby specification, according to the pass rate test from \textit{RubySpec}\footnote{\url{http://rubyspec.org/}}. However, this interpreter is very promising and its compatibility with the language specification is growing each day.
+Rubinius has a great deal of focus on performance and its features include support for native POSIX threads, a generational garbage collector, compatibility with MRI/YARV extensions and a more efficient bytecode compiler~\cite{rubinius, rubinius_virtual_machine, rubinius_virtual_machine_rewrite}. Unfortunately Rubinius only supports 93\% of the Ruby specification, according to the pass rate test from \textit{RubySpec}\footnote{\url{http://rubyspec.org/}}. However, this interpreter is very promising and its compatibility with the language specification is constantly growing.
 
 
 \subsubsection{MacRuby}
 
-MacRuby is mainly based on YARV. It includes a generational garbage collector by using Objective-C's engine and supports native POSIX threads. While being a promising Ruby interpreter specifically designed for the Mac OS X operating system, it has yet to achieve an acceptable degree of compatibility with Ruby's specification, which is currently at 85\%. Unfortunately, the current version is not able to run a standard Rails 3 application without specific modifications~\cite{macruby_06} but a great deal of effort is being put into increasing its compliance with Ruby's specification.
+MacRuby is mainly based on YARV. By using Objective-C's engine, it includes a generational garbage collector and supports native POSIX threads. While being a promising Ruby interpreter specifically designed for the Mac OS X operating system, it has yet to achieve an acceptable degree of compatibility with Ruby's specification, which is currently at 85\%. Unfortunately, the current version is not able to run a standard Rails 3 application without specific modifications~\cite{macruby_06} but a great deal of effort is being put into increasing its compliance with Ruby's specification.

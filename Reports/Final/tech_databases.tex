@@ -1,33 +1,33 @@
 \section{Databases} % (fold)
 \label{tech:sec:databases}
-A database collects data, either records or files. It can either be a schema-based or a schema-less database.
+A database is a digitally organized collection of data. It can either be a schema-based or a schema-less database.
 
 \subsection{MySQL}
-MySQL is the most popular open source database in the world, having consistently fast performance, high reliability and ease of use~\cite{why_mysql}. It was first released in 1995 and it is the most commonly found database on a Ruby on Rails project. This is the database of choice for all \textit{37signals}'s applications~\cite{interview_dhh}.  It is a relational schema-based database that offers useful features like various storage engines, transactions, indexes, load balancing and so on.
+MySQL is the most popular open source database in the world, having consistently fast performance, high reliability and ease of use~\cite{why_mysql}. It was first released in 1995 and it is the most commonly found database on a Ruby on Rails project. This is the database of choice for all \textit{37signals}'s applications~\cite{interview_dhh}.  It is a relational schema-based database that offers useful features like various storage engines, transactions, indexes, load balancing and many others.
 
 MySQL's architecture consists in three main layers. The top one is related with the services that are not unique to MySQL, like connection handling, authentication and security. The middle layer refers to crucial MySQL features like query parsing, analysis, optimization, caching and all the built-in functions.  This layer also holds all functionality across storage engines and stored procedures. Finally, the bottom layer consists in the storage engines themselves, responsible for the storage and retrieval of all stored data~\cite{high_performance_mysql}. MySQL has four main storage engines---MyISAM, Heap, BDB and InnoDB---with distinct advantages and disadvantages. However, InnoDB is the only storage engine supported in Rails applications. MyISAM and Heap lack transaction support and BDB does not ensure referential integrity, features used by the Ruby on Rails framework. Nevertheless, InnoDB is the default storage engine on MySQL installations.
 
-Ruby has an official library for this database, called \textit{mysql}. There are, however, a few alternatives worth mentioning, having \textit{mysql2} and \textit{mysqlplus} among them. These two have similar and distinct goals:
+Ruby has an official library for this database, called \textit{mysql}. There are, however, a few alternatives worth mentioning, namely \textit{mysql2} and \textit{mysqlplus}. These two have some similar and a few other distinct goals:
 \begin{description}
-  \item[\textit{mysql2},] aims at performing the necessary type conversions between MySQL and Ruby types in C and allows asynchronous queries;
-  \item[\textit{mysqlplus},] aims at supporting asynchronous queries and enabling threaded database access.
+  \item[\textit{mysql2}] aims at performing the necessary type conversions between MySQL and Ruby types in C and allows asynchronous queries.
+  \item[\textit{mysqlplus}] aims at supporting asynchronous queries and enabling threaded database access.
 \end{description}
 
 The installation of \textit{mysql2} automatically patches ActiveRecord, allowing a smooth transition from the default library. The other mentioned alternative, \textit{mysqlplus}, also replaces the default driver and does not need patching to natively interact with ActiveRecord.
 
 
 \subsection{PostgreSQL}
-PostgreSQL is the most advanced open source database server. It was started by Michael Stonebraker at the University of California in Berkeley and had its first release in 1989. It is a DBMS that contains all the features found on other open source or commercial databases and a few more~\cite{beginning_postgresql}.
+PostgreSQL is the most advanced open source database server. It was started by Michael Stonebraker at the University of California in Berkeley and had its first release in 1989. It is a DBMS that contains all features found on other open source or commercial databases and a few more~\cite{beginning_postgresql}.
 
 PostgreSQL has some prominent users, like \textit{MySpace}, who strengthen its credibility as a full-featured scalable highly-reliable relational database~\cite{petabyte_warehouses}. Rails' ActiveRecord natively supports this type of database, using Ruby's official library---\textit{ruby-pg}.
 
 
 \subsection{MongoDB}
-MongoDB is a scalable, high performance, open source, schema-free, document-oriented database written in C++ whose first release was in early 2009. It is a combination of key-value stores, fast, highly scalable and traditional RDBMS systems which provide structured schemas and powerful queries.
+MongoDB is a scalable, highly performant, open source, schema-free, document-oriented database written in C++ whose first release was in early 2009. It is a combination of key-value stores, fast, highly scalable and traditional RDBMS systems which provide structured schemas and powerful queries.
 
-This database is document-oriented, providing the simplicity and power of JSON-like data schemas. It supports dynamic queries and full index support. It also provides complex features like replication, auto-sharding and MapRedux~\cite{mongodb}
+This database is document-oriented, providing the simplicity and power of JSON-like data schemas. It supports dynamic queries and indexes. It also provides complex features like replication, auto-sharding and MapRedux~\cite{mongodb}
 
-This database has been gaining popularity within the Rails community for its simplicity of use, high performance and many features that fit well within the Ruby development philosophy~\cite{mongodb_rails}. Mongo is very performance oriented and some of its features that provide outstanding performance are~\cite{mongodb_couchdb}:
+This database has been gaining popularity within the Rails community for its simplicity of use, high performance and many features that fit well within the Ruby development philosophy~\cite{mongodb_rails}. Mongo is very performance-oriented and some of its features that provide outstanding performance are~\cite{mongodb_couchdb}:
 \begin{itemize}
   \item Client driver per language: native socket protocol for client/server interface;
   \item Use of memory mapped files for data storage;

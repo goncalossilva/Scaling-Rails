@@ -3,14 +3,14 @@
 The operating system is the base of everything else. It runs on top of the hardware and allows applications to use its resources. There are many kinds of operating systems, with different characteristics and philosophies. The relevant ones to this research will be explained in the following sections.
 
 \subsection{GNU/Linux}
-Linux is the term used to describe UNIX-based operating systems that run the Linux \textit{Kernel}. It was created in 1991 by Linus Torvalds~\cite{linux_kernel_evolution}, who is also the author of \textit{git}~\cite{pro_git}. It is one of the most significant open-source projects where volunteers from all over the world work together to achieve a common goal---improve the operating system itself~\cite{linux_kernel_evolution}. While having low usage on desktop systems~\cite{w3counter}, Linux is widely used on servers, mainframes and super computers. Linux is commonly known for its security and reliability. One sustaining example is the list of the most reliable hosting company sites in December 2009, where Linux figures 6 times in the top 10~\cite{netcraft_dec2009}.
+Linux is the term used to describe UNIX-based operating systems that run the Linux \textit{Kernel}. It was created in 1991 by Linus Torvalds~\cite{linux_kernel_evolution}, who is also the author of \textit{git}~\cite{pro_git}. It is one of the most significant open-source projects where volunteers from all over the world work together to achieve a common goal---improve the operating system itself~\cite{linux_kernel_evolution}. While having low usage on desktop systems~\cite{w3counter}, Linux is widely used on servers, mainframes and super computers. It is commonly known for its security and reliability. One sustaining example is the list of operating systems used by the most reliable hosting companies in December 2009, where Linux figures 6 times in the top 10~\cite{netcraft_dec2009}.
 
-Linux stands as the base for many UNIX-like software distributions, specifically Linux distributions. These consist on a large collection of software applications which range from full-featured desktop configurations to minimal environments. Non-commercial Linux distributions commonly used in server environments include:
+Linux stands as the base for many UNIX-like software distributions, specifically Linux distributions. These consist on a large collection of software applications and configurations which range from full-featured desktop systems to minimal environments. Non-commercial Linux distributions commonly used in server environments include:
 \begin {description}
 \item[Debian,] maintained by a developer community with a strong commitment to free software principles\footnote{\url{http://www.debian.org/}}.
 \item[Ubuntu Server,] derived from Debian and maintained by Canonical, being the server version of the most popular Linux distribution\footnote{\url{http://www.ubuntu.com/products/whatIsubuntu/serveredition}}.
-\item[CentOS,] derived from the same sources used by \textit{Red Hat}\footnote{\url{http://www.centos.org/}}.
-\item[Gentoo,] known for its FreeBSD Ports-like system for application custom compiling\footnote{\url{http://www.gentoo.org/}}.
+\item[CentOS,] derived from the same sources used by the renowned \textit{Red Hat}\footnote{\url{http://www.centos.org/}} distribution.
+\item[Gentoo,] known for its FreeBSD Ports-like system for custom compiling\footnote{\url{http://www.gentoo.org/}} of applications.
 \end{description}
 Each distribution aims at adding its own flavor to the Linux operating system, providing different user experiences to their users~\cite{tuning_costumizing_linux}.
 
@@ -20,11 +20,16 @@ Berkeley Software Distribution, also know as BSD or \textit{Berkeley} \textit{Un
 \begin{quote}
   `` If 386BSD had been available when I started on Linux, Linux would probably never had happened''
 \end{quote}
-Just like Linux, it is open-source software and has several associated distributions, although at a smaller scale. FreeBSD\footnote{\url{http://www.freebsd.org/}} and OpenBSD\footnote{\url{http://www.openbsd.org/}} are among the most popular BSD distributions.
+Just like Linux, it is open-source software and has several associated distributions, although at a smaller scale. FreeBSD\footnote{\url{http://www.freebsd.org/}} is the most popular BSD distribution~\cite{top_5_bsd_distros}.
 
-A significant remark is that both Apple's \textit{Mac OS X}~\cite{leopard_os_foundations} and Microsoft's \textit{Windows}~\cite{bsd_code_windows} use parts of BSD's source code.
+A significant remark is that both Apple's \textit{Mac OS X} and Microsoft's \textit{Windows} use parts of FreeBSD's source code~\cite{leopard_os_foundations,bsd_code_windows}.
 
 \subsection{Microsoft Windows Server}
-Windows Server is Microsoft Corporation's operating system oriented towards servers. The current version of this operating system is called \textit{Windows Server 2008} and, as its name implies, was released in 2008. It is built on top of the same code base used in \textit{Windows Vista}.
+Windows Server is Microsoft Corporation's operating system oriented towards servers. The current version is entitled \textit{Windows Server 2008} and, as its name implies, was released in 2008. It is built on top of the same code base used in \textit{Windows Vista}.
 
 Windows is proprietary software and consequently does not come in a distribution manner like the \textit{UNIX}-based operating systems mentioned before.
+
+\subsection{Mac OS X Server}
+Mac OS X Server is Apple's server-oriented operating system. It is architecturally identical to its desktop counterpart, except that it includes work group management and administration software tools.
+
+This operating system is usually found on rack mounted server computers which are also designed by Apple.

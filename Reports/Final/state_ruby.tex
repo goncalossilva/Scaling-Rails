@@ -2,9 +2,9 @@
 \label{state:sec:ruby}
 The Ruby on Rails framework, as its name implies, is built on top of the Ruby programming language. Rails' performance is highly affected by Ruby and the interpreter choice can lead to great impact on the framework's scalability.
 
-Ruby has many interpreters according to its version. Ruby 1.8 has MRI as its default interpreter and Ruby 1.9 has YARV. There are, however, a few other implementations that deserve some attention. These present different philosophies and implementation details that provide them with different advantages and shortcomings, as explored in chapter~\ref{tech:sec:ruby}.
+Ruby has many interpreters according to its version. Ruby 1.8 has MRI as its default interpreter and Ruby 1.9 has YARV. There are, however, a few other implementations that deserve some attention. These present different philosophies and implementation details that provide different advantages and shortcomings, as explored in Chapter~\ref{tech:sec:ruby}.
 
-The default implementation for Ruby 1.8, MRI, is generally known by its poor performance~\cite{6tips_for_mri}. This motivated the development of efficient interpreters for the language. Ruby Enterprise Edition has better scaling abilities than MRI, generally performs better and uses less memory~\cite{ree_benchmarks}. JRuby outperforms MRI by a considerable margin~\cite{ruby19_performance}. Rubinius, on the other hand, also effortlessly outperforms MRI. It also performs better than JRuby in most cases by a small margin~\cite{rvm_rubinius_benchmarks}.
+The official implementation for Ruby 1.8 is generally known by its poor performance~\cite{6tips_for_mri}. This motivated the development of efficient interpreters for the language. Ruby Enterprise Edition has better scaling abilities than MRI, generally performs better and uses less memory~\cite{ree_benchmarks}. JRuby outperforms MRI by a considerable margin~\cite{ruby19_performance}. Rubinius, on the other hand, also consistently outperforms MRI. It also performs better than JRuby in most cases by a much smaller margin~\cite{rvm_rubinius_benchmarks}.
 
 Some people found significant performance improvements in MRI by applying a series of patches and configurations to its garbage collector. Twitter benefited from these patches, roughly improving its overall performance by 30\%~\cite{ruby_gc_tuning}.
 
@@ -13,4 +13,6 @@ Ruby 1.9 has only one 100\% compliant interpreter as aforementioned. However, as
   ``It runs faster, it is more expressive, and it enables even more programming paradigms.''
 \end{quote}
 It's increased performance over MRI was noticed by the Ruby community which also lead to discussions on whether it was more efficient than Python's counterpart~\cite{ruby19_python}.
+
+Regarding YARV's native profiler, it only supports one workflow: enabling it, running the test code and requesting its report, which is returned in a well formated string~\cite{yarv_gc_profiler}.
 

@@ -13,7 +13,7 @@ require 'mysql'
  
 class Mysql::Result
   def encode(value, encoding = "utf-8")
-    String === value ? value.force_encoding(encoding) : value
+    (String  === value && value.respond_to?(:force_encoding)) ? value.force_encoding(encoding) : value
   end
   
   def each_utf8(&block)

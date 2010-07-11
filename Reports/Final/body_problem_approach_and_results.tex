@@ -6,8 +6,8 @@ Envisioning a system-wide performance optimization of a Ruby on Rails applicatio
 
 It is also necessary to perform these activities using a fair base of comparison. The most important rules used when benchmarking were:
 \begin{description}
-  \item[Same tests:] Use the same tests when testing component alternatives and, when impossible, keep their disparities to a minimum;
-  \item[Same hardware:] Use the same hardware when testing a given component;
+  \item[Same tests:] Use the same tests when testing component alternatives and, when impossible, keep their disparities to a minimum.
+  \item[Same hardware:] Use the same hardware when testing a given component.
   \item[Similar configurations:] Use equal or, at the very least, similar configurations for all the components involved. Exceptions can be made when the purpose of the test is to benchmark the behavior with the default configurations.
 \end{description}
 
@@ -27,7 +27,7 @@ Two distinct machines were used during this research. Due to hardware malfunctio
   \end{tabular}
 \end{table}
 
-When benchmarking, the same software versions were used across all systems and environments. Table~\ref{tab:software_versions} explicits the software versions that were used.
+When benchmarking, the same software versions were used across all systems and environments. Table~\ref{tab:software_versions} shows the software versions that were used.
 \begin{table}[ht]
   \centering
   \caption{Software Versions in Use}
@@ -59,13 +59,13 @@ When benchmarking, the same software versions were used across all systems and e
 \end{table}
 All packages were compiled from source using GCC with \textit{``-O2 -march=nocona -pipe''} as their compilation flags.
 
-To achieve the objectives established in chapter~\ref{cha:problem_statement}, some activities were performed.
+To achieve the objectives established in Chapter~\ref{cha:problem_statement}, some activities were performed.
 
-First of all, to create the centralized set of conventions and guidelines for scaling Ruby on Rails applications, there is need to analyze and benchmark all worthy alternatives for each component.
+First of all, to create the centralized set of conventions and guidelines for improving the performance of Ruby on Rails applications, there is the need to analyze and benchmark all worthy alternatives for each component.
 
-In order to facilitate the process of profiling Rails applications by building new and intuitive tools while updating the existing ones, Rails and Ruby must be improved and tweaked to accommodate each other's changes.
+In order to easen the process of profiling Rails applications, the native profiling tools must be fixed and upgraded. Rails and Ruby must be improved and tweaked to accommodate all changes, providing a seamless integration between each other's tools.
 
-Finally, to improve the global awareness on this issue's importance there is need to gather the benefits associated with it, provide a smoother transition by updating famous Rails plugins, increase this subjects' notoriety by updating one of the most renowned Ruby on Rails projects---Redmine---and by publishing a series of articles about performance optimization on the \textit{Rails Magazine} and, ultimately, initiate a performance-oriented continuous integration for Rails by developing a benchmarking suite aimed at the framework itself.
+Finally, to improve the global awareness of this issue's importance there is the need to gather the benefits associated with it, provide a smoother transition by updating renowed Rails plugins, increase this subjects' notoriety by updating one of the most renowned Ruby on Rails projects---Redmine---and by publishing a series of articles about performance optimization on the \textit{Rails Magazine} and, ultimately, initiate a performance-oriented continuous integration for Rails by developing a benchmarking suite aimed at the framework itself. % FIXME: transition?
 
 In order to accomplish the aforementioned tasks, every component was specifically addressed. The work done is presented and explained in the following sections.
 

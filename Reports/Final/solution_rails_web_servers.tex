@@ -1,9 +1,9 @@
 \section{Rails Web Servers} % (fold)
 \label{solution:sec:rails_web_servers}
 
-There are many Ruby web servers with distinct philosophies and purposes. Passenger, Thin and Unicorn were targeted for benchmarking, in an effort to determine which is best for each situation. Memory usage and stability are important factors and were taken into account when evaluating each alternative. Apache, Nginx and Cherooke's performance as reverse proxies was also evaluated.
+There are many Ruby web servers with distinct philosophies and purposes. Passenger, Thin and Unicorn were targeted for benchmarking, in an effort to determine which is best for each situation. Memory usage and stability are important factors and were taken into account when evaluating each alternative. Apache, Nginx and Cherooke's performance as reverse proxies was also analyzed.
 
-Among the previously introduced web servers, some are missing from this analysis. WEBrick---Ruby's pioneer web server---is left out since it lacks the efficiency to compete with nowadays alternatives. Mongrel, while representing a huge improvement over WEBrick, still lags behind more recently developed web servers as explored in section~\ref{state:sec:rails_web_servers}, also being excluded from further analysis.
+Among the previously introduced web servers, some are missing from this analysis. Ruby's pioneer web server---WEBrick---is left out since it lacks the efficiency to compete with nowadays alternatives. Mongrel, while representing a huge improvement over WEBrick, still lags behind more recently developed web servers as explored in Section~\ref{state:sec:rails_web_servers}, also being excluded from further analysis.
 
 \subsection{Development}
 Monitoring memory usage is crucial to evaluate the performance of a web server. A web server that consumes less memory is likely to scale better since it can spawn more working processes/threads in the same setup.
@@ -12,27 +12,27 @@ There was need for a small utility to measure the memory usage of specified proc
 \begin{itemize}
   \item Directory to use when outputting the results;
   \item Refresh interval in seconds (optional, default: 1);
-  \item Name of the processes to monitor;
+  \item Name of the process(es) to monitor;
 \end{itemize}
-The utility records each process's memory usage in its own file. If there are multiple processes running, it will record them all and name the result files as \textit{name.pid.csv}. As the name implies, it records the data in the CSV format. Finally, it is compatible with any UNIX system.
+The utility records each process's memory usage in its own file. For each process, it will record the data in a file entitled \textit{process\_name.process\_pid.csv}. As the name implies, it records the data in the CSV format. Finally, it is compatible with any UNIX system.
 
-This tool will be used to measure the memory usage in all benchmarks contained in the following section.
+This tool was be used to measure the memory usage in all benchmarks contained in the following section.
 
 \subsection{Benchmarking}
-Ruby has a few high-performant web servers with Passenger, Thin and Unicorn among them. Exchanging web servers in a Rails' setup is not an uncommon activity since improved versions are being frequently released in recent years, as stated in section~\ref{tech:sec:rails_webservers}.
+Ruby has a few highly performant web servers with Passenger, Thin and Unicorn among them. Exchanging web servers in a Rails' setup is not an uncommon activity since improved versions are being frequently released in recent years, as stated in Section~\ref{tech:sec:rails_webservers}.
 
-Regarding this component, benchmarking had four distinct phases. First of all, it was important to evaluate the reverse proxy performance of Apache, Nginx and Cherokee. After that, the goal was to determine whether Passenger performs better in combination with Apache or Nginx. The third phase would compare Thin's performance to Unicorn's since, as stated on section~\ref{tech:sec:rails_webservers}, they are developed for similar purposes. All these initial phases would use MRI as the Ruby interpreter. Finally, a more complete benchmark including Passenger, Thin and Unicorn was done, involving multiple quantities of workers and running with MRI and YARV.
+Regarding this component, benchmarking had four distinct phases. First of all, it was important to evaluate the performance of Apache, Nginx and Cherokee as reverse proxies. After that, the goal was to determine whether Passenger performs better in combination with Apache or Nginx. The third phase would compare Thin's performance to Unicorn's since, as stated on Section~\ref{tech:sec:rails_webservers}, they are developed for similar purposes. All these initial phases would use MRI as the Ruby interpreter. Finally, a more complete benchmark including Passenger, Thin and Unicorn was done, involving multiple quantities of workers and running with MRI and YARV.
 
-For all benchmarks, three distinct pages were used. One heavy page filled with dynamic content, a regular page with moderate usage of dynamic content and finally a complex but small API request. Escolinhas was the platform to provide this different types of content.
+For all benchmarks, three distinct pages were used. One \textit{heavy page} filled with dynamic content, a \textit{regular page} with moderate usage of dynamic content and finally a complex but small \textit{API call}. \textit{Escolinhas.pt} was the platform to provide this different types of content.
 
-No database caching solutions were in use. Once again, if more than 1\% of the requests took more than 30 seconds to be replied to the test was considered a failure, as a higher response time is not acceptable in real world applications.
+No database caching solutions were in use. Once again, if more than 1\% of the requests took more than 30 seconds to be replied to the test was considered a failure, as it already surpasses acceptable response times in real world applications. % FIXME: Pôr ref de novo?
 
 \subsubsection{Proxy Performance in a Thin Cluster Environment}
 Many Ruby web servers run behind a reverse proxy which buffers the requests, delivers them to the web server and receives the replies, buffering them as well if needed. In this kind of commonly used architecture, they have an important role when it comes to performance.
 
 Thin is a kind of web server that should be paired with a reverse proxy. It is optimized for small requests and fast clients so it needs to rely on the proxy's buffering abilities to offer consistent performance across all kinds of light or heavy content and fast or slow clients.
 
-This benchmark used 4 Thin processes. The only modifications made to its configuration were related to increasing its request queue, so that it could queue more clients instead of discarding them. This Thin cluster was working behind the 3 aforementioned reverse proxies: Apache, Nginx and Cherooke. The benchmark involved many levels of concurrency, as follows:
+This benchmark used 4 Thin processes. The only modifications made to its default configuration were related to increasing its request queue, so that it could queue more clients instead of discarding them. This Thin cluster was working behind the 3 aforementioned reverse proxies: Apache, Nginx and Cherooke. The benchmark involved many levels of concurrency, as follows:
 \begin{itemize}
   \item 50 requests, 1 concurrent;
   \item 100 requests, 10 concurrent;
@@ -40,7 +40,7 @@ This benchmark used 4 Thin processes. The only modifications made to its configu
   \item 500 requests, 100 concurrent;
   \item 2500 requests, 500 concurrent.
 \end{itemize}
-The total time to complete each test and the replies per second capability of each setup were recorded using the aforementioned tool called \textit{ab}, created by the Apache Foundation~\footnote{\url{http://www.apache.org/}}. When using this tool, the user specifies the total amount of requests to be sent and the desired concurrency. The tool then dispatches all requests to the specified host at the specified concurrency rate.
+The total time to complete each test and the replies \textit{per second} capability of each setup were recorded using the aforementioned tool---\textit{ab}---created by the Apache Foundation~\footnote{\url{http://www.apache.org/}}. When using this tool, the user specifies the total amount of requests to be sent and the desired concurrency. It then dispatches all requests to the specified host at the chosen concurrency rate.
 
 The results of this benchmark are presented on table~\ref{tab:reverse_proxy_benchmark}.
 \begin{center}
@@ -110,10 +110,10 @@ The results of this benchmark are presented on table~\ref{tab:reverse_proxy_benc
 \end{longtable}
 \end{center}
 
-On nonexistent concurrency, Cherokee and Apache yield the best results. When concurrency is present and increases, however, Nginx performs slightly better and has the lowest memory consumption. On maximum concurrency, however, none was able to cope with the demand. Cherokee failed to complete most of the requests. Nginx completed significantly more but most of them timed out, accounting as failed test. Apache also completed a few requests before becoming unresponsive, but much less than Nginx. Finally, the most impressive remark is that the memory usage of Thin and Nginx is remarkably low and impressively stable, whether it is a light API call or a heavy page. This combination brings an impressive scalability potential for its low memory usage.
+On nonexistent concurrency, Cherokee and Apache yielded slightly better results. When concurrency is present and increases, Nginx performs slightly better. On maximum concurrency, however, none was able to cope with the demand. Regarding this last test, Cherokee failed to complete most of the requests. Nginx completed significantly more but most of them also timed out, accounting as a failed test. Apache was able to complete a few requests before becoming unresponsive, but much less than Nginx. Finally, the most impressive remark is that the memory usage of Thin with Nginx is remarkably low and impressively stable, whether it is a light API call or a heavy page. This combination brings an impressive scalability potential for its low memory usage.
 
 \subsubsection{Passenger Performance on Apache/Nginx}
-Passenger is different from the previously mentioned web servers. It is not a web server itself but instead acts as module and adds the needed functionality to Apache or Nginx to support web applications written in Ruby. Uncertainty arises when asserting whether Passenger performs better in Apache or Nginx, so a generic benchmark regarding this issue will follow.
+Passenger is different from the previously mentioned web servers. It is not a web server itself but instead acts as module and adds the needed functionality to Apache or Nginx to support web applications written in Ruby. Uncertainty arises when asserting whether Passenger performs better in Apache or Nginx, so a generic benchmark regarding this issue followed.
 
 The test was similar to the one explained in the previous sections. It tested the same request/concurrency combinations, used \textit{ab} to measure the response rate and used the previously mentioned monitoring script to measure the memory usage. It also used 4 Passenger instances. The Passenger-specific configurations were the same on both web servers---Apache and Nginx---and can be seen on table~\ref{tab:passenger4_configuration}.
 \begin{table}[h!t]
@@ -178,14 +178,14 @@ The results are exhibited on table~\ref{tab:passenger_benchmark}.
   \end{tabular}
 \end{table}
 
-When used with Apache, Passenger failed more tests under a rather low concurrency level---100 simultaneous requests---than when used with Nginx, which indicates that this Apache setup has some scalability issues. It should also be noticed that when paired with Nginx, Passenger uses less memory. 
+When used with Apache, Passenger failed more tests under a rather low concurrency level---100 simultaneous requests---than when used with Nginx, which indicates that this Apache setup has some scalability issues. It should also be noticed that when paired with Nginx, Passenger uses significantly less memory. 
 
 \subsubsection{Thin and Unicorn Performance Comparison}
-As mentioned before, Unicorn and Thin are very similar in their goals: they are optimized for small requests and fast clients. However, their philosophies and architecture are different. As mentioned in section~\ref{tech:sec:rails_webservers}, Thin relies on \textit{EventMachine} for fast I/O processing, using a fast asynchronous event loop. On the other hand, Unicorn forks workers which attend to one client at a time and it relies on the Operating System for many internal tasks like request queuing and worker synchronization. There are many discussions about the performance of these two web servers, becoming an issue worth addressing.
+As mentioned before, Unicorn and Thin are very similar in their goals: they are optimized for small requests and fast clients. However, their philosophies and architecture differ. As mentioned in Section~\ref{tech:sec:rails_webservers}, Thin relies on \textit{EventMachine} for fast I/O processing, using a fast asynchronous event loop. On the other hand, Unicorn forks workers which attend to one client at a time and it relies on the Operating System for many internal tasks like request queuing and worker synchronization. There are many discussions about the performance of these two web servers, becoming an issue worth addressing.
 
 In real world applications, web servers must be ready to serve slow clients and, eventually, heavy pages. Since both web servers are not optimized for these situations, the usage of a reverse proxy is required for request and response buffering purposes.
 
-This benchmark followed the same conditions of the aforementioned ones regarding concurrency tests, number of processes, test pages and the usage of \textit{ab} to make the measurements. Thin's configuration was the same as before and Unicorn's was very similar to Thin's. Since Nginx yielded excellent results in the previous benchmarks, it was used as both web server's reverse proxy. The results can be found on table~\ref{tab:thin_unicorn_benchmark}.
+This benchmark followed the same conditions of the aforementioned ones regarding concurrency, number of processes, test pages and the usage of \textit{ab} to make the measurements. Thin's configuration was the same as before and Unicorn's was very similar to Thin's. Since Nginx yielded excellent results in the previous benchmarks, it was used as both web server's reverse proxy. The results can be found on table~\ref{tab:thin_unicorn_benchmark}.
 
 \begin{table}[h!t]
   \centering
@@ -239,69 +239,63 @@ Nginx was used as the reverse proxy for Thin and Unicorn. It was also used as th
 
 Similarly to real applications, more processes were used as well. Instead of the 4 workers used in the previous benchmarks, this test contempts 30 and 60 workers. The aforementioned developed script was used to record the memory usage in all tests. The test pages were also the same as the ones used on the previous benchmarks.
 
-In this benchmark, however, the measurement tool was~\textit{autobench}~\footnote{\url{http://www.xenoclast.org/autobench/}}, a wrapper around on HP's~\textit{httperf}~\footnote{\url{http://www.hpl.hp.com/research/linux/httperf/}}. Instead of continuously dumping requests to the target host like \textit{ab} does, \textit{autobench} runs a number of times against the specified host(s), increasing the number of requested connections per second on each iteration. Then it tries to find the highest request rate in which the web server remains stable and aims at maintaining the rate for the remaining simulation time, which is defined by the user.
+In this benchmark, however, the measurement tool was~\textit{autobench}~\footnote{\url{http://www.xenoclast.org/autobench/}}, a wrapper around on HP's~\textit{httperf}~\footnote{\url{http://www.hpl.hp.com/research/linux/httperf/}}. Instead of continuously dumping requests to the target host like \textit{ab} does, \textit{autobench} runs a number of times against the specified host(s), increasing the number of requested connections \textit{per second} on each iteration. Then it tries to find the highest request rate in which the web server remains stable and aims at maintaining that rate for the remaining simulation time, which is defined by the user.
 
-The first round of tests was made using Ruby 1.8. The results for the heavy page filled with dynamic content---page 1---are presented on figure~\ref{fig:page1_autobench_ruby18_results}.
+The first round of tests was made using Ruby 1.8. The results for the \textit{heavy page} filled with dynamic content are presented on figure~\ref{fig:page1_autobench_ruby18_results}.
 \begin{figure}[h!t]
   \centering
-    \caption{Autobench Results on Page 1 (Ruby 1.8)}
     \includegraphics[width=0.95\textwidth]{results_autobench_replies_homepage_ruby18}
-  \label{fig:page1_autobench_ruby18_results}
+    \caption{Autobench Results on the Heavy Page (Ruby 1.8)} \label{fig:page1_autobench_ruby18_results}
 \end{figure}
 
 The test tool, \textit{autobench}, was unable to find a stable request rate on this page. All web servers behaved similarly poor. 
 
-As for the regular page with moderate usage of dynamic content---page 2---the results can be found on figure~\ref{fig:page2_autobench_ruby18_results}.
+As for the \textit{regular page} with moderate usage of dynamic content, the results can be found on figure~\ref{fig:page2_autobench_ruby18_results}.
 \begin{figure}[h!t]
   \centering
-    \caption{Autobench Results on Page 2 (Ruby 1.8)}
     \includegraphics[width=0.95\textwidth]{results_autobench_replies_portal_ruby18}
-  \label{fig:page2_autobench_ruby18_results}
+    \caption{Autobench Results on the Regular Page (Ruby 1.8)} \label{fig:page2_autobench_ruby18_results}
 \end{figure}
 
-On this test all web servers were able to consistently serve requests, stabilizing at a rate of 10-12 requests per second. Although all had very similar performances, Unicorn with 60 workers consistently yielded slightly better results.
+On this test all web servers were able to consistently serve requests, stabilizing at a rate of 10-12 requests \textit{per second}. Although all had very similar performances, Unicorn with 60 workers consistently yielded slightly better results.
 
-Finally, as for the complex but small API request---page 3---the results are exhibited on figure~\ref{fig:page3_autobench_ruby18_results}.
+Finally, regarding the complex but small \textit{API call}, the results are exhibited on figure~\ref{fig:page3_autobench_ruby18_results}.
 \begin{figure}[h!t]
   \centering
-    \caption{Autobench Results on Page 3 (Ruby 1.8)}
     \includegraphics[width=0.95\textwidth]{results_autobench_replies_publication_ruby18}
-  \label{fig:page3_autobench_ruby18_results}
+    \caption{Autobench Results on the API Call (Ruby 1.8)} \label{fig:page3_autobench_ruby18_results}
 \end{figure}
 
-Once again, all web servers were able to maintain a solid request rate, which was stable around 10-13. Unicorn, both with 30 and 60 workers, seems to have a slight performance advantage over its competitors.
+Once again, all web servers were able to maintain a stable request rate, which was around 10-13. Unicorn, both with 30 and 60 workers, seems to have a slight performance advantage over its competitors.
 
-The second round was made using Ruby 1.9 on exactly the same pages. The results for the heavy page filled with dynamic content---page 1---can be seen on figure~\ref{fig:page1_autobench_ruby19_results}.
+The second round was made using Ruby 1.9 on exactly the same pages. The results for the \textit{heavy page} filled with dynamic content can be seen on figure~\ref{fig:page1_autobench_ruby19_results}.
 \begin{figure}[h!t]
   \centering
-    \caption{Autobench Results on Page 1 (Ruby 1.9)}
     \includegraphics[width=0.95\textwidth]{results_autobench_replies_homepage_ruby19}
-  \label{fig:page1_autobench_ruby19_results}
+    \caption{Autobench Results on the Heavy Page (Ruby 1.9)} \label{fig:page1_autobench_ruby19_results}
 \end{figure}
 
-All web servers have shown extreme improvements after switching to Ruby 1.9 on this page. Most of them were stable through 15-16 iterations instead of a single one and the response rate increased from 2,5 to 4,5-5,5. Thin is the most notable exception, loosing stability after 6 iterations. However, it still represents a remarkable improvement over the previous tests with Ruby 1.8.
+All web servers have shown extreme improvements after switching to YARV on this page. Most of them were stable through 15-16 iterations instead of a single one and the response rate increased from 2,5 to 4,5-5,5. Thin is the most notable exception, loosing stability after 6 iterations. However, it still represents a remarkable improvement over the previous tests with MRI.
 
-As for the regular page with moderate usage of dynamic content---page 2---the results are presented on figure~\ref{fig:page2_autobench_ruby19_results}.
+As for the \textit{regular page} with moderate usage of dynamic content, the results are presented on figure~\ref{fig:page2_autobench_ruby19_results}.
 \begin{figure}[h!t]
   \centering
-    \caption{Autobench Results on Page 2 (Ruby 1.9)}
     \includegraphics[width=0.95\textwidth]{results_autobench_replies_portal_ruby19}
-  \label{fig:page2_autobench_ruby19_results}
+    \caption{Autobench Results on the Regular Page (Ruby 1.9)} \label{fig:page2_autobench_ruby19_results}
 \end{figure}
 
 All web servers performed similarly on this test. The results were also very similar to the same test with Ruby 1.8, mainly due to the fact that this page is relatively light on Ruby code.
 
-Finally, as for the complex but small API request---page 3---the results can be found on figure~\ref{fig:page3_autobench_ruby19_results}.
+Finally, regarding the complex but small \textit{API call}, the results can be found on figure~\ref{fig:page3_autobench_ruby19_results}.
 \begin{figure}[h!t]
   \centering
-    \caption{Autobench Results on Page 3 (Ruby 1.9)}
     \includegraphics[width=0.95\textwidth]{results_autobench_replies_publication_ruby19}
-  \label{fig:page3_autobench_ruby19_results}
+    \caption{Autobench Results on the API Call (Ruby 1.9)} \label{fig:page3_autobench_ruby19_results}
 \end{figure}
 
-Once again, the results are very similar to those found on the same test with Ruby 1.8. Passenger's behavior is not consistent because its application handler segmentation faults on this specific test---complex API call on Ruby 1.9 with 30 and 60 workers---which is possibly related with shared resource access among workers.
+Once again, the results are very similar to those found on the same test with Ruby 1.8. Passenger's behavior is not consistent because its application handler segmentation faults on this specific test---complex \textit{API call} on Ruby 1.9 with 30 and 60 workers---which is possibly related with shared resource access among workers.
 
-Table~\ref{tab:web_server_memory_usage} exhibits the average memory usage throughout the test. A few conclusions can drawn from the memory usage data. Firstly, Thin always uses less memory than the other web servers. Passenger's memory usage with 30 workers is similar to when it is using 60 workers, which is very high when compared to the others. Finally, using Ruby 1.9 generally causes web servers to use less memory.
+Table~\ref{tab:web_server_memory_usage} exhibits the average memory usage throughout the test. A few conclusions can be drawn from the memory usage data. Firstly, Thin always uses less memory than the other web servers. Passenger's memory usage with 30 workers is similar to when it is using 60 workers, which is very high when compared to the others. Finally, using Ruby 1.9 generally causes web servers to use less memory.
 \begin{table}[h!t]
   \centering
   \caption{Web Server Memory Usage}
@@ -309,7 +303,7 @@ Table~\ref{tab:web_server_memory_usage} exhibits the average memory usage throug
   
   \begin{tabular}{l|c|c|c|c|c|c}
 
-     & \multicolumn{2}{c|}{\textbf{\textsc{Page 1}}} & \multicolumn{2}{c|}{\textbf{\textsc{Page 2}}} & \multicolumn{2}{c}{\textbf{\textsc{Page 3}}} \\ \hline
+     & \multicolumn{2}{c|}{\textbf{\textsc{Heavy Page}}} & \multicolumn{2}{c|}{\textbf{\textsc{Regular Page}}} & \multicolumn{2}{c}{\textbf{\textsc{API Call}}} \\ \hline
      & \textbf{Ruby 1.8} & \textbf{Ruby 1.9} & \textbf{Ruby 1.8} & \textbf{Ruby 1.9} & \textbf{Ruby 1.8} & \textbf{Ruby 1.9} \\ \hline
     \textbf{Thin (30)} & 3041 & 2868 & 3018 & 2802 & 2984 & 2849 \\ \hline
     \textbf{Unicorn (30)} & 3463 & 3556 & 3461 & 3354 & 3461 & 3442 \\ \hline
@@ -320,29 +314,29 @@ Table~\ref{tab:web_server_memory_usage} exhibits the average memory usage throug
   \end{tabular}
 \end{table}
 
-After an exhaustive analysis of web servers performance, scalability and memory usage, one can conclude that the differences between web server performance are very small. The area of more impact is memory usage where Thin yields the best results, closely followed by Unicorn. Using Ruby 1.9, however, induces a significant improvement in the results regarding the response rate ability and the stability of all web servers. This difference is clearly noticeable in the heaviest test of the benchmark, where most web servers have shown a $\pm$200\% increase in the request rate and $\pm$1500\% increase in successfully completed iterations.
+After an exhaustive analysis of web server performance, scalability and memory usage, one can conclude that the performance differences between each alternative are very small. The area of more impact is memory usage where Thin yields the best results, closely followed by Unicorn. Using Ruby 1.9, however, induces a significant improvement in the results regarding the response rate ability and the stability of all web servers. This difference is clearly noticeable in the heaviest test of the benchmark, where most web servers have shown a $\pm$200\% increase in the response rate and $\pm$1500\% increase in successfully completed iterations.
 
 Most of the tests have shown small to no improvements when doubling the number of workers from 30 to 60. The main bottleneck is related to the nonexistence of a memory object caching system, so increasing the workers had no effect on performance. In fact, the difference between the results of this benchmark and the previously shown ones, with only 4 workers, is remarkably small. Database caching should be in use to precisely determine the difference between having 30 and 60 workers on the aforementioned dual-core machine.
 
 \subsection{Tweaking}
 Tweaking a web server's configuration is important to fine-tune its performance. All the examined components are highly configurable and changing some settings can provoke a positive or negative impact in performance.
 
-Apache supports two completely different MPM models. A prefork MPM, which forks a number of identical Apache processes and a worker MPM, which creates multiple threads. The prefork model is generally more effective on systems with one or two processing units where the operating systems is better geared toward time slicing between multiple processes. When more CPUs are available, the worker model will probably be more effective. There are also important settings to address like, for instance, defining the maximum simultaneous connections that Apache can handle using \text{MaxClients} and setting the minimum and maximum number of spare threads/processes.
+Apache supports two completely different MPM models: a prefork MPM, which forks a number of identical Apache processes and a worker MPM, which creates multiple threads. The prefork model is generally more effective on systems with one or two processing units where the operating systems is better geared toward time slicing between multiple processes. When more CPUs are available, the worker model will probably be more effective. There are also important settings to address like, for instance, defining the maximum number simultaneous connections that Apache can handle using \text{MaxClients} and setting the minimum and maximum number of spare threads/processes.
 
-Unlike Apache, Nginx does not rely on threads nor processes to handle requests. Using a philosophy very similar to Thin's, it aims at solving the C10K problem~\footnote{\url{http://www.kegel.com/c10k.html}} by using an event-driven asynchronous architecture. Nginx supports various event models for handling connections which are optimized for certain situations or operating systems. The user must be certain that it is using the correct one for his system. One of the most efficient models---\textit{epool}---is only supported on Linux systems running a kernel in at least version 2.6, for instance.
+Unlike Apache, Nginx does not rely on threads nor processes to handle requests. Using a philosophy very similar to Thin's, it aims at solving the C10K problem~\footnote{\url{http://www.kegel.com/c10k.html}} by using an event-driven asynchronous architecture. Nginx supports various event models for handling connections which are optimized for certain situations and operating systems. The user must be certain that it is using the correct one for his system. One of the most efficient models---\textit{epool}---is only supported on Linux systems running a kernel in at least version 2.6, for instance.
 
-Similarly to Apache's worker MPM, Cherokee is a threaded web server. However, it relies on the operating system for request queuing so it also supports many polling methods which are optimized for some systems, like \textit{epoll}. The amount of threads can and should also be configured specifically for each application and machine.
+Similarly to Apache's worker MPM, Cherokee is a threaded web server. However, it relies on the operating system for request queuing so it also supports many polling methods which are optimized for specific systems, like \textit{epoll}. The amount of threads can and should also be configured specifically for each application and machine.
 
-Thin itself is not as configurable as the previously mentioned web servers. However, there are important settings like, for instance, the maximum number of connections, that can be fine-tuned. As mentioned on section~\ref{tech:sec:rails_webservers}, Thin recently became capable of operating in a threaded manner by having a background pool of threads, despite its ``single process single thread'' philosophy. The following section will present a benchmark on this option.
+Thin itself is not as configurable as the previously mentioned web servers. However, there are important settings like, for instance, the maximum number of connections, that can be fine-tuned. As mentioned on Section~\ref{tech:sec:rails_webservers}, Thin recently became capable of operating in a threaded manner by having a background pool of threads, despite its ``single process single thread'' philosophy. The following section will present a benchmark on this option.
 
-Passenger has a significant amount of configuration options. One of the most important of them all is the process spawning method. While setting it to ``smart'' yields the best results according to its development team, it can cause incompatibilities with some \textit{gems}. The developers must test each system and see if this spawning method is suitable or not. Other interesting options include the number of requests interval in which an application process is restarted, useful for when an application has memory leaks.
+Passenger has a significant amount of configuration options. One of the most important is the process spawning method. Setting it to ``smart'' yields the best results, according to its development team. However, it can cause incompatibilities with some \textit{gems}. The developers must test each system and see if this spawning method is suitable or not. Other interesting options include the number of requests interval in which an application process is restarted, useful for when an application has memory leaks.
 
 Unicorn is a very configurable web server. Its configuration is written in Ruby and there is the possibility to hook into many parts of the start and execution processes. Among all options, there is one that is particularly interesting since it can change the size of the buffers which send and receive TCP data. These can be configured to match the kernel ones---defined by \textit{sysctl}---for optimal performance.
 
 \subsubsection{Thin Performance with Threading Enabled}
-Thin recently started to offer the an option which, when activated, will cause requests to be dispatched in a background pool of 20 threads. This slightly contradicts its initial ``single process single thread'' philosophy, though it still relies on an asynchronous event loop for each thread.
+Thin recently started to offer an option which, when activated, will cause requests to be dispatched to a background pool of 20 threads. This slightly contradicts its initial ``single process single thread'' philosophy, though it still relies on an asynchronous event loop in each thread.
 
-A benchmark comparing Thin's performance when threading is enabled or disabled was made using the three previously mentioned pages. Four workers were used in each test and, like the initial benchmarks, \textit{ab} as used to conduct each test. The results are exhibited on table~\ref{tab:thin_threaded_benchmark}.
+A benchmark comparing Thin's performance when threading is enabled or disabled was made using the three previously mentioned pages. Similarly to the initial benchmarks, 4 workers were used in each test and, like the initial benchmarks, \textit{ab} as used to conduct each test. The results are exhibited on table~\ref{tab:thin_threaded_benchmark}.
 
 \begin{table}[h!t]
   \centering
@@ -386,3 +380,7 @@ A benchmark comparing Thin's performance when threading is enabled or disabled w
 \end{table}
 
 Threaded Thin actually performs worse in these test pages. It uses slightly more memory and generally needs a small amount of extra time to complete each test. Threads have an associated overhead, mainly related to the spawning process and the context switches they provoke. Since Thin is based on a really fast asynchronous loop, it is likely that this processing overhead is, in this case, slowing the web server down overall.
+
+
+\subsection{Section Overview}
+This section exhibited and explained the work concerning Rails web servers. Regarding development, a simple yet powerful memory usage monitoring script was created. Benchmarking, however, had many phases. First of all, proxy performance involving Apache, Nginx and Cherooke was analyzed. The performance of all three was very similar, but Nginx used considerably less memory. Then, Passenger's performance on Apache and Nginx was compared. While having a similar performance across the mentioned web servers, Passenger was more scalable, more stable and used less memory under Nginx. After that, Thin and Unicorn were compared, where Thin performed slightly better while, once again, using less memory. Finally, a more complete benchmark involving Thin, Unicorn, Passenger, Nginx and different Ruby versions was made. All web servers yielded similar results, with Unicorn performing slightly better and Thin maintaining its low memory consumption. Switching from MRI to YARV, however, had a huge positive impact on all web server's performance, mainly noticed on the heaviest test. Finally, concerning tweaking, some web server options were presented and explained. Enabling threads in Thin was one of the options explored, though no performance benefits were detected.

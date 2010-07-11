@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+  <head> 
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+    <title>Scaling Rails :: Generic Guidelines and Conventions for Optimizing Rails Application</title> 
+    <meta name="author" content="Gonçalo Silva" /> 
+    <meta name="description" content="Generic Guidelines and Conventions for Optimizing Rails Applications" /> 
+    <meta name="keywords" content="Ruby on Rails, Scalability, Performance" />
+  </head>
+  <body>
+    <h1>Scaling Rails :: General Guidelines and Conventions for Optimizing Rails Application</h1>
+
+    <p>Building highly performant Ruby on Rails applications involves carefully examining all system components. The following sections will briefly analyze each component, exhibiting its alternatives and analyzing their benefits and shortcomings when compared to other possible solutions.</p>
+
+    <h2>Operating System</h2>
+    <p>From a performance perspective, Linux is the best operating system to use when deploying Rails applications. Comparing with other operating systems, MRI is:</p>
+    <ul>
+      <li>approximately 100% faster than its Windows counterpart;</li>
+      <li>approximately 30% faster than its BSD counterpart.</li>
+    </ul>
+    <p>On a similar tone, YARV on Linux is:</p>
+    <ul>
+      <li>approximately 70% faster than its Windows counterpart;</li>
+      <li>approximately 22% faster than its BSD counterpart.</li>
+    </ul>
+    <p>MySQL also yields better performance in UNIX systems, since Windows restrains its concurrent capabilities (by limiting the allowed number of opened files).</p>
+    <p>Gentoo is the most stable and scalable Linux distribution. It was able to scale up to 10000 concurrent requests on a simple page responding on an acceptable time span while Debian, Ubuntu and CentOS were not.</p>
+    <p>Regarding server configuration the kernel should be using the Deadline I/O scheduler, a non-preemptive configuration and a timer interrupt of 100Hz. Its sysctl configuration should also be changed to improve its scalability and stability, namely:</p>
+    <ul>
+      <li>net.core.rmem_max — 16777216</li>
+      <li>net.core.wmem_max — 16777216</li>
+      <li>net.ipv4.tcp_rmem — 4096 87380 16777216</li>
+      <li>net.ipv4.tcp_wmem — 4096 87380 16777216</li>
+      <li>net.core.netdev_max_backlog — 4096</li>
+      <li>net.core.somaxconn — 4096</li>
+      <li>net.ipv4.tcp_tw_reuse — 1</li>
+      <li>net.ipv4.tcp_tw_recycle — 1</li>
+      <li>net.ipv4.tcp_fin_timeout — 15</li>
+      <li>net.ipv4.tcp_timestamps — 0</li>
+      <li>net.ipv4.tcp_orphan_retries — 1</li>
+    </ul>
+
+    <h2>Ruby</h2>
+    <p>YARV is the Ruby interpreter with the best overall performance. Applications still using Ruby 1.8 can be easily ported to the new version and this upgrade is highly advisable. However, for those applications that have specific Ruby 1.8-related requirements, the best performing interpreter is JRuby.</p>
+    <p>Regarding YARV, there is a fork on GitHub which enables parameter configuration for adaptive performance at <a href="http://github.com/goncalossilva/ruby">http://github.com/goncalossilva/ruby</a>. To run Ruby with customized configurations, create the following script:</p>
+    <pre>
+    export RUBY_HEAP_SLOTS_INCREMENT=500000
+    export RUBY_HEAP_MIN_SLOTS=500000
+    export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1.1
+    export RUBY_GC_MALLOC_LIMIT=40000000
+    export RUBY_HEAP_FREE_MIN=100000
+    ruby
+    </pre>
+    <p>The supported parameters are the previously exhibited. Each addresses a different functionality:</p>
+    <ul>
+      <li>RUBY_HEAP_SLOTS_INCREMENT —Initial number of heap slots. It also represents the minimum number of slots, at all times (default: 10000);</li>
+      <li>RUBY_HEAP_MIN_SLOTS — The number of new slots to allocate when all initial slots are used (default: 10000);</li>
+      <li>RUBY_HEAP_SLOTS_GROWTH_FACTOR — Next time Ruby needs new heap slots it will use a multiplicator, defined by this environment variable’s value (default: 1.8, meaning it will allocate 18000 new slots if default settings are in use);</li>
+      <li>RUBY_GC_MALLOC_LIMIT — The number of C data structures that can be allocated before triggering the garbage collector. This one is very important since the default value makes the GC run when there are still empty heap slots because Rails allocates and deallocates a lot of data (default: 8000000);</li>
+      <li>RUBY_HEAP_FREE_MIN — The number of free slots that should be present after GC finishes running. If there are fewer slots than those defined it will allocate new ones according to RUBY_HEAP_SLOTS_INCREMENT and RUBY_HEAP_SLOTS_GROWTH_FACTOR parameters (default: 4096).</li>
+    </ul>
+    <p>Each application has its own optimal configuration. Twitter's and 37signals' settings are shown bellow:</p>
+    <pre>
+    # 37signals
+    RUBY_HEAP_MIN_SLOTS=600000
+    RUBY_GC_MALLOC_LIMIT=59000000
+    RUBY_HEAP_FREE_MIN=100000
+
+    # Twitter
+    RUBY_HEAP_MIN_SLOTS=500000
+    RUBY_HEAP_SLOTS_INCREMENT=250000
+    RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+    RUBY_GC_MALLOC_LIMIT=50000000
+    </pre>
+    <p>Developers should benchmark their applications to find an optimal value combination for the best performance results.</p>
+
+    <h2>Web Servers</h2>
+    <p>Thin, Unicorn and Passenger have very similar performances. However, Thin uses slightly less memory and accomplishes similar results.</p>
+    <p>Thin is optimized for fast clients so it should be used in combination with a reverse proxy which buffers requests/replies for slow clients. Nginx is the optimal choice for its improved performance, stability and memory usage.</p>
+    <p>Thin as an option to enable threading. This, however, generally decreases this web server's performance, so the advice is to avoid using it. Nginx, on the other hand, has a powerful configuration option since it allows developers to specify the event model to use. One must use the model optimized for the running operating system which, for Linux, is <em>epoll</em>.</p>
+
+    <h2>Databases</h2>
+    <p>MySQL is the best performing database among relation databases. Non-relational solutions, however, trade enhanced read/write speeds for higher disk usage. MongoDB seems to be the best performing non-relational database at this moment. It is up to the developer to decide which type of database to use, considering the mentioned benefits and shortcomings.</p>
+    <p>In any case, <em>caching</em> is very important since it generally significantly improves the database performance.</p>
+    <p>If an application is using MySQL, alternate Ruby database libraries should be considered, namely <em>mysql2</em> or <em>mysqlplus</em>. Both perform better than the default one, providing significant improvements in database interactions.</p>
+
+    <h2>Ruby on Rails</h2>
+    <p>Rails 3 is remarkably faster than Rails 2 and it is nearing its first stable release. Upon commencing new projects, this version should be carefully considered.</p>
+    <p>Despite the version in use, there are some common Rails' features which can significantly help improving an applications' performance, namely:</p>
+    <ul>
+      <li>Eager loading should be used whenever a record and any number of associations are being fetched from the database;</li>
+      <li>Transactions should be used to wrap consecutive writes to the database, on either CREATE and UPDATE statements;</li>
+      <li>Magic finders should be generally avoidable. Normal finds are generally very readable, so improving their readability will not likely be worthy given the performance penalty involved;</li>
+      <li>Fetching large groups of records should be done using "find_each" or "find_in_batches" and not using the normal "find" method.</li>
+    </ul>
+    <p>When paired with Nginx, Rails can benefit from its <em>X-Accel-Redirect</em> feature on file downloads by using the plugin found at <a href="http://github.com/goncalossilva/x-accel-redirect">http://github.com/goncalossilva/x-accel-redirect</a>.</p>
+    <p>Finally, profiling is the most important part of fine-tunning. The current Ruby/Rails profiling tools integrate seamlessly and support many data visualization types, including an hierarchical HTML call stack very useful for non-automated analysis. All these tools should be used to spot the existing bottlenecks in the application itself.</p>
+  </body>
+</html>
