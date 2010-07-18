@@ -48,7 +48,7 @@ The supported parameters are the previously exhibited. Each addresses a differen
   \item RUBY\_HEAP\_MIN\_SLOTS --- The number of new slots to allocate when all initial slots are used (default: 10000);
   \item RUBY\_HEAP\_SLOTS\_GROWTH\_FACTOR --- Next time Ruby needs new heap slots it will use a multiplicator, defined by this environment variable’s value (default: 1.8, meaning it will allocate 18000 new slots if default settings are in use);
   \item RUBY\_GC\_MALLOC\_LIMIT --- The number of C data structures that can be allocated before triggering the garbage collector. This one is very important since the default value makes the GC run when there are still empty heap slots because Rails allocates and deallocates a lot of data (default: 8000000);
-  \item RUBY\_HEAP\_FREE\_MIN --- The number of free slots that should be present after GC finishes running. If there are fewer slots than those defined it will allocate new ones according to the values of RUBY\_HEAP\_SLOTS\_INCREMENT and the RUBY\_HEAP\_SLOTS\_GROWTH\_FACTOR parameters (default: 4096).
+  \item RUBY\_HEAP\_FREE\_MIN --- The number of free slots that should be present after GC finishes running. If there are fewer slots than those defined it will allocate new ones according to the value of RUBY\_HEAP\_SLOTS\_INCREMENT and the previously mentioned value of RUBY\_HEAP\_SLOTS\_GROWTH\_FACTOR (default: 4096).
 \end{itemize}
 Each application has its own optimal configuration. Twitter's and 37signals' settings are shown bellow:
 \begin{lstlisting}[language=bash]

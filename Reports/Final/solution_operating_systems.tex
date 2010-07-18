@@ -1,11 +1,12 @@
 \section{Operating Systems} % (fold)
 \label{solution:sec:operating_systems}
-
 Using Linux and BSD, the focus on this system component was to create a generic benchmarking script, determine the operating system in which common web servers perform better and determine the OS in which the official Ruby interpreters have the best performance.
 
 As exposed in Chapter~\ref{state:sec:operating_systems}, Windows is not a suitable OS for production environments of Ruby on Rails applications because of its poor and inefficient support for applications that use this framework, being excluded from further research. On the other hand, Mac OS X Server requires specific hardware so any comparison would not be rigorous, also being excluded from further research. However, its performance is expected to be similar to BSD systems since, as mentioned in Section~\ref{tech:sec:operating_systems}, its kernel is based on this OS. 
 
 The work on the remaining components will be conducted using the OS and distribution which yields the best results in this phase.
+
+Ascertaining which OS is best suited for Rails applications was the general goal of the work presented in this section.
 
 \subsection{Development}
 Concerning development, a generic benchmarking script was created. This script was based on a few commonly found tools on UNIX setups and consists on 5 micro tests and 1 macro test, respectively:
@@ -58,7 +59,7 @@ First of all, it was important to choose one of the Linux distributions mentione
     & average cpu usage/\% & 151\% & 129\% & 118\% & 58\% \\
   \end{tabular}
 \end{table}
-Gentoo's performance was slightly superior in the first test, yielding results which range from 3\% to 7\% better than the other distributions. The second test had similar results, with Debian's performance being very close to Gentoo's. CentOS showed serious issues in this test, being approximately 502\% slower than Gentoo. Regarding the third test Gentoo, showed superior performance again, with Debian having the second best results. CentOS yields very poor results again, being approximately 1903\% slower than Gentoo. Quite unexpectedly, CentOS had the best performance in the fourth test by a significant margin, with Debian's results being the second best once again. Ubuntu yielded the best performance in the fifth test, with Debian and Gentoo having very close results. CentOS shows the worst results by a considerable 13\% margin. Finally, Debian yielded the best results in the final test by a substantial margin. CentOS's results, once more, show a considerable performance deficiency when compared to the other distributions' results.
+Gentoo's performance was slightly superior in the first test, yielding results which range from 3\% to 7\% better than the other distributions. The second test had similar results, with Debian's performance being very close to Gentoo's. CentOS showed serious issues in this test, being approximately 502\% slower than Gentoo. Regarding the third test, Gentoo showed superior performance again, with Debian having the second best results. CentOS yields very poor results again, being approximately 1903\% slower than Gentoo. Quite unexpectedly, CentOS had the best performance in the fourth test by a significant margin, with Debian's results being the second best once again. Ubuntu yielded the best performance in the fifth test, with Debian and Gentoo having very close results. CentOS shows the worst results by a considerable 13\% margin. Finally, Debian yielded the best results in the final test by a substantial margin. CentOS's results, once more, show a considerable performance deficiency when compared to the other distributions' results.
 
 According to these results, Gentoo is the best distribution in CPU usage and I/O operations on a single instance, present in tests 1, 2 and 3. When it comes to almost pure CPU usage, present in tests 4 and 5, CentOS and Ubuntu yielded the best results. Last but not least, Debian showed an impressive behavior handling multiple concurrent tasks, present in the last test.
 
@@ -501,4 +502,6 @@ All the aforementioned configuration changes were in use in during all benchmark
 
 
 \subsection{Section Overview}
-This section exhibited and explained the work concerning operating systems. Regarding development, a general benchmarking script oriented towards UNIX systems was created. On the benchmarking phase, this script was used on four Linux distributions---Debian, Ubuntu Server, CentOS and Gentoo---where CentOS underperformed and was discarded from future work. Then, a benchmark focused on web server performance was made using the three remaining Linux distributions. Gentoo yielded the best performance while maintaining a remarkable stability. It was then compared with FreeBSD, by using a renowned Ruby benchmarking suite. Having overall better performance, Gentoo was chosen to be the base for all future work. Finally, concerning tweaking, a few important kernel options were presented and their impact on performance was explained. 
+This section exhibited and explained the work concerning operating systems. Regarding development, a general benchmarking script oriented towards UNIX systems was created. On the benchmarking phase, this script was used on four Linux distributions---Debian, Ubuntu Server, CentOS and Gentoo---where CentOS underperformed and was discarded from future work. Then, a benchmark focused on web server performance was made using the three remaining Linux distributions. Gentoo yielded the best performance while maintaining a remarkable stability. It was then compared with FreeBSD, by using a renowned Ruby benchmarking suite. Having overall better performance, Gentoo was chosen to be the base for all future work. Finally, concerning tweaking, a few important kernel options were presented and their impact on performance was explained.
+
+The results obtained when analyzing general, web server and Ruby performance allowed to complete the general goal initially stated. Given its results, Gentoo poses as an excellent operating system to be paired with a Rails setup.

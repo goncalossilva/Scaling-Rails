@@ -2,11 +2,8 @@
 \label{solution:sec:ruby_on_rails}
 The main focus related with Ruby on Rails itself was to improve the current tools for profiling and benchmarking applications. Motivating the adoption of the soon to be released version of this framework---Rails 3---by the community was also a goal regarding this component. Increasing the community's awareness of this subject was also addressed by publishing an article to a popular magazine and engaging in a summer project---Ruby Summer of Code---with high visibility. Nonetheless, some common pitfalls were also addressed while presenting and benchmarking their solutions.
 
-\begin{comment}
-Create tools to improve Rails
+Improving Rails' profiling tools, motivating the adoption of Rails 3 and increasing the community's awareness of this subject were the general goals of the work presented in this section.
 
-Push the Rails community forward
-\end{comment}
 
 \subsection{Benchmarking}
 Rails developers can often incur in some development performance pitfalls which can easily be addressed by using some of Rails' powerful functionalities. This section will cover some of these possible pitfalls, propose solutions and generally assert their performance differences.
@@ -18,7 +15,7 @@ Eager loading is a core feature of Ruby on Rails which, in certain situations, c
 @posts = Post.find(:all, :include => :comments)
 \end{lstlisting}
 
-A simple benchmark was performed on a scaffold blog Rails application. The Rails version in use was 2.3.5. The database in use was MySQL using Ruby's default library. A thousand blog posts were generated automatically, along with two hundred thousand comments randomly associated with blog posts. This benchmark compares the time needed to complete a request which fetches all posts along with their comments. The test was ran five times to eliminate circumstantial issues and the best results are shown. The results are exhibited on table~\ref{tab:eager_loading}.
+A simple benchmark was performed on a scaffold blog Rails application. The Rails version in use was 2.3.5. The database in use was MySQL using Ruby's default library. A thousand blog posts were generated automatically, along with two hundred thousand comments randomly associated with blog posts. This benchmark compares the time needed to complete a request which fetches all posts along with their comments. The test was run five times to eliminate circumstantial issues and the best results are shown. The results are exhibited on table~\ref{tab:eager_loading}.
 \begin{table}[h!t]
   \centering
   \caption{Eager Loading Benchmark Results}
@@ -65,7 +62,7 @@ Using a global transaction on the heaviest test implied a $\pm$93\% reduction on
 
 
 \subsubsection{Magic Finders}
-Rails has a feature commonly called ``magic finders''. It improves code's readability by allowing the developer to replace some calls with smaller and more readable ones. The following example illustrates this feature, comparing with a regular call.
+Rails has a feature commonly called ``magic finders''. It improves code's readability by allowing the developer to replace some calls with smaller and more readable ones. The following example illustrates this feature, comparing with a regular call.\\\\\\ % FIXME: next page?
 \begin{lstlisting}[xleftmargin=30pt,xrightmargin=30pt]
 Comment.find(:first, :conditions => ["created_at = ?", "2009-11-06 18:25:48"]) # normal find
 
@@ -80,8 +77,8 @@ These calls, however, have an associated performance penalty. Using the same tes
   \begin{tabular}{c|c}
   
     \textbf{\textsc{Type}} & \textbf{\textsc{Time (milliseconds)}} \\ \hline
-    Normal find & 197 \\ \hline
-    Magic find & 62 \\
+    Normal find & 62 \\ \hline
+    Magic find & 197 \\
   \end{tabular}
 \end{table}
 
@@ -117,7 +114,6 @@ The development phase regarding this component involved many distinct activities
 Rails' profiling and benchmarking tools were nonfunctional on YARV, as they relied on Rub 1.8's now outdated architecture. Ruby evolved very fast and these tools did not keep up, becoming deprecated and useless when used on this version.
 
 Adding Ruby 1.9  support to these tools was crucial, since developers could not rely on the native tools when benchmarking and profiling their applications. By taking advantage of the enhances made to Ruby's profiling tools mentioned in Section~\ref{solution:sec:ruby}, Rails was overhauled~\footnote{\url{http://github.com/rails/rails/commits/master?author=goncalossilva}} and now fully supports profiling and benchmarking under Ruby 1.9.
-% TODO: + detail? Ademar
 
 
 \subsubsection{Porting Plugins to Rails 3}
@@ -151,7 +147,7 @@ The whole Rails community will benefit from having an official benchmarking suit
 
 
 \subsection{Community Blog}
-Soon after the start of the project, a public blog named ``Snap Rails''\footnote{\url{http://snaprails.tumblr.com}} has been created. Many of the findings done throughout this project have been presented there. Despite being fairly recent, it already surpasses a thousand unique visitors. A map overlay showing their locations is shown on figure~\ref{fig:snaprails_map_overlay}.
+Soon after the start of the project, a public blog named ``Snap Rails''\footnote{\url{http://snaprails.tumblr.com}} was created. Many of the findings done throughout this project have been presented there. Despite being fairly recent, it already surpasses a thousand unique visitors. A map overlay showing their locations is shown on figure~\ref{fig:snaprails_map_overlay}.
 \begin{figure}[h!t]
   \centering
     \includegraphics[width=0.75\textwidth]{snaprails_map_overlay}
@@ -167,4 +163,6 @@ Publishing articles on this matter on such a popular magazine increases this sub
 
 
 \subsection{Section Overview}
-This section exhibited and explained the work concerning Ruby on Rails. Regarding benchmarking, common performance pitfalls and their solutions were analyzed. Concerning development, Rails' profiling and benchmarking tools were revamped and now seamlessly integrate with Ruby's. After that, some renowned plugins and Redmine were ported to Rails 3. A plugin which adds support for Nginx's \textit{X-Accel-Redirect} was also created. Finally, a project related to the creation of a performance-oriented continuous integration for Rails under the Ruby Summer of Code program was detailed. This section also presents some work that does not fit under the usual fields---benchmarking, development and tweaking---which is related with increasing the community's awareness of the importance of building highly performant Rails applications. This work is related with the creation of a community blog on this subject and the start of a performance-oriented series of articles for \textit{Rails Magazine}. 
+This section exhibited and explained the work concerning Ruby on Rails. Regarding benchmarking, common performance pitfalls and their solutions were analyzed. Concerning development, Rails' profiling and benchmarking tools were revamped and now seamlessly integrate with Ruby's. After that, some renowned plugins and Redmine were ported to Rails 3. A plugin which adds support for Nginx's \textit{X-Accel-Redirect} was also created. Finally, a project related to the creation of a performance-oriented continuous integration for Rails under the Ruby Summer of Code program was detailed. This section also presents some work that does not fit under the usual fields---benchmarking, development and tweaking---which is related with increasing the community's awareness of the importance of building highly performant Rails applications. This work is related with the creation of a community blog on this subject and the start of a performance-oriented series of articles for \textit{Rails Magazine}.
+
+Making Rails' profiling tools agnostic to which Ruby version is using them and consequently seamless integrate with YARV allowed to improve these tools. Porting Redmine and various plugins to Rails 3 increased this version's visibility and eased the process of upgrading, motivating its adoption. Creating the general guidelines by using information from this and previous sections, starting a community blog and writing an article series are likely to increase the community's awareness of this subject. Finally, building a benchmarking continuous integration for Rails itself will also increase its developer's awareness of this subject, completing the last of the general goals initially stated.

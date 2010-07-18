@@ -1,9 +1,10 @@
 \section{Rails Web Servers} % (fold)
 \label{solution:sec:rails_web_servers}
-
-There are many Ruby web servers with distinct philosophies and purposes. Passenger, Thin and Unicorn were targeted for benchmarking, in an effort to determine which is best for each situation. Memory usage and stability are important factors and were taken into account when evaluating each alternative. Apache, Nginx and Cherooke's performance as reverse proxies was also analyzed.
+There are many Rails-compatible web servers with distinct philosophies and purposes. Passenger, Thin and Unicorn were targeted for benchmarking, in an effort to determine which is best for each situation. Memory usage and stability are important factors and were taken into account when evaluating each alternative. Apache, Nginx and Cherooke's performance as reverse proxies was also analyzed.
 
 Among the previously introduced web servers, some are missing from this analysis. Ruby's pioneer web server---WEBrick---is left out since it lacks the efficiency to compete with nowadays alternatives. Mongrel, while representing a huge improvement over WEBrick, still lags behind more recently developed web servers as explored in Section~\ref{state:sec:rails_web_servers}, also being excluded from further analysis.
+
+Throughly analyzing the performance, stability and memory usage of up-to-date web server setups was the general goal of the work presented in this section.
 
 \subsection{Development}
 Monitoring memory usage is crucial to evaluate the performance of a web server. A web server that consumes less memory is likely to scale better since it can spawn more working processes/threads in the same setup.
@@ -16,7 +17,7 @@ There was need for a small utility to measure the memory usage of specified proc
 \end{itemize}
 The utility records each process's memory usage in its own file. For each process, it will record the data in a file entitled \textit{process\_name.process\_pid.csv}. As the name implies, it records the data in the CSV format. Finally, it is compatible with any UNIX system.
 
-This tool was be used to measure the memory usage in all benchmarks contained in the following section.
+This tool was used to measure the memory usage in all benchmarks contained in the following section.
 
 \subsection{Benchmarking}
 Ruby has a few highly performant web servers with Passenger, Thin and Unicorn among them. Exchanging web servers in a Rails' setup is not an uncommon activity since improved versions are being frequently released in recent years, as stated in Section~\ref{tech:sec:rails_webservers}.
@@ -32,7 +33,7 @@ Many Ruby web servers run behind a reverse proxy which buffers the requests, del
 
 Thin is a kind of web server that should be paired with a reverse proxy. It is optimized for small requests and fast clients so it needs to rely on the proxy's buffering abilities to offer consistent performance across all kinds of light or heavy content and fast or slow clients.
 
-This benchmark used 4 Thin processes. The only modifications made to its default configuration were related to increasing its request queue, so that it could queue more clients instead of discarding them. This Thin cluster was working behind the 3 aforementioned reverse proxies: Apache, Nginx and Cherooke. The benchmark involved many levels of concurrency, as follows:
+This benchmark used 4 Thin processes. The only modifications made to its default configuration were related to increasing its request queue, so that it could queue more clients instead of discarding them. This Thin cluster was working behind the 3 aforementioned reverse proxies---Apache, Nginx and Cherooke. The benchmark involved many levels of concurrency, as follows:
 \begin{itemize}
   \item 50 requests, 1 concurrent;
   \item 100 requests, 10 concurrent;
@@ -40,9 +41,9 @@ This benchmark used 4 Thin processes. The only modifications made to its default
   \item 500 requests, 100 concurrent;
   \item 2500 requests, 500 concurrent.
 \end{itemize}
-The total time to complete each test and the replies \textit{per second} capability of each setup were recorded using the aforementioned tool---\textit{ab}---created by the Apache Foundation~\footnote{\url{http://www.apache.org/}}. When using this tool, the user specifies the total amount of requests to be sent and the desired concurrency. It then dispatches all requests to the specified host at the chosen concurrency rate.
+The total time to complete each test and the replies \textit{per second} capability of each setup were recorded using the aforementioned tool---\textit{ab}---created by the Apache Foundation\footnote{\url{http://www.apache.org/}}. When using this tool, the user specifies the total amount of requests to be sent and the desired concurrency. It then dispatches all requests to the specified host at the chosen concurrency rate.
 
-The results of this benchmark are presented on table~\ref{tab:reverse_proxy_benchmark}.
+The results of this benchmark are presented on table~\ref{tab:reverse_proxy_benchmark}.\\ % FIXME: formatação
 \begin{center}
 \renewcommand{\arraystretch}{0.85}
 \normalsize
@@ -185,7 +186,7 @@ As mentioned before, Unicorn and Thin are very similar in their goals: they are 
 
 In real world applications, web servers must be ready to serve slow clients and, eventually, heavy pages. Since both web servers are not optimized for these situations, the usage of a reverse proxy is required for request and response buffering purposes.
 
-This benchmark followed the same conditions of the aforementioned ones regarding concurrency, number of processes, test pages and the usage of \textit{ab} to make the measurements. Thin's configuration was the same as before and Unicorn's was very similar to Thin's. Since Nginx yielded excellent results in the previous benchmarks, it was used as both web server's reverse proxy. The results can be found on table~\ref{tab:thin_unicorn_benchmark}.
+This benchmark followed the same conditions of the aforementioned ones regarding concurrency, number of processes, test pages and the usage of \textit{ab} to make the measurements. Thin's configuration was the same as before and Unicorn's was very similar to Thin's. Since Nginx yielded excellent results in the previous benchmarks, it was used as both web servers' reverse proxy. The results can be found on table~\ref{tab:thin_unicorn_benchmark}.
 
 \begin{table}[h!t]
   \centering
@@ -237,7 +238,7 @@ The previous benchmarks addressed specific questions that the Ruby community has
 
 Nginx was used as the reverse proxy for Thin and Unicorn. It was also used as the primary web server where Passenger was docked. As seen on the previous benchmarks, it yields very similar performance to Apache and Cherokee while using less memory.
 
-Similarly to real applications, more processes were used as well. Instead of the 4 workers used in the previous benchmarks, this test contempts 30 and 60 workers. The aforementioned developed script was used to record the memory usage in all tests. The test pages were also the same as the ones used on the previous benchmarks.
+Similarly to real applications, more processes were used as well. Instead of the 4 workers used in the previous benchmarks, this test contempted 30 and 60 workers. The aforementioned developed script was used to record the memory usage in all tests. The test pages were also the same as the ones used on the previous benchmarks.
 
 In this benchmark, however, the measurement tool was~\textit{autobench}~\footnote{\url{http://www.xenoclast.org/autobench/}}, a wrapper around on HP's~\textit{httperf}~\footnote{\url{http://www.hpl.hp.com/research/linux/httperf/}}. Instead of continuously dumping requests to the target host like \textit{ab} does, \textit{autobench} runs a number of times against the specified host(s), increasing the number of requested connections \textit{per second} on each iteration. Then it tries to find the highest request rate in which the web server remains stable and aims at maintaining that rate for the remaining simulation time, which is defined by the user.
 
@@ -384,3 +385,5 @@ Threaded Thin actually performs worse in these test pages. It uses slightly more
 
 \subsection{Section Overview}
 This section exhibited and explained the work concerning Rails web servers. Regarding development, a simple yet powerful memory usage monitoring script was created. Benchmarking, however, had many phases. First of all, proxy performance involving Apache, Nginx and Cherooke was analyzed. The performance of all three was very similar, but Nginx used considerably less memory. Then, Passenger's performance on Apache and Nginx was compared. While having a similar performance across the mentioned web servers, Passenger was more scalable, more stable and used less memory under Nginx. After that, Thin and Unicorn were compared, where Thin performed slightly better while, once again, using less memory. Finally, a more complete benchmark involving Thin, Unicorn, Passenger, Nginx and different Ruby versions was made. All web servers yielded similar results, with Unicorn performing slightly better and Thin maintaining its low memory consumption. Switching from MRI to YARV, however, had a huge positive impact on all web server's performance, mainly noticed on the heaviest test. Finally, concerning tweaking, some web server options were presented and explained. Enabling threads in Thin was one of the options explored, though no performance benefits were detected.
+
+The results obtained during all the benchmark analysis allowed to complete the general goal initially stated. Nginx poses as the best performing reverse proxy, Unicorn yields slightly better performance results under high-load and Thin consistently consumes less memory. However, these differences very scarce.

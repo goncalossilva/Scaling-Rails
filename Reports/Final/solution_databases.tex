@@ -3,11 +3,13 @@
 
 Concerning databases, the emerging MySQL Ruby library---\textit{mysql2}---was targeted for improvements.
 
-Databases, from Rails' perspective, is all about choice. There are three different natively supported relational databases including SQLite, MySQL and PostreSQL. The community, however, as given third-party support to many alternative relational and non-relational databases including MongoDB, CouchDB, DataMapper, SQL Server and Oracle, to name a few.
+A database, from Rails' perspective, is all about choice. There are three different natively supported relational databases including SQLite, MySQL and PostreSQL. The community, however, as given third-party support to many alternative relational and non-relational databases including MongoDB, CouchDB, DataMapper, SQL Server and Oracle, to name a few.
 
 The popularity of non-relational databases is increasing among the Rails' community, trading enhanced read and write speeds for higher disk usages and fewer functionalities. However, as mentioned on Section~\ref{tech:sec:databases} most Rails applications rely on relational databases, mainly MySQL. On the other hand, benchmarking PostgreSQL against MySQL was discarded as a worthy task because of what was already exposed in Section~\ref{state:sec:databases}. Finally, adapting \textit{Escolinhas.pt} to a non-relational database for further evaluation would require a significant amount of refactoring and some deep architectural changes, being discarded as a possible approach to this component. For these reasons, MySQL was the chosen database to address in this thesis's context.
 
 Due to the aforementioned Rails-centric perspective and the higher probability of success in the medium term, it was not the database itself that was targeted for improvements but instead a recent, improved Ruby database library---\textit{mysql2}. As mentioned in Section~\ref{state:sec:databases}, this Ruby MySQL library can yield results up to 400\% better than the default library in an optimal situation. However, there are caveats which need to be addressed, as explored in the following section.
+
+Improving \textit{mysql2} was the general goal of the work presented in this section.
 
 \subsection{Development}
 As mentioned in Chapter~\ref{cha:problem_statement}, \textit{mysql2} handles the conversion of the data between MySQL types and Ruby objects immediately after fetching each row from the database. Since the conversion itself is done in C, there are significant performance improvements over the current default MySQL library which returns all results as ``strings'', forcing Rails to make the conversions in Ruby. 
@@ -20,3 +22,4 @@ Adding lazy type casting to fields in \textit{mysql2} was developed in conjuncti
 \subsection{Section Overview}
 This section exhibited and explained the work concerning databases. A promising Ruby library for MySQL was improved, by changing its behavior concerning database field casting. Instead of converting all fields from MySQL types to Ruby objects upon fetching, it now lazy type casts them as needed.
 
+Adding lazy type casting to \textit{mysql2} allowed to fulfill the general goal initially stated---this library's worst performing case has been reduced by solving one of its biggest caveats.
