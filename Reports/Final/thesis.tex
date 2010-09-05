@@ -61,8 +61,8 @@ commentstyle=\color{grey},
 \usepackage{enumerate}
 
 %% For the final version, comment next line and uncomment the second line
-\usepackage[provisional,alpharefs]{feupteses}
-%\usepackage[alpharefs]{feupteses} 
+%\usepackage[provisional,alpharefs]{feupteses}
+\usepackage[alpharefs,print]{feupteses} 
 
 %% Options: 
 %% - portuges: titles, etc in portuguese
@@ -76,10 +76,10 @@ commentstyle=\color{grey},
 %% Include MIEIC definitions different from standard style
 \usepackage{mieicpatch}
 
-\version{0.9}
+\version{1.0}
 
 %% Uncomment in the final version in order to make version footer disappear
-%% \noversiontrue
+\noversiontrue
 %% Uncomment to create an index (at the end of the document)
 \usepackage{makeidx}
 \makeindex
@@ -109,22 +109,23 @@ commentstyle=\color{grey},
   \degree{Master in Informatics and Computing Engineering}
   %% Date of submission
   %\thesisdate{28$^{th}$ June, 2010}
-  \thesisdate{June 28, 2010}
+  \thesisdate{28$^{th}$ June, 2010}
 
   %% Insert copyright text if used
-  %\copyrightnotice{Name of the Author, 2008}
+  % \copyrightnotice{Gonçalo Santarém da Silva, 2010}
 
   \supervisor{Supervisor}{\ProjectSupervisor}{(PhD.)}
   %% Uncomment next line if necessary
   %% \supervisor{Second Supervisor}{Filipe Abrantes}{(PhD.)}
 
   %% Uncomment committee stuff in the final version
-  %\committeetext{Approved in oral examination by the committee:}
-  %\committeemember{\textbf{Chair}}{Ana Paula Cunha da Rocha}{(Auxiliar Professor)}
+  \committeetext{Approved in oral examination by the committee:}
+  \committeemember{\textbf{Chair}}{João Manuel Paiva Cardoso}{(Associate Professor)}
+  
+  \committeemember{\textbf{External Examiner}}{Alberto Manuel Rodrigues da Silva}{(Associate Professor)}
+  \committeemember{\textbf{Internal Examiner}}{Ademar Manuel Teixeira de Aguiar}{(Auxiliary Professor)}
   \signature
-  %\committeemember{\textbf{External Examiner}}{Carlos Miguel Ferraz Baquero Moreno}{(Auxiliar Professor)}
-  %\committeemember{\textbf{Internal Examiner}}{Ademar Manuel Teixeira de Aguiar}{(Auxiliar Professor)}
-  %\committeedate{17$^{th}$ July, 2009}
+  \committeedate{31$^{st}$ July, 2010}
 
   %% Specify cover logo (in folder ``figures'')
   \logo{feup-logo.pdf}
@@ -134,7 +135,7 @@ commentstyle=\color{grey},
   %%----------------------------------------
   \maketitle
   %% Uncomment next line in the final version
-  %\committeepage
+  \committeepage
 
   %% Preliminary materials
   \StartPrelim

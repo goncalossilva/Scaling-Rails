@@ -13,7 +13,7 @@ There was need for a small utility to measure the memory usage of specified proc
 \begin{itemize}
   \item Directory to use when outputting the results;
   \item Refresh interval in seconds (optional, default: 1);
-  \item Name of the process(es) to monitor;
+  \item Name of the process(es) to monitor.
 \end{itemize}
 The utility records each process's memory usage in its own file. For each process, it will record the data in a file entitled \textit{process\_name.process\_pid.csv}. As the name implies, it records the data in the CSV format. Finally, it is compatible with any UNIX system.
 
@@ -296,7 +296,7 @@ Finally, regarding the complex but small \textit{API call}, the results can be f
 
 Once again, the results are very similar to those found on the same test with Ruby 1.8. Passenger's behavior is not consistent because its application handler segmentation faults on this specific test---complex \textit{API call} on Ruby 1.9 with 30 and 60 workers---which is possibly related with shared resource access among workers.
 
-Table~\ref{tab:web_server_memory_usage} exhibits the average memory usage throughout the test. A few conclusions can be drawn from the memory usage data. Firstly, Thin always uses less memory than the other web servers. Passenger's memory usage with 30 workers is similar to when it is using 60 workers, which is very high when compared to the others. Finally, using Ruby 1.9 generally causes web servers to use less memory.
+Table~\ref{tab:web_server_memory_usage} exhibits the average memory consumption, in megabytes, throughout all tests. A few conclusions can be drawn from the memory usage data. Firstly, Thin always uses less memory than the other web servers. Passenger's memory usage with 30 workers is similar to when it is using 60 workers, which is very high when compared to the others. Finally, using Ruby 1.9 generally causes web servers to use less memory.
 \begin{table}[h!t]
   \centering
   \caption{Web Server Memory Usage}

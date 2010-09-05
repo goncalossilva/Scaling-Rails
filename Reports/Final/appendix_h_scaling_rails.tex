@@ -44,7 +44,7 @@ ruby
 \end{lstlisting}
 The supported parameters are the previously exhibited. Each addresses a different functionality:
 \begin{itemize}
-  \item RUBY\_HEAP\_SLOTS\_INCREMENT ---Initial number of heap slots. It also represents the minimum number of slots, at all times (default: 10000);
+  \item RUBY\_HEAP\_SLOTS\_INCREMENT --- Initial number of heap slots. It also represents the minimum number of slots, at all times (default: 10000);
   \item RUBY\_HEAP\_MIN\_SLOTS --- The number of new slots to allocate when all initial slots are used (default: 10000);
   \item RUBY\_HEAP\_SLOTS\_GROWTH\_FACTOR --- Next time Ruby needs new heap slots it will use a multiplicator, defined by this environment variable’s value (default: 1.8, meaning it will allocate 18000 new slots if default settings are in use);
   \item RUBY\_GC\_MALLOC\_LIMIT --- The number of C data structures that can be allocated before triggering the garbage collector. This one is very important since the default value makes the GC run when there are still empty heap slots because Rails allocates and deallocates a lot of data (default: 8000000);

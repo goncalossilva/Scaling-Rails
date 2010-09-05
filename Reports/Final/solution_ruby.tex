@@ -4,7 +4,7 @@ Concerning this component, the main focus was divided into four core activities.
 
 There are many interpreters being used in production environments whose characteristics were explored in Section~\ref{tech:sec:ruby}. Unfortunately, none except YARV fully support the most recent specification---1.9. It is likely that focusing on soon to be outdated solutions is not worthy. For this reason, YARV was the interpreter targeted for improvements.
 
-Determining the performance benefits from upgrading to the most recent version of Ruby, analyzing the effort needed to accomplish it, improving one of YARV's main Rails-related bottlenecks---the garbage collector---and greatly enhancing its profiling capabilities were the general goals of the work presented in this section.
+Determining the performance benefits from upgrading to the most recent version of Ruby, analyzing the effort needed to accomplish it, improving one of YARV's main bottlenecks related with Rails---the garbage collector---and greatly enhancing its profiling capabilities were the general goals of the work presented in this section.
 
 \subsection{Benchmarking}
 As mentioned in Section~\ref{state:sec:ruby} the new Ruby interpreter, YARV, is supposed to significantly improve performance over its predecessor, MRI. Its first release happened more than two years ago and its adoption is still very low, despite having new features and supposedly better performance. Porting existing applications requires some development effort as there are small changes on existing functionality and behavior. Having said that Rails can easily have scalability issues, it would be expected that this version's adoption would rise considerably fast but, however, this is not currently happening.
